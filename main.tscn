@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=10 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
-[ext_resource type="Texture2D" uid="uid://df4vh6nirxwtn" path="res://img/ground.png" id="3_mg4kp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8c3j"]
-size = Vector2(1149, 212)
 
 [sub_resource type="Curve2D" id="Curve2D_ad2ju"]
 _data = {
@@ -20,6 +16,15 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -915, 398, 0, 0, 0, 0, -917, -343)
 }
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
+size = Vector2(403, 929)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swt3a"]
+size = Vector2(391, 973)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8c3j"]
+size = Vector2(1149, 212)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_72br2")
@@ -38,24 +43,8 @@ color = Color(0, 0.407843, 0.705882, 1)
 [node name="Coral" parent="." instance=ExtResource("2_2irvf")]
 position = Vector2(2, 448)
 
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(-2, 658)
-scale = Vector2(1, 2)
-script = ExtResource("3_8ftou")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground"]
-texture = ExtResource("3_mg4kp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_d8c3j")
-
-[node name="Player" parent="." instance=ExtResource("1_od2h0")]
-unique_name_in_owner = true
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(688, 10)
 curve = SubResource("Curve2D_ad2ju")
 
 [node name="Path1" type="PathFollow2D" parent="Path2D"]
@@ -64,7 +53,7 @@ position = Vector2(1028, 394)
 rotation = -1.57219
 
 [node name="Path2D2" type="Path2D" parent="."]
-position = Vector2(-1, -22)
+position = Vector2(-785, -26)
 curve = SubResource("Curve2D_f74fl")
 
 [node name="Path2" type="PathFollow2D" parent="Path2D2"]
@@ -72,7 +61,66 @@ unique_name_in_owner = true
 position = Vector2(-915, 398)
 rotation = -1.5735
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Walls" type="StaticBody2D" parent="."]
+z_index = 10
+collision_layer = 8
+
+[node name="ColorRect" type="ColorRect" parent="Walls"]
+offset_left = -1500.0
+offset_top = -474.0
+offset_right = -1460.0
+offset_bottom = -402.0
+scale = Vector2(-9.82501, 13.0786)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Walls"]
+offset_left = 1500.0
+offset_top = -508.0
+offset_right = 1896.0
+offset_bottom = 466.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-1702.5, -15.5)
+shape = SubResource("RectangleShape2D_b18te")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1697.5, -23.5)
+shape = SubResource("RectangleShape2D_swt3a")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(-2, 658)
+scale = Vector2(20.12, 2)
+script = ExtResource("3_8ftou")
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+offset_left = 1128.0
+offset_top = -106.0
+offset_right = 1231.0
+offset_bottom = -11.0
+scale = Vector2(-21.8401, 2.27026)
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0.5, 0)
+scale = Vector2(1.96, 1)
+shape = SubResource("RectangleShape2D_d8c3j")
+
+[node name="Player" parent="." instance=ExtResource("1_od2h0")]
+unique_name_in_owner = true
+collision_mask = 11
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.8, 0.8)
+limit_left = -1600
+limit_top = -375
+limit_right = 1600
+limit_bottom = 500
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="EnemyTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 0.7
 autostart = true
 
@@ -101,23 +149,30 @@ theme_override_font_sizes/font_size = 150
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer2"]
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
 unique_name_in_owner = true
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 103.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 75
-text = "0"
-horizontal_alignment = 2
+offset_left = 814.0
+offset_top = 8.0
+offset_right = 1147.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 30
+step = 1.0
 
-[node name="ScoreTimer" type="Timer" parent="CanvasLayer2"]
-wait_time = 0.5
+[node name="WaveTimer" type="Timer" parent="UI"]
+wait_time = 0.1
 autostart = true
 
+[node name="WaveLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 936.0
+offset_top = 68.0
+offset_right = 1103.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 30
+text = "Wave 1"
+
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer2/ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="UI/WaveTimer" to="." method="_on_wave_timer_timeout"]

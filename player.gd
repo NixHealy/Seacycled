@@ -26,7 +26,7 @@ func _physics_process(delta):
 		#since constantly holding down hurts fingers
 		
 		#rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
-		# rotation_degrees = snapped(rotation_degrees, 45)
+		#rotation_degrees = snapped(rotation_degrees, 45)
 		if velocity.x > 0:
 			$Fish.flip_h = true
 		else:

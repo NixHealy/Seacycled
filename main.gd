@@ -1,9 +1,17 @@
 extends Node
 
 var score = 0
+var wave = 1
 
 func _ready():
 	%GameOver.visible = false
+
+func _process(delta):
+	if %ProgressBar.value >= 100:
+		%ProgressBar.value = 0
+		%EnemyTimer.wait_time -= 0.2
+		wave += 1
+		%WaveLabel.text = "Wave " + str(wave)
 
 func spawn_mob():
 	var new_mob = preload("res://enemy.tscn").instantiate() #makes an enemy
@@ -30,3 +38,7 @@ func _on_coral_died(): #oh no the coral is dead
 func _on_score_timer_timeout():
 	score += 1
 	%ScoreLabel.text = str(score)
+
+
+func _on_wave_timer_timeout():
+	%ProgressBar.value += 1
