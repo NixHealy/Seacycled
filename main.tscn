@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvhidbr65dorf"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_72br2"]
+[ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
+[ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
+[ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
+[ext_resource type="Texture2D" uid="uid://df4vh6nirxwtn" path="res://img/ground.png" id="3_mg4kp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8c3j"]
+size = Vector2(1149, 212)
+
+[sub_resource type="Curve2D" id="Curve2D_ad2ju"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1028, 394, 0, 0, 0, 0, 1027, -321)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_f74fl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -915, 398, 0, 0, 0, 0, -917, -343)
+}
+point_count = 2
+
+[node name="Main" type="Node"]
+script = ExtResource("1_72br2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.407843, 0.705882, 1)
+
+[node name="Coral" parent="." instance=ExtResource("2_2irvf")]
+position = Vector2(2, 448)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(-2, 658)
+scale = Vector2(1, 2)
+script = ExtResource("3_8ftou")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+texture = ExtResource("3_mg4kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_d8c3j")
+
+[node name="Player" parent="." instance=ExtResource("1_od2h0")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ad2ju")
+
+[node name="Path1" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(1028, 394)
+rotation = -1.57219
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(-1, -22)
+curve = SubResource("Curve2D_f74fl")
+
+[node name="Path2" type="PathFollow2D" parent="Path2D2"]
+unique_name_in_owner = true
+position = Vector2(-915, 398)
+rotation = -1.5735
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.384314)
+
+[node name="Label" type="Label" parent="GameOver"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 150
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer2"]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "0"
+horizontal_alignment = 2
+
+[node name="ScoreTimer" type="Timer" parent="CanvasLayer2"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="died" from="Coral" to="." method="_on_coral_died"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer2/ScoreTimer" to="." method="_on_score_timer_timeout"]
