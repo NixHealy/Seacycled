@@ -9,7 +9,8 @@ func _ready():
 func _process(delta):
 	if %ProgressBar.value >= 100:
 		%ProgressBar.value = 0
-		%EnemyTimer.wait_time -= 0.2
+		if %EnemyTimer.wait_time > 0.2:
+			%EnemyTimer.wait_time -= 0.2
 		wave += 1
 		%WaveLabel.text = "Wave " + str(wave)
 

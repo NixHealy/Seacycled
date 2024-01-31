@@ -5,6 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
+size = Vector2(403, 929)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swt3a"]
+size = Vector2(391, 973)
+
 [sub_resource type="Curve2D" id="Curve2D_ad2ju"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1028, 394, 0, 0, 0, 0, 1027, -321)
@@ -17,22 +23,16 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
-size = Vector2(403, 929)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_swt3a"]
-size = Vector2(391, 973)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8c3j"]
 size = Vector2(1149, 212)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_72br2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Backround" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Backround"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,24 +42,6 @@ color = Color(0, 0.407843, 0.705882, 1)
 
 [node name="Coral" parent="." instance=ExtResource("2_2irvf")]
 position = Vector2(2, 448)
-
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(688, 10)
-curve = SubResource("Curve2D_ad2ju")
-
-[node name="Path1" type="PathFollow2D" parent="Path2D"]
-unique_name_in_owner = true
-position = Vector2(1028, 394)
-rotation = -1.57219
-
-[node name="Path2D2" type="Path2D" parent="."]
-position = Vector2(-785, -26)
-curve = SubResource("Curve2D_f74fl")
-
-[node name="Path2" type="PathFollow2D" parent="Path2D2"]
-unique_name_in_owner = true
-position = Vector2(-915, 398)
-rotation = -1.5735
 
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 10
@@ -87,6 +69,24 @@ shape = SubResource("RectangleShape2D_b18te")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
 position = Vector2(1697.5, -23.5)
 shape = SubResource("RectangleShape2D_swt3a")
+
+[node name="Path2D" type="Path2D" parent="Walls"]
+position = Vector2(688, 10)
+curve = SubResource("Curve2D_ad2ju")
+
+[node name="Path1" type="PathFollow2D" parent="Walls/Path2D"]
+unique_name_in_owner = true
+position = Vector2(1028, 394)
+rotation = -1.57219
+
+[node name="Path2D2" type="Path2D" parent="Walls"]
+position = Vector2(-785, -26)
+curve = SubResource("Curve2D_f74fl")
+
+[node name="Path2" type="PathFollow2D" parent="Walls/Path2D2"]
+unique_name_in_owner = true
+position = Vector2(-915, 398)
+rotation = -1.5735
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(-2, 658)
