@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvvm"]
 size = Vector2(128, 50)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 6
 platform_floor_layers = 4294967040
 script = ExtResource("1_uaet0")
 

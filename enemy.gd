@@ -6,7 +6,7 @@ signal died
 
 func _physics_process(delta):
 	var direction = global_position.direction_to(coral.global_position) #goes to the coral
-	velocity = direction * 300.0
+	velocity = direction * 400.0
 	move_and_slide()
 
 	#rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision

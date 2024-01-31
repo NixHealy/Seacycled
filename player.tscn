@@ -10,6 +10,7 @@ size = Vector2(88, 44)
 size = Vector2(99, 55)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+z_index = 2
 collision_mask = 3
 platform_floor_layers = 4294967040
 script = ExtResource("1_luprc")

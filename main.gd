@@ -1,18 +1,20 @@
 extends Node
 
-var score = 0
 var wave = 1
 
 func _ready():
 	%GameOver.visible = false
+	%GraceLabel.visible = false
 
 func _process(delta):
+	%EnemyTimer.wait_time = pow(2, -wave) #definitely wanna adjust the timing on this
+	
 	if %ProgressBar.value >= 100:
 		%ProgressBar.value = 0
-		if %EnemyTimer.wait_time > 0.2:
-			%EnemyTimer.wait_time -= 0.2
 		wave += 1
 		%WaveLabel.text = "Wave " + str(wave)
+		
+	%GraceLabel.text = str(roundi(%GraceTimer.time_left))
 
 func spawn_mob():
 	var new_mob = preload("res://enemy.tscn").instantiate() #makes an enemy
@@ -28,18 +30,32 @@ func spawn_mob():
 	add_child(new_mob) #adds it to the scene
 
 func _on_timer_timeout(): #timer between mob spawns
-	spawn_mob() #add thing to make the timer faster over time maybe. 
-				#but thats just temporary until we get waves set up
+	spawn_mob() 
 
 func _on_coral_died(): #oh no the coral is dead
 	%GameOver.visible = true #show the game over screen
-	get_tree().paused = true #stop the game
-
-
-func _on_score_timer_timeout():
-	score += 1
-	%ScoreLabel.text = str(score)
-
+	get_tree().paused = true
 
 func _on_wave_timer_timeout():
 	%ProgressBar.value += 1
+	
+	if %ProgressBar.value >= 100: #if the wave is done
+		%WaveTimer.stop()
+		%EnemyTimer.stop()
+		
+		var enemies = get_tree().get_nodes_in_group("enemy") #delete all the enemies
+		for enemy in enemies:
+			enemy.queue_free()
+		
+		%GraceTimer.start() #start a timer for the grace period
+		%GraceLabel.visible = true
+
+func _on_reset_button_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+
+func _on_grace_timer_timeout():
+	%WaveTimer.start()
+	%EnemyTimer.start()
+	%GraceLabel.visible = false
