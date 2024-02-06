@@ -10,7 +10,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and %CooldownTimer.time_left == 0: #might wanna change this so its a quick attack
+	if Input.is_action_just_pressed("attack") and %AttackTimer.is_stopped() and %CooldownTimer.time_left == 0: #might wanna change this so its a quick attack
 		%Fish.set_texture(att_tex)						  #instead of lasting as long as you hold it
 		%Hit.visible = true
 		%AttackTimer.start()
@@ -32,16 +32,17 @@ func _physics_process(delta):
 		if velocity.x > 0:
 			%Fish.flip_h = true
 			%Hit.flip_h = true
-			%Hit.position.x = 54
+			%Area2D.position.x = 54 #should be relative position
 		else:
 			%Fish.flip_h = false
 			%Hit.flip_h = false
-			%Hit.position.x = -54
+			%Area2D.position.x = -54
 			
 	for body in %Area2D.get_overlapping_bodies(): #for everything nearby
 		if attacking == true:
-			if body.has_method("die"): #just to check
-				body.die() #MURDER
+			if body.has_method("take_damage"): #just to check
+				body.take_damage() #ASSAULT
+				attacking = false
 
 
 func _on_attack_timer_timeout():

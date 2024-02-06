@@ -20,26 +20,25 @@ script = ExtResource("1_luprc")
 unique_name_in_owner = true
 texture = ExtResource("1_eaxl8")
 
-[node name="Hit" type="Sprite2D" parent="Fish"]
-unique_name_in_owner = true
-position = Vector2(-54, 0)
-rotation = 3.14159
-texture = ExtResource("2_vhndm")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fx2g2")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-54, 0)
 collision_mask = 2
 
+[node name="Hit" type="Sprite2D" parent="Area2D"]
+unique_name_in_owner = true
+rotation = 3.14159
+texture = ExtResource("2_vhndm")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-54, 0)
 shape = SubResource("RectangleShape2D_dxx7d")
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.1
+wait_time = 0.09
 one_shot = true
 
 [node name="CooldownTimer" type="Timer" parent="."]
