@@ -1,0 +1,14 @@
+Timer
+Sprite2D
+Label
+Button
+ColorRect
+Node
+CanvasLayer
+Node2D
+ProgressBar
+CollisionShape2D
+StaticBody2D
+Area2D
+AnimatedSprite2D
+AnimationPlayer
