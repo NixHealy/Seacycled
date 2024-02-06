@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
 [ext_resource type="Shader" path="res://fisheye.gdshader" id="5_deimy"]
-[ext_resource type="PackedScene" uid="uid://cyoi6sdleyvog" path="res://pollution.tscn" id="6_qbg5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 929)
@@ -22,6 +21,12 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_f74fl"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -919, 454, 0, 0, 0, 0, -918, -201)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ayu2t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -3143.5, -532.5, 0, 0, 0, 0, -316.5, -541.5)
 }
 point_count = 2
 
@@ -95,6 +100,15 @@ curve = SubResource("Curve2D_f74fl")
 unique_name_in_owner = true
 position = Vector2(-919, 454)
 rotation = -1.56927
+
+[node name="PollPath" type="Path2D" parent="."]
+position = Vector2(1697.5, -23.5)
+curve = SubResource("Curve2D_ayu2t")
+
+[node name="PollowPath" type="PathFollow2D" parent="PollPath"]
+unique_name_in_owner = true
+position = Vector2(-3143.5, -532.5)
+rotation = -0.00318358
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(-2, 658)
@@ -233,21 +247,6 @@ text = "Reset"
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
-
-[node name="Pollution" parent="." instance=ExtResource("6_qbg5k")]
-position = Vector2(41, -215)
-
-[node name="Pollution2" parent="." instance=ExtResource("6_qbg5k")]
-position = Vector2(612, -200)
-
-[node name="Pollution3" parent="." instance=ExtResource("6_qbg5k")]
-position = Vector2(-614, -396)
-
-[node name="Pollution4" parent="." instance=ExtResource("6_qbg5k")]
-position = Vector2(330, -132)
-
-[node name="Pollution5" parent="." instance=ExtResource("6_qbg5k")]
-position = Vector2(-325, -200)
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_timer_timeout"]

@@ -28,9 +28,17 @@ func spawn_mob():
 		new_mob.global_position = %Path2.global_position
 	
 	add_child(new_mob) #adds it to the scene
+	
+func spawn_pollution():
+	var new_poll = preload("res://pollution.tscn").instantiate()
+	%PollowPath.progress_ratio = randf()
+	new_poll.global_position = %PollowPath.global_position
+	
+	add_child(new_poll)
 
 func _on_timer_timeout(): #timer between mob spawns
 	spawn_mob() 
+	spawn_pollution()
 
 func _on_coral_died(): #oh no the coral is dead
 	%GameOver.visible = true #show the game over screen
@@ -46,6 +54,9 @@ func _on_wave_timer_timeout():
 		var enemies = get_tree().get_nodes_in_group("enemy") #delete all the enemies
 		for enemy in enemies:
 			enemy.queue_free()
+		var pollutions = get_tree().get_nodes_in_group("pollution") #delete all the enemies
+		for pollution in pollutions:
+			pollution.queue_free()
 		%Coral.health = 100
 		
 		%GraceTimer.start() #start a timer for the grace period
