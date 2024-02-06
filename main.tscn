@@ -46,10 +46,6 @@ grow_vertical = 2
 color = Color(0, 0.407843, 0.705882, 1)
 
 [node name="Coral" parent="." instance=ExtResource("2_2irvf")]
-<<<<<<< HEAD
-=======
-unique_name_in_owner = true
->>>>>>> c68f4d7409961a44cb8e4d5faa017aaa3b5c68bd
 position = Vector2(2, 424)
 collision_mask = 0
 
@@ -233,11 +229,7 @@ text = "Reset"
 
 [node name="GraceTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-<<<<<<< HEAD
 wait_time = 5.0
-=======
-wait_time = 3.0
->>>>>>> c68f4d7409961a44cb8e4d5faa017aaa3b5c68bd
 one_shot = true
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
