@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=13 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
 [ext_resource type="Shader" path="res://fisheye.gdshader" id="5_deimy"]
+[ext_resource type="PackedScene" uid="uid://cyoi6sdleyvog" path="res://pollution.tscn" id="6_qbg5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 929)
@@ -232,6 +233,21 @@ text = "Reset"
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
+
+[node name="Pollution" parent="." instance=ExtResource("6_qbg5k")]
+position = Vector2(41, -215)
+
+[node name="Pollution2" parent="." instance=ExtResource("6_qbg5k")]
+position = Vector2(612, -200)
+
+[node name="Pollution3" parent="." instance=ExtResource("6_qbg5k")]
+position = Vector2(-614, -396)
+
+[node name="Pollution4" parent="." instance=ExtResource("6_qbg5k")]
+position = Vector2(330, -132)
+
+[node name="Pollution5" parent="." instance=ExtResource("6_qbg5k")]
+position = Vector2(-325, -200)
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_timer_timeout"]

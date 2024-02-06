@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Enemy
+
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
 var health = 2
 
