@@ -28,3 +28,4 @@ func take_damage():
 func die(): #oh no its dead
 	queue_free()
 	died.emit()
+# test comment dont explode
