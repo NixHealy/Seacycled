@@ -1,23 +1,39 @@
+<<<<<<< HEAD
 [gd_scene load_steps=6 format=3 uid="uid://b07b250vvlv54"]
 
 [ext_resource type="Texture2D" uid="uid://cry0ymu5fgujw" path="res://img/fish.png" id="1_eaxl8"]
 [ext_resource type="Script" path="res://player.gd" id="1_luprc"]
 [ext_resource type="Texture2D" uid="uid://vpnvmli7kfgk" path="res://img/attacking.png" id="2_vhndm"]
+=======
+[gd_scene load_steps=5 format=3 uid="uid://b07b250vvlv54"]
+
+[ext_resource type="Texture2D" uid="uid://cry0ymu5fgujw" path="res://img/fish.png" id="1_eaxl8"]
+[ext_resource type="Script" path="res://player.gd" id="1_luprc"]
+>>>>>>> 01c6f31d43959c5f1272b171cd9b5aa091bbb288
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fx2g2"]
 size = Vector2(88, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxx7d"]
+<<<<<<< HEAD
 size = Vector2(34, 68)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+=======
+size = Vector2(99, 55)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+>>>>>>> 01c6f31d43959c5f1272b171cd9b5aa091bbb288
 z_index = 2
 collision_mask = 3
 platform_floor_layers = 4294967040
 script = ExtResource("1_luprc")
 
 [node name="Fish" type="Sprite2D" parent="."]
+<<<<<<< HEAD
 unique_name_in_owner = true
+=======
+>>>>>>> 01c6f31d43959c5f1272b171cd9b5aa091bbb288
 texture = ExtResource("1_eaxl8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,6 +41,7 @@ shape = SubResource("RectangleShape2D_fx2g2")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
+<<<<<<< HEAD
 position = Vector2(-54, 0)
 collision_mask = 2
 
@@ -47,3 +64,10 @@ wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+=======
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_dxx7d")
+>>>>>>> 01c6f31d43959c5f1272b171cd9b5aa091bbb288

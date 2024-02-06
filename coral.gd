@@ -1,6 +1,10 @@
 extends StaticBody2D
 
+<<<<<<< HEAD
 @export var health = 100
+=======
+var health = 100
+>>>>>>> 01c6f31d43959c5f1272b171cd9b5aa091bbb288
 
 signal died
 
