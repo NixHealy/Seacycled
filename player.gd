@@ -32,7 +32,7 @@ func _physics_process(delta):
 		else:
 			$Fish.flip_h = false
 			
-		for body in %Area2D.get_overlapping_bodies(): #for everything nearby
-			if attacking == true:
-				if body.has_method("die"): #just to check
-					body.die() #MURDER
+	for body in %Area2D.get_overlapping_bodies(): #for everything nearby
+		if attacking == true:
+			if body.has_method("die"): #just to check
+				body.die() #MURDER

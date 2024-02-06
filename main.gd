@@ -7,7 +7,7 @@ func _ready():
 	%GraceLabel.visible = false
 
 func _process(delta):
-	%EnemyTimer.wait_time = pow(2, -wave) #definitely wanna adjust the timing on this
+	%EnemyTimer.wait_time = (sin((wave+5)/2)+1.1)*(15/(wave+5)) #definitely wanna adjust the timing on this
 	
 	if %ProgressBar.value >= 100:
 		%ProgressBar.value = 0
@@ -46,6 +46,7 @@ func _on_wave_timer_timeout():
 		var enemies = get_tree().get_nodes_in_group("enemy") #delete all the enemies
 		for enemy in enemies:
 			enemy.queue_free()
+		%Coral.health = 100
 		
 		%GraceTimer.start() #start a timer for the grace period
 		%GraceLabel.visible = true
