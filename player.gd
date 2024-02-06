@@ -36,3 +36,4 @@ func _physics_process(delta):
 			if attacking == true:
 				if body.has_method("die"): #just to check
 					body.die() #MURDER
+# test comment
