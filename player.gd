@@ -5,14 +5,16 @@ var att_tex = load("res://img/attack.png")
 
 var attacking = false
 
+func _ready():
+	%Hit.visible = false
+
 func _physics_process(delta):
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT): #might wanna change this so its a quick attack
-		$Fish.set_texture(att_tex)						#instead of lasting as long as you hold it
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and %CooldownTimer.time_left == 0: #might wanna change this so its a quick attack
+		%Fish.set_texture(att_tex)						  #instead of lasting as long as you hold it
+		%Hit.visible = true
+		%AttackTimer.start()
 		attacking = true
-	else:
-		$Fish.set_texture(norm_tex)
-		attacking = false
 	
 	var direction
 	
@@ -28,11 +30,22 @@ func _physics_process(delta):
 		#rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
 		#rotation_degrees = snapped(rotation_degrees, 45)
 		if velocity.x > 0:
-			$Fish.flip_h = true
+			%Fish.flip_h = true
+			%Hit.flip_h = true
+			%Hit.position.x = 54
 		else:
-			$Fish.flip_h = false
+			%Fish.flip_h = false
+			%Hit.flip_h = false
+			%Hit.position.x = -54
 			
 	for body in %Area2D.get_overlapping_bodies(): #for everything nearby
 		if attacking == true:
 			if body.has_method("die"): #just to check
 				body.die() #MURDER
+
+
+func _on_attack_timer_timeout():
+	attacking = false
+	%Fish.set_texture(norm_tex)
+	%Hit.visible = false
+	%CooldownTimer.start() # Replace with function body.
