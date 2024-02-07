@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyoi6sdleyvog"]
 
-[ext_resource type="Texture2D" uid="uid://cju2nfg5icr4j" path="res://img/crisps.png" id="1_03o81"]
 [ext_resource type="Script" path="res://pollution.gd" id="1_tgl7u"]
+[ext_resource type="Texture2D" uid="uid://df31r6fo1qipb" path="res://img/thing.png" id="2_2kh1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vqrl"]
-size = Vector2(120, 96)
+size = Vector2(64, 54)
 
 [node name="Pollution" type="CharacterBody2D" groups=["pollution"]]
 collision_layer = 2
@@ -13,8 +13,8 @@ platform_floor_layers = 4294901760
 script = ExtResource("1_tgl7u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.199999, 0.199999)
-texture = ExtResource("1_03o81")
+scale = Vector2(0.719999, 0.719999)
+texture = ExtResource("2_2kh1o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1vqrl")

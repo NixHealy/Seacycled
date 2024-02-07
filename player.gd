@@ -19,25 +19,25 @@ func _physics_process(delta):
 	
 	var direction
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
-		direction = get_viewport().get_mouse_position() - get_global_transform_with_canvas().get_origin()
-		velocity = direction * speed * (log(direction.length()) / log(10)) #faster when mouse is futher away
-		move_and_slide()
-		
-		#for above, consider changing so its more of a click and go here
-		#instead of a hold and continuously move towards it
-		#since constantly holding down hurts fingers
-		
-		#rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
-		#rotation_degrees = snapped(rotation_degrees, 45)
-		if velocity.x > 0:
-			%Fish.flip_h = true
-			%Hit.flip_h = true
-			%Area2D.position.x = 54 #should be relative position
-		else:
-			%Fish.flip_h = false
-			%Hit.flip_h = false
-			%Area2D.position.x = -54
+	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
+	direction = get_viewport().get_mouse_position() - get_global_transform_with_canvas().get_origin()
+	velocity = direction * speed * (log(direction.length()) / log(10)) #faster when mouse is futher away
+	move_and_slide()
+	
+	#for above, consider changing so its more of a click and go here
+	#instead of a hold and continuously move towards it
+	#since constantly holding down hurts fingers
+	
+	#rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
+	#rotation_degrees = snapped(rotation_degrees, 45)
+	if velocity.x > 0:
+		%Fish.flip_h = true
+		%Hit.flip_h = true
+		%Area2D.position.x = 54 #should really be relative position
+	else:
+		%Fish.flip_h = false
+		%Hit.flip_h = false
+		%Area2D.position.x = -54
 			
 	for body in %Area2D.get_overlapping_bodies(): #for everything nearby
 		if attacking == true:

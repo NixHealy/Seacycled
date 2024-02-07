@@ -17,7 +17,7 @@ func _process(delta):
 		if body.is_in_group("enemy"):
 			touching += 1
 	
-	health -= touching * delta * 10 #more enemies means loses health faster
+	health -= touching * delta * 5 #more enemies means loses health faster
 	
 	player.speed = 1
 	player.speed = 1 - (polluted * 0.1)
