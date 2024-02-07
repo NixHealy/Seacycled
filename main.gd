@@ -15,6 +15,7 @@ func _process(delta):
 		%WaveLabel.text = "Wave " + str(wave)
 		
 	%GraceLabel.text = str(roundi(%GraceTimer.time_left))
+	%ChumkLabel.text = "Chumks: " + str(%Player.chumks)
 
 func spawn_mob():
 	var new_mob = preload("res://enemy.tscn").instantiate() #makes an enemy

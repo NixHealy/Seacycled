@@ -13,14 +13,18 @@ func _process(delta):
 	var touching = 0
 	for body in %Area2D.get_overlapping_bodies():
 		if body.is_in_group("pollution"):
-			polluted += 1
+			polluted += 0.1
 		if body.is_in_group("enemy"):
 			touching += 1
 	
 	health -= touching * delta * 5 #more enemies means loses health faster
 	
+	%Sprite2D.material.set_shader_parameter("pollution_strength", polluted)
+	
 	player.speed = 1
-	player.speed = 1 - (polluted * 0.1)
+	player.speed = 1 - (polluted)
+	if player.speed <= 0:
+		player.speed = 0.1
 	
 	%Label.set_text("Health: " + str(round(health)))
 

@@ -7,6 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cetts"]
 shader = ExtResource("2_qa8xe")
 shader_parameter/desaturate_strength = 0.5
+shader_parameter/pollution_strength = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aixho"]
 size = Vector2(407, 241)

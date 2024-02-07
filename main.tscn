@@ -182,6 +182,15 @@ offset_bottom = 111.0
 theme_override_font_sizes/font_size = 30
 text = "Wave 1"
 
+[node name="ChumkLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 935.0
+offset_top = 114.0
+offset_right = 1102.0
+offset_bottom = 157.0
+theme_override_font_sizes/font_size = 30
+text = "Chumks: 0"
+
 [node name="GraceLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
 anchors_preset = 8

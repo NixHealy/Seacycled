@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cju2nfg5icr4j"
-path="res://.godot/imported/crisps.png-2bd92989f3906c1786a3b4809523aa05.ctex"
+uid="uid://bod3p7h50tt7t"
+path="res://.godot/imported/chumk.png-1828eedd0f0c6591a961ccd68e19ebe1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/crisps.png"
-dest_files=["res://.godot/imported/crisps.png-2bd92989f3906c1786a3b4809523aa05.ctex"]
+source_file="res://img/chumk.png"
+dest_files=["res://.godot/imported/chumk.png-1828eedd0f0c6591a961ccd68e19ebe1.ctex"]
 
 [params]
 

@@ -12,7 +12,7 @@ func _physics_process(delta):
 		die()
 	
 	var direction = global_position.direction_to(coral.global_position) #goes to the coral
-	velocity = direction * 400.0
+	velocity = direction * 200.0
 	move_and_slide()
 
 	#rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
@@ -28,5 +28,9 @@ func take_damage():
 	modulate = Color(1, 0.5, 0.5, 1)
 		
 func die(): #oh no its dead
+	if is_in_group("enemy"):
+		var new_chumk = preload("res://chumk.tscn").instantiate()
+		add_child(new_chumk)
+		new_chumk.reparent(get_node("/root/Main"))
 	queue_free()
 	died.emit()

@@ -5,6 +5,7 @@ var att_tex = load("res://img/attack.png")
 
 var attacking = false
 var speed = 1
+var chumks = 0
 
 func _ready():
 	%Hit.visible = false
@@ -28,22 +29,34 @@ func _physics_process(delta):
 	#instead of a hold and continuously move towards it
 	#since constantly holding down hurts fingers
 	
-	#rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
-	#rotation_degrees = snapped(rotation_degrees, 45)
+	#if is_on_floor():
+		#rotation = 0
+	#else: 
+		#rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
+		#rotation_degrees = snapped(rotation_degrees, 45)
+		
 	if velocity.x > 0:
 		%Fish.flip_h = true
 		%Hit.flip_h = true
-		%Area2D.position.x = 54 #should really be relative position
+		%HitArea.position.x = 54 #should really be relative position
 	else:
 		%Fish.flip_h = false
 		%Hit.flip_h = false
-		%Area2D.position.x = -54
+		%HitArea.position.x = -54
 			
-	for body in %Area2D.get_overlapping_bodies(): #for everything nearby
+	var ctr = %HitArea.get_overlapping_bodies().size()
+	for body in %HitArea.get_overlapping_bodies(): #for everything nearby
 		if attacking == true:
 			if body.has_method("take_damage"): #just to check
 				body.take_damage() #ASSAULT
-				attacking = false
+				ctr -= 1
+				if ctr == 0:
+					attacking = false
+		
+	for body in %CollectionArea.get_overlapping_bodies():
+		if body.is_in_group("collectable"):
+			body.queue_free()
+			chumks += 1
 
 
 func _on_attack_timer_timeout():
