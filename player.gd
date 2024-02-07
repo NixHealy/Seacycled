@@ -53,7 +53,7 @@ func _physics_process(delta):
 				if ctr == 0:
 					attacking = false
 		
-	for body in %CollectionArea.get_overlapping_bodies():
+	for body in %CollectionArea.get_overlapping_areas():
 		if body.is_in_group("collectable"):
 			body.queue_free()
 			chumks += 1

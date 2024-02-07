@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i045a"]
 size = Vector2(42, 36)
 
-[node name="Chumk" type="StaticBody2D" groups=["collectable"]]
+[node name="Chumk" type="Area2D" groups=["collectable"]]
 collision_layer = 31
 collision_mask = 0
 

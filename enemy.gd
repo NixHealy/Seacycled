@@ -4,6 +4,7 @@ class_name Enemy
 
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
 var health = 2
+var speed = 200.0
 
 signal died
 
@@ -12,7 +13,7 @@ func _physics_process(delta):
 		die()
 	
 	var direction = global_position.direction_to(coral.global_position) #goes to the coral
-	velocity = direction * 200.0
+	velocity = direction * speed
 	move_and_slide()
 
 	#rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
