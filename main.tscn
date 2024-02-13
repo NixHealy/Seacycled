@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=16 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
 [ext_resource type="Shader" path="res://fisheye.gdshader" id="5_deimy"]
+[ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="5_vbu6w"]
+[ext_resource type="Shader" path="res://vignette.gdshader" id="6_u0m5a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 929)
@@ -24,14 +26,20 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8c3j"]
+size = Vector2(1149, 212)
+
 [sub_resource type="Curve2D" id="Curve2D_ayu2t"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -3143.5, -532.5, 0, 0, 0, 0, -316.5, -541.5)
 }
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8c3j"]
-size = Vector2(1149, 212)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oun4b"]
+shader = ExtResource("6_u0m5a")
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhjow"]
 shader = ExtResource("5_deimy")
@@ -101,15 +109,6 @@ unique_name_in_owner = true
 position = Vector2(-919, 454)
 rotation = -1.56927
 
-[node name="PollPath" type="Path2D" parent="."]
-position = Vector2(1697.5, -23.5)
-curve = SubResource("Curve2D_ayu2t")
-
-[node name="PollowPath" type="PathFollow2D" parent="PollPath"]
-unique_name_in_owner = true
-position = Vector2(-3143.5, -532.5)
-rotation = -0.00318358
-
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(-2, 658)
 scale = Vector2(20.12, 2)
@@ -129,6 +128,15 @@ position = Vector2(0.5, 0)
 scale = Vector2(1.96, 1)
 shape = SubResource("RectangleShape2D_d8c3j")
 
+[node name="PollPath" type="Path2D" parent="."]
+position = Vector2(1697.5, -23.5)
+curve = SubResource("Curve2D_ayu2t")
+
+[node name="PollowPath" type="PathFollow2D" parent="PollPath"]
+unique_name_in_owner = true
+position = Vector2(-3143.5, -532.5)
+rotation = -0.00318358
+
 [node name="Player" parent="." instance=ExtResource("1_od2h0")]
 unique_name_in_owner = true
 collision_mask = 9
@@ -144,11 +152,31 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="EnemyTimer" type="Timer" parent="."]
+[node name="Clam1" parent="." instance=ExtResource("5_vbu6w")]
+unique_name_in_owner = true
+position = Vector2(1132, 353)
+rotation = -3.14159
+scale = Vector2(-3, -3)
+
+[node name="Clam2" parent="." instance=ExtResource("5_vbu6w")]
+unique_name_in_owner = true
+position = Vector2(-1111, 353)
+scale = Vector2(-3, 3)
+
+[node name="EnemyTimer" type="Timer" parent="." groups=["coral"]]
 unique_name_in_owner = true
 autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Vignette" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_oun4b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="FisheyeLens" type="ColorRect" parent="UI"]
 visible = false
@@ -193,21 +221,17 @@ text = "Chumks: 0"
 
 [node name="GraceLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -147.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 25
-theme_override_font_sizes/font_size = 226
-text = "5"
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 71
+text = "Press Enter to continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -254,11 +278,11 @@ text = "Reset"
 
 [node name="GraceTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 10.0
 one_shot = true
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
-[connection signal="timeout" from="EnemyTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="UI/WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="timeout" from="GraceTimer" to="." method="_on_grace_timer_timeout"]

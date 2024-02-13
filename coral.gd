@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @export var health = 100
 @onready var player = get_node("/root/Main/Player") #fetches the coral node
-
+@onready var vignette = get_node( "/root/Main/UI/Vignette")
 signal died
 
 func _process(delta):
@@ -15,11 +15,13 @@ func _process(delta):
 		if body.is_in_group("pollution"):
 			polluted += 0.1
 		if body.is_in_group("enemy"):
-			touching += 1
+			health -= 10
+			body.queue_free()
 	
-	health -= touching * delta * 5 #more enemies means loses health faster
+	#health -= touching * delta * 5 #more enemies means loses health faster
 	
 	%Sprite2D.material.set_shader_parameter("pollution_strength", polluted)
+	vignette.material.set_shader_parameter("alpha", polluted * 0.5)
 	
 	player.speed = 1
 	player.speed = 1 - (polluted)
@@ -29,5 +31,4 @@ func _process(delta):
 	%Label.set_text("Health: " + str(round(health)))
 
 	if health <= 0: #oh no its dead
-		queue_free()
 		died.emit() #let other things know its dead

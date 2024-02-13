@@ -1,19 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://t3ss07smvh8w"]
 
-[ext_resource type="Texture2D" uid="uid://buqdj8xpwe6xe" path="res://img/enemy.png" id="1_htxvt"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_uaet0"]
+[ext_resource type="Texture2D" uid="uid://bt2gqgk0vkk0r" path="res://img/barry.png" id="2_78ryh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvvm"]
 size = Vector2(128, 50)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+z_index = 1
 collision_layer = 2
-collision_mask = 6
+collision_mask = 70
 platform_floor_layers = 4294967040
 script = ExtResource("1_uaet0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_htxvt")
+texture_filter = 1
+scale = Vector2(-1, 1)
+texture = ExtResource("2_78ryh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hjvvm")

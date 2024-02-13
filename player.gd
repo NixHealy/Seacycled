@@ -13,7 +13,7 @@ func _ready():
 func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("attack") and %AttackTimer.is_stopped() and %CooldownTimer.time_left == 0: #might wanna change this so its a quick attack
-		%Fish.set_texture(att_tex)						  #instead of lasting as long as you hold it
+		#%Fish.set_texture(att_tex)						  #instead of lasting as long as you hold it
 		%Hit.visible = true
 		%AttackTimer.start()
 		attacking = true
@@ -61,6 +61,6 @@ func _physics_process(delta):
 
 func _on_attack_timer_timeout():
 	attacking = false
-	%Fish.set_texture(norm_tex)
+	#%Fish.set_texture(norm_tex)
 	%Hit.visible = false
 	%CooldownTimer.start() # Replace with function body.

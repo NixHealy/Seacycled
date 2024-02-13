@@ -1,6 +1,7 @@
 extends Node
 
-var wave = 1
+@export var wave = 1
+@export var grace = false
 
 func _ready():
 	%GameOver.visible = false
@@ -14,8 +15,14 @@ func _process(delta):
 		wave += 1
 		%WaveLabel.text = "Wave " + str(wave)
 		
-	%GraceLabel.text = str(roundi(%GraceTimer.time_left))
+	#%GraceLabel.text = str(roundi(%GraceTimer.time_left))
 	%ChumkLabel.text = "Chumks: " + str(%Player.chumks)
+	
+	if grace == true && Input.is_key_pressed(KEY_ENTER):
+		grace = false
+		%WaveTimer.start()
+		%EnemyTimer.start()
+		%GraceLabel.visible = false
 
 func spawn_mob():
 	var new_mob = preload("res://enemy.tscn").instantiate() #makes an enemy
@@ -37,7 +44,7 @@ func spawn_pollution():
 	
 	add_child(new_poll)
 
-func _on_timer_timeout(): #timer between mob spawns
+func _on_enemy_timer_timeout(): #timer between mob spawns
 	spawn_mob() 
 	spawn_pollution()
 
@@ -60,15 +67,10 @@ func _on_wave_timer_timeout():
 			pollution.queue_free()
 		%Coral.health = 100
 		
-		%GraceTimer.start() #start a timer for the grace period
+		# GraceTimer.start() #start a timer for the grace period
+		grace = true
 		%GraceLabel.visible = true
 
 func _on_reset_button_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-
-
-func _on_grace_timer_timeout():
-	%WaveTimer.start()
-	%EnemyTimer.start()
-	%GraceLabel.visible = false

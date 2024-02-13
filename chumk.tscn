@@ -1,16 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2n5n0nkj2qvs"]
 
-[ext_resource type="Texture2D" uid="uid://bod3p7h50tt7t" path="res://img/chumk.png" id="1_1vbmp"]
+[ext_resource type="Texture2D" uid="uid://dkqqmk6u1vugf" path="res://img/chunk.png" id="1_26aa0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i045a"]
-size = Vector2(42, 36)
+[sub_resource type="CircleShape2D" id="CircleShape2D_6h3oi"]
+radius = 19.7516
 
 [node name="Chumk" type="Area2D" groups=["collectable"]]
 collision_layer = 31
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_1vbmp")
+scale = Vector2(0.159998, 0.159998)
+texture = ExtResource("1_26aa0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_i045a")
+position = Vector2(0.5, -0.5)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_6h3oi")
