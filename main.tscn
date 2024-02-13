@@ -142,12 +142,11 @@ unique_name_in_owner = true
 collision_mask = 9
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-offset = Vector2(0, 100)
 zoom = Vector2(0.8, 0.8)
 limit_left = -1600
-limit_top = -350
+limit_top = -250
 limit_right = 1600
-limit_bottom = 500
+limit_bottom = 560
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -162,6 +161,11 @@ scale = Vector2(-3, -3)
 unique_name_in_owner = true
 position = Vector2(-1111, 353)
 scale = Vector2(-3, 3)
+
+[node name="PollutionTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+autostart = true
 
 [node name="EnemyTimer" type="Timer" parent="." groups=["coral"]]
 unique_name_in_owner = true
@@ -195,11 +199,6 @@ offset_right = 1147.0
 offset_bottom = 54.0
 theme_override_font_sizes/font_size = 30
 step = 1.0
-
-[node name="WaveTimer" type="Timer" parent="UI"]
-unique_name_in_owner = true
-wait_time = 0.1
-autostart = true
 
 [node name="WaveLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
@@ -281,8 +280,14 @@ unique_name_in_owner = true
 wait_time = 10.0
 one_shot = true
 
+[node name="WaveTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+autostart = true
+
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
+[connection signal="timeout" from="PollutionTimer" to="." method="_on_pollution_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
-[connection signal="timeout" from="UI/WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="timeout" from="GraceTimer" to="." method="_on_grace_timer_timeout"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

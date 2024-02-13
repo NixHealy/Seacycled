@@ -27,4 +27,4 @@ func open():
 	%TopCollision.set_deferred("disabled", false)
 	%BottomCollision.set_deferred("disabled", false)
 	is_open = true 
-	global_position.y -= 130
+	global_position.y -= 120

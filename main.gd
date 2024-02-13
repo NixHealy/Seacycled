@@ -20,12 +20,14 @@ func _process(delta):
 	
 	if grace == true && Input.is_key_pressed(KEY_ENTER):
 		grace = false
+		%WaveTimer.wait_time += 0.1
 		%WaveTimer.start()
 		%EnemyTimer.start()
+		%PollutionTimer.start()
 		%GraceLabel.visible = false
 
 func spawn_mob():
-	var num = randi_range(1, 3)
+	var num = randi_range(1, 2)
 	var new_mob = preload("res://enemy.tscn").instantiate() #makes an enemy
 	if num == 1:
 		new_mob = preload("res://crab_enemy.tscn").instantiate()
@@ -50,6 +52,8 @@ func spawn_pollution():
 
 func _on_enemy_timer_timeout(): #timer between mob spawns
 	spawn_mob() 
+	
+func _on_pollution_timer_timeout():
 	spawn_pollution()
 
 func _on_coral_died(): #oh no the coral is dead
@@ -62,11 +66,12 @@ func _on_wave_timer_timeout():
 	if %ProgressBar.value >= 100: #if the wave is done
 		%WaveTimer.stop()
 		%EnemyTimer.stop()
+		%PollutionTimer.stop()
 		
 		var enemies = get_tree().get_nodes_in_group("enemy") #delete all the enemies
 		for enemy in enemies:
 			enemy.queue_free()
-		var pollutions = get_tree().get_nodes_in_group("pollution") #delete all the enemies
+		var pollutions = get_tree().get_nodes_in_group("pollution") #delete all the pollution
 		for pollution in pollutions:
 			pollution.queue_free()
 		%Coral.health = 100
