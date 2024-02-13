@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxry22bdt83ej"]
 
 [ext_resource type="Script" path="res://char_select.gd" id="1_4w4xt"]
-[ext_resource type="Texture2D" uid="uid://cry0ymu5fgujw" path="res://img/fish.png" id="2_mal1b"]
+[ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="2_6xsik"]
 
 [node name="CharSelect" type="Node"]
 script = ExtResource("1_4w4xt")
@@ -29,11 +29,12 @@ offset_bottom = 57.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
-text = "Fishy!
-"
+text = "Clown"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
 position = Vector2(573, 219)
-texture = ExtResource("2_mal1b")
+scale = Vector2(3.34284, 3.34284)
+texture = ExtResource("2_6xsik")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

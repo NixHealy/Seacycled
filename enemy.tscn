@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bt2gqgk0vkk0r" path="res://img/barry.png" id="2_78ryh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvvm"]
-size = Vector2(128, 50)
+size = Vector2(70, 70)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1

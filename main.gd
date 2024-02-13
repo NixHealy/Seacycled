@@ -25,8 +25,12 @@ func _process(delta):
 		%GraceLabel.visible = false
 
 func spawn_mob():
+	var num = randi_range(1, 3)
 	var new_mob = preload("res://enemy.tscn").instantiate() #makes an enemy
-	var num = randi_range(1, 2) #picks a random path to put it on
+	if num == 1:
+		new_mob = preload("res://crab_enemy.tscn").instantiate()
+	
+	num = randi_range(1, 2) #picks a random path to put it on
 	
 	if num == 1:
 		%Path1.progress_ratio = randf() #chooses a point in the path
