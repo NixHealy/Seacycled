@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
 var health = 1
+var speed = 100
 
 signal died
 
@@ -14,7 +15,7 @@ func _physics_process(delta):
 
 	# Move the crab only along the x-axis
 	var direction = global_position.direction_to(coral.global_position)
-	velocity.x = direction.x * 400
+	velocity.x = direction.x * speed
 	velocity.y = 0 # Ensure no movement along the y-axis
 	move_and_slide()
 	
