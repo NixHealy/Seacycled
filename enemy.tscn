@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bt2gqgk0vkk0r" path="res://img/barry.png" id="2_78ryh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvvm"]
-size = Vector2(70, 70)
+size = Vector2(88.2828, 37)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
+scale = Vector2(2.22014, 2.22014)
 collision_layer = 2
 collision_mask = 70
 platform_floor_layers = 4294967040
@@ -15,8 +16,9 @@ script = ExtResource("1_uaet0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(-1, 1)
+scale = Vector2(-0.0753884, 0.0753884)
 texture = ExtResource("2_78ryh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8.59112e-07, -0.5)
 shape = SubResource("RectangleShape2D_hjvvm")

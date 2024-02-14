@@ -1,18 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=17 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
+[ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_gak5t"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
 [ext_resource type="Shader" path="res://fisheye.gdshader" id="5_deimy"]
 [ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="5_vbu6w"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="6_u0m5a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
-size = Vector2(403, 929)
+size = Vector2(403, 1423.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swt3a"]
-size = Vector2(391, 973)
+size = Vector2(391, 1379.6)
 
 [sub_resource type="Curve2D" id="Curve2D_ad2ju"]
 _data = {
@@ -31,13 +32,13 @@ size = Vector2(1149, 212)
 
 [sub_resource type="Curve2D" id="Curve2D_ayu2t"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -3143.5, -532.5, 0, 0, 0, 0, -316.5, -541.5)
+"points": PackedVector2Array(0, 0, 0, 0, -2674.5, -804.5, 0, 0, 0, 0, -739.5, -804.5)
 }
 point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oun4b"]
 shader = ExtResource("6_u0m5a")
-shader_parameter/alpha = 1.0
+shader_parameter/alpha = 0.0
 shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 1.0
 
@@ -48,24 +49,22 @@ shader_parameter/effect_amount = 1.5
 [node name="Main" type="Node"]
 script = ExtResource("1_72br2")
 
-[node name="Backround" type="CanvasLayer" parent="."]
-layer = -1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+follow_viewport_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="Backround"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.407843, 0.705882, 1)
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(0, -174)
+texture = ExtResource("2_gak5t")
 
 [node name="Coral" parent="." instance=ExtResource("2_2irvf")]
 unique_name_in_owner = true
-position = Vector2(2, 424)
+position = Vector2(2, 134)
 collision_mask = 0
 
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 10
+scale = Vector2(0.674198, 1.62339)
 collision_layer = 8
 
 [node name="ColorRect" type="ColorRect" parent="Walls"]
@@ -84,11 +83,11 @@ offset_bottom = 466.0
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-position = Vector2(-1702.5, -15.5)
+position = Vector2(-1702.5, -262.751)
 shape = SubResource("RectangleShape2D_b18te")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-position = Vector2(1697.5, -23.5)
+position = Vector2(1697.5, -226.799)
 shape = SubResource("RectangleShape2D_swt3a")
 
 [node name="Path2D" type="Path2D" parent="Walls"]
@@ -134,8 +133,7 @@ curve = SubResource("Curve2D_ayu2t")
 
 [node name="PollowPath" type="PathFollow2D" parent="PollPath"]
 unique_name_in_owner = true
-position = Vector2(-3143.5, -532.5)
-rotation = -0.00318358
+position = Vector2(-2674.5, -804.5)
 
 [node name="Player" parent="." instance=ExtResource("1_od2h0")]
 unique_name_in_owner = true
@@ -143,9 +141,9 @@ collision_mask = 9
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.8, 0.8)
-limit_left = -1600
-limit_top = -250
-limit_right = 1600
+limit_left = -900
+limit_top = -745
+limit_right = 900
 limit_bottom = 560
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -153,28 +151,30 @@ position_smoothing_speed = 10.0
 
 [node name="Clam1" parent="." instance=ExtResource("5_vbu6w")]
 unique_name_in_owner = true
-position = Vector2(1132, 353)
+position = Vector2(781, 362)
 rotation = -3.14159
 scale = Vector2(-3, -3)
 
 [node name="Clam2" parent="." instance=ExtResource("5_vbu6w")]
 unique_name_in_owner = true
-position = Vector2(-1111, 353)
+position = Vector2(-737, 369)
 scale = Vector2(-3, 3)
 
 [node name="PollutionTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 4.0
 autostart = true
 
 [node name="EnemyTimer" type="Timer" parent="." groups=["coral"]]
 unique_name_in_owner = true
+wait_time = 2.0
 autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Vignette" type="ColorRect" parent="UI"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_oun4b")
 anchors_preset = 15
 anchor_right = 1.0
@@ -289,5 +289,4 @@ autostart = true
 [connection signal="timeout" from="PollutionTimer" to="." method="_on_pollution_timer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="timeout" from="GraceTimer" to="." method="_on_grace_timer_timeout"]
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]

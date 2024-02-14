@@ -33,8 +33,8 @@ text = "Clown"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
-position = Vector2(573, 219)
-scale = Vector2(3.34284, 3.34284)
+position = Vector2(576, 195)
+scale = Vector2(0.506413, 0.506413)
 texture = ExtResource("2_6xsik")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

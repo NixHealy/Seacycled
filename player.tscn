@@ -22,7 +22,7 @@ script = ExtResource("1_luprc")
 [node name="Fish" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
-scale = Vector2(1.96, 1.96)
+scale = Vector2(0.208512, 0.208512)
 texture = ExtResource("2_3cbqf")
 region_rect = Rect2(0, 0, 50, 26)
 

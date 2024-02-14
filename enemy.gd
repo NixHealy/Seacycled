@@ -4,7 +4,7 @@ class_name Enemy
 
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
 var health = 2
-var speed = 200.0
+var speed = 100.0
 
 signal died
 
@@ -12,12 +12,16 @@ func _physics_process(delta):
 	if health <= 0:
 		die()
 	
-	var direction = global_position.direction_to(coral.global_position) #goes to the coral
-	velocity = direction * speed
+	var direction = coral.global_position - global_position  #goes to the coral
+	if direction.length_squared() > 500000:
+		direction = Vector2(direction.x, 0)
+		velocity = direction.normalized() * speed
+	else:
+		velocity = direction.normalized() * (speed * 2)
 	move_and_slide()
 
-	#rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
-	# rotation_degrees = snapped(rotation_degrees, 45) 
+	rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
+	#rotation_degrees = snapped(rotation_degrees, 45) 
 	
 	if velocity.x > 0:
 		$Sprite2D.flip_h = false
