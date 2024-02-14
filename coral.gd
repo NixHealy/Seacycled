@@ -13,12 +13,6 @@ func _process(delta):
 	for body in %Area2D.get_overlapping_bodies():
 		if body.is_in_group("pollution"):
 			polluted += 0.1
-		if body.is_in_group("enemy"): #maybe wanna make the enemy itself responsible for much damage it deals
-			if body.is_in_group("crab"):
-				health -= 1
-			else:
-				health -= 2
-			body.queue_free()
 	
 	#health -= touching * delta * 5 #more enemies means loses health faster
 	
@@ -34,3 +28,12 @@ func _process(delta):
 
 	if health <= 0: #oh no its dead
 		died.emit() #let other things know its dead
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("enemy"): #maybe wanna make the enemy itself responsible for much damage it deals
+		if body.is_in_group("crab"):
+			health -= 4
+		else:
+			health -= 8
+		body.queue_free()

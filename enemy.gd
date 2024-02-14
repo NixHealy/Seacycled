@@ -36,6 +36,7 @@ func die(): #oh no its dead
 	if is_in_group("enemy"):
 		var new_chumk = preload("res://chumk.tscn").instantiate()
 		add_child(new_chumk)
+		new_chumk.global_scale = Vector2(1, 1)
 		new_chumk.reparent(get_node("/root/Main"))
 	queue_free()
 	died.emit()

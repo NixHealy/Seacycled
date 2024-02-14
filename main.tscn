@@ -13,7 +13,7 @@
 size = Vector2(403, 1423.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swt3a"]
-size = Vector2(391, 1379.6)
+size = Vector2(391, 1406.09)
 
 [sub_resource type="Curve2D" id="Curve2D_ad2ju"]
 _data = {
@@ -87,7 +87,7 @@ position = Vector2(-1702.5, -262.751)
 shape = SubResource("RectangleShape2D_b18te")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-position = Vector2(1697.5, -226.799)
+position = Vector2(1697.5, -240.044)
 shape = SubResource("RectangleShape2D_swt3a")
 
 [node name="Path2D" type="Path2D" parent="Walls"]
@@ -174,7 +174,6 @@ autostart = true
 
 [node name="Vignette" type="ColorRect" parent="UI"]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_oun4b")
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,7 +281,7 @@ one_shot = true
 
 [node name="WaveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.1
+wait_time = 0.2
 autostart = true
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
