@@ -27,10 +27,14 @@ func _process(delta):
 		%GraceLabel.visible = false
 
 func spawn_mob():
-	var num = randi_range(1, 2)
-	var new_mob = preload("res://enemy.tscn").instantiate() #makes an enemy
+	var num = randi_range(1, 3)
+	var new_mob = null
 	if num == 1:
+		new_mob = preload("res://enemy.tscn").instantiate() #makes an enemy
+	elif num == 2:
 		new_mob = preload("res://crab_enemy.tscn").instantiate()
+	elif num == 3:
+		new_mob = preload("res://trevally_enemy.tscn").instantiate()
 	
 	num = randi_range(1, 2) #picks a random path to put it on
 	

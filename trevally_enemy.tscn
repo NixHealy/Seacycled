@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://campls5cf4i46"]
+
+[ext_resource type="Script" path="res://trevally_enemy.gd" id="1_vm5j8"]
+[ext_resource type="Texture2D" uid="uid://ch6gix4mji48k" path="res://img/trevally.png" id="2_hnfxc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5e65w"]
+size = Vector2(74, 56)
+
+[node name="TrevallyEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_vm5j8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("2_hnfxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.13441, 1.13441)
+shape = SubResource("RectangleShape2D_5e65w")
+one_way_collision_margin = 0.0
