@@ -10,6 +10,6 @@ void fragment(){
 	vec4 black_color = vec4(0, 0, 0, 1);
 	if (orig_color.a > 0.0) {
 		COLOR = mix(grey_color, orig_color, desaturate_strength);
-		//COLOR.rgb = COLOR.rgb * (1.0 - pollution_strength);
+		COLOR.rgb = COLOR.rgb * (1.0 - pollution_strength);
 	}
 }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cedj70swg3ycq"]
 
 [ext_resource type="Script" path="res://crab_enemy.gd" id="2_n5crf"]
-[ext_resource type="Texture2D" path="res://img/crab.png" id="3_v70cg"]
+[ext_resource type="Texture2D" uid="uid://t6vfj73vqwug" path="res://img/crab.png" id="3_v70cg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y0ab"]
 size = Vector2(38.1369, 33.7784)
@@ -21,5 +21,4 @@ texture = ExtResource("3_v70cg")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-2.0783e-06, -0.544813)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2y0ab")
