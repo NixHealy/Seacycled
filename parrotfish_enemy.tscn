@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dclgntgtx7gb7"]
+
+[ext_resource type="Script" path="res://parrotfish_enemy.gd" id="1_0lf66"]
+[ext_resource type="Texture2D" uid="uid://nokjo0jkq8eg" path="res://img/parrot.png" id="1_i6pky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbvec"]
+size = Vector2(209, 158)
+
+[node name="ParrotfishEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_0lf66")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.175504, 0.175504)
+texture = ExtResource("1_i6pky")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_fbvec")

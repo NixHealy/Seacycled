@@ -4,7 +4,7 @@ class_name Trevally
 
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
 var health = 1
-var speed = 125.0
+var speed = 110.0
 
 signal died
 

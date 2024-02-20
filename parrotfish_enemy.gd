@@ -1,29 +1,32 @@
 extends CharacterBody2D
 
+class_name Parrotfish
+
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
-var health = 1
-var speed = 80
+var health = 4
+var speed = 40.0
 
 signal died
-
-func _ready():
-	global_position.y = 420
 
 func _physics_process(delta):
 	if health <= 0:
 		die()
-
-	# Move the crab only along the x-axis
-	var direction = global_position.direction_to(coral.global_position)
-	velocity.x = direction.x * speed
-	velocity.y = 0 # Ensure no movement along the y-axis
+	
+	var direction = coral.global_position - global_position  #goes to the coral
+	if direction.length_squared() > 500000:
+		direction = Vector2(direction.x, 0)
+		velocity = direction.normalized() * speed
+	
 	move_and_slide()
+
+	rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
+	#rotation_degrees = snapped(rotation_degrees, 45) 
 	
 	if velocity.x > 0:
-		$Sprite2D.flip_h = false
-	else:
 		$Sprite2D.flip_h = true
-
+	else:
+		$Sprite2D.flip_h = false
+		
 func take_damage():
 	health -= 1
 	modulate = Color(1, 0.5, 0.5, 1)

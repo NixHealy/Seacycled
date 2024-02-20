@@ -27,21 +27,27 @@ func _process(delta):
 		%GraceLabel.visible = false
 
 func spawn_mob():
-	var num = randi_range(1, 3)
+	var num = randi_range(1, 100)
 	var new_mob = null
-	if num == 1:
-		new_mob = preload("res://enemy.tscn").instantiate() #makes an enemy
-	elif num == 2:
+	if num >= 1 && num < 20:
+		# Spawn Barracuda enemy, medium chance
+		new_mob = preload("res://enemy.tscn").instantiate()
+	elif num >= 20 && num < 50:
+		# Spawn Crab enemy, high chance
 		new_mob = preload("res://crab_enemy.tscn").instantiate()
-	elif num == 3:
+	elif num >= 50 && num < 90:
+		# Spawn Trevally enemy, high chance
 		new_mob = preload("res://trevally_enemy.tscn").instantiate()
+	else:
+		# Spawn Parrotfish enemy, low chance
+		new_mob = preload("res://parrotfish_enemy.tscn").instantiate()
 	
-	num = randi_range(1, 2) #picks a random path to put it on
+	var numPath = randi_range(1, 2) #picks a random path to put it on
 	
-	if num == 1:
+	if numPath == 1:
 		%Path1.progress_ratio = randf() #chooses a point in the path
 		new_mob.global_position = %Path1.global_position #and puts it there
-	if num == 2:
+	if numPath == 2:
 		%Path2.progress_ratio = randf()
 		new_mob.global_position = %Path2.global_position
 	
