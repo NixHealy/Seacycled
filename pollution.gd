@@ -12,7 +12,11 @@ func _physics_process(delta):
 	for i in get_slide_collision_count():
 		moving = false
 	
-	var direction = global_position.direction_to(coral.global_position) #goes to the coral
+	var targetPosition = global_position.direction_to(coral.global_position)
+	var direction = targetPosition #goes to the coral
+	
+	direction.x -= direction.x / 2
 	velocity = direction * 400.0
+	
 	if (moving):
 		move_and_slide()
