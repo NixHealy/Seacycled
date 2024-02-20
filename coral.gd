@@ -3,10 +3,14 @@ extends StaticBody2D
 @export var health = 100
 @onready var player = get_node("/root/Main/Player") #fetches the coral node
 @onready var vignette = get_node( "/root/Main/UI/Vignette")
+@onready var main = get_node("/root/Main") #fetches the main node
 signal died
 
 func _process(delta):
-	%Sprite2D.material.set_shader_parameter("desaturate_strength", health / 100.0) #makes it less saturated
+	var desat = health / 100.0
+	if desat < 0:
+		desat = 0
+	%Sprite2D.material.set_shader_parameter("desaturate_strength", desat) #makes it less saturated
 														#probably change to different texture instead when we have the art
 	var polluted = 0
 	var touching = 0
@@ -21,8 +25,8 @@ func _process(delta):
 	
 	player.speed = 1
 	player.speed = 1 - (polluted)
-	if player.speed <= 0:
-		player.speed = 0.1
+	if player.speed <= 0.1:
+		player.speed = 0.2
 	
 	%Label.set_text("Health: " + str(round(health)))
 

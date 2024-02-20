@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var main = get_node("/root/Main")
+@onready var player = get_node("/root/Main/Player")
 
 var open_tex = load("res://img/open.png")
 var close_tex = load("res://img/closed.png")
@@ -12,6 +13,8 @@ func _ready():
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)
 	global_position.y += 130
+	modulate.a = 0.5
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,6 +35,15 @@ func _process(delta):
 				if body.is_in_group("enemy"):
 					body.queue_free()
 			close()
+			
+	if main.grace == true:
+		modulate.a = 1
+		if player.chumks >= 2:
+			%Help.visible = true
+	else:
+		%Help.visible = false
+	if is_open:
+		%Help.visible = false
 
 func open():
 	%Sprite2D.set_texture(open_tex)

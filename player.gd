@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var main = get_node("/root/Main")
+
 var norm_tex = load("res://img/fish.png")
 var att_tex = load("res://img/attack.png")
 
@@ -55,8 +57,9 @@ func _physics_process(delta):
 		
 	for body in %CollectionArea.get_overlapping_areas():
 		if body.is_in_group("collectable"):
-			body.queue_free()
-			chumks += 1
+			if main.grace == true:
+				body.queue_free()
+				chumks += 1
 
 
 func _on_attack_timer_timeout():

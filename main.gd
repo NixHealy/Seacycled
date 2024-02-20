@@ -6,6 +6,7 @@ extends Node
 func _ready():
 	%GameOver.visible = false
 	%GraceLabel.visible = false
+	%HelpText.visible = false
 
 func _process(delta):
 	%EnemyTimer.wait_time = 1 - 0.1 * wave #definitely wanna adjust the timing on this
@@ -25,6 +26,7 @@ func _process(delta):
 		%EnemyTimer.start()
 		%PollutionTimer.start()
 		%GraceLabel.visible = false
+		%HelpText.visible = false
 
 func spawn_mob():
 	var num = randi_range(1, 100)
@@ -89,6 +91,7 @@ func _on_wave_timer_timeout():
 		# GraceTimer.start() #start a timer for the grace period
 		grace = true
 		%GraceLabel.visible = true
+		%HelpText.visible = true
 
 func _on_reset_button_pressed():
 	get_tree().paused = false

@@ -38,3 +38,24 @@ collision_mask = 3
 [node name="FullCollision" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, -1.75)
 shape = SubResource("RectangleShape2D_yle27")
+
+[node name="Help" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -181.0
+offset_top = -94.0
+offset_right = 67.0
+offset_bottom = -47.0
+scale = Vector2(0.799999, 0.799999)
+color = Color(0.266667, 0.266667, 0.266667, 0.537255)
+
+[node name="HelpLabel" type="Label" parent="Help"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Come over to me, I'll stop those 
+enemies in their path!"
+metadata/_edit_use_anchors_ = true

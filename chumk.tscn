@@ -1,20 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2n5n0nkj2qvs"]
+[gd_scene load_steps=7 format=3 uid="uid://d2n5n0nkj2qvs"]
 
 [ext_resource type="Texture2D" uid="uid://dkqqmk6u1vugf" path="res://img/chunk.png" id="1_26aa0"]
+[ext_resource type="Script" path="res://chumk.gd" id="1_wygln"]
+[ext_resource type="Texture2D" path="res://img/particle.png" id="2_rwsdl"]
+
+[sub_resource type="Shader" id="Shader_werny"]
+code = "shader_type canvas_item;
+
+uniform vec4 background_color : hint_color;
+uniform vec4 shadow_color : hint_color;
+// Currently pixels always in application size, so zooming in further wouldn't increase the size of the dropdown
+// but changing that would also be relatively trivial
+uniform vec2 offset_in_pixels;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+void fragment() {
+	
+	// Read screen texture
+	vec4 current_color = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0);
+	
+	// Check if the current color is our background color
+	if (length(current_color - background_color) < 0.01) {
+		
+		vec4 offset_color = textureLod(SCREEN_TEXTURE, SCREEN_UV - offset_in_pixels * SCREEN_PIXEL_SIZE, 0.0);
+		
+		// Check if at our offset position we have a color which is not the background (meaning here we need a shadow actually)
+		if (length(offset_color - background_color) > 0.01) {
+			// If so set it to our shadow color
+			current_color = shadow_color;
+		}
+	}
+	
+	COLOR = current_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ydj7"]
+shader = SubResource("Shader_werny")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6h3oi"]
-radius = 19.7516
+radius = 120.448
 
 [node name="Chumk" type="Area2D" groups=["collectable"]]
-scale = Vector2(0.347977, 0.347977)
+material = SubResource("ShaderMaterial_1ydj7")
+scale = Vector2(3.97, 3.97)
 collision_layer = 31
 collision_mask = 0
+script = ExtResource("1_wygln")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.159998, 0.159998)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_26aa0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.5, -0.5)
-scale = Vector2(2, 2)
+scale = Vector2(0.4, 0.4)
 shape = SubResource("CircleShape2D_6h3oi")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_rwsdl")
+emission_shape = 1
+emission_sphere_radius = 48.3
+gravity = Vector2(0, -200)
+scale_amount_max = 3.0

@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://tlsgk21sg3gr"]
+
+[ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="1_gmif3"]
+[ext_resource type="Script" path="res://howto.gd" id="1_r47f5"]
+[ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="2_0cn4i"]
+[ext_resource type="Texture2D" uid="uid://t6vfj73vqwug" path="res://img/crab.png" id="3_5e2j4"]
+[ext_resource type="Texture2D" uid="uid://bt2gqgk0vkk0r" path="res://img/barry.png" id="4_hrjlq"]
+[ext_resource type="Texture2D" uid="uid://df31r6fo1qipb" path="res://img/thing.png" id="5_mpldn"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_r47f5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gmif3")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+offset_left = 503.082
+offset_top = 18.0
+offset_right = 1073.08
+offset_bottom = 121.0
+theme_override_font_sizes/font_size = 36
+text = "You! Use the mouse to move and 
+click to attack!"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 495.082
+offset_top = 210.0
+offset_right = 1124.08
+offset_bottom = 313.0
+theme_override_font_sizes/font_size = 36
+text = "Enemies! Stop them from hitting the
+coral!"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 489.0
+offset_top = 377.0
+offset_right = 1118.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 36
+text = "Pollution! When too much of it gets
+on the coral, it slows you down!"
+
+[node name="Clown" type="Sprite2D" parent="."]
+position = Vector2(200.082, 86)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0cn4i")
+
+[node name="Crab" type="Sprite2D" parent="."]
+position = Vector2(114.082, 258)
+scale = Vector2(0.273723, 0.273723)
+texture = ExtResource("3_5e2j4")
+
+[node name="Barry" type="Sprite2D" parent="."]
+position = Vector2(330.082, 249)
+scale = Vector2(0.219715, 0.219715)
+texture = ExtResource("4_hrjlq")
+
+[node name="Thing" type="Sprite2D" parent="."]
+position = Vector2(216, 428)
+scale = Vector2(1.57895, 1.57895)
+texture = ExtResource("5_mpldn")
+
+[node name="BackButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 466.0
+offset_top = 532.0
+offset_right = 634.0
+offset_bottom = 618.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

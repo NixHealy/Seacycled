@@ -1,19 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv1icfss523cc"]
+[gd_scene load_steps=3 format=3 uid="uid://cv1icfss523cc"]
 
 [ext_resource type="Script" path="res://stage_select.gd" id="1_jk21k"]
+[ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_brics"]
 
 [node name="StageSelect" type="Node"]
 script = ExtResource("1_jk21k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Background" type="ColorRect" parent="CanvasLayer"]
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.168627, 0.305882, 0.541176, 1)
+texture = ExtResource("2_brics")
+expand_mode = 2
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 anchors_preset = 5
