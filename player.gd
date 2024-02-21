@@ -6,7 +6,7 @@ var norm_tex = load("res://img/fish.png")
 var att_tex = load("res://img/attack.png")
 
 var attacking = false
-var speed = 2
+var speed = 3
 var chumks = 0
 
 func _ready():
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
 	direction = get_viewport().get_mouse_position() - get_global_transform_with_canvas().get_origin()
-	velocity = direction * speed * (log(direction.length()) / log(3)) #faster when mouse is futher away
+	velocity = direction * speed * (log(direction.length()) / log(2)) #faster when mouse is futher away
 	move_and_slide()
 	
 	#for above, consider changing so its more of a click and go here

@@ -13,7 +13,6 @@ func _ready():
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)
 	global_position.y += 130
-	modulate.a = 0.5
 	
 	if global_position.x < 0:
 		%HelpLabel.scale.x = -1

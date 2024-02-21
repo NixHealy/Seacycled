@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=19 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://fisheye.gdshader" id="5_deimy"]
 [ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="5_vbu6w"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="6_u0m5a"]
+[ext_resource type="Shader" path="res://colorblind.gdshader" id="10_dfed1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -46,6 +47,10 @@ shader_parameter/outer_radius = 1.0
 shader = ExtResource("5_deimy")
 shader_parameter/effect_amount = 1.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxy8c"]
+shader = ExtResource("10_dfed1")
+shader_parameter/type = 1
+
 [node name="Main" type="Node"]
 script = ExtResource("1_72br2")
 
@@ -77,9 +82,9 @@ collision_layer = 8
 
 [node name="ColorRect" type="ColorRect" parent="Walls"]
 offset_left = -1500.0
-offset_top = -474.0
+offset_top = -524.0
 offset_right = -1460.0
-offset_bottom = -402.0
+offset_bottom = -450.0
 scale = Vector2(-9.82501, 13.0786)
 color = Color(0, 0, 0, 1)
 
@@ -99,7 +104,7 @@ position = Vector2(1697.5, -240.044)
 shape = SubResource("RectangleShape2D_swt3a")
 
 [node name="Path2D" type="Path2D" parent="Walls"]
-position = Vector2(688, 10)
+position = Vector2(688, -164.101)
 curve = SubResource("Curve2D_ad2ju")
 
 [node name="Path1" type="PathFollow2D" parent="Walls/Path2D"]
@@ -108,7 +113,7 @@ position = Vector2(1030, 413)
 rotation = -1.58441
 
 [node name="Path2D2" type="Path2D" parent="Walls"]
-position = Vector2(-785, -26)
+position = Vector2(-785, -200.101)
 curve = SubResource("Curve2D_f74fl")
 
 [node name="Path2" type="PathFollow2D" parent="Walls/Path2D2"]
@@ -242,6 +247,17 @@ theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 46
 text = "Wave Over! "
 horizontal_alignment = 1
+
+[node name="Colorblind" type="ColorRect" parent="UI"]
+visible = false
+material = SubResource("ShaderMaterial_mxy8c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1010.0
+offset_top = -800.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

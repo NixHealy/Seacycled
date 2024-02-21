@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://campls5cf4i46"]
+[gd_scene load_steps=4 format=3 uid="uid://bbrewbj21ev03"]
 
 [ext_resource type="Script" path="res://trevally_enemy.gd" id="1_vm5j8"]
 [ext_resource type="Texture2D" uid="uid://ch6gix4mji48k" path="res://img/trevally.png" id="2_hnfxc"]
@@ -8,7 +8,7 @@ size = Vector2(74, 56)
 
 [node name="TrevallyEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 70
 script = ExtResource("1_vm5j8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

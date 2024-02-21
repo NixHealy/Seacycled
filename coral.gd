@@ -14,13 +14,13 @@ func _process(delta):
 														#probably change to different texture instead when we have the art
 	var polluted = 0
 	var touching = 0
+	
 	for body in %OutsideArea.get_overlapping_bodies():
 		if body.is_in_group("pollution"):
 			polluted += 0.1
 	
-	#health -= touching * delta * 5 #more enemies means loses health faster
-	
 	%Sprite2D.material.set_shader_parameter("pollution_strength", polluted)
+	health -= polluted * delta * 3 #more pollution means loses health faster
 	vignette.material.set_shader_parameter("alpha", polluted * 0.5)
 	
 	player.speed = 1
@@ -31,6 +31,7 @@ func _process(delta):
 	%Label.set_text("Health: " + str(round(health)))
 
 	if health <= 0: #oh no its dead
+		health = 0
 		died.emit() #let other things know its dead
 
 func _on_hit_area_body_entered(body):
