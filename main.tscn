@@ -49,6 +49,14 @@ shader_parameter/effect_amount = 1.5
 [node name="Main" type="Node"]
 script = ExtResource("1_72br2")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1154, -789)
+anchor_mode = 0
+zoom = Vector2(0.5, 0.5)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -100
 follow_viewport_enabled = true
@@ -138,16 +146,6 @@ position = Vector2(-2674.5, -804.5)
 [node name="Player" parent="." instance=ExtResource("1_od2h0")]
 unique_name_in_owner = true
 collision_mask = 9
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.8, 0.8)
-limit_left = -900
-limit_top = -745
-limit_right = 900
-limit_bottom = 560
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
 
 [node name="Clam1" parent="." instance=ExtResource("5_vbu6w")]
 unique_name_in_owner = true
@@ -242,8 +240,7 @@ grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 46
-text = "Wave Over! 
-Now collect chumks and spend them on allies!"
+text = "Wave Over! "
 horizontal_alignment = 1
 
 [node name="GameOver" type="CanvasLayer" parent="."]

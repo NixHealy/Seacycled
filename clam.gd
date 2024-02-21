@@ -14,11 +14,14 @@ func _ready():
 	%BottomCollision.set_deferred("disabled", true)
 	global_position.y += 130
 	modulate.a = 0.5
-
+	
+	if global_position.x < 0:
+		%HelpLabel.scale.x = -1
+		%HelpLabel.position.x += %Help.size.x
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_open == false && main.grace == true:
+	if is_open == false && main.grace == true && main.all_collected == true:
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player"):
 				if body.chumks >= 2:
@@ -38,7 +41,7 @@ func _process(delta):
 			
 	if main.grace == true:
 		modulate.a = 1
-		if player.chumks >= 2:
+		if player.chumks >= 2 and main.all_collected == true:
 			%Help.visible = true
 	else:
 		%Help.visible = false

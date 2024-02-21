@@ -3,7 +3,8 @@ extends CharacterBody2D
 class_name Parrotfish
 
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
-var health = 4
+var health = 4.0
+var maxhealth = 4.0
 var speed = 40.0
 
 signal died
@@ -29,7 +30,7 @@ func _physics_process(delta):
 		
 func take_damage():
 	health -= 1
-	modulate = Color(1, 0.5, 0.5, 1)
+	modulate = Color(1, health / maxhealth, health / maxhealth, 1)
 		
 func die(): #oh no its dead
 	if is_in_group("enemy"):

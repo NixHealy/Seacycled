@@ -21,6 +21,15 @@ position = Vector2(1.5, -93)
 texture = ExtResource("1_eke8b")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.745, 0.745)
+polygon = PackedVector2Array(-160, -57, -379, 146, -450, 323, -26, 405, 306, 428, 329, 347, 253, 196, 231, 123, 243, 50, 238, -31, 203, -58, 241, -109, 256, -225, 266, -321, 200, -434, 52, -497, -102, -491, -160, -521, -287, -518, -335, -461, -291, -351, -242, -287, -242, -199)
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 255
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitArea"]
+scale = Vector2(0.9, 0.9)
 polygon = PackedVector2Array(-160, -57, -379, 146, -450, 323, -26, 405, 306, 428, 329, 347, 253, 196, 231, 123, 243, 50, 238, -31, 203, -58, 241, -109, 256, -225, 266, -321, 200, -434, 52, -497, -102, -491, -160, -521, -287, -518, -335, -461, -291, -351, -242, -287, -242, -199)
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -48,14 +57,15 @@ theme_override_font_sizes/font_size = 50
 text = "Health: 0"
 horizontal_alignment = 1
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="OutsideArea" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(1.5, 24)
 collision_layer = 128
 collision_mask = 34
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="OutsideArea"]
 position = Vector2(-1.5, -24)
 polygon = PackedVector2Array(-209, -65, -402, 132, -478, 335, -43, 428, 316, 448, 348, 349, 274, 188, 250, 128, 258, 51, 257, -28, 220, -54, 253, -103, 271, -222, 280, -321, 214, -445, 55, -510, -100, -504, -166, -539, -296, -534, -350, -471, -312, -349, -267, -287, -273, -193)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]

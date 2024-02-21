@@ -41,10 +41,10 @@ shape = SubResource("RectangleShape2D_yle27")
 
 [node name="Help" type="ColorRect" parent="."]
 unique_name_in_owner = true
-offset_left = -181.0
-offset_top = -94.0
-offset_right = 67.0
-offset_bottom = -47.0
+offset_left = -189.0
+offset_top = -105.0
+offset_right = 59.0
+offset_bottom = -24.0
 scale = Vector2(0.799999, 0.799999)
 color = Color(0.266667, 0.266667, 0.266667, 0.537255)
 
@@ -56,6 +56,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Come over to me, I'll stop those 
-enemies in their path!"
+text = "Come over here, I'll stop those 
+enemies in their path!
+[Cost: 2 Chumks]"
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true

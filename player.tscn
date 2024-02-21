@@ -61,4 +61,11 @@ unique_name_in_owner = true
 wait_time = 0.05
 one_shot = true
 
+[node name="ClicklessTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.3
+
+[connection signal="body_entered" from="CollectionArea" to="." method="_on_collection_area_body_entered"]
+[connection signal="body_exited" from="CollectionArea" to="." method="_on_collection_area_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ClicklessTimer" to="." method="_on_clickless_timer_timeout"]

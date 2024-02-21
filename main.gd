@@ -2,6 +2,7 @@ extends Node
 
 @export var wave = 1
 @export var grace = false
+var all_collected = true
 
 func _ready():
 	%GameOver.visible = false
@@ -19,7 +20,22 @@ func _process(delta):
 	#%GraceLabel.text = str(roundi(%GraceTimer.time_left))
 	%ChumkLabel.text = "Chumks: " + str(%Player.chumks)
 	
-	if grace == true && Input.is_key_pressed(KEY_ENTER):
+	all_collected = true
+	
+	if grace == true:
+		for i in get_children():
+			if i.is_in_group("collectable"):
+				all_collected = false
+				break
+				
+	if all_collected == true and grace == true:
+		%HelpText.text = "Now spend those chumks on allies!"
+		%GraceLabel.visible = true
+	else:
+		%HelpText.text = "Wave Over!\nCollect all the chumks!"
+		%GraceLabel.visible = false
+	
+	if grace == true and all_collected == true and Input.is_key_pressed(KEY_ENTER):
 		grace = false
 		%WaveTimer.wait_time += 0.1
 		%WaveTimer.start()
@@ -92,6 +108,7 @@ func _on_wave_timer_timeout():
 		grace = true
 		%GraceLabel.visible = true
 		%HelpText.visible = true
+			
 
 func _on_reset_button_pressed():
 	get_tree().paused = false

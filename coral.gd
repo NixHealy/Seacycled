@@ -14,7 +14,7 @@ func _process(delta):
 														#probably change to different texture instead when we have the art
 	var polluted = 0
 	var touching = 0
-	for body in %Area2D.get_overlapping_bodies():
+	for body in %OutsideArea.get_overlapping_bodies():
 		if body.is_in_group("pollution"):
 			polluted += 0.1
 	
@@ -33,8 +33,7 @@ func _process(delta):
 	if health <= 0: #oh no its dead
 		died.emit() #let other things know its dead
 
-
-func _on_area_2d_body_entered(body):
+func _on_hit_area_body_entered(body):
 	if body.is_in_group("enemy"): #maybe wanna make the enemy itself responsible for much damage it deals
 		if body.is_in_group("crab"):
 			health -= 3

@@ -6,7 +6,7 @@ var norm_tex = load("res://img/fish.png")
 var att_tex = load("res://img/attack.png")
 
 var attacking = false
-var speed = 1
+var speed = 2
 var chumks = 0
 
 func _ready():
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
 	direction = get_viewport().get_mouse_position() - get_global_transform_with_canvas().get_origin()
-	velocity = direction * speed * (log(direction.length()) / log(10)) #faster when mouse is futher away
+	velocity = direction * speed * (log(direction.length()) / log(3)) #faster when mouse is futher away
 	move_and_slide()
 	
 	#for above, consider changing so its more of a click and go here
@@ -60,6 +60,11 @@ func _physics_process(delta):
 			if main.grace == true:
 				body.queue_free()
 				chumks += 1
+				
+	for body in %CollectionArea.get_overlapping_bodies():
+		if body.is_in_group("enemy") or body.is_in_group("pollution"):
+			if %ClicklessTimer.is_stopped() == true:
+				%ClicklessTimer.start()
 
 
 func _on_attack_timer_timeout():
@@ -67,3 +72,17 @@ func _on_attack_timer_timeout():
 	#%Fish.set_texture(norm_tex)
 	%Hit.visible = false
 	%CooldownTimer.start() # Replace with function body.
+
+
+#func _on_collection_area_body_entered(body):
+	#if body.is_in_group("enemy") or body.is_in_group("pollution"):
+		#%ClicklessTimer.start()
+
+#func _on_collection_area_body_exited(body):
+	#%ClicklessTimer.stop()
+
+func _on_clickless_timer_timeout():
+	%Hit.visible = true
+	%AttackTimer.start()
+	attacking = true
+	%ClicklessTimer.stop()
