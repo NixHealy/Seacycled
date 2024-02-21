@@ -23,10 +23,10 @@ func _process(delta):
 	health -= polluted * delta * 3 #more pollution means loses health faster
 	vignette.material.set_shader_parameter("alpha", polluted * 0.5)
 	
-	player.speed = 1
-	player.speed = 1 - (polluted)
-	if player.speed <= 0.1:
-		player.speed = 0.2
+	#player.speed = 1
+	#player.speed = 1 - (polluted)
+	#if player.speed <= 0.1:
+		#player.speed = 0.2
 	
 	%Label.set_text("Health: " + str(round(health)))
 

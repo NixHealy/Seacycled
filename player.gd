@@ -55,10 +55,10 @@ func _physics_process(delta):
 				if ctr == 0:
 					attacking = false
 		
-	for body in %CollectionArea.get_overlapping_areas():
-		if body.is_in_group("collectable"):
+	for area in %CollectionArea.get_overlapping_areas():
+		if area.is_in_group("collectable"):
 			if main.grace == true:
-				body.queue_free()
+				area.queue_free()
 				chumks += 1
 				
 	for body in %CollectionArea.get_overlapping_bodies():
@@ -66,6 +66,18 @@ func _physics_process(delta):
 			if %ClicklessTimer.is_stopped() == true:
 				%ClicklessTimer.start()
 
+	var polluted = false
+
+	for body in %PollutionDetector.get_overlapping_bodies():
+		if body.is_in_group("pollution"):
+			polluted = true
+		
+	if polluted == true:
+		speed = 1
+		modulate = Color(0.5, 0.5, 0.5, 1.0)
+	else:
+		speed = 3
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func _on_attack_timer_timeout():
 	attacking = false

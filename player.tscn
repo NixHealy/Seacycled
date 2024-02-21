@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b07b250vvlv54"]
+[gd_scene load_steps=8 format=3 uid="uid://b07b250vvlv54"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_luprc"]
 [ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="2_3cbqf"]
@@ -12,6 +12,9 @@ size = Vector2(34, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mw607"]
 size = Vector2(106, 58)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgyy7"]
+radius = 245.247
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 2
@@ -50,6 +53,13 @@ collision_mask = 62
 [node name="Collectsion" type="CollisionShape2D" parent="CollectionArea"]
 scale = Vector2(0.88, 0.88)
 shape = SubResource("RectangleShape2D_mw607")
+
+[node name="PollutionDetector" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 62
+
+[node name="Collution" type="CollisionShape2D" parent="PollutionDetector"]
+shape = SubResource("CircleShape2D_vgyy7")
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
