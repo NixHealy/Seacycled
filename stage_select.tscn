@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv1icfss523cc"]
+[gd_scene load_steps=4 format=3 uid="uid://cv1icfss523cc"]
 
 [ext_resource type="Script" path="res://stage_select.gd" id="1_jk21k"]
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_brics"]
+[ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_fnwee"]
 
 [node name="StageSelect" type="Node"]
 script = ExtResource("1_jk21k")
@@ -26,6 +27,7 @@ offset_top = 58.0
 offset_right = 106.5
 offset_bottom = 173.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_fnwee")
 theme_override_font_sizes/font_size = 40
 text = "Level 1"
 
@@ -38,6 +40,7 @@ offset_top = 216.0
 offset_right = 357.0
 offset_bottom = 331.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_fnwee")
 theme_override_font_sizes/font_size = 40
 text = "Level 2"
 
@@ -50,6 +53,7 @@ offset_top = 382.0
 offset_right = 357.0
 offset_bottom = 497.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_fnwee")
 theme_override_font_sizes/font_size = 40
 text = "Level 3"
 
@@ -62,6 +66,7 @@ offset_top = 515.0
 offset_right = 126.0
 offset_bottom = 630.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_fnwee")
 theme_override_font_sizes/font_size = 40
 text = "Level 4"
 
@@ -74,6 +79,7 @@ offset_top = 382.0
 offset_right = -117.0
 offset_bottom = 497.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_fnwee")
 theme_override_font_sizes/font_size = 40
 text = "Level 5"
 
@@ -86,6 +92,7 @@ offset_top = 216.0
 offset_right = -117.0
 offset_bottom = 331.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_fnwee")
 theme_override_font_sizes/font_size = 40
 text = "Level 6"
 

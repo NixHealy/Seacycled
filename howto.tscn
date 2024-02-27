@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://tlsgk21sg3gr"]
+[gd_scene load_steps=8 format=3 uid="uid://tlsgk21sg3gr"]
 
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="1_gmif3"]
 [ext_resource type="Script" path="res://howto.gd" id="1_r47f5"]
 [ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="2_0cn4i"]
 [ext_resource type="Texture2D" uid="uid://t6vfj73vqwug" path="res://img/crab.png" id="3_5e2j4"]
+[ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_tp10f"]
 [ext_resource type="Texture2D" uid="uid://bt2gqgk0vkk0r" path="res://img/barry.png" id="4_hrjlq"]
 [ext_resource type="Texture2D" uid="uid://df31r6fo1qipb" path="res://img/thing.png" id="5_mpldn"]
 
@@ -24,28 +25,31 @@ texture = ExtResource("1_gmif3")
 expand_mode = 3
 
 [node name="Label" type="Label" parent="."]
-offset_left = 503.082
+offset_left = 463.082
 offset_top = 18.0
-offset_right = 1073.08
-offset_bottom = 121.0
+offset_right = 1093.08
+offset_bottom = 147.0
+theme_override_fonts/font = ExtResource("3_tp10f")
 theme_override_font_sizes/font_size = 36
 text = "You! Use the mouse to move and 
 click to attack!"
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 495.082
+offset_left = 455.082
 offset_top = 210.0
-offset_right = 1124.08
-offset_bottom = 313.0
+offset_right = 1151.08
+offset_bottom = 339.0
+theme_override_fonts/font = ExtResource("3_tp10f")
 theme_override_font_sizes/font_size = 36
 text = "Enemies! Stop them from hitting the
 coral!"
 
 [node name="Label3" type="Label" parent="."]
-offset_left = 489.0
+offset_left = 449.0
 offset_top = 377.0
-offset_right = 1118.0
-offset_bottom = 480.0
+offset_right = 1125.0
+offset_bottom = 506.0
+theme_override_fonts/font = ExtResource("3_tp10f")
 theme_override_font_sizes/font_size = 36
 text = "Pollution! When too much of it gets
 on the coral, it slows you down!"
@@ -76,12 +80,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 466.0
+offset_left = 426.0
 offset_top = 532.0
-offset_right = 634.0
+offset_right = 594.0
 offset_bottom = 618.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_tp10f")
 theme_override_font_sizes/font_size = 40
 text = "Back"
 

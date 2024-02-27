@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca8n5tvc27gn2"]
+[gd_scene load_steps=7 format=3 uid="uid://ca8n5tvc27gn2"]
 
 [ext_resource type="Texture2D" uid="uid://350yvsaq8qou" path="res://img/open.png" id="1_6t1s4"]
 [ext_resource type="Script" path="res://clam.gd" id="1_fp5fb"]
+[ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_pgus4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iour"]
 size = Vector2(26, 91)
@@ -56,6 +57,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_pgus4")
 text = "Come over here, I'll stop those 
 enemies in their path!
 [Cost: 2 Chumks]"

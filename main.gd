@@ -85,6 +85,7 @@ func _on_pollution_timer_timeout():
 	spawn_pollution()
 
 func _on_coral_died(): #oh no the coral is dead
+	%Coral.health = 0
 	%GameOver.visible = true #show the game over screen
 	get_tree().paused = true
 

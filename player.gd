@@ -25,6 +25,19 @@ func _physics_process(delta):
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
 	direction = get_viewport().get_mouse_position() - get_global_transform_with_canvas().get_origin()
 	velocity = direction * speed * (log(direction.length()) / log(2)) #faster when mouse is futher away
+	
+	# -- working on keyboard controls, work on this later --
+	#if Input.is_action_pressed("move_up"):
+		#velocity = Vector2(0, -10000 * delta)
+	#if Input.is_action_pressed("move_down"):
+		#velocity = Vector2(0, 10000 * delta)
+	#if Input.is_action_pressed("move_left"):
+		#velocity = Vector2(-10000 * delta, 0)
+	#if Input.is_action_pressed("move_right"):
+		#velocity = Vector2(10000 * delta, 0)
+	#if Input.is_anything_pressed() == false:
+		#velocity = Vector2(0, 0)
+		
 	move_and_slide()
 	
 	#for above, consider changing so its more of a click and go here
