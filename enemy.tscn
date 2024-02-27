@@ -22,3 +22,9 @@ texture = ExtResource("2_78ryh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8.59112e-07, -0.5)
 shape = SubResource("RectangleShape2D_hjvvm")
+
+[node name="StunTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

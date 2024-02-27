@@ -1,12 +1,10 @@
-extends CharacterBody2D
+extends Enemy
 
 class_name Trevally
 
-@onready var coral = get_node("/root/Main/Coral") #fetches the coral node
-var health = 1
-var speed = 110.0
-
-signal died
+func _ready():
+	health = 1
+	speed = 110.0
 
 func _physics_process(delta):
 	if health <= 0:
@@ -18,7 +16,9 @@ func _physics_process(delta):
 		velocity = direction.normalized() * speed
 	#else:
 		#velocity = direction.normalized() * (speed * 2)
-	move_and_slide()
+		
+	if stunned == false:
+		move_and_slide()
 
 	rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
 	#rotation_degrees = snapped(rotation_degrees, 45) 

@@ -19,3 +19,9 @@ texture = ExtResource("2_hnfxc")
 scale = Vector2(1.13441, 1.13441)
 shape = SubResource("RectangleShape2D_5e65w")
 one_way_collision_margin = 0.0
+
+[node name="StunTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

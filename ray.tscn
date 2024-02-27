@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://u7xbuwuumsj4"]
+
+[ext_resource type="Texture2D" uid="uid://d3h1qre74lc6n" path="res://img/ray.png" id="1_5po7d"]
+[ext_resource type="Script" path="res://ray.gd" id="1_ql3u8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vcko"]
+size = Vector2(86, 69)
+
+[node name="Ray" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ql3u8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_5po7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_8vcko")
+
+[node name="StunTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

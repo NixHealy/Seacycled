@@ -1,13 +1,10 @@
-extends CharacterBody2D
+extends Enemy
 
-class_name Parrotfish
-
-@onready var coral = get_node("/root/Main/Coral") #fetches the coral node
-var health = 4.0
 var maxhealth = 4.0
-var speed = 40.0
 
-signal died
+func _ready():
+	health = 4.0
+	speed = 40.0
 
 func _physics_process(delta):
 	if health <= 0:
@@ -18,7 +15,8 @@ func _physics_process(delta):
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
 	
-	move_and_slide()
+	if stunned == false:
+		move_and_slide()
 
 	rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
 	#rotation_degrees = snapped(rotation_degrees, 45) 

@@ -5,6 +5,7 @@ class_name Enemy
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
 var health = 2
 var speed = 100.0
+var stunned = false
 
 signal died
 
@@ -13,14 +14,16 @@ func _physics_process(delta):
 		die()
 	
 	var direction = coral.global_position - global_position  #goes to the coral
-	if direction.length_squared() > 500000:
+	if direction.length_squared() > 495000:
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
 	else:
 		velocity = direction.normalized() * (speed * 2)
-	move_and_slide()
+	
+	if stunned == false:
+		move_and_slide()
 
-	rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
+	#rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
 	#rotation_degrees = snapped(rotation_degrees, 45) 
 	
 	if velocity.x > 0:
@@ -40,3 +43,10 @@ func die(): #oh no its dead
 		new_chumk.reparent(get_node("/root/Main"))
 	queue_free()
 	died.emit()
+	
+func get_stunned():
+	stunned = true
+	%StunTimer.start()
+
+func _on_stun_timer_timeout():
+	stunned = false

@@ -1,13 +1,11 @@
-extends CharacterBody2D
+extends Enemy
 
-@onready var coral = get_node("/root/Main/Coral") #fetches the coral node
-var health = 1
-var speed = 80
-
-signal died
+#@onready var coral = get_node("/root/Main/Coral") #fetches the coral node
 
 func _ready():
 	global_position.y = 420
+	health = 1
+	speed = 80
 
 func _physics_process(delta):
 	if health <= 0:
@@ -17,7 +15,9 @@ func _physics_process(delta):
 	var direction = global_position.direction_to(coral.global_position)
 	velocity.x = direction.x * speed
 	velocity.y = 0 # Ensure no movement along the y-axis
-	move_and_slide()
+	
+	if stunned == false:
+		move_and_slide()
 	
 	if velocity.x > 0:
 		$Sprite2D.flip_h = false

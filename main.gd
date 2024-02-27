@@ -18,7 +18,8 @@ func _process(delta):
 		%WaveLabel.text = "Wave " + str(wave)
 		
 	#%GraceLabel.text = str(roundi(%GraceTimer.time_left))
-	%ChumkLabel.text = "Chumks: " + str(%Player.chumks)
+	%ChumkLabel.text = str(%Player.chumks)
+	%HealthBar.value = %Coral.health
 	
 	all_collected = true
 	

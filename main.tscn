@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=29 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -9,8 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="5_vbu6w"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="6_u0m5a"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="9_j2t6x"]
+[ext_resource type="Texture2D" uid="uid://carqqmb8dkbx5" path="res://img/wave_outline.png" id="9_t3lry"]
 [ext_resource type="Shader" path="res://blur.gdshader" id="10_371ox"]
 [ext_resource type="Shader" path="res://colorblind.gdshader" id="10_dfed1"]
+[ext_resource type="Texture2D" uid="uid://cumfkivn34ais" path="res://img/wave_bar.png" id="10_hwnto"]
+[ext_resource type="Texture2D" uid="uid://ck0vumet7xwfo" path="res://img/health_bubble.png" id="12_wayy4"]
+[ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="12_wf2ut"]
+[ext_resource type="Texture2D" uid="uid://dgs3x01e0wd80" path="res://img/health_progress.png" id="13_5utfx"]
+[ext_resource type="Texture2D" uid="uid://d00mnfv7o3khm" path="res://img/health_icon.png" id="14_13p7d"]
+[ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -47,15 +54,15 @@ shader_parameter/outer_radius = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhjow"]
 shader = ExtResource("5_deimy")
-shader_parameter/effect_amount = 1.5
+shader_parameter/effect_amount = 1.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mxy8c"]
 shader = ExtResource("10_dfed1")
-shader_parameter/type = 0
+shader_parameter/type = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_el8ju"]
 shader = ExtResource("10_371ox")
-shader_parameter/lod = 2.35
+shader_parameter/lod = 2.451
 
 [node name="Main" type="Node"]
 script = ExtResource("1_72br2")
@@ -199,38 +206,82 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="UI"]
+[node name="ProgressBar" type="TextureProgressBar" parent="UI"]
 unique_name_in_owner = true
-offset_left = 814.0
-offset_top = 8.0
-offset_right = 1147.0
-offset_bottom = 54.0
-theme_override_fonts/font = ExtResource("9_j2t6x")
-theme_override_font_sizes/font_size = 30
-step = 1.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -718.0
+offset_bottom = 106.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+texture_over = ExtResource("9_t3lry")
+texture_progress = ExtResource("10_hwnto")
 
-[node name="WaveLabel" type="Label" parent="UI"]
+[node name="WaveLabel" type="Label" parent="UI/ProgressBar"]
 unique_name_in_owner = true
-offset_left = 936.0
-offset_top = 68.0
-offset_right = 1103.0
-offset_bottom = 111.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = -26.5
+offset_right = 161.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_j2t6x")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Wave 1"
+horizontal_alignment = 1
 
-[node name="ChumkLabel" type="Label" parent="UI"]
+[node name="HealthBar" type="TextureProgressBar" parent="UI"]
 unique_name_in_owner = true
-offset_left = 935.0
-offset_top = 114.0
-offset_right = 1102.0
-offset_bottom = 157.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -178.0
+offset_right = 628.0
+offset_bottom = 28.0
+grow_vertical = 0
+scale = Vector2(0.472933, 0.472933)
+value = 100.0
+texture_over = ExtResource("12_wayy4")
+texture_progress = ExtResource("13_5utfx")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/HealthBar"]
+position = Vector2(122, 103)
+scale = Vector2(1.44444, 1.44444)
+texture = ExtResource("14_13p7d")
+
+[node name="WaveBar" type="TextureProgressBar" parent="UI"]
+offset_left = 61.0
+offset_top = 272.5
+offset_right = 101.0
+offset_bottom = 312.5
+scale = Vector2(0.709357, 1.03378)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+position = Vector2(59, 413)
+scale = Vector2(0.747804, 0.747804)
+texture = ExtResource("15_16mie")
+
+[node name="ChumkLabel" type="Label" parent="UI/Sprite2D"]
+unique_name_in_owner = true
+offset_left = 71.0
+offset_top = -24.0
+offset_right = 238.0
+offset_bottom = 29.0
 theme_override_fonts/font = ExtResource("9_j2t6x")
 theme_override_font_sizes/font_size = 30
-text = "Chumks: 0"
+text = "0"
 
 [node name="GraceLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -248,6 +299,7 @@ vertical_alignment = 1
 
 [node name="HelpText" type="Label" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 131.0
@@ -299,6 +351,7 @@ offset_top = -11.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_j2t6x")
 theme_override_font_sizes/font_size = 150
 text = "GAME OVER"
 horizontal_alignment = 1
@@ -315,6 +368,7 @@ offset_right = 111.0
 offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_j2t6x")
 theme_override_font_sizes/font_size = 56
 text = "Reset"
 
@@ -327,6 +381,9 @@ one_shot = true
 unique_name_in_owner = true
 wait_time = 0.2
 autostart = true
+
+[node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
+position = Vector2(-103, -517)
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="timeout" from="PollutionTimer" to="." method="_on_pollution_timer_timeout"]
