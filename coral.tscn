@@ -27,6 +27,7 @@ scale = Vector2(0.745, 0.745)
 polygon = PackedVector2Array(-160, -57, -379, 146, -450, 323, -26, 405, 306, 428, 329, 347, 253, 196, 231, 123, 243, 50, 238, -31, 203, -58, 241, -109, 256, -225, 266, -321, 200, -434, 52, -497, -102, -491, -160, -521, -287, -518, -335, -461, -291, -351, -242, -287, -242, -199)
 
 [node name="HitArea" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 255
 

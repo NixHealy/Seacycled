@@ -29,6 +29,18 @@ func _process(delta):
 		#player.speed = 0.2
 	
 	%Label.set_text("Health: " + str(round(health)))
+	
+	# Chance for player to heal the coral during grace period
+	if health < 100 && main.grace == true && main.all_collected == true:
+		# Check if the player is on top of the coral
+		for body in %HitArea.get_overlapping_bodies():
+			if body.is_in_group("player"):
+				if body.chumks >= 5:
+					# Input required so user doesn't accidentally spend chumks
+					if Input.is_key_pressed(KEY_SPACE):
+					# Spend 5 chumks to increase health by 10 points
+						body.chumks -= 5
+						health += 10
 
 	if health <= 0: #oh no its dead
 		health = 0
