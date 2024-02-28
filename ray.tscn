@@ -49,7 +49,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_nj6ar")
-text = "Here, I'll paralyze those mutants!
+text = "Here, I'll paralyse those mutants!
 [Cost: 2 Chumks]"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true

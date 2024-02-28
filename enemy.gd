@@ -23,17 +23,17 @@ func _physics_process(delta):
 	if stunned == false:
 		move_and_slide()
 
-	#rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
+	%Sprite2D.rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
 	#rotation_degrees = snapped(rotation_degrees, 45) 
 	
 	if velocity.x > 0:
-		$Sprite2D.flip_h = false
+		%Sprite2D.flip_h = false
 	else:
-		$Sprite2D.flip_h = true
+		%Sprite2D.flip_h = true
 		
 func take_damage():
 	health -= 1
-	modulate = Color(1, 0.5, 0.5, 1)
+	modulate = Color(modulate.r, modulate.g - 0.25, modulate.b - 0.25)
 		
 func die(): #oh no its dead
 	if is_in_group("enemy"):
@@ -46,9 +46,16 @@ func die(): #oh no its dead
 	
 func get_stunned():
 	stunned = true
-	modulate = Color(1, 1, 0.5)
+	modulate = Color(modulate.r, modulate.g, modulate.b - 0.25)
 	%StunTimer.start()
+
+func get_poisoned():
+	modulate = Color(modulate.r - 0.25, modulate.g, modulate.b - 0.25)
+	%PoisonTimer.start()
 
 func _on_stun_timer_timeout():
 	stunned = false
 	modulate = Color(1, 1, 1)
+
+func _on_poison_timer_timeout():
+	take_damage()

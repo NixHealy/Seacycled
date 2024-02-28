@@ -27,4 +27,9 @@ shape = SubResource("RectangleShape2D_2y0ab")
 unique_name_in_owner = true
 wait_time = 3.0
 
+[node name="PoisonTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

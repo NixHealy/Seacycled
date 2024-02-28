@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=30 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dgs3x01e0wd80" path="res://img/health_progress.png" id="13_5utfx"]
 [ext_resource type="Texture2D" uid="uid://d00mnfv7o3khm" path="res://img/health_icon.png" id="14_13p7d"]
 [ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
+[ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_lhkum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -419,12 +420,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_j2t6x")
 theme_override_font_sizes/font_size = 24
 text = "Come over here, press SPACE
 to heal me!
 [Cost: 5 Chumks = 10HP]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Urchin" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(-289, -278)
+
+[node name="Urchin2" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(247, -25)
+
+[node name="Urchin3" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(-235, 193)
+
+[node name="Urchin4" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(149, -287)
+
+[node name="Urchin5" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(203, 260)
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="timeout" from="PollutionTimer" to="." method="_on_pollution_timer_timeout"]
