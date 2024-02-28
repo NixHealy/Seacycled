@@ -11,7 +11,7 @@ size = Vector2(26, 91)
 size = Vector2(114, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yle27"]
-size = Vector2(132, 112.5)
+size = Vector2(120, 107)
 
 [node name="Clam" type="StaticBody2D"]
 collision_layer = 64
@@ -37,7 +37,7 @@ unique_name_in_owner = true
 collision_mask = 3
 
 [node name="FullCollision" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, -1.75)
+position = Vector2(-1, -1.5)
 shape = SubResource("RectangleShape2D_yle27")
 
 [node name="Help" type="ColorRect" parent="."]

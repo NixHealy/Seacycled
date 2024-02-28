@@ -31,7 +31,7 @@ func take_damage():
 	modulate = Color(1, health / maxhealth, health / maxhealth, 1)
 		
 func die(): #oh no its dead
-	var chanceToDrop = randi_range(1,5)
+	var chanceToDrop = randi_range(1,4)
 	if is_in_group("enemy") && chanceToDrop == 1:
 		var new_chumk = preload("res://chumk.tscn").instantiate()
 		add_child(new_chumk)

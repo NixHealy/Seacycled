@@ -38,7 +38,7 @@ func _process(delta):
 				if body.chumks >= 5:
 					# Input required so user doesn't accidentally spend chumks
 					if Input.is_key_pressed(KEY_SPACE):
-					# Spend 5 chumks to increase health by 10 points
+						# Spend 5 chumks to increase health by 10 points
 						body.chumks -= 5
 						health += 10
 

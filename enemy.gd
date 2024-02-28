@@ -36,7 +36,7 @@ func take_damage():
 	modulate = Color(modulate.r, modulate.g - 0.25, modulate.b - 0.25)
 		
 func die(): #oh no its dead
-	var chanceToDrop = randi_range(1,5)
+	var chanceToDrop = randi_range(1,4) # 25% chance to drop a chumk after death
 	if is_in_group("enemy") && chanceToDrop == 1:
 		var new_chumk = preload("res://chumk.tscn").instantiate()
 		add_child(new_chumk)
