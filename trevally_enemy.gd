@@ -11,16 +11,16 @@ func _physics_process(delta):
 		die()
 		
 	var direction = coral.global_position - global_position  #goes to the coral
-	if direction.length_squared() > 500000:
+	if direction.x > 100:
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
-	#else:
-		#velocity = direction.normalized() * (speed * 2)
+	else:
+		velocity = direction.normalized() * speed 
 		
 	if stunned == false:
 		move_and_slide()
 
-	rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
+	#rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
 	#rotation_degrees = snapped(rotation_degrees, 45) 
 	
 	if velocity.x > 0:

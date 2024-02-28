@@ -14,11 +14,11 @@ func _physics_process(delta):
 		die()
 	
 	var direction = coral.global_position - global_position  #goes to the coral
-	if direction.length_squared() > 495000:
+	if direction.length_squared() > 500000 and direction.x > 100:
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
 	else:
-		velocity = direction.normalized() * (speed * 2)
+		velocity = direction.normalized() * (speed * 3)
 	
 	if stunned == false:
 		move_and_slide()
@@ -46,7 +46,9 @@ func die(): #oh no its dead
 	
 func get_stunned():
 	stunned = true
+	modulate = Color(1, 1, 0.5)
 	%StunTimer.start()
 
 func _on_stun_timer_timeout():
 	stunned = false
+	modulate = Color(1, 1, 1)

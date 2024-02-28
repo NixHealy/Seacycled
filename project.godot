@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Seacycled"
-run/main_scene="res://main.tscn"
+run/main_scene="res://char_select.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,10 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[gui]
+
+theme/custom_font="res://font/OpenDyslexic-Regular.otf"
 
 [input]
 

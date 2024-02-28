@@ -42,10 +42,10 @@ shape = SubResource("RectangleShape2D_yle27")
 
 [node name="Help" type="ColorRect" parent="."]
 unique_name_in_owner = true
-offset_left = -189.0
-offset_top = -105.0
-offset_right = 59.0
-offset_bottom = -24.0
+offset_left = -206.0
+offset_top = -111.0
+offset_right = 63.0
+offset_bottom = -22.0
 scale = Vector2(0.799999, 0.799999)
 color = Color(0.266667, 0.266667, 0.266667, 0.537255)
 

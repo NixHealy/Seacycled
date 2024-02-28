@@ -17,8 +17,14 @@ func _physics_process(delta):
 					closest = enemy
 				
 		var direction = closest.global_position - global_position
-		velocity = direction.normalized() * 20000 * delta
+		velocity = direction.normalized() * 30000 * delta
 		move_and_slide()
+		
+		rotation = atan(velocity.y / velocity.x)
+		if velocity.x > 0:
+			$Sprite2D.flip_h = false
+		else:
+			$Sprite2D.flip_h = true
 		
 		if closest.global_position.distance_to(global_position) < 100:
 			if closest.has_method("get_stunned") and %StunTimer.is_stopped():

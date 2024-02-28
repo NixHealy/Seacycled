@@ -10,7 +10,7 @@ size = Vector2(88.2828, 37)
 z_index = 1
 scale = Vector2(2.22014, 2.22014)
 collision_layer = 2
-collision_mask = 70
+collision_mask = 68
 platform_floor_layers = 4294967040
 script = ExtResource("1_uaet0")
 

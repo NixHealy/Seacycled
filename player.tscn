@@ -8,17 +8,17 @@
 size = Vector2(98, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxx7d"]
-size = Vector2(34, 68)
+size = Vector2(79, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mw607"]
 size = Vector2(106, 58)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgyy7"]
-radius = 245.247
+radius = 208.01
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 2
-collision_mask = 3
+collision_mask = 2
 platform_floor_layers = 4294967040
 script = ExtResource("1_luprc")
 
@@ -32,17 +32,21 @@ region_rect = Rect2(0, 0, 50, 26)
 [node name="FishCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fx2g2")
 
-[node name="HitArea" type="Area2D" parent="."]
+[node name="HitMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="HitArea" type="Area2D" parent="HitMarker"]
 unique_name_in_owner = true
 position = Vector2(-54, 0)
 collision_mask = 50
 
-[node name="Hit" type="Sprite2D" parent="HitArea"]
+[node name="Hit" type="Sprite2D" parent="HitMarker/HitArea"]
 unique_name_in_owner = true
 rotation = 3.14159
 texture = ExtResource("2_vhndm")
 
-[node name="AttackCollision" type="CollisionShape2D" parent="HitArea"]
+[node name="AttackCollision" type="CollisionShape2D" parent="HitMarker/HitArea"]
+position = Vector2(22.5, 0)
 shape = SubResource("RectangleShape2D_dxx7d")
 
 [node name="CollectionArea" type="Area2D" parent="."]
@@ -56,6 +60,7 @@ shape = SubResource("RectangleShape2D_mw607")
 
 [node name="PollutionDetector" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_mask = 62
 
 [node name="Collution" type="CollisionShape2D" parent="PollutionDetector"]

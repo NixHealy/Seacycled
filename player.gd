@@ -40,15 +40,10 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	
-	#for above, consider changing so its more of a click and go here
-	#instead of a hold and continuously move towards it
-	#since constantly holding down hurts fingers
-	
-	#if is_on_floor():
-		#rotation = 0
-	#else: 
-		#rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
-		#rotation_degrees = snapped(rotation_degrees, 45)
+
+	%Fish.rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
+	#%Fish.rotation_degrees = snapped(rotation_degrees, 45)
+	%HitMarker.rotation = %Fish.rotation
 		
 	if velocity.x > 0:
 		%Fish.flip_h = true
