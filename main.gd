@@ -125,4 +125,7 @@ func _on_reset_button_pressed():
 
 func _on_start_timer_timeout():
 	starting = false
+	%EnemyTimer.start()
+	%PollutionTimer.start()
+	%WaveTimer.start()
 	%StartLabel.visible = false

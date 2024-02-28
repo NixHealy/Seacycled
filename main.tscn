@@ -182,12 +182,10 @@ scale = Vector2(-3, 3)
 [node name="PollutionTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 4.0
-autostart = true
 
 [node name="EnemyTimer" type="Timer" parent="." groups=["coral"]]
 unique_name_in_owner = true
 wait_time = 2.0
-autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -405,7 +403,6 @@ one_shot = true
 [node name="WaveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.2
-autostart = true
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="timeout" from="PollutionTimer" to="." method="_on_pollution_timer_timeout"]

@@ -1,11 +1,34 @@
 extends CharacterBody2D
 
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
+@onready var main = get_node("/root/Main")
+@onready var player = get_node("/root/Main/Player")
 
 var norm_tex = load("res://img/ray.png")
 var zap_tex = load("res://img/zap.png")
 
+var activated = false
+
 func _physics_process(delta):
+	if main.grace == true:
+		modulate.a = 1
+		if player.chumks >= 2 and main.all_collected == true:
+			%Help.visible = true
+	else:
+		%Help.visible = false
+	if activated:
+		%Help.visible = false
+		
+	if activated == false && main.grace == true && main.all_collected == true:
+		for body in %Area2D.get_overlapping_bodies():
+			if body.is_in_group("player"):
+				if body.chumks >= 2:
+					body.chumks -= 2
+					activate()
+	
+	if !activated:
+		return
+	
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	
 	if (enemies.size() > 0):
@@ -34,3 +57,6 @@ func _physics_process(delta):
 
 func _on_stun_timer_timeout():
 	%Sprite2D.set_texture(norm_tex)
+
+func activate():
+	activated = true
