@@ -33,7 +33,8 @@ func take_damage():
 	modulate = Color(1, 0.5, 0.5, 1)
 		
 func die(): #oh no its dead
-	if is_in_group("enemy"):
+	var chanceToDrop = randi_range(1,5)
+	if is_in_group("enemy") && chanceToDrop == 1:
 		var new_chumk = preload("res://chumk.tscn").instantiate()
 		add_child(new_chumk)
 		new_chumk.global_scale = Vector2(1, 1)
