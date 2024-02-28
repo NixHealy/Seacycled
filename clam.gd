@@ -23,9 +23,11 @@ func _process(delta):
 	if is_open == false && main.grace == true && main.all_collected == true:
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player"):
-				if body.chumks >= 2:
-					body.chumks -= 2
-					open()
+				# Input required so user doesn't accidentally spend chumks
+					if Input.is_key_pressed(KEY_SPACE):
+						if body.chumks >= 2:
+							body.chumks -= 2
+							open()
 	
 #	if is_open == true:
 #		var ctr = 0

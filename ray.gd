@@ -22,9 +22,11 @@ func _physics_process(delta):
 	if activated == false && main.grace == true && main.all_collected == true:
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player"):
-				if body.chumks >= 2:
-					body.chumks -= 2
-					activate()
+				# Input required so user doesn't accidentally spend chumks
+					if Input.is_key_pressed(KEY_SPACE):
+						if body.chumks >= 2:
+							body.chumks -= 2
+							activate()
 	
 	if !activated:
 		return
