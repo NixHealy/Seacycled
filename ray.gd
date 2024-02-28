@@ -9,11 +9,18 @@ var zap_tex = load("res://img/zap.png")
 
 var activated = false
 
+func _ready():
+	modulate.a = 0.5
+
 func _physics_process(delta):
 	if main.grace == true:
 		modulate.a = 1
-		if player.chumks >= 2 and main.all_collected == true:
+		if main.all_collected == true:
 			%Help.visible = true
+			%HelpLabel.text = "..."
+			for body in %Area2D.get_overlapping_bodies():
+				if body.is_in_group("player"):
+					%HelpLabel.text = "I'll paralyse those mutants!\n[Cost: 2 Chumks]"
 	else:
 		%Help.visible = false
 	if activated:
@@ -21,12 +28,10 @@ func _physics_process(delta):
 		
 	if activated == false && main.grace == true && main.all_collected == true:
 		for body in %Area2D.get_overlapping_bodies():
-			if body.is_in_group("player"):
-				# Input required so user doesn't accidentally spend chumks
-					if Input.is_key_pressed(KEY_SPACE):
-						if body.chumks >= 2:
-							body.chumks -= 2
-							activate()
+			if body.is_in_group("player") and Input.is_action_just_pressed("attack"):
+				if body.chumks >= 2:
+					body.chumks -= 2
+					activate()
 	
 	if !activated:
 		return

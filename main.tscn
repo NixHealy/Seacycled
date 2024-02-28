@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dgs3x01e0wd80" path="res://img/health_progress.png" id="13_5utfx"]
 [ext_resource type="Texture2D" uid="uid://d00mnfv7o3khm" path="res://img/health_icon.png" id="14_13p7d"]
 [ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
-[ext_resource type="PackedScene" path="res://urchin.tscn" id="19_lhkum"]
+[ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_lhkum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -166,9 +166,6 @@ position = Vector2(-2674.5, -804.5)
 unique_name_in_owner = true
 collision_mask = 9
 
-[node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
-position = Vector2(0, -480)
-
 [node name="Clam1" parent="." instance=ExtResource("5_vbu6w")]
 unique_name_in_owner = true
 position = Vector2(781, 362)
@@ -179,6 +176,9 @@ scale = Vector2(-3, -3)
 unique_name_in_owner = true
 position = Vector2(-737, 369)
 scale = Vector2(-3, 3)
+
+[node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
+position = Vector2(0, -480)
 
 [node name="PollutionTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -404,29 +404,6 @@ one_shot = true
 [node name="WaveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.2
-
-[node name="CoralHealRect" type="ColorRect" parent="."]
-unique_name_in_owner = true
-offset_left = -195.0
-offset_top = -187.0
-offset_right = 196.0
-offset_bottom = -41.0
-color = Color(0.196078, 0.196078, 0.196078, 0.384314)
-
-[node name="Label" type="Label" parent="CoralHealRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("9_j2t6x")
-theme_override_font_sizes/font_size = 24
-text = "Come over here, press SPACE
-to heal me!
-[Cost: 5 Chumks = 10HP]"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Urchin" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(-289, -278)

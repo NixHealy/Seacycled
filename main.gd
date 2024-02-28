@@ -9,7 +9,6 @@ func _ready():
 	%GameOver.visible = false
 	%GraceLabel.visible = false
 	%HelpText.visible = false
-	%CoralHealRect.visible = false
 
 func _process(delta):
 	%StartLabel.text = str(ceil(%StartTimer.time_left - 1))
@@ -39,7 +38,6 @@ func _process(delta):
 		if all_collected == true and grace == true:
 			%HelpText.text = "Now heal the coral\nor spend those chumks on allies!"
 			%GraceLabel.visible = true
-			%CoralHealRect.visible = true
 		else:
 			%HelpText.text = "Wave Over!\nCollect all the chumks!"
 			%GraceLabel.visible = false
@@ -52,7 +50,6 @@ func _process(delta):
 			%PollutionTimer.start()
 			%GraceLabel.visible = false
 			%HelpText.visible = false
-			%CoralHealRect.visible = false
 
 func spawn_mob():
 	var num = randi_range(1, 100)

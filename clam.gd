@@ -9,6 +9,7 @@ var is_open = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	modulate.a = 0.5
 	%Sprite2D.set_texture(close_tex)
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)
@@ -24,7 +25,7 @@ func _process(delta):
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player"):
 				# Input required so user doesn't accidentally spend chumks
-					if Input.is_key_pressed(KEY_SPACE):
+					if Input.is_action_just_pressed("attack"):
 						if body.chumks >= 2:
 							body.chumks -= 2
 							open()
@@ -44,6 +45,10 @@ func _process(delta):
 		modulate.a = 1
 		if player.chumks >= 2 and main.all_collected == true:
 			%Help.visible = true
+			%HelpLabel.text = "..."
+			for body in %Area2D.get_overlapping_bodies():
+				if body.is_in_group("player"):
+					%HelpLabel.text = "I'll stop those enemies in their path!\n[Cost: 2 Chumks]"
 	else:
 		%Help.visible = false
 	if is_open:

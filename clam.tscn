@@ -11,7 +11,7 @@ size = Vector2(26, 91)
 size = Vector2(114, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yle27"]
-size = Vector2(120, 107)
+size = Vector2(132, 112.5)
 
 [node name="Clam" type="StaticBody2D"]
 collision_layer = 64
@@ -37,7 +37,7 @@ unique_name_in_owner = true
 collision_mask = 3
 
 [node name="FullCollision" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, -1.5)
+position = Vector2(1, -1.75)
 shape = SubResource("RectangleShape2D_yle27")
 
 [node name="Help" type="ColorRect" parent="."]
@@ -58,8 +58,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_pgus4")
-text = "Come over here, I'll stop those 
-enemies in their path!
-[Cost: 2 Chumks]"
+text = "..."
 horizontal_alignment = 1
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true

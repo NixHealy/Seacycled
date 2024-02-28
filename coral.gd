@@ -6,6 +6,9 @@ extends StaticBody2D
 @onready var main = get_node("/root/Main") #fetches the main node
 signal died
 
+func _ready():
+	%CoralHealRect.visible = false
+
 func _process(delta):
 	var desat = health / 100.0
 	if desat < 0:
@@ -28,13 +31,16 @@ func _process(delta):
 	#if player.speed <= 0.1:
 		#player.speed = 0.2
 	
-	%Label.set_text("Health: " + str(round(health)))
+	%CoralHealRect.visible = false
 	
 	# Chance for player to heal the coral during grace period
 	if health < 100 && main.grace == true && main.all_collected == true:
+		%CoralHealRect.visible = true
+		%HealLabel.text = "..."
 		# Check if the player is on top of the coral
 		for body in %HitArea.get_overlapping_bodies():
 			if body.is_in_group("player"):
+				%HealLabel.text = "Come over here, press SPACE\nto heal me!\n[Cost: 5 Chumks = 10HP]"
 				if body.chumks >= 5:
 					# Input required so user doesn't accidentally spend chumks
 					if Input.is_key_pressed(KEY_SPACE):

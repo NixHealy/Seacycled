@@ -23,7 +23,7 @@ func _physics_process(delta):
 	if stunned == false:
 		move_and_slide()
 
-	%Sprite2D.rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
+	#%Sprite2D.rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
 	#rotation_degrees = snapped(rotation_degrees, 45) 
 	
 	if velocity.x > 0:
@@ -36,7 +36,7 @@ func take_damage():
 	modulate = Color(modulate.r, modulate.g - 0.25, modulate.b - 0.25)
 		
 func die(): #oh no its dead
-	var chanceToDrop = randi_range(1,4) # 25% chance to drop a chumk after death
+	var chanceToDrop = randi_range(1,1) # 100% chance to drop a chumk after death, for now
 	if is_in_group("enemy") && chanceToDrop == 1:
 		var new_chumk = preload("res://chumk.tscn").instantiate()
 		add_child(new_chumk)
