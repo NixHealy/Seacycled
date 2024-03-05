@@ -16,7 +16,7 @@ func _physics_process(delta):
 	var direction = targetPosition #goes to the coral
 	
 	direction.x -= direction.x / 2
-	velocity = direction * 400.0
+	velocity = direction * 200.0
 	
 	if (moving):
 		move_and_slide()

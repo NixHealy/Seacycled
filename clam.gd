@@ -30,16 +30,18 @@ func _process(delta):
 							body.chumks -= 2
 							open()
 	
-#	if is_open == true:
-#		var ctr = 0
-#		for body in %Area2D.get_overlapping_bodies():
-#			if body.is_in_group("enemy"):
-#				ctr += 1
-#		if ctr > 5:
-#			for body in %Area2D.get_overlapping_bodies():
-#				if body.is_in_group("enemy"):
-#					body.queue_free()
-#			close()
+	# The clam should snap closed if there are more than five enemies inside
+	if is_open:
+		var numEnemies = 0
+		for body in %Area2D.get_overlapping_bodies():
+			if body.is_in_group("enemy"):
+				numEnemies += 1
+		if numEnemies > 5:
+			for body in %Area2D.get_overlapping_bodies():
+				if body.is_in_group("enemy"):
+					body.queue_free()
+			close()
+			numEnemies = 0
 			
 	if main.grace == true:
 		modulate.a = 1
