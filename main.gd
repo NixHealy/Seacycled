@@ -66,7 +66,10 @@ func spawn_mob():
 	
 	# WAVE 1: Only Trevally enemies can spawn
 	if wave == 1:
-		new_mob = preload("res://trevally_enemy.tscn").instantiate()
+		if num >= 1 && num <= 40:
+			new_mob = preload("res://trevally_enemy.tscn").instantiate()
+		else:
+			new_mob = preload("res://puffer_enemy.tscn").instantiate()
 		
 	# WAVE 2: Trevally and Crab enemies can spawn
 	elif wave == 2:

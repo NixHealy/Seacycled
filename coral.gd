@@ -40,7 +40,7 @@ func _process(delta):
 		# Check if the player is on top of the coral
 		for body in %HitArea.get_overlapping_bodies():
 			if body.is_in_group("player"):
-				%HealLabel.text = "Come over here, press SPACE\nto heal me!\n[Cost: 5 Chumks = 5HP]"
+				%HealLabel.text = "Come over here, click\nto heal me!\n[Cost: 5 Chumks = 5HP]"
 				if body.chumks >= 5:
 					# Input required so user doesn't accidentally spend chumks
 					if Input.is_action_just_pressed("attack"):
