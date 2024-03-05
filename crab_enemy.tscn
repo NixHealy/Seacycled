@@ -19,6 +19,39 @@ texture_filter = 1
 scale = Vector2(-0.0753884, 0.0753884)
 texture = ExtResource("3_v70cg")
 
+[node name="Outline" type="Node2D" parent="Sprite2D"]
+unique_name_in_owner = true
+show_behind_parent = true
+scale = Vector2(6.82324, 6.82324)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Outline"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("3_v70cg")
+offset = Vector2(20, 0)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D/Outline"]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("3_v70cg")
+offset = Vector2(0, 20)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D/Outline"]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("3_v70cg")
+offset = Vector2(-20, 0)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprite2D/Outline"]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("3_v70cg")
+offset = Vector2(0, -20)
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-2.0783e-06, -0.544813)
 shape = SubResource("RectangleShape2D_2y0ab")

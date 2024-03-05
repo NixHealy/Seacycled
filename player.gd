@@ -11,6 +11,8 @@ var chumks = 0
 
 func _ready():
 	%Hit.visible = false
+	for node in %Outline.get_children():
+		node.modulate.v = 15
 
 func _physics_process(delta):
 	
@@ -48,10 +50,14 @@ func _physics_process(delta):
 	if velocity.x > 0:
 		%Fish.flip_h = true
 		%Hit.flip_h = true
+		for node in %Outline.get_children():
+			node.flip_h = true
 		%HitArea.position.x = 54 #should really be relative position
 	else:
 		%Fish.flip_h = false
 		%Hit.flip_h = false
+		for node in %Outline.get_children():
+			node.flip_h = false
 		%HitArea.position.x = -54
 			
 	var ctr = %HitArea.get_overlapping_bodies().size()

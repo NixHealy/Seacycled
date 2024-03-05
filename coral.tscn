@@ -67,7 +67,7 @@ theme_override_fonts/font = ExtResource("4_ygijg")
 theme_override_font_sizes/font_size = 30
 text = "Come over here, press SPACE
 to heal me!
-[Cost: 5 Chumks = 10HP]"
+[Cost: 5 Chumks = 5 HP]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

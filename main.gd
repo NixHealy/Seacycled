@@ -4,6 +4,7 @@ extends Node
 @export var grace = false
 var all_collected = true
 var starting = true
+var paused = false
 
 func _ready():
 	%GameOver.visible = false
@@ -15,7 +16,19 @@ func _process(delta):
 	if %StartTimer.time_left < 1:
 		%StartLabel.text = "GO!"
 	
-	if starting == false:
+	if Input.is_action_just_pressed("pause") and paused == false:
+		paused = true
+		for timer in %ContinuousTimers.get_children():
+			timer.paused = true
+		for node in get_tree().get_nodes_in_group("enemy"):
+			node.paused = true
+			
+	if Input.is_action_just_pressed("pause") and paused == true:
+		paused = false
+		for timer in %ContinuousTimers.get_children():
+			timer.paused = false
+	
+	if starting == false and paused == false:
 		%EnemyTimer.wait_time = 1 - 0.1 * wave #definitely wanna adjust the timing on this
 		
 		if %ProgressBar.value >= 100:

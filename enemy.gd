@@ -27,9 +27,13 @@ func _physics_process(delta):
 	#rotation_degrees = snapped(rotation_degrees, 45) 
 	
 	if velocity.x > 0:
-		%Sprite2D.flip_h = false
+		$Sprite2D.flip_h = false
+		for node in %Outline.get_children():
+			node.flip_h = false
 	else:
-		%Sprite2D.flip_h = true
+		$Sprite2D.flip_h = true
+		for node in %Outline.get_children():
+			node.flip_h = true
 		
 func take_damage():
 	health -= 1

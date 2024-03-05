@@ -20,9 +20,13 @@ func _physics_process(delta):
 		move_and_slide()
 	
 	if velocity.x > 0:
-		$Sprite2D.flip_h = false
-	else:
 		$Sprite2D.flip_h = true
+		for node in %Outline.get_children():
+			node.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
+		for node in %Outline.get_children():
+			node.flip_h = false
 
 func take_damage():
 	health -= 1

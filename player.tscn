@@ -1,8 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://b07b250vvlv54"]
+[gd_scene load_steps=13 format=3 uid="uid://b07b250vvlv54"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_luprc"]
 [ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="2_3cbqf"]
 [ext_resource type="Texture2D" uid="uid://vpnvmli7kfgk" path="res://img/attacking.png" id="2_vhndm"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="3_ivnip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ucecr"]
+shader = ExtResource("3_ivnip")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ki5y7"]
+shader = ExtResource("3_ivnip")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7p1n"]
+shader = ExtResource("3_ivnip")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqtpt"]
+shader = ExtResource("3_ivnip")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fx2g2"]
 size = Vector2(98, 52)
@@ -29,7 +42,41 @@ scale = Vector2(0.208512, 0.208512)
 texture = ExtResource("2_3cbqf")
 region_rect = Rect2(0, 0, 50, 26)
 
+[node name="Outline" type="Node2D" parent="Fish"]
+unique_name_in_owner = true
+show_behind_parent = true
+scale = Vector2(6.82324, 6.82324)
+
+[node name="Right" type="Sprite2D" parent="Fish/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_ucecr")
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("2_3cbqf")
+offset = Vector2(20, 0)
+
+[node name="Down" type="Sprite2D" parent="Fish/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_ki5y7")
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("2_3cbqf")
+offset = Vector2(0, 20)
+
+[node name="Left" type="Sprite2D" parent="Fish/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_o7p1n")
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("2_3cbqf")
+offset = Vector2(-20, 0)
+
+[node name="Up" type="Sprite2D" parent="Fish/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_iqtpt")
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("2_3cbqf")
+offset = Vector2(0, -20)
+
 [node name="FishCollision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_fx2g2")
 
 [node name="HitMarker" type="Marker2D" parent="."]
@@ -46,6 +93,7 @@ rotation = 3.14159
 texture = ExtResource("2_vhndm")
 
 [node name="AttackCollision" type="CollisionShape2D" parent="HitMarker/HitArea"]
+visible = false
 position = Vector2(22.5, 0)
 shape = SubResource("RectangleShape2D_dxx7d")
 

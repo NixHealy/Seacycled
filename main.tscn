@@ -180,14 +180,6 @@ scale = Vector2(-3, 3)
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
 position = Vector2(0, -480)
 
-[node name="PollutionTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 4.0
-
-[node name="EnemyTimer" type="Timer" parent="." groups=["coral"]]
-unique_name_in_owner = true
-wait_time = 2.0
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Vignette" type="ColorRect" parent="UI"]
@@ -323,7 +315,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Blur" type="ColorRect" parent="UI"]
-visible = false
 material = SubResource("ShaderMaterial_el8ju")
 anchors_preset = 15
 anchor_right = 1.0
@@ -346,12 +337,6 @@ theme_override_font_sizes/font_size = 381
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="StartTimer" type="Timer" parent="UI"]
-unique_name_in_owner = true
-wait_time = 4.0
-one_shot = true
-autostart = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -396,15 +381,6 @@ theme_override_fonts/font = ExtResource("9_j2t6x")
 theme_override_font_sizes/font_size = 56
 text = "Reset"
 
-[node name="GraceTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 10.0
-one_shot = true
-
-[node name="WaveTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 0.2
-
 [node name="Urchin" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(-289, -278)
 
@@ -420,9 +396,35 @@ position = Vector2(149, -287)
 [node name="Urchin5" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(203, 260)
 
+[node name="StartTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="GraceTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+
+[node name="ContinuousTimers" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="WaveTimer" type="Timer" parent="ContinuousTimers"]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="EnemyTimer" type="Timer" parent="ContinuousTimers" groups=["coral"]]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[node name="PollutionTimer" type="Timer" parent="ContinuousTimers"]
+unique_name_in_owner = true
+wait_time = 4.0
+
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
-[connection signal="timeout" from="PollutionTimer" to="." method="_on_pollution_timer_timeout"]
-[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
-[connection signal="timeout" from="UI/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="ContinuousTimers/WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="ContinuousTimers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="ContinuousTimers/PollutionTimer" to="." method="_on_pollution_timer_timeout"]
