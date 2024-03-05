@@ -66,6 +66,7 @@ shader = ExtResource("10_371ox")
 shader_parameter/lod = 2.451
 
 [node name="Main" type="Node"]
+process_mode = 1
 script = ExtResource("1_72br2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -275,12 +276,14 @@ text = "0"
 
 [node name="GraceLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -147.0
+offset_left = 31.0
+offset_top = 576.0
+offset_right = 31.0
+offset_bottom = 723.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -293,10 +296,12 @@ vertical_alignment = 1
 
 [node name="HelpText" type="Label" parent="UI"]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 131.0
+offset_left = 31.0
+offset_top = 723.0
+offset_right = 31.0
+offset_bottom = 854.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
@@ -382,6 +387,50 @@ theme_override_fonts/font = ExtResource("9_j2t6x")
 theme_override_font_sizes/font_size = 56
 text = "Reset"
 
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+process_priority = 10
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.384314)
+
+[node name="Label" type="Label" parent="PauseMenu"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -131.5
+offset_bottom = 131.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_j2t6x")
+theme_override_font_sizes/font_size = 150
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="UnpauseButton" type="Button" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = 114.0
+offset_right = 111.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_j2t6x")
+theme_override_font_sizes/font_size = 56
+text = "Unpause"
+
 [node name="Urchin" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(-289, -278)
 
@@ -397,35 +446,36 @@ position = Vector2(149, -287)
 [node name="Urchin5" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(203, 260)
 
-[node name="StartTimer" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="StartTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
 wait_time = 4.0
 one_shot = true
 autostart = true
 
-[node name="GraceTimer" type="Timer" parent="."]
+[node name="GraceTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
 wait_time = 10.0
 one_shot = true
 
-[node name="ContinuousTimers" type="Node" parent="."]
-unique_name_in_owner = true
-
-[node name="WaveTimer" type="Timer" parent="ContinuousTimers"]
+[node name="WaveTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
 wait_time = 0.2
 
-[node name="EnemyTimer" type="Timer" parent="ContinuousTimers" groups=["coral"]]
+[node name="EnemyTimer" type="Timer" parent="Timers" groups=["coral"]]
 unique_name_in_owner = true
 wait_time = 2.0
 
-[node name="PollutionTimer" type="Timer" parent="ContinuousTimers"]
+[node name="PollutionTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
 wait_time = 4.0
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
-[connection signal="timeout" from="ContinuousTimers/WaveTimer" to="." method="_on_wave_timer_timeout"]
-[connection signal="timeout" from="ContinuousTimers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
-[connection signal="timeout" from="ContinuousTimers/PollutionTimer" to="." method="_on_pollution_timer_timeout"]
+[connection signal="pressed" from="PauseMenu/UnpauseButton" to="." method="_on_unpause_button_pressed"]
+[connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Timers/WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="Timers/PollutionTimer" to="." method="_on_pollution_timer_timeout"]

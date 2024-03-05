@@ -43,7 +43,7 @@ func _process(delta):
 				%HealLabel.text = "Come over here, press SPACE\nto heal me!\n[Cost: 5 Chumks = 5HP]"
 				if body.chumks >= 5:
 					# Input required so user doesn't accidentally spend chumks
-					if Input.is_key_pressed(KEY_SPACE):
+					if Input.is_action_just_pressed("attack"):
 						# Spend 5 chumks to increase health by 5 points
 						body.chumks -= 5
 						health += 5
