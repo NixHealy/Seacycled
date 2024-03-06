@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw1af6olg1gwj"]
+[gd_scene load_steps=7 format=3 uid="uid://bw1af6olg1gwj"]
 
 [ext_resource type="Script" path="res://coral.gd" id="1_0simb"]
 [ext_resource type="Texture2D" uid="uid://c62d40prqc18g" path="res://img/coral.png" id="1_eke8b"]
 [ext_resource type="Shader" path="res://coral.gdshader" id="2_qa8xe"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="4_ygijg"]
+[ext_resource type="AudioStream" uid="uid://bwn7sohwtesxm" path="res://sound/coral_damage.wav" id="5_fxhn3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cetts"]
 shader = ExtResource("2_qa8xe")
@@ -70,5 +71,10 @@ to heal me!
 [Cost: 5 Chumks = 5 HP]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_fxhn3")
+volume_db = 1.0
 
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]

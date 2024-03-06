@@ -61,3 +61,4 @@ func _on_hit_area_body_entered(body):
 		else:
 			health -= 6
 		body.queue_free()
+		%DamageSound.play()

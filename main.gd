@@ -9,11 +9,15 @@ func _ready():
 	%GameOver.visible = false
 	%GraceLabel.visible = false
 	%HelpText.visible = false
+	
 
 func _process(delta):
 	%StartLabel.text = str(ceil(%StartTimer.time_left - 1))
 	if %StartTimer.time_left < 1:
 		%StartLabel.text = "GO!"
+	
+	if %StartTimer.is_stopped() and %BackgroundMusic.playing == false:
+		%BackgroundMusic.play()
 	
 	if Input.is_action_just_pressed("pause"):
 		%PauseMenu.visible = true
@@ -167,3 +171,7 @@ func _on_start_timer_timeout():
 func _on_unpause_button_pressed():
 	get_tree().paused = false
 	%PauseMenu.visible = false
+
+
+func _on_background_music_finished():
+	%BackgroundMusic.play()

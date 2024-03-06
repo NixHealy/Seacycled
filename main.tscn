@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=32 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://d00mnfv7o3khm" path="res://img/health_icon.png" id="14_13p7d"]
 [ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
 [ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_lhkum"]
+[ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="20_a4soo"]
+[ext_resource type="AudioStream" uid="uid://dj1cmvfr50jvv" path="res://sound/countdown.wav" id="21_5nrcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -470,6 +472,17 @@ wait_time = 2.0
 unique_name_in_owner = true
 wait_time = 4.0
 
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("20_a4soo")
+volume_db = 0.5
+
+[node name="CountdownMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_5nrcv")
+autoplay = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="PauseMenu/UnpauseButton" to="." method="_on_unpause_button_pressed"]
@@ -477,3 +490,4 @@ wait_time = 4.0
 [connection signal="timeout" from="Timers/WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="Timers/PollutionTimer" to="." method="_on_pollution_timer_timeout"]
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]

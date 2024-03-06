@@ -20,6 +20,7 @@ func _physics_process(delta):
 		#%Fish.set_texture(att_tex)						  #instead of lasting as long as you hold it
 		%Hit.visible = true
 		%AttackTimer.start()
+		%AttackSound.play()
 		attacking = true
 	
 	var direction
@@ -27,6 +28,10 @@ func _physics_process(delta):
 	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): 
 	direction = get_viewport().get_mouse_position() - get_global_transform_with_canvas().get_origin()
 	velocity = direction * speed * (log(direction.length()) / log(2)) #faster when mouse is futher away
+	if velocity.length() < 100:
+		%MoveSound.volume_db = -100.0
+	else:
+		%MoveSound.volume_db = 0.2
 	
 	# -- working on keyboard controls, work on this later --
 	#if Input.is_action_pressed("move_up"):
@@ -77,7 +82,7 @@ func _physics_process(delta):
 				
 	for body in %CollectionArea.get_overlapping_bodies():
 		if body.is_in_group("enemy") or body.is_in_group("pollution"):
-			if %ClicklessTimer.is_stopped() == true:
+			if %ClicklessTimer.is_stopped() == true and attacking == false and body.health > 0:
 				%ClicklessTimer.start()
 
 	var polluted = false
@@ -99,7 +104,6 @@ func _on_attack_timer_timeout():
 	%Hit.visible = false
 	%CooldownTimer.start() # Replace with function body.
 
-
 #func _on_collection_area_body_entered(body):
 	#if body.is_in_group("enemy") or body.is_in_group("pollution"):
 		#%ClicklessTimer.start()
@@ -108,7 +112,13 @@ func _on_attack_timer_timeout():
 	#%ClicklessTimer.stop()
 
 func _on_clickless_timer_timeout():
-	%Hit.visible = true
-	%AttackTimer.start()
-	attacking = true
-	%ClicklessTimer.stop()
+	if %CooldownTimer.time_left == 0:
+		%Hit.visible = true
+		%AttackTimer.start()
+		attacking = true
+		%AttackSound.play()
+		%ClicklessTimer.stop()
+
+
+func _on_move_sound_finished():
+	%MoveSound.play()

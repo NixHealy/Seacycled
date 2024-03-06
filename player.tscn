@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b07b250vvlv54"]
+[gd_scene load_steps=15 format=3 uid="uid://b07b250vvlv54"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_luprc"]
 [ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="2_3cbqf"]
 [ext_resource type="Texture2D" uid="uid://vpnvmli7kfgk" path="res://img/attacking.png" id="2_vhndm"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="3_ivnip"]
+[ext_resource type="AudioStream" uid="uid://cnmg27hif0780" path="res://sound/player_move.wav" id="5_52a2h"]
+[ext_resource type="AudioStream" uid="uid://cw4rqjbhpyc8" path="res://sound/player_attack.wav" id="6_5w1nr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ucecr"]
 shader = ExtResource("3_ivnip")
@@ -128,7 +130,21 @@ one_shot = true
 unique_name_in_owner = true
 wait_time = 0.3
 
+[node name="MoveSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_52a2h")
+autoplay = true
+attenuation = 2.0
+panning_strength = 3.0
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_5w1nr")
+volume_db = 1.0
+panning_strength = 3.0
+
 [connection signal="body_entered" from="CollectionArea" to="." method="_on_collection_area_body_entered"]
 [connection signal="body_exited" from="CollectionArea" to="." method="_on_collection_area_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ClicklessTimer" to="." method="_on_clickless_timer_timeout"]
+[connection signal="finished" from="MoveSound" to="." method="_on_move_sound_finished"]
