@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca8n5tvc27gn2"]
+[gd_scene load_steps=8 format=3 uid="uid://ca8n5tvc27gn2"]
 
 [ext_resource type="Texture2D" uid="uid://350yvsaq8qou" path="res://img/open.png" id="1_6t1s4"]
 [ext_resource type="Script" path="res://clam.gd" id="1_fp5fb"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_pgus4"]
+[ext_resource type="Texture2D" uid="uid://bitqv66axu32l" path="res://img/clam_popup.png" id="4_rh8pm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iour"]
 size = Vector2(26, 91)
@@ -42,6 +43,7 @@ shape = SubResource("RectangleShape2D_yle27")
 
 [node name="Help" type="ColorRect" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = -206.0
 offset_top = -111.0
 offset_right = 63.0
@@ -62,3 +64,9 @@ text = "..."
 horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Popup" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-56, -62)
+scale = Vector2(0.490001, 0.490001)
+texture = ExtResource("4_rh8pm")

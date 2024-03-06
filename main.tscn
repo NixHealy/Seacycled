@@ -232,26 +232,6 @@ theme_override_font_sizes/font_size = 40
 text = "Wave 1"
 horizontal_alignment = 1
 
-[node name="HealthBar" type="TextureProgressBar" parent="UI"]
-unique_name_in_owner = true
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 19.0
-offset_top = -178.0
-offset_right = 628.0
-offset_bottom = 28.0
-grow_vertical = 0
-scale = Vector2(0.472933, 0.472933)
-value = 100.0
-texture_over = ExtResource("12_wayy4")
-texture_progress = ExtResource("13_5utfx")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/HealthBar"]
-position = Vector2(122, 103)
-scale = Vector2(1.44444, 1.44444)
-texture = ExtResource("14_13p7d")
-
 [node name="WaveBar" type="TextureProgressBar" parent="UI"]
 offset_left = 61.0
 offset_top = 272.5
@@ -259,19 +239,43 @@ offset_right = 101.0
 offset_bottom = 312.5
 scale = Vector2(0.709357, 1.03378)
 
+[node name="HealthBar" type="TextureProgressBar" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -785.0
+offset_top = -247.0
+offset_right = -176.0
+offset_bottom = -41.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.570112, 0.570112)
+value = 100.0
+texture_over = ExtResource("12_wayy4")
+texture_progress = ExtResource("13_5utfx")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/HealthBar"]
+visible = false
+position = Vector2(122, 103)
+scale = Vector2(1.44444, 1.44444)
+texture = ExtResource("14_13p7d")
+
 [node name="Sprite2D" type="Sprite2D" parent="UI"]
-position = Vector2(59, 413)
+position = Vector2(61, 61)
 scale = Vector2(0.747804, 0.747804)
 texture = ExtResource("15_16mie")
 
 [node name="ChumkLabel" type="Label" parent="UI/Sprite2D"]
 unique_name_in_owner = true
-offset_left = 71.0
-offset_top = -24.0
-offset_right = 238.0
-offset_bottom = 29.0
+offset_left = 85.5839
+offset_top = -77.5604
+offset_right = 252.584
+offset_bottom = 89.4396
 theme_override_fonts/font = ExtResource("9_j2t6x")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 95
 text = "0"
 
 [node name="GraceLabel" type="Label" parent="UI"]

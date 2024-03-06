@@ -66,10 +66,7 @@ func spawn_mob():
 	
 	# WAVE 1: Only Trevally enemies can spawn
 	if wave == 1:
-		if num >= 1 && num <= 40:
-			new_mob = preload("res://trevally_enemy.tscn").instantiate()
-		else:
-			new_mob = preload("res://puffer_enemy.tscn").instantiate()
+		new_mob = preload("res://trevally_enemy.tscn").instantiate()
 		
 	# WAVE 2: Trevally and Crab enemies can spawn
 	elif wave == 2:
@@ -98,9 +95,12 @@ func spawn_mob():
 		elif num >= 50 && num < 90:
 			# Spawn Trevally enemy, high chance
 			new_mob = preload("res://trevally_enemy.tscn").instantiate()
-		else:
+		elif num >= 90 && num < 95:
 			# Spawn Parrotfish enemy, low chance
 			new_mob = preload("res://parrotfish_enemy.tscn").instantiate()
+		else:
+			# Spawn Pufferfish enemy, low chance
+			new_mob = preload("res://puffer_enemy.tscn").instantiate()
 	
 	var numPath = randi_range(1, 2) #picks a random path to put it on
 	if numPath == 1:

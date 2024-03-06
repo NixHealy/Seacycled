@@ -16,8 +16,9 @@ func _ready():
 	global_position.y += 130
 	
 	if global_position.x < 0:
-		%HelpLabel.scale.x = -1
-		%HelpLabel.position.x += %Help.size.x
+		#%HelpLabel.scale.x = -1
+		#%HelpLabel.position.x += %Help.size.x
+		%Popup.flip_h = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,19 +43,25 @@ func _process(delta):
 					body.queue_free()
 			close()
 			numEnemies = 0
-			
+
+		
 	if main.grace == true:
 		modulate.a = 1
 		if player.chumks >= 2 and main.all_collected == true:
-			%Help.visible = true
-			%HelpLabel.text = "..."
+			#%Help.visible = true
+			#%HelpLabel.text = "..."
+			%Popup.visible = false
 			for body in %Area2D.get_overlapping_bodies():
 				if body.is_in_group("player"):
-					%HelpLabel.text = "I'll stop those enemies in their path!\n[Cost: 2 Chumks]"
+					#%HelpLabel.text = "I'll stop those enemies in their path!\n[Cost: 2 Chumks]"
+					%Popup.visible = true
 	else:
 		%Help.visible = false
+		%Popup.visible = false
+		
 	if is_open:
 		%Help.visible = false
+		%Popup.visible = false
 
 func open():
 	%Sprite2D.set_texture(open_tex)
