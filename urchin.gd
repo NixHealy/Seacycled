@@ -12,15 +12,19 @@ func _process(delta):
 		modulate.a = 1
 		
 	if main.grace == true and main.all_collected == true:
-		%Help.visible = true
-		%HelpLabel.text = "..."
+		#%Help.visible = true
+		#%HelpLabel.text = "..."
+		%Popup.visible = false
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player"):
-				%HelpLabel.text = "I'll protect the coral!\n[Cost: 1 Chumk]"
+				#%HelpLabel.text = "I'll protect the coral!\n[Cost: 1 Chumk]"
+				%Popup.visible = true
 	else:
-		%Help.visible = false
+		#%Help.visible = false
+		%Popup.visible = false
 	if activated:
-		%Help.visible = false
+		#%Help.visible = false
+		%Popup.visible = false
 		
 	if activated == false && main.grace == true && main.all_collected == true:
 		for body in %Area2D.get_overlapping_bodies():
