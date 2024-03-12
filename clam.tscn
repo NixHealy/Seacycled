@@ -67,6 +67,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Popup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-56, -62)
 scale = Vector2(0.490001, 0.490001)
 texture = ExtResource("4_rh8pm")

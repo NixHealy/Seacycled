@@ -1,0 +1,535 @@
+[gd_scene load_steps=33 format=3 uid="uid://clkrmidcikgc4"]
+
+[ext_resource type="Script" path="res://tutorial.gd" id="1_2u5p5"]
+[ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_8eseu"]
+[ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="3_2iguw"]
+[ext_resource type="Script" path="res://Ground.gd" id="4_axnwl"]
+[ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="5_yxp6x"]
+[ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="6_j2hna"]
+[ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="7_exgjr"]
+[ext_resource type="Shader" path="res://vignette.gdshader" id="8_c8yt7"]
+[ext_resource type="Shader" path="res://fisheye.gdshader" id="9_vxek3"]
+[ext_resource type="Texture2D" uid="uid://carqqmb8dkbx5" path="res://img/wave_outline.png" id="10_8tuty"]
+[ext_resource type="Texture2D" uid="uid://cumfkivn34ais" path="res://img/wave_bar.png" id="11_j10ag"]
+[ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="12_buv58"]
+[ext_resource type="Texture2D" uid="uid://ck0vumet7xwfo" path="res://img/health_bubble.png" id="13_yco31"]
+[ext_resource type="Texture2D" uid="uid://dgs3x01e0wd80" path="res://img/health_progress.png" id="14_7sbmc"]
+[ext_resource type="Texture2D" uid="uid://d00mnfv7o3khm" path="res://img/health_icon.png" id="15_t5748"]
+[ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="16_slsep"]
+[ext_resource type="Shader" path="res://colorblind.gdshader" id="17_abs8r"]
+[ext_resource type="Shader" path="res://blur.gdshader" id="18_lf7jb"]
+[ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_81q15"]
+[ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="20_1p3ha"]
+[ext_resource type="AudioStream" uid="uid://dj1cmvfr50jvv" path="res://sound/countdown.wav" id="21_sm2tm"]
+[ext_resource type="SpriteFrames" uid="uid://dc4w32pxb4v5f" path="res://anim/mouse.gif" id="22_hm5nr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
+size = Vector2(403, 1423.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swt3a"]
+size = Vector2(391, 1406.09)
+
+[sub_resource type="Curve2D" id="Curve2D_ad2ju"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1030, 413, 0, 0, 0, 0, 1021, -248)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_f74fl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -919, 454, 0, 0, 0, 0, -918, -201)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8c3j"]
+size = Vector2(1149, 212)
+
+[sub_resource type="Curve2D" id="Curve2D_ayu2t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2674.5, -804.5, 0, 0, 0, 0, -739.5, -804.5)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oun4b"]
+shader = ExtResource("8_c8yt7")
+shader_parameter/alpha = 0.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhjow"]
+shader = ExtResource("9_vxek3")
+shader_parameter/effect_amount = 1.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxy8c"]
+shader = ExtResource("17_abs8r")
+shader_parameter/type = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_el8ju"]
+shader = ExtResource("18_lf7jb")
+shader_parameter/lod = 2.451
+
+[node name="Main" type="Node"]
+process_mode = 1
+script = ExtResource("1_2u5p5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1154, -789)
+anchor_mode = 0
+zoom = Vector2(0.5, 0.5)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+follow_viewport_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(0, -174)
+texture = ExtResource("2_8eseu")
+
+[node name="Coral" parent="." instance=ExtResource("3_2iguw")]
+unique_name_in_owner = true
+position = Vector2(2, 134)
+collision_mask = 0
+
+[node name="Walls" type="StaticBody2D" parent="."]
+z_index = 10
+scale = Vector2(0.674198, 1.62339)
+collision_layer = 8
+
+[node name="ColorRect" type="ColorRect" parent="Walls"]
+offset_left = -1500.0
+offset_top = -524.0
+offset_right = -1460.0
+offset_bottom = -450.0
+scale = Vector2(-9.82501, 13.0786)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Walls"]
+offset_left = 1500.0
+offset_top = -508.0
+offset_right = 1896.0
+offset_bottom = 466.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-1702.5, -262.751)
+shape = SubResource("RectangleShape2D_b18te")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1697.5, -240.044)
+shape = SubResource("RectangleShape2D_swt3a")
+
+[node name="Path2D" type="Path2D" parent="Walls"]
+position = Vector2(688, -164.101)
+curve = SubResource("Curve2D_ad2ju")
+
+[node name="Path1" type="PathFollow2D" parent="Walls/Path2D"]
+unique_name_in_owner = true
+position = Vector2(1030, 413)
+rotation = -1.58441
+
+[node name="Path2D2" type="Path2D" parent="Walls"]
+position = Vector2(-785, -200.101)
+curve = SubResource("Curve2D_f74fl")
+
+[node name="Path2" type="PathFollow2D" parent="Walls/Path2D2"]
+unique_name_in_owner = true
+position = Vector2(-919, 454)
+rotation = -1.56927
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(-2, 658)
+scale = Vector2(20.12, 2)
+collision_layer = 13
+script = ExtResource("4_axnwl")
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+offset_left = 1128.0
+offset_top = -106.0
+offset_right = 1231.0
+offset_bottom = -11.0
+scale = Vector2(-21.8401, 2.27026)
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0.5, 0)
+scale = Vector2(1.96, 1)
+shape = SubResource("RectangleShape2D_d8c3j")
+
+[node name="PollPath" type="Path2D" parent="."]
+position = Vector2(1697.5, -23.5)
+curve = SubResource("Curve2D_ayu2t")
+
+[node name="PollowPath" type="PathFollow2D" parent="PollPath"]
+unique_name_in_owner = true
+position = Vector2(-2674.5, -804.5)
+
+[node name="Player" parent="." instance=ExtResource("5_yxp6x")]
+unique_name_in_owner = true
+collision_mask = 9
+
+[node name="Clam1" parent="." instance=ExtResource("6_j2hna")]
+unique_name_in_owner = true
+position = Vector2(781, 362)
+rotation = -3.14159
+scale = Vector2(-3, -3)
+
+[node name="Clam2" parent="." instance=ExtResource("6_j2hna")]
+unique_name_in_owner = true
+position = Vector2(-737, 369)
+scale = Vector2(-3, 3)
+
+[node name="Ray" parent="." instance=ExtResource("7_exgjr")]
+position = Vector2(0, -480)
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Vignette" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_oun4b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FisheyeLens" type="ColorRect" parent="UI"]
+visible = false
+material = SubResource("ShaderMaterial_yhjow")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="TextureProgressBar" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -718.0
+offset_bottom = 106.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+texture_over = ExtResource("10_8tuty")
+texture_progress = ExtResource("11_j10ag")
+
+[node name="WaveLabel" type="Label" parent="UI/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = -26.5
+offset_right = 161.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_buv58")
+theme_override_font_sizes/font_size = 40
+text = "Wave 1"
+horizontal_alignment = 1
+
+[node name="WaveBar" type="TextureProgressBar" parent="UI"]
+offset_left = 61.0
+offset_top = 272.5
+offset_right = 101.0
+offset_bottom = 312.5
+scale = Vector2(0.709357, 1.03378)
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -785.0
+offset_top = -247.0
+offset_right = -176.0
+offset_bottom = -41.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.570112, 0.570112)
+value = 100.0
+texture_over = ExtResource("13_yco31")
+texture_progress = ExtResource("14_7sbmc")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/HealthBar"]
+visible = false
+position = Vector2(122, 103)
+scale = Vector2(1.44444, 1.44444)
+texture = ExtResource("15_t5748")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+position = Vector2(61, 61)
+scale = Vector2(0.747804, 0.747804)
+texture = ExtResource("16_slsep")
+
+[node name="ChumkLabel" type="Label" parent="UI/Sprite2D"]
+unique_name_in_owner = true
+offset_left = 85.5839
+offset_top = -77.5604
+offset_right = 252.584
+offset_bottom = 89.4396
+theme_override_fonts/font = ExtResource("12_buv58")
+theme_override_font_sizes/font_size = 95
+text = "0"
+
+[node name="GraceLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -125.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_buv58")
+theme_override_font_sizes/font_size = 71
+text = "Press Enter to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpText" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 81.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("12_buv58")
+theme_override_font_sizes/font_size = 46
+text = "Wave Over! "
+horizontal_alignment = 1
+
+[node name="Colorblind" type="ColorRect" parent="UI"]
+visible = false
+material = SubResource("ShaderMaterial_mxy8c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="UI"]
+visible = false
+material = SubResource("ShaderMaterial_el8ju")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0.266667, 1)
+theme_override_constants/outline_size = 55
+theme_override_fonts/font = ExtResource("12_buv58")
+theme_override_font_sizes/font_size = 381
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.384314)
+
+[node name="Label" type="Label" parent="GameOver"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_buv58")
+theme_override_font_sizes/font_size = 150
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="ResetButton" type="Button" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = 114.0
+offset_right = 111.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_buv58")
+theme_override_font_sizes/font_size = 56
+text = "Reset"
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+process_priority = 10
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.196078, 0.384314)
+
+[node name="Label" type="Label" parent="PauseMenu"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -131.5
+offset_bottom = 131.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_buv58")
+theme_override_font_sizes/font_size = 150
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="UnpauseButton" type="Button" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = 114.0
+offset_right = 111.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_buv58")
+theme_override_font_sizes/font_size = 56
+text = "Unpause"
+
+[node name="Urchin" parent="." instance=ExtResource("19_81q15")]
+position = Vector2(-289, -278)
+
+[node name="Urchin2" parent="." instance=ExtResource("19_81q15")]
+position = Vector2(247, -25)
+
+[node name="Urchin3" parent="." instance=ExtResource("19_81q15")]
+position = Vector2(-235, 193)
+
+[node name="Urchin4" parent="." instance=ExtResource("19_81q15")]
+position = Vector2(149, -287)
+
+[node name="Urchin5" parent="." instance=ExtResource("19_81q15")]
+position = Vector2(203, 260)
+
+[node name="Timers" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="StartTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="GraceTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+
+[node name="WaveTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="EnemyTimer" type="Timer" parent="Timers" groups=["coral"]]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[node name="PollutionTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 4.0
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("20_1p3ha")
+volume_db = 0.5
+
+[node name="CountdownMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_sm2tm")
+autoplay = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="TutorialStuff" type="Node" parent="."]
+
+[node name="MouseSprite" type="AnimatedSprite2D" parent="TutorialStuff"]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(-34, -397)
+sprite_frames = ExtResource("22_hm5nr")
+autoplay = "default"
+
+[node name="MovementTimer" type="Timer" parent="TutorialStuff"]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[node name="TutPopup" type="ColorRect" parent="TutorialStuff"]
+unique_name_in_owner = true
+visible = false
+offset_left = -381.0
+offset_top = -64.0
+offset_right = 377.0
+offset_bottom = 88.0
+color = Color(0, 0, 0, 0.494118)
+metadata/_edit_group_ = true
+
+[node name="TutLabel" type="Label" parent="TutorialStuff/TutPopup"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Your goal is to protect this coral!
+Click to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="died" from="Coral" to="." method="_on_coral_died"]
+[connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="PauseMenu/UnpauseButton" to="." method="_on_unpause_button_pressed"]
+[connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Timers/WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="Timers/PollutionTimer" to="." method="_on_pollution_timer_timeout"]
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]
+[connection signal="animation_finished" from="TutorialStuff/MouseSprite" to="." method="_on_mouse_animation_finished"]
+[connection signal="timeout" from="TutorialStuff/MovementTimer" to="." method="_on_movement_timer_timeout"]

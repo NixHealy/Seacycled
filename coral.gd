@@ -35,7 +35,7 @@ func _process(delta):
 	%Popup.visible = false
 	
 	# Chance for player to heal the coral during grace period
-	if health < 100 && main.grace == true && main.all_collected == true:
+	if health < 100 && main.grace == true && main.all_collected == true && main.tutorial == false:
 		#%CoralHealRect.visible = true
 		#%HealLabel.text = "..."
 		%Popup.visible = false

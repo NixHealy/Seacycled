@@ -22,7 +22,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_open == false && main.grace == true && main.all_collected == true:
+	if is_open == false && main.grace == true && main.all_collected == true && main.tutorial == false:
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player"):
 				# Input required so user doesn't accidentally spend chumks
@@ -45,7 +45,7 @@ func _process(delta):
 			numEnemies = 0
 
 		
-	if main.grace == true:
+	if main.grace == true and main.tutorial == false:
 		modulate.a = 1
 		if player.chumks >= 2 and main.all_collected == true:
 			#%Help.visible = true

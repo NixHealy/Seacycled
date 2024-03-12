@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at4k4"]
 size = Vector2(146, 121)
 
-[node name="Urchin" type="StaticBody2D"]
+[node name="Urchin" type="StaticBody2D" groups=["urchin"]]
 process_priority = -1
 collision_layer = 0
 collision_mask = 0
@@ -57,6 +57,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Popup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(4, -111)
 scale = Vector2(1.003, 1.003)
 texture = ExtResource("4_lxkg6")

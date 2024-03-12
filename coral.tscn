@@ -81,6 +81,7 @@ volume_db = 1.0
 
 [node name="Popup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-6, -118)
 texture = ExtResource("6_bcs3v")
 

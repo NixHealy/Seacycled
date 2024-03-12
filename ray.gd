@@ -13,7 +13,7 @@ func _ready():
 	modulate.a = 0.5
 
 func _physics_process(delta):
-	if main.grace == true:
+	if main.grace == true and main.tutorial == false:
 		modulate.a = 1
 		if main.all_collected == true:
 			#%Help.visible = true

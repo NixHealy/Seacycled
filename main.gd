@@ -4,6 +4,7 @@ extends Node
 @export var grace = false
 var all_collected = true
 var starting = true
+var tutorial = false
 
 func _ready():
 	%GameOver.visible = false
@@ -43,9 +44,11 @@ func _process(delta):
 					all_collected = false
 					break
 					
+		# remember to add timer since people since skipping over this
 		if all_collected == true and grace == true:
 			%HelpText.text = "Now heal the coral\nor spend those chumks on allies!"
-			%GraceLabel.visible = true
+			if %HelpDelay.is_stopped():
+				%HelpDelay.start()
 		else:
 			%HelpText.text = "Wave Over!\nCollect all the chumks!"
 			%GraceLabel.visible = false
@@ -148,6 +151,10 @@ func _on_wave_timer_timeout():
 		var pollutions = get_tree().get_nodes_in_group("pollution") #delete all the pollution
 		for pollution in pollutions:
 			pollution.queue_free()
+		var chumks = get_tree().get_nodes_in_group("collectable")
+		for chumk in chumks:
+			if chumk.position.x < -1000 or chumk.position.y > 1000:
+				chumk.queue_free()
 		#%Coral.health = 100
 		
 		# GraceTimer.start() #start a timer for the grace period
@@ -175,3 +182,6 @@ func _on_unpause_button_pressed():
 
 func _on_background_music_finished():
 	%BackgroundMusic.play()
+
+func _on_help_delay_timeout():
+	%GraceLabel.visible = true

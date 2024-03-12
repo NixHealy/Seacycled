@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dkqqmk6u1vugf" path="res://img/chunk.png" id="1_26aa0"]
 [ext_resource type="Script" path="res://chumk.gd" id="1_wygln"]
-[ext_resource type="Texture2D" uid="uid://ckkv1tqrkvll7" path="res://img/particle.png" id="2_rwsdl"]
+[ext_resource type="Texture2D" uid="uid://btt516oxma3m2" path="res://img/particle_trans.png" id="3_wbine"]
 
 [sub_resource type="Shader" id="Shader_werny"]
 code = "shader_type canvas_item;
@@ -60,7 +60,7 @@ shape = SubResource("CircleShape2D_6h3oi")
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
-texture = ExtResource("2_rwsdl")
+texture = ExtResource("3_wbine")
 emission_shape = 1
 emission_sphere_radius = 48.3
 gravity = Vector2(0, -200)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=33 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -21,6 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_lhkum"]
 [ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="20_a4soo"]
 [ext_resource type="AudioStream" uid="uid://dj1cmvfr50jvv" path="res://sound/countdown.wav" id="21_5nrcv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sscud"]
+shader = ExtResource("10_371ox")
+shader_parameter/lod = 0.75
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -86,6 +90,16 @@ follow_viewport_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(0, -174)
 texture = ExtResource("2_gak5t")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_sscud")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1164.0
+offset_top = -903.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Coral" parent="." instance=ExtResource("2_2irvf")]
 unique_name_in_owner = true
@@ -472,6 +486,11 @@ wait_time = 2.0
 unique_name_in_owner = true
 wait_time = 4.0
 
+[node name="HelpDelay" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("20_a4soo")
@@ -490,4 +509,5 @@ autoplay = true
 [connection signal="timeout" from="Timers/WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="Timers/PollutionTimer" to="." method="_on_pollution_timer_timeout"]
+[connection signal="timeout" from="Timers/HelpDelay" to="." method="_on_help_delay_timeout"]
 [connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]

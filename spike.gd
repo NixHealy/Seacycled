@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#maybe add health
+
 func _ready():
 	position = Vector2(20,0).rotated(rotation)
 
