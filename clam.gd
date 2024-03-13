@@ -9,7 +9,6 @@ var is_open = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	modulate.a = 0.5
 	%Sprite2D.set_texture(close_tex)
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)

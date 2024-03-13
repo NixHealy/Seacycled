@@ -4,13 +4,9 @@ extends CharacterBody2D
 @onready var main = get_node("/root/Main")
 @onready var player = get_node("/root/Main/Player")
 
-var norm_tex = load("res://img/ray.png")
-var zap_tex = load("res://img/zap.png")
+var norm_tex = load("res://img/newray.png")
 
 var activated = false
-
-func _ready():
-	modulate.a = 0.5
 
 func _physics_process(delta):
 	if main.grace == true and main.tutorial == false:
@@ -56,14 +52,14 @@ func _physics_process(delta):
 		
 		rotation = atan(velocity.y / velocity.x)
 		if velocity.x > 0:
-			$Sprite2D.flip_h = false
-		else:
 			$Sprite2D.flip_h = true
+		else:
+			$Sprite2D.flip_h = false
 		
 		if closest.global_position.distance_to(global_position) < 100:
-			if closest.has_method("get_stunned") and %StunTimer.is_stopped():
+			if closest.has_method("get_stunned") and %StunTimer.is_stopped() and !closest.is_in_group("spike"):
 				closest.get_stunned() 
-				%Sprite2D.set_texture(zap_tex)
+				%Sprite2D.set_texture(norm_tex)
 				%StunTimer.start()
 
 func _on_stun_timer_timeout():

@@ -5,7 +5,7 @@ var activated = false
 @onready var player = get_node("/root/Main/Player")
 
 func _ready():
-	modulate.a = 0.5
+	%Popup.global_rotation = 0
 	
 func _process(delta):
 	if main.grace == true:

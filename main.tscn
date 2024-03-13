@@ -533,18 +533,23 @@ flat = true
 
 [node name="Urchin" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(-289, -278)
+rotation = -1.38512
 
 [node name="Urchin2" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(247, -25)
+rotation = 1.79477
 
 [node name="Urchin3" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(-235, 193)
+rotation = -0.717439
 
 [node name="Urchin4" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(149, -287)
+rotation = 0.637482
 
 [node name="Urchin5" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(203, 260)
+rotation = 1.63046
 
 [node name="Timers" type="Node" parent="."]
 unique_name_in_owner = true

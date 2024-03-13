@@ -153,7 +153,7 @@ func _on_wave_timer_timeout():
 			pollution.queue_free()
 		var chumks = get_tree().get_nodes_in_group("collectable")
 		for chumk in chumks:
-			if chumk.position.x < -1000 or chumk.position.y > 1000:
+			if chumk.position.x < -900 or chumk.position.x > 900:
 				chumk.queue_free()
 		#%Coral.health = 100
 		

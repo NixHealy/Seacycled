@@ -1,15 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://u7xbuwuumsj4"]
 
-[ext_resource type="Texture2D" uid="uid://d3h1qre74lc6n" path="res://img/ray.png" id="1_5po7d"]
 [ext_resource type="Script" path="res://ray.gd" id="1_ql3u8"]
+[ext_resource type="Texture2D" uid="uid://t237nktufkcj" path="res://img/newray.png" id="2_bkenb"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_nj6ar"]
 [ext_resource type="Texture2D" uid="uid://dnkrq3li27yjg" path="res://img/ray_popup.png" id="4_mj3jh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vcko"]
-size = Vector2(86, 69)
+size = Vector2(131, 29.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k41ry"]
-size = Vector2(131, 103)
+size = Vector2(160, 49.5)
 
 [node name="Ray" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -21,10 +21,11 @@ script = ExtResource("1_ql3u8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = ExtResource("1_5po7d")
+scale = Vector2(0.13396, 0.13396)
+texture = ExtResource("2_bkenb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_8vcko")
 
 [node name="StunTimer" type="Timer" parent="."]
@@ -60,6 +61,7 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_k41ry")
 
 [node name="Popup" type="Sprite2D" parent="."]
