@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=44 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_gak5t"]
+[ext_resource type="Shader" path="res://greyscale.gdshader" id="3_6gi61"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
 [ext_resource type="Shader" path="res://fisheye.gdshader" id="5_deimy"]
 [ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="5_vbu6w"]
@@ -20,11 +21,19 @@
 [ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
 [ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_lhkum"]
 [ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="20_a4soo"]
+[ext_resource type="Texture2D" uid="uid://bjbkmndxtwfyn" path="res://img/menus/Pause resume-05.png" id="20_oqbjd"]
 [ext_resource type="AudioStream" uid="uid://dj1cmvfr50jvv" path="res://sound/countdown.wav" id="21_5nrcv"]
+[ext_resource type="Texture2D" uid="uid://x146rbfy6ehy" path="res://img/menus/Pause How to play-05.png" id="21_d4sdt"]
+[ext_resource type="Texture2D" uid="uid://blwc78f4mbch2" path="res://img/menus/Pause options-05.png" id="22_gdwgj"]
+[ext_resource type="Texture2D" uid="uid://b2j3nn7n6i2nm" path="res://img/menus/Pause Main menu-05.png" id="23_3qb0o"]
+[ext_resource type="Texture2D" uid="uid://ciip0y5g2oetg" path="res://img/menus/Pause Quit game-05.png" id="24_ocj2h"]
+[ext_resource type="Texture2D" uid="uid://bw6j6amowm00d" path="res://img/menus/Options menu Base.png" id="25_ffajm"]
+[ext_resource type="Texture2D" uid="uid://8uegd3w8jb1q" path="res://img/menus/Accept-06.png" id="26_gxab2"]
+[ext_resource type="Texture2D" uid="uid://d1lyifbsbxhgj" path="res://img/menus/Cancel-06.png" id="27_jxjr3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sscud"]
-shader = ExtResource("10_371ox")
-shader_parameter/lod = 0.75
+shader = ExtResource("3_6gi61")
+shader_parameter/saturation = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -71,6 +80,10 @@ shader_parameter/type = 1
 shader = ExtResource("10_371ox")
 shader_parameter/lod = 2.451
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg3vn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2j3f2"]
+
 [node name="Main" type="Node"]
 process_mode = 1
 script = ExtResource("1_72br2")
@@ -91,7 +104,7 @@ follow_viewport_enabled = true
 position = Vector2(0, -174)
 texture = ExtResource("2_gak5t")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Desaturate" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_sscud")
 anchors_preset = 15
 anchor_right = 1.0
@@ -420,8 +433,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -131.5
-offset_bottom = 131.5
+offset_left = 49.0
+offset_top = -353.0
+offset_right = -489.0
+offset_bottom = -90.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_j2t6x")
@@ -429,21 +444,92 @@ theme_override_font_sizes/font_size = 150
 text = "PAUSED"
 horizontal_alignment = 1
 
-[node name="UnpauseButton" type="Button" parent="PauseMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -106.0
-offset_top = 114.0
-offset_right = 111.0
-offset_bottom = 181.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("9_j2t6x")
-theme_override_font_sizes/font_size = 56
-text = "Unpause"
+[node name="Resume" type="Button" parent="PauseMenu"]
+offset_top = 216.0
+offset_right = 507.0
+offset_bottom = 334.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kg3vn")
+keep_pressed_outside = true
+icon = ExtResource("20_oqbjd")
+flat = true
+
+[node name="HowTo" type="Button" parent="PauseMenu"]
+offset_top = 294.0
+offset_right = 507.0
+offset_bottom = 412.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kg3vn")
+keep_pressed_outside = true
+icon = ExtResource("21_d4sdt")
+flat = true
+
+[node name="Options" type="Button" parent="PauseMenu"]
+offset_top = 372.0
+offset_right = 507.0
+offset_bottom = 490.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kg3vn")
+keep_pressed_outside = true
+icon = ExtResource("22_gdwgj")
+flat = true
+
+[node name="MainMenu" type="Button" parent="PauseMenu"]
+offset_top = 457.0
+offset_right = 507.0
+offset_bottom = 575.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kg3vn")
+keep_pressed_outside = true
+icon = ExtResource("23_3qb0o")
+flat = true
+
+[node name="Quit" type="Button" parent="PauseMenu"]
+offset_top = 533.0
+offset_right = 507.0
+offset_bottom = 651.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kg3vn")
+keep_pressed_outside = true
+icon = ExtResource("24_ocj2h")
+flat = true
+
+[node name="OptionsMenu" type="Sprite2D" parent="PauseMenu"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(559, 338)
+texture = ExtResource("25_ffajm")
+
+[node name="Accept" type="Button" parent="PauseMenu/OptionsMenu"]
+offset_left = -328.0
+offset_top = 157.0
+offset_right = -42.0
+offset_bottom = 277.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2j3f2")
+keep_pressed_outside = true
+icon = ExtResource("26_gxab2")
+flat = true
+
+[node name="Cancel" type="Button" parent="PauseMenu/OptionsMenu"]
+offset_left = 50.9999
+offset_top = 157.0
+offset_right = 337.0
+offset_bottom = 277.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2j3f2")
+keep_pressed_outside = true
+icon = ExtResource("27_jxjr3")
+flat = true
 
 [node name="Urchin" parent="." instance=ExtResource("19_lhkum")]
 position = Vector2(-289, -278)
@@ -504,7 +590,13 @@ autoplay = true
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="PauseMenu/UnpauseButton" to="." method="_on_unpause_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/HowTo" to="." method="_on_how_to_pressed"]
+[connection signal="pressed" from="PauseMenu/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseMenu/OptionsMenu/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="PauseMenu/OptionsMenu/Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timers/WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://clkrmidcikgc4"]
+[gd_scene load_steps=35 format=3 uid="uid://clkrmidcikgc4"]
 
 [ext_resource type="Script" path="res://tutorial.gd" id="1_2u5p5"]
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_8eseu"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="3_2iguw"]
+[ext_resource type="Shader" path="res://greyscale.gdshader" id="3_ip7n4"]
 [ext_resource type="Script" path="res://Ground.gd" id="4_axnwl"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="5_yxp6x"]
 [ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="6_j2hna"]
@@ -22,6 +23,10 @@
 [ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="20_1p3ha"]
 [ext_resource type="AudioStream" uid="uid://dj1cmvfr50jvv" path="res://sound/countdown.wav" id="21_sm2tm"]
 [ext_resource type="SpriteFrames" uid="uid://dc4w32pxb4v5f" path="res://anim/mouse.gif" id="22_hm5nr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5sw2"]
+shader = ExtResource("3_ip7n4")
+shader_parameter/saturation = 0.4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -87,6 +92,16 @@ follow_viewport_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(0, -174)
 texture = ExtResource("2_8eseu")
+
+[node name="Desaturate" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_q5sw2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1164.0
+offset_top = -903.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Coral" parent="." instance=ExtResource("3_2iguw")]
 unique_name_in_owner = true
@@ -492,6 +507,7 @@ unique_name_in_owner = true
 z_index = 10
 position = Vector2(-34, -397)
 sprite_frames = ExtResource("22_hm5nr")
+animation = &"gif"
 autoplay = "default"
 
 [node name="MovementTimer" type="Timer" parent="TutorialStuff"]

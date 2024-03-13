@@ -9,8 +9,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cetts"]
 shader = ExtResource("2_qa8xe")
-shader_parameter/desaturate_strength = 0.5
-shader_parameter/pollution_strength = 0.5
+shader_parameter/desaturate_strength = 1.0
+shader_parameter/pollution_strength = 0.0
 
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 4

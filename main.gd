@@ -175,13 +175,34 @@ func _on_start_timer_timeout():
 	%WaveTimer.start()
 	%StartLabel.visible = false
 
-func _on_unpause_button_pressed():
-	get_tree().paused = false
-	%PauseMenu.visible = false
-
-
 func _on_background_music_finished():
 	%BackgroundMusic.play()
 
 func _on_help_delay_timeout():
 	%GraceLabel.visible = true
+
+func _on_resume_pressed():
+	get_tree().paused = false
+	%PauseMenu.visible = false
+	%OptionsMenu.visible = false
+	
+func _on_how_to_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://tutorial.tscn")
+	
+func _on_options_pressed():
+	%OptionsMenu.can_process()
+	%OptionsMenu.visible = true
+
+func _on_main_menu_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+func _on_accept_pressed():
+	%OptionsMenu.visible = false
+
+func _on_cancel_pressed():
+	%OptionsMenu.visible = false
