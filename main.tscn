@@ -207,6 +207,26 @@ unique_name_in_owner = true
 position = Vector2(-737, 369)
 scale = Vector2(-3, 3)
 
+[node name="Urchin" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(-289, -278)
+rotation = -1.38512
+
+[node name="Urchin2" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(247, -25)
+rotation = 1.79477
+
+[node name="Urchin3" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(-235, 193)
+rotation = -0.717439
+
+[node name="Urchin4" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(149, -287)
+rotation = 0.637482
+
+[node name="Urchin5" parent="." instance=ExtResource("19_lhkum")]
+position = Vector2(203, 260)
+rotation = 1.63046
+
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
 position = Vector2(0, -480)
 
@@ -235,10 +255,11 @@ unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -718.0
+offset_left = -757.0
+offset_right = -39.0
 offset_bottom = 106.0
 grow_horizontal = 0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.47228, 0.517114)
 texture_over = ExtResource("9_t3lry")
 texture_progress = ExtResource("10_hwnto")
 
@@ -262,10 +283,13 @@ text = "Wave 1"
 horizontal_alignment = 1
 
 [node name="WaveBar" type="TextureProgressBar" parent="UI"]
-offset_left = 61.0
-offset_top = 272.5
-offset_right = 101.0
-offset_bottom = 312.5
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
 scale = Vector2(0.709357, 1.03378)
 
 [node name="HealthBar" type="TextureProgressBar" parent="UI"]
@@ -404,15 +428,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -106.0
-offset_top = 114.0
-offset_right = 111.0
-offset_bottom = 181.0
+offset_left = -277.5
+offset_top = 94.5
+offset_right = 282.5
+offset_bottom = 200.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_j2t6x")
 theme_override_font_sizes/font_size = 56
-text = "Reset"
+text = "Back to Main Menu"
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -530,26 +554,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_2j3f2")
 keep_pressed_outside = true
 icon = ExtResource("27_jxjr3")
 flat = true
-
-[node name="Urchin" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(-289, -278)
-rotation = -1.38512
-
-[node name="Urchin2" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(247, -25)
-rotation = 1.79477
-
-[node name="Urchin3" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(-235, 193)
-rotation = -0.717439
-
-[node name="Urchin4" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(149, -287)
-rotation = 0.637482
-
-[node name="Urchin5" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(203, 260)
-rotation = 1.63046
 
 [node name="Timers" type="Node" parent="."]
 unique_name_in_owner = true

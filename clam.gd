@@ -26,8 +26,8 @@ func _process(delta):
 			if body.is_in_group("player"):
 				# Input required so user doesn't accidentally spend chumks
 					if Input.is_action_just_pressed("attack"):
-						if body.chumks >= 2:
-							body.chumks -= 2
+						if body.chumks >= 10:
+							body.chumks -= 10
 							open()
 	
 	# The clam should snap closed if there are more than five enemies inside

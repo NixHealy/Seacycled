@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://urchin.gd" id="1_j7ua7"]
 [ext_resource type="Texture2D" uid="uid://cb6bfht8u8v6k" path="res://img/new_urchin.png" id="2_vql5g"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_g3fjm"]
-[ext_resource type="Texture2D" uid="uid://cb0enykepxt6q" path="res://img/urchin_popup.png" id="4_lxkg6"]
+[ext_resource type="Texture2D" path="res://img/urchin_popup.png" id="4_lxkg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at4k4"]
 size = Vector2(173, 146)

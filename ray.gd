@@ -29,8 +29,8 @@ func _physics_process(delta):
 	if activated == false && main.grace == true && main.all_collected == true:
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player") and Input.is_action_just_pressed("attack"):
-				if body.chumks >= 2:
-					body.chumks -= 2
+				if body.chumks >= 10:
+					body.chumks -= 10
 					activate()
 	
 	if !activated:
@@ -38,13 +38,15 @@ func _physics_process(delta):
 	
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	
+	
 	if (enemies.size() > 0):
 		var closest = enemies[enemies.size() - 1]
 	
 		for enemy in enemies:
-			if enemy.stunned == false:
-				if enemy.global_position.distance_to(coral.global_position) < closest.global_position.distance_to(coral.global_position):
-					closest = enemy
+			if !enemy.is_in_group("spike"):
+				if enemy.stunned == false:
+					if enemy.global_position.distance_to(coral.global_position) < closest.global_position.distance_to(coral.global_position):
+						closest = enemy
 				
 		var direction = closest.global_position - global_position
 		velocity = direction.normalized() * 30000 * delta

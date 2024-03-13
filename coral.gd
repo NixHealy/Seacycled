@@ -10,6 +10,7 @@ func _ready():
 	%CoralHealRect.visible = false
 
 func _process(delta):
+	health = 100
 	var desat = health / 100.0
 	if desat < 0:
 		desat = 0

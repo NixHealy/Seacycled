@@ -4,7 +4,8 @@ func _on_play_pressed():
 	get_tree().change_scene_to_file("res://main.tscn")
 	
 func _on_how_to_pressed():
-	get_tree().change_scene_to_file("res://tutorial.tscn")
+	#get_tree().change_scene_to_file("res://tutorial.tscn")
+	pass
 
 func _on_options_pressed():
 	%OptionsMenu.visible = true

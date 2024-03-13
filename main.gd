@@ -165,7 +165,7 @@ func _on_wave_timer_timeout():
 
 func _on_reset_button_pressed():
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 
 func _on_start_timer_timeout():
@@ -179,7 +179,8 @@ func _on_background_music_finished():
 	%BackgroundMusic.play()
 
 func _on_help_delay_timeout():
-	%GraceLabel.visible = true
+	if grace == true:
+		%GraceLabel.visible = true
 
 func _on_resume_pressed():
 	get_tree().paused = false
@@ -187,8 +188,9 @@ func _on_resume_pressed():
 	%OptionsMenu.visible = false
 	
 func _on_how_to_pressed():
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://tutorial.tscn")
+	#get_tree().paused = false
+	#get_tree().change_scene_to_file("res://tutorial.tscn")
+	pass
 	
 func _on_options_pressed():
 	%OptionsMenu.can_process()

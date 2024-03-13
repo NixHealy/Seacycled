@@ -29,8 +29,8 @@ func _process(delta):
 	if activated == false && main.grace == true && main.all_collected == true && main.tutorial == false:
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player") and Input.is_action_just_pressed("attack"):
-				if body.chumks >= 1:
-					body.chumks -= 1
+				if body.chumks >= 10:
+					body.chumks -= 10
 					for urchin in get_tree().get_nodes_in_group("urchin"):
 						urchin.activated = true
 
