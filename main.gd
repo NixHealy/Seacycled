@@ -34,7 +34,6 @@ func _process(delta):
 			
 		#%GraceLabel.text = str(roundi(%GraceTimer.time_left))
 		%ChumkLabel.text = str(%Player.chumks)
-		%HealthBar.value = %Coral.health
 		
 		all_collected = true
 		
@@ -119,6 +118,13 @@ func spawn_mob():
 	
 	add_child(new_mob) #adds it to the scene
 	
+	var danger = preload("res://danger_icon.tscn").instantiate()
+	if numPath == 1:
+		danger.global_position = Vector2(1000, new_mob.global_position.y)
+	if numPath == 2:
+		danger.global_position = Vector2(-1000, new_mob.global_position.y)
+	add_child(danger)
+	
 func spawn_pollution():
 	var new_poll = preload("res://pollution.tscn").instantiate()
 	%PollowPath.progress_ratio = randf()
@@ -133,7 +139,6 @@ func _on_pollution_timer_timeout():
 	spawn_pollution()
 
 func _on_coral_died(): #oh no the coral is dead
-	%Coral.health = 0
 	%GameOver.visible = true #show the game over screen
 	get_tree().paused = true
 
@@ -153,7 +158,7 @@ func _on_wave_timer_timeout():
 			pollution.queue_free()
 		var chumks = get_tree().get_nodes_in_group("collectable")
 		for chumk in chumks:
-			if chumk.position.x < -900 or chumk.position.x > 900:
+			if chumk.position.x < -1125 or chumk.position.x > 1125:
 				chumk.queue_free()
 		#%Coral.health = 100
 		

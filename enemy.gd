@@ -6,6 +6,7 @@ class_name Enemy
 var health = 2
 var speed = 100.0
 var stunned = false
+var resisted = false
 
 signal died
 
@@ -56,6 +57,7 @@ func get_stunned():
 
 func get_poisoned():
 	modulate = Color(modulate.r - 0.25, modulate.g, modulate.b - 0.25)
+	stunned = true
 	%PoisonTimer.start()
 
 func _on_stun_timer_timeout():
@@ -63,4 +65,5 @@ func _on_stun_timer_timeout():
 	modulate = Color(1, 1, 1)
 
 func _on_poison_timer_timeout():
+	stunned = false
 	take_damage()

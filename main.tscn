@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=40 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -6,18 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_gak5t"]
 [ext_resource type="Shader" path="res://greyscale.gdshader" id="3_6gi61"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
-[ext_resource type="Shader" path="res://fisheye.gdshader" id="5_deimy"]
 [ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="5_vbu6w"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="6_u0m5a"]
+[ext_resource type="PackedScene" uid="uid://dv4abo40v6wop" path="res://starfish.tscn" id="8_go77r"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="9_j2t6x"]
 [ext_resource type="Texture2D" uid="uid://carqqmb8dkbx5" path="res://img/wave_outline.png" id="9_t3lry"]
-[ext_resource type="Shader" path="res://blur.gdshader" id="10_371ox"]
 [ext_resource type="Shader" path="res://colorblind.gdshader" id="10_dfed1"]
 [ext_resource type="Texture2D" uid="uid://cumfkivn34ais" path="res://img/wave_bar.png" id="10_hwnto"]
-[ext_resource type="Texture2D" uid="uid://ck0vumet7xwfo" path="res://img/health_bubble.png" id="12_wayy4"]
 [ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="12_wf2ut"]
-[ext_resource type="Texture2D" uid="uid://dgs3x01e0wd80" path="res://img/health_progress.png" id="13_5utfx"]
-[ext_resource type="Texture2D" uid="uid://d00mnfv7o3khm" path="res://img/health_icon.png" id="14_13p7d"]
 [ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
 [ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_lhkum"]
 [ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="20_a4soo"]
@@ -68,17 +64,42 @@ shader_parameter/alpha = 0.0
 shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhjow"]
-shader = ExtResource("5_deimy")
-shader_parameter/effect_amount = 1.1
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mxy8c"]
 shader = ExtResource("10_dfed1")
 shader_parameter/type = 1
 
+[sub_resource type="Shader" id="Shader_kxinj"]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform int pixel_size = 4;
+
+void vertex() {
+	float nw = (1.0*float(pixel_size));
+	if (NORMAL.x == 1.0 || NORMAL.y == 1.0 || NORMAL.z == 1.0 || NORMAL.x == -1.0 || NORMAL.y == -1.0 || NORMAL.z == -1.0){
+		VERTEX *= 1.0+0.01*nw;
+	}
+	if ((NORMAL.x != 1.0 && NORMAL.y != 0.0 && NORMAL.z != 0.0) && (NORMAL.y != 1.0 && NORMAL.x != 0.0 && NORMAL.z != 0.0) && (NORMAL.z != 1.0 && NORMAL.x != 0.0 && NORMAL.y != 0.0) && (NORMAL.x != -1.0 && NORMAL.y != 0.0 && NORMAL.z != 0.0) && (NORMAL.y != -1.0 && NORMAL.x != 0.0 && NORMAL.z != 0.0) && (NORMAL.z != -1.0 && NORMAL.x != 0.0 && NORMAL.y != 0.0)){
+		VERTEX += NORMAL*0.01*nw;
+	}
+}
+
+void fragment() {
+	float x = float(int(FRAGCOORD.x) % pixel_size);
+	float y = float(int(FRAGCOORD.y) % pixel_size);
+	x = FRAGCOORD.x + floor(float(pixel_size) / 2.0) - x;
+	y = FRAGCOORD.y + floor(float(pixel_size) / 2.0) - y;
+	vec4 oldtext = textureLod(SCREEN_TEXTURE,SCREEN_UV*1.0, 0.0);
+	vec4 pixelatedtext = textureLod(SCREEN_TEXTURE, vec2(x, y) / (VIEWPORT_SIZE), 0.0);
+	if (pixelatedtext.a==0.0 && oldtext.a==0.0){
+		discard;
+	}
+	ALBEDO = pixelatedtext.rgb;
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_el8ju"]
-shader = ExtResource("10_371ox")
-shader_parameter/lod = 2.451
+shader = SubResource("Shader_kxinj")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg3vn"]
 
@@ -101,7 +122,8 @@ layer = -100
 follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(0, -174)
+position = Vector2(0, -265)
+scale = Vector2(1.14081, 1.14081)
 texture = ExtResource("2_gak5t")
 
 [node name="Desaturate" type="ColorRect" parent="CanvasLayer"]
@@ -121,8 +143,10 @@ collision_mask = 0
 
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 10
+position = Vector2(-147, -8)
 scale = Vector2(0.674198, 1.62339)
 collision_layer = 8
+metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Walls"]
 offset_left = -1500.0
@@ -133,10 +157,10 @@ scale = Vector2(-9.82501, 13.0786)
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="Walls"]
-offset_left = 1500.0
-offset_top = -508.0
-offset_right = 1896.0
-offset_bottom = 466.0
+offset_left = 1931.18
+offset_top = -550.083
+offset_right = 2327.18
+offset_bottom = 423.917
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
@@ -144,11 +168,11 @@ position = Vector2(-1702.5, -262.751)
 shape = SubResource("RectangleShape2D_b18te")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-position = Vector2(1697.5, -240.044)
+position = Vector2(2128.68, -282.127)
 shape = SubResource("RectangleShape2D_swt3a")
 
 [node name="Path2D" type="Path2D" parent="Walls"]
-position = Vector2(688, -164.101)
+position = Vector2(1119.18, -206.184)
 curve = SubResource("Curve2D_ad2ju")
 
 [node name="Path1" type="PathFollow2D" parent="Walls/Path2D"]
@@ -207,25 +231,37 @@ unique_name_in_owner = true
 position = Vector2(-737, 369)
 scale = Vector2(-3, 3)
 
-[node name="Urchin" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(-289, -278)
-rotation = -1.38512
+[node name="Starfishes" type="Node" parent="."]
 
-[node name="Urchin2" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(247, -25)
-rotation = 1.79477
+[node name="Starfish" parent="Starfishes" instance=ExtResource("8_go77r")]
+position = Vector2(-89, -295)
+rotation = -0.23453
 
-[node name="Urchin3" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(-235, 193)
-rotation = -0.717439
+[node name="Starfish2" parent="Starfishes" instance=ExtResource("8_go77r")]
+position = Vector2(-161, -197)
+rotation = -0.7078
 
-[node name="Urchin4" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(149, -287)
-rotation = 0.637482
+[node name="Starfish3" parent="Starfishes" instance=ExtResource("8_go77r")]
+position = Vector2(-81, -223)
+rotation = 0.277678
 
-[node name="Urchin5" parent="." instance=ExtResource("19_lhkum")]
-position = Vector2(203, 260)
-rotation = 1.63046
+[node name="Urchins" type="Node" parent="."]
+
+[node name="Urchin5" parent="Urchins" instance=ExtResource("19_lhkum")]
+position = Vector2(61, 197)
+rotation = 0.391504
+
+[node name="Urchin4" parent="Urchins" instance=ExtResource("19_lhkum")]
+position = Vector2(83, 262)
+rotation = 1.12983
+
+[node name="Urchin2" parent="Urchins" instance=ExtResource("19_lhkum")]
+position = Vector2(140, 214)
+rotation = 0.90967
+
+[node name="Urchin3" parent="Urchins" instance=ExtResource("19_lhkum")]
+position = Vector2(148, 284)
+rotation = 1.81934
 
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
 position = Vector2(0, -480)
@@ -241,25 +277,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FisheyeLens" type="ColorRect" parent="UI"]
-visible = false
-material = SubResource("ShaderMaterial_yhjow")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="ProgressBar" type="TextureProgressBar" parent="UI"]
 unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -757.0
-offset_right = -39.0
-offset_bottom = 106.0
-grow_horizontal = 0
-scale = Vector2(0.47228, 0.517114)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(0.999621, 1.09452)
 texture_over = ExtResource("9_t3lry")
 texture_progress = ExtResource("10_hwnto")
 
@@ -272,49 +299,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -161.5
-offset_top = -26.5
+offset_top = -35.0
 offset_right = 161.5
-offset_bottom = 26.5
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_j2t6x")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 25
 text = "Wave 1"
 horizontal_alignment = 1
-
-[node name="WaveBar" type="TextureProgressBar" parent="UI"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-scale = Vector2(0.709357, 1.03378)
-
-[node name="HealthBar" type="TextureProgressBar" parent="UI"]
-unique_name_in_owner = true
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -785.0
-offset_top = -247.0
-offset_right = -176.0
-offset_bottom = -41.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.570112, 0.570112)
-value = 100.0
-texture_over = ExtResource("12_wayy4")
-texture_progress = ExtResource("13_5utfx")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/HealthBar"]
-visible = false
-position = Vector2(122, 103)
-scale = Vector2(1.44444, 1.44444)
-texture = ExtResource("14_13p7d")
+vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="UI"]
 position = Vector2(61, 61)
@@ -333,6 +327,7 @@ text = "0"
 
 [node name="GraceLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -350,6 +345,7 @@ vertical_alignment = 1
 
 [node name="HelpText" type="Label" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 81.0

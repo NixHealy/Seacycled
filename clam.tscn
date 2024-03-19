@@ -1,9 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca8n5tvc27gn2"]
+[gd_scene load_steps=14 format=3 uid="uid://ca8n5tvc27gn2"]
 
 [ext_resource type="Texture2D" uid="uid://350yvsaq8qou" path="res://img/open.png" id="1_6t1s4"]
 [ext_resource type="Script" path="res://clam.gd" id="1_fp5fb"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="3_26dmg"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_pgus4"]
-[ext_resource type="Texture2D" path="res://img/clam_popup.png" id="4_rh8pm"]
+[ext_resource type="Texture2D" uid="uid://bitqv66axu32l" path="res://img/clam_popup.png" id="4_rh8pm"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_p57fa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_861pc"]
+resource_local_to_scene = true
+shader = ExtResource("3_26dmg")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svmmi"]
+resource_local_to_scene = true
+shader = ExtResource("3_26dmg")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = 0.0
+shader_parameter/alpha = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1dga6"]
+resource_local_to_scene = true
+shader = ExtResource("3_26dmg")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ib7a"]
+resource_local_to_scene = true
+shader = ExtResource("3_26dmg")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iour"]
 size = Vector2(26, 91)
@@ -23,18 +57,58 @@ script = ExtResource("1_fp5fb")
 unique_name_in_owner = true
 texture = ExtResource("1_6t1s4")
 
+[node name="Outline" type="Node2D" parent="Sprite2D"]
+unique_name_in_owner = true
+show_behind_parent = true
+scale = Vector2(6.82324, 6.82324)
+
+[node name="Right" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_861pc")
+position = Vector2(-2.76103, 0)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("1_6t1s4")
+offset = Vector2(20, 0)
+
+[node name="Down" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_svmmi")
+position = Vector2(-1.19209e-07, -2.54013)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("1_6t1s4")
+offset = Vector2(0, 20)
+
+[node name="Left" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_1dga6")
+position = Vector2(2.49994, 0)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("1_6t1s4")
+offset = Vector2(-20, 0)
+
+[node name="Up" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_2ib7a")
+position = Vector2(0, 2.49994)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("1_6t1s4")
+offset = Vector2(0, -20)
+
 [node name="TopCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-49, -9.5)
 shape = SubResource("RectangleShape2D_7iour")
 
 [node name="BottomCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, 41)
 shape = SubResource("RectangleShape2D_f0mr5")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_mask = 3
 
 [node name="FullCollision" type="CollisionShape2D" parent="Area2D"]
@@ -68,6 +142,14 @@ metadata/_edit_use_anchors_ = true
 [node name="Popup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
+z_index = 20
 position = Vector2(-56, -62)
 scale = Vector2(0.490001, 0.490001)
 texture = ExtResource("4_rh8pm")
+
+[node name="Speech" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1, -53)
+scale = Vector2(0.098789, 0.098789)
+texture = ExtResource("6_p57fa")

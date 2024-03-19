@@ -10,6 +10,8 @@ var is_open = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	%Sprite2D.set_texture(close_tex)
+	for node in %Outline.get_children():
+		node.set_texture(close_tex)
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)
 	global_position.y += 130
@@ -50,28 +52,39 @@ func _process(delta):
 			#%Help.visible = true
 			#%HelpLabel.text = "..."
 			%Popup.visible = false
+			%Speech.visible = true
 			for body in %Area2D.get_overlapping_bodies():
 				if body.is_in_group("player"):
 					#%HelpLabel.text = "I'll stop those enemies in their path!\n[Cost: 2 Chumks]"
 					%Popup.visible = true
+					%Speech.visible = false
 	else:
 		%Help.visible = false
 		%Popup.visible = false
+		%Speech.visible = false
 		
 	if is_open:
 		%Help.visible = false
 		%Popup.visible = false
+		%Speech.visible = false
 
 func open():
+	is_open = true 
 	%Sprite2D.set_texture(open_tex)
+	for node in %Outline.get_children():
+			node.set_texture(open_tex)
+			node.material.set_shader_parameter("alpha", 1.0)
 	%TopCollision.set_deferred("disabled", false)
 	%BottomCollision.set_deferred("disabled", false)
-	is_open = true 
 	global_position.y -= 120
 
 func close():
+	is_open = false 
 	%Sprite2D.set_texture(close_tex)
+	for node in %Outline.get_children():
+		if node.get_parent().get_parent().get_parent().is_open == false:
+			node.set_texture(open_tex)
+			node.material.set_shader_parameter("alpha", 0.0)
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)
-	is_open = false 
 	global_position.y += 120

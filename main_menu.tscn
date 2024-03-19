@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dj2o51erpofrv"]
+[gd_scene load_steps=15 format=3 uid="uid://dj2o51erpofrv"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_frbnv"]
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_27q0f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c8tcox3gq38ds" path="res://img/menus/MM Quit-05.png" id="5_rk2in"]
 [ext_resource type="Texture2D" uid="uid://dh8wc8tleb6dt" path="res://img/menus/MM Options.png" id="5_vs4eg"]
 [ext_resource type="Texture2D" uid="uid://bw6j6amowm00d" path="res://img/menus/Options menu Base.png" id="7_hos4d"]
+[ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="7_j14jv"]
 [ext_resource type="Texture2D" uid="uid://8uegd3w8jb1q" path="res://img/menus/Accept-06.png" id="8_jp87j"]
 [ext_resource type="Texture2D" uid="uid://d1lyifbsbxhgj" path="res://img/menus/Cancel-06.png" id="9_m6cv4"]
 
@@ -15,6 +16,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b7w3w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uw3av"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20j1a"]
+size = Vector2(478.712, 259.727)
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_frbnv")
@@ -82,6 +86,19 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_uw3av")
 keep_pressed_outside = true
 icon = ExtResource("5_rk2in")
 flat = true
+
+[node name="Fish" type="CharacterBody2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+position = Vector2(834.849, 494.625)
+scale = Vector2(0.19636, 0.19636)
+
+[node name="FishSprite" type="Sprite2D" parent="CanvasLayer/Fish"]
+unique_name_in_owner = true
+texture = ExtResource("7_j14jv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Fish"]
+position = Vector2(0.770508, -0.636719)
+shape = SubResource("RectangleShape2D_20j1a")
 
 [node name="OptionsMenu" type="Sprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true

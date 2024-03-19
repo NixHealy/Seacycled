@@ -17,7 +17,6 @@ func _process(delta):
 	%Sprite2D.material.set_shader_parameter("desaturate_strength", desat) #makes it less saturated
 														#probably change to different texture instead when we have the art
 	var polluted = 0
-	var touching = 0
 	
 	for body in %OutsideArea.get_overlapping_bodies():
 		if body.is_in_group("pollution"):
@@ -53,16 +52,20 @@ func _process(delta):
 						health += 5
 
 	if health <= 0: #oh no its dead
-		health = 0
 		died.emit() #let other things know its dead
+		
+	%HealthBar.value = health
 
 func _on_hit_area_body_entered(body):
 	if body.is_in_group("enemy"): #maybe wanna make the enemy itself responsible for much damage it deals
-		if body.is_in_group("crab"):
-			health -= 3
-		elif body.is_in_group("parrotfish"):
-			health -= 12 # Double damage for this enemy type
+		if body.resisted == true:
+			health -= 1
 		else:
-			health -= 6
+			if body.is_in_group("crab"):
+				health -= 3
+			elif body.is_in_group("parrotfish"):
+				health -= 12 # Double damage for this enemy type
+			else:
+				health -= 6
 		body.queue_free()
 		%DamageSound.play()

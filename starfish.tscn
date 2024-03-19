@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://dv4abo40v6wop"]
+
+[ext_resource type="Texture2D" uid="uid://dacfiu38imeh8" path="res://img/star.png" id="1_equos"]
+[ext_resource type="Script" path="res://starfish.gd" id="1_joj3q"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="3_j5k01"]
+[ext_resource type="Texture2D" uid="uid://ngwy0au8xd4r" path="res://img/star_popup.png" id="4_7uuj4"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="4_jd1si"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqhlq"]
+shader = ExtResource("3_j5k01")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60jed"]
+shader = ExtResource("3_j5k01")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = 0.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sy07f"]
+shader = ExtResource("3_j5k01")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35573"]
+shader = ExtResource("3_j5k01")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_861xy"]
+size = Vector2(60, 58)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkc48"]
+radius = 202.121
+
+[node name="Starfish" type="Area2D" groups=["starfish"]]
+script = ExtResource("1_joj3q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("1_equos")
+
+[node name="Outline" type="Node2D" parent="Sprite2D"]
+unique_name_in_owner = true
+show_behind_parent = true
+scale = Vector2(6.82324, 6.82324)
+
+[node name="Right" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_nqhlq")
+position = Vector2(-2.19734, 0)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("1_equos")
+offset = Vector2(20, 0)
+
+[node name="Down" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_60jed")
+position = Vector2(-1.19209e-07, -1.97645)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("1_equos")
+offset = Vector2(0, 20)
+
+[node name="Left" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_sy07f")
+position = Vector2(1.93625, 0)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("1_equos")
+offset = Vector2(-20, 0)
+
+[node name="Up" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_35573")
+position = Vector2(0, 1.93625)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("1_equos")
+offset = Vector2(0, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_861xy")
+
+[node name="Armour" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_layer = 0
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Armour"]
+shape = SubResource("CircleShape2D_fkc48")
+
+[node name="Speech" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-2, -91)
+scale = Vector2(0.098789, 0.098789)
+texture = ExtResource("4_jd1si")
+
+[node name="Popup" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 20
+position = Vector2(12, -141)
+texture = ExtResource("4_7uuj4")
+
+[connection signal="body_entered" from="Armour" to="." method="_on_armour_body_entered"]
