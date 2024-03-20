@@ -84,6 +84,7 @@ volume_db = 1.0
 
 [node name="Popup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 20
 texture_filter = 1
 position = Vector2(-6, -118)

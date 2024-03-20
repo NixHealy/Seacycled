@@ -4,6 +4,9 @@ extends StaticBody2D
 @onready var player = get_node("/root/Main/Player") #fetches the coral node
 @onready var vignette = get_node( "/root/Main/UI/Vignette")
 @onready var main = get_node("/root/Main") #fetches the main node
+
+var is_polluted = false
+
 signal died
 
 func _ready():
@@ -21,6 +24,11 @@ func _process(delta):
 	for body in %OutsideArea.get_overlapping_bodies():
 		if body.is_in_group("pollution"):
 			polluted += 0.1
+			
+	if polluted > 0:
+		is_polluted = true
+	else:
+		is_polluted = false
 	
 	%Sprite2D.material.set_shader_parameter("pollution_strength", polluted)
 	health -= polluted * delta * 3 #more pollution means loses health faster

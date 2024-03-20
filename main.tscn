@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=38 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dv4abo40v6wop" path="res://starfish.tscn" id="8_go77r"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="9_j2t6x"]
 [ext_resource type="Texture2D" uid="uid://carqqmb8dkbx5" path="res://img/wave_outline.png" id="9_t3lry"]
+[ext_resource type="PackedScene" uid="uid://di11fm2227b87" path="res://wrasse.tscn" id="10_8fnf1"]
 [ext_resource type="Shader" path="res://colorblind.gdshader" id="10_dfed1"]
 [ext_resource type="Texture2D" uid="uid://cumfkivn34ais" path="res://img/wave_bar.png" id="10_hwnto"]
 [ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="12_wf2ut"]
@@ -259,8 +260,12 @@ rotation = 0.90967
 position = Vector2(241, 222)
 rotation = 1.81934
 
+[node name="Wrasse" parent="." instance=ExtResource("10_8fnf1")]
+position = Vector2(608, -450)
+scale = Vector2(4, 4)
+
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
-position = Vector2(0, -480)
+position = Vector2(-687, -476)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

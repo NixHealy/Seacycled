@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b07b250vvlv54"]
+[gd_scene load_steps=20 format=3 uid="uid://b07b250vvlv54"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_luprc"]
 [ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="2_3cbqf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://t6vfj73vqwug" path="res://img/crab.png" id="4_h5eh7"]
 [ext_resource type="AudioStream" uid="uid://cnmg27hif0780" path="res://sound/player_move.wav" id="5_52a2h"]
 [ext_resource type="AudioStream" uid="uid://cw4rqjbhpyc8" path="res://sound/player_attack.wav" id="6_5w1nr"]
+[ext_resource type="Texture2D" uid="uid://cfhcg8l5hhfv5" path="res://img/wrasse.png" id="6_w3drv"]
 [ext_resource type="Texture2D" uid="uid://dacfiu38imeh8" path="res://img/star.png" id="9_1odab"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ucecr"]
@@ -80,6 +81,13 @@ visible = false
 position = Vector2(5, -57)
 scale = Vector2(0.25337, 0.25337)
 texture = ExtResource("3_36utc")
+
+[node name="Wrasse" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(43, 5)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_w3drv")
 
 [node name="Fish" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -169,7 +177,7 @@ one_shot = true
 
 [node name="CooldownTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.1
+wait_time = 0.5
 one_shot = true
 
 [node name="ClicklessTimer" type="Timer" parent="."]

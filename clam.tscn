@@ -142,6 +142,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Popup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 20
 position = Vector2(-56, -62)
 scale = Vector2(0.490001, 0.490001)

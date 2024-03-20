@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=3 uid="uid://di11fm2227b87"]
+
+[ext_resource type="Script" path="res://wrasse.gd" id="1_upti6"]
+[ext_resource type="Texture2D" uid="uid://cfhcg8l5hhfv5" path="res://img/wrasse.png" id="2_xrj75"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="3_rrewk"]
+[ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="4_vdttl"]
+[ext_resource type="Texture2D" uid="uid://cly2ylkg1knnc" path="res://img/wrasse_popup.png" id="5_sf4lu"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_07lnm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yp3e"]
+shader = ExtResource("3_rrewk")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fq4mr"]
+shader = ExtResource("3_rrewk")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = 0.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3tt5"]
+shader = ExtResource("3_rrewk")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo67c"]
+shader = ExtResource("3_rrewk")
+shader_parameter/red = 0.0
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vcko"]
+size = Vector2(131, 29.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k41ry"]
+size = Vector2(160, 49.5)
+
+[node name="Wrasse" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+collision_layer = 0
+collision_mask = 0
+platform_on_leave = 2
+platform_floor_layers = 0
+script = ExtResource("1_upti6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.13396, 0.13396)
+texture = ExtResource("2_xrj75")
+
+[node name="Outline" type="Node2D" parent="Sprite2D"]
+unique_name_in_owner = true
+show_behind_parent = true
+scale = Vector2(6.82324, 6.82324)
+
+[node name="Right" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_0yp3e")
+position = Vector2(0.70687, 1.19209e-07)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("2_xrj75")
+offset = Vector2(20, 0)
+
+[node name="Down" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_fq4mr")
+position = Vector2(-1.19209e-07, -0.7133)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("2_xrj75")
+offset = Vector2(0, 20)
+
+[node name="Left" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_w3tt5")
+position = Vector2(0.673105, 0)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("2_xrj75")
+offset = Vector2(-20, 0)
+
+[node name="Up" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_yo67c")
+position = Vector2(0, 0.673105)
+scale = Vector2(0.146558, 0.146558)
+texture = ExtResource("2_xrj75")
+offset = Vector2(0, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_8vcko")
+
+[node name="StunTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+
+[node name="Help" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -108.5
+offset_top = -110.5
+offset_right = 180.5
+offset_bottom = -21.5
+scale = Vector2(0.799999, 0.799999)
+color = Color(0.266667, 0.266667, 0.266667, 0.537255)
+
+[node name="HelpLabel" type="Label" parent="Help"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_vdttl")
+text = "Here, I'll paralyse those mutants!
+[Cost: 2 Chumks]"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_k41ry")
+
+[node name="Popup" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-2, 66.6667)
+scale = Vector2(0.371626, 0.371626)
+texture = ExtResource("5_sf4lu")
+
+[node name="Speech" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-1.36301, 36.5)
+scale = Vector2(0.0629278, 0.0629278)
+texture = ExtResource("6_07lnm")
+
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
