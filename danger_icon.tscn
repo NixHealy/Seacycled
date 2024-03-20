@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://danger_icon.gd" id="2_g7dtj"]
 
 [node name="DangerIcon" type="Sprite2D"]
+texture_filter = 1
 scale = Vector2(0.300457, 0.300457)
 texture = ExtResource("1_nk4e3")
 script = ExtResource("2_g7dtj")

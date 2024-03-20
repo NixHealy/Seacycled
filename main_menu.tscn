@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dj2o51erpofrv"]
+[gd_scene load_steps=13 format=3 uid="uid://dj2o51erpofrv"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_frbnv"]
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_27q0f"]
@@ -6,10 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://x146rbfy6ehy" path="res://img/menus/Pause How to play-05.png" id="4_l7lu6"]
 [ext_resource type="Texture2D" uid="uid://c8tcox3gq38ds" path="res://img/menus/MM Quit-05.png" id="5_rk2in"]
 [ext_resource type="Texture2D" uid="uid://dh8wc8tleb6dt" path="res://img/menus/MM Options.png" id="5_vs4eg"]
-[ext_resource type="Texture2D" uid="uid://bw6j6amowm00d" path="res://img/menus/Options menu Base.png" id="7_hos4d"]
 [ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="7_j14jv"]
-[ext_resource type="Texture2D" uid="uid://8uegd3w8jb1q" path="res://img/menus/Accept-06.png" id="8_jp87j"]
-[ext_resource type="Texture2D" uid="uid://d1lyifbsbxhgj" path="res://img/menus/Cancel-06.png" id="9_m6cv4"]
+[ext_resource type="PackedScene" uid="uid://h262r6rapa1q" path="res://options_menu.tscn" id="8_dpv20"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yote7"]
 
@@ -35,17 +33,17 @@ texture = ExtResource("2_27q0f")
 expand_mode = 3
 
 [node name="Title" type="Label" parent="CanvasLayer"]
-offset_left = 37.0
-offset_top = 87.0
-offset_right = 663.0
-offset_bottom = 262.0
+offset_left = 131.0
+offset_top = 54.0
+offset_right = 757.0
+offset_bottom = 229.0
 theme_override_font_sizes/font_size = 100
 text = "SEACYCLED"
 
 [node name="Play" type="Button" parent="CanvasLayer"]
-offset_top = 262.0
+offset_top = 268.0
 offset_right = 507.0
-offset_bottom = 380.0
+offset_bottom = 386.0
 scale = Vector2(0.8, 0.8)
 theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yote7")
@@ -54,9 +52,10 @@ icon = ExtResource("3_yuct6")
 flat = true
 
 [node name="HowTo" type="Button" parent="CanvasLayer"]
-offset_top = 356.0
-offset_right = 507.0
-offset_bottom = 474.0
+offset_left = 15.0
+offset_top = 342.0
+offset_right = 522.0
+offset_bottom = 460.0
 scale = Vector2(0.799961, 0.799961)
 theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b7w3w")
@@ -65,9 +64,9 @@ icon = ExtResource("4_l7lu6")
 flat = true
 
 [node name="Options" type="Button" parent="CanvasLayer"]
-offset_top = 450.0
+offset_top = 412.0
 offset_right = 507.0
-offset_bottom = 568.0
+offset_bottom = 530.0
 scale = Vector2(0.799961, 0.799961)
 theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b7w3w")
@@ -76,9 +75,10 @@ icon = ExtResource("5_vs4eg")
 flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer"]
-offset_top = 544.0
-offset_right = 507.0
-offset_bottom = 662.0
+offset_left = -1.0
+offset_top = 484.0
+offset_right = 506.0
+offset_bottom = 602.0
 scale = Vector2(0.8, 0.8)
 theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
@@ -100,41 +100,11 @@ texture = ExtResource("7_j14jv")
 position = Vector2(0.770508, -0.636719)
 shape = SubResource("RectangleShape2D_20j1a")
 
-[node name="OptionsMenu" type="Sprite2D" parent="CanvasLayer"]
+[node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource("8_dpv20")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(559, 338)
-texture = ExtResource("7_hos4d")
-
-[node name="Accept" type="Button" parent="CanvasLayer/OptionsMenu"]
-offset_left = -328.0
-offset_top = 157.0
-offset_right = -42.0
-offset_bottom = 277.0
-scale = Vector2(0.8, 0.8)
-theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uw3av")
-keep_pressed_outside = true
-icon = ExtResource("8_jp87j")
-flat = true
-
-[node name="Cancel" type="Button" parent="CanvasLayer/OptionsMenu"]
-offset_left = 50.9999
-offset_top = 157.0
-offset_right = 337.0
-offset_bottom = 277.0
-scale = Vector2(0.8, 0.8)
-theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uw3av")
-keep_pressed_outside = true
-icon = ExtResource("9_m6cv4")
-flat = true
 
 [connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/HowTo" to="." method="_on_how_to_pressed"]
 [connection signal="pressed" from="CanvasLayer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="CanvasLayer/OptionsMenu/Accept" to="." method="_on_accept_pressed"]
-[connection signal="pressed" from="CanvasLayer/OptionsMenu/Cancel" to="." method="_on_cancel_pressed"]

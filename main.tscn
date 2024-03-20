@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=37 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -20,12 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://bjbkmndxtwfyn" path="res://img/menus/Pause resume-05.png" id="20_oqbjd"]
 [ext_resource type="AudioStream" uid="uid://dj1cmvfr50jvv" path="res://sound/countdown.wav" id="21_5nrcv"]
 [ext_resource type="Texture2D" uid="uid://x146rbfy6ehy" path="res://img/menus/Pause How to play-05.png" id="21_d4sdt"]
+[ext_resource type="PackedScene" uid="uid://h262r6rapa1q" path="res://options_menu.tscn" id="22_3jogt"]
 [ext_resource type="Texture2D" uid="uid://blwc78f4mbch2" path="res://img/menus/Pause options-05.png" id="22_gdwgj"]
 [ext_resource type="Texture2D" uid="uid://b2j3nn7n6i2nm" path="res://img/menus/Pause Main menu-05.png" id="23_3qb0o"]
 [ext_resource type="Texture2D" uid="uid://ciip0y5g2oetg" path="res://img/menus/Pause Quit game-05.png" id="24_ocj2h"]
-[ext_resource type="Texture2D" uid="uid://bw6j6amowm00d" path="res://img/menus/Options menu Base.png" id="25_ffajm"]
-[ext_resource type="Texture2D" uid="uid://8uegd3w8jb1q" path="res://img/menus/Accept-06.png" id="26_gxab2"]
-[ext_resource type="Texture2D" uid="uid://d1lyifbsbxhgj" path="res://img/menus/Cancel-06.png" id="27_jxjr3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sscud"]
 shader = ExtResource("3_6gi61")
@@ -102,8 +100,6 @@ void fragment() {
 shader = SubResource("Shader_kxinj")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg3vn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2j3f2"]
 
 [node name="Main" type="Node"]
 process_mode = 1
@@ -248,19 +244,19 @@ rotation = 0.277678
 [node name="Urchins" type="Node" parent="."]
 
 [node name="Urchin5" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(61, 197)
+position = Vector2(154, 135)
 rotation = 0.391504
 
 [node name="Urchin4" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(83, 262)
+position = Vector2(176, 200)
 rotation = 1.12983
 
 [node name="Urchin2" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(140, 214)
+position = Vector2(233, 152)
 rotation = 0.90967
 
 [node name="Urchin3" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(148, 284)
+position = Vector2(241, 222)
 rotation = 1.81934
 
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
@@ -311,19 +307,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="UI"]
+texture_filter = 1
 position = Vector2(61, 61)
-scale = Vector2(0.747804, 0.747804)
+scale = Vector2(1.79342, 1.79342)
 texture = ExtResource("15_16mie")
 
 [node name="ChumkLabel" type="Label" parent="UI/Sprite2D"]
 unique_name_in_owner = true
-offset_left = 85.5839
-offset_top = -77.5604
-offset_right = 252.584
-offset_bottom = 89.4396
+offset_left = 36.8011
+offset_top = -37.9163
+offset_right = 65.8011
+offset_bottom = 42.0837
 theme_override_fonts/font = ExtResource("9_j2t6x")
-theme_override_font_sizes/font_size = 95
+theme_override_font_sizes/font_size = 45
 text = "0"
+vertical_alignment = 1
 
 [node name="GraceLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
@@ -519,37 +517,9 @@ keep_pressed_outside = true
 icon = ExtResource("24_ocj2h")
 flat = true
 
-[node name="OptionsMenu" type="Sprite2D" parent="PauseMenu"]
+[node name="OptionsMenu" parent="PauseMenu" instance=ExtResource("22_3jogt")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(559, 338)
-texture = ExtResource("25_ffajm")
-
-[node name="Accept" type="Button" parent="PauseMenu/OptionsMenu"]
-offset_left = -328.0
-offset_top = 157.0
-offset_right = -42.0
-offset_bottom = 277.0
-scale = Vector2(0.8, 0.8)
-theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2j3f2")
-keep_pressed_outside = true
-icon = ExtResource("26_gxab2")
-flat = true
-
-[node name="Cancel" type="Button" parent="PauseMenu/OptionsMenu"]
-offset_left = 50.9999
-offset_top = 157.0
-offset_right = 337.0
-offset_bottom = 277.0
-scale = Vector2(0.8, 0.8)
-theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2j3f2")
-keep_pressed_outside = true
-icon = ExtResource("27_jxjr3")
-flat = true
 
 [node name="Timers" type="Node" parent="."]
 unique_name_in_owner = true
@@ -600,8 +570,6 @@ autoplay = true
 [connection signal="pressed" from="PauseMenu/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="PauseMenu/OptionsMenu/Accept" to="." method="_on_accept_pressed"]
-[connection signal="pressed" from="PauseMenu/OptionsMenu/Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timers/WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="Timers/EnemyTimer" to="." method="_on_enemy_timer_timeout"]

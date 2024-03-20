@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://t6vfj73vqwug" path="res://img/crab.png" id="3_v70cg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y0ab"]
-size = Vector2(38.1369, 33.7784)
+size = Vector2(480, 450)
 
 [node name="CrabEnemy" type="CharacterBody2D" groups=["crab", "enemy"]]
 z_index = 1
-scale = Vector2(1.83549, 1.83549)
+texture_filter = 1
+scale = Vector2(0.2, 0.2)
 collision_layer = 2
 collision_mask = 68
 platform_floor_layers = 4294967040
@@ -16,7 +17,6 @@ script = ExtResource("2_n5crf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(-0.0753884, 0.0753884)
 texture = ExtResource("3_v70cg")
 
 [node name="Outline" type="Node2D" parent="Sprite2D"]
@@ -53,7 +53,8 @@ texture = ExtResource("3_v70cg")
 offset = Vector2(0, -20)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-2.0783e-06, -0.544813)
+position = Vector2(3.8147e-05, -3.44217e-05)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2y0ab")
 
 [node name="StunTimer" type="Timer" parent="."]

@@ -11,6 +11,12 @@ func _ready():
 	%GraceLabel.visible = false
 	%HelpText.visible = false
 	
+	var config = ConfigFile.new()
+	config.load("user://options.ini")
+	var volume = config.get_value("Options", "volume")
+	if volume < 100:
+		%BackgroundMusic.volume_db = -volume
+	
 
 func _process(delta):
 	%StartLabel.text = str(ceil(%StartTimer.time_left - 1))
@@ -193,12 +199,10 @@ func _on_resume_pressed():
 	%OptionsMenu.visible = false
 	
 func _on_how_to_pressed():
-	#get_tree().paused = false
-	#get_tree().change_scene_to_file("res://tutorial.tscn")
-	pass
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://tutorial.tscn")
 	
 func _on_options_pressed():
-	%OptionsMenu.can_process()
 	%OptionsMenu.visible = true
 
 func _on_main_menu_pressed():
@@ -207,9 +211,3 @@ func _on_main_menu_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
-
-func _on_accept_pressed():
-	%OptionsMenu.visible = false
-
-func _on_cancel_pressed():
-	%OptionsMenu.visible = false

@@ -41,6 +41,7 @@ size = Vector2(60, 58)
 radius = 202.121
 
 [node name="Starfish" type="Area2D" groups=["starfish"]]
+texture_filter = 1
 script = ExtResource("1_joj3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -99,15 +100,17 @@ shape = SubResource("CircleShape2D_fkc48")
 
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-2, -91)
 scale = Vector2(0.098789, 0.098789)
 texture = ExtResource("4_jd1si")
 
 [node name="Popup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 z_index = 20
-position = Vector2(12, -141)
+texture_filter = 1
+position = Vector2(0, -171)
+scale = Vector2(0.944771, 0.944771)
 texture = ExtResource("4_7uuj4")
 
 [connection signal="body_entered" from="Armour" to="." method="_on_armour_body_entered"]

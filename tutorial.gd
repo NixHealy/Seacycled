@@ -54,6 +54,13 @@ func spawn_mob():
 		new_mob.global_position = %Path2.global_position
 	
 	add_child(new_mob) #adds it to the scene
+	
+	var danger = preload("res://danger_icon.tscn").instantiate()
+	if numPath == 1:
+		danger.global_position = Vector2(900, new_mob.global_position.y)
+	if numPath == 2:
+		danger.global_position = Vector2(-900, new_mob.global_position.y)
+	add_child(danger)
 
 func _on_mouse_animation_finished():
 	%MouseSprite.play()

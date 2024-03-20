@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://clkrmidcikgc4"]
+[gd_scene load_steps=36 format=3 uid="uid://clkrmidcikgc4"]
 
 [ext_resource type="Script" path="res://tutorial.gd" id="1_2u5p5"]
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_8eseu"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="7_exgjr"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="8_c8yt7"]
 [ext_resource type="Shader" path="res://fisheye.gdshader" id="9_vxek3"]
+[ext_resource type="PackedScene" uid="uid://dv4abo40v6wop" path="res://starfish.tscn" id="9_w7jo1"]
 [ext_resource type="Texture2D" uid="uid://carqqmb8dkbx5" path="res://img/wave_outline.png" id="10_8tuty"]
 [ext_resource type="Texture2D" uid="uid://cumfkivn34ais" path="res://img/wave_bar.png" id="11_j10ag"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="12_buv58"]
@@ -195,6 +196,38 @@ scale = Vector2(-3, -3)
 unique_name_in_owner = true
 position = Vector2(-737, 369)
 scale = Vector2(-3, 3)
+
+[node name="Urchins" type="Node" parent="."]
+
+[node name="Urchin5" parent="Urchins" instance=ExtResource("19_81q15")]
+position = Vector2(61, 197)
+rotation = 0.391504
+
+[node name="Urchin4" parent="Urchins" instance=ExtResource("19_81q15")]
+position = Vector2(83, 262)
+rotation = 1.12983
+
+[node name="Urchin2" parent="Urchins" instance=ExtResource("19_81q15")]
+position = Vector2(140, 214)
+rotation = 0.90967
+
+[node name="Urchin3" parent="Urchins" instance=ExtResource("19_81q15")]
+position = Vector2(148, 284)
+rotation = 1.81934
+
+[node name="Starfishes" type="Node" parent="."]
+
+[node name="Starfish" parent="Starfishes" instance=ExtResource("9_w7jo1")]
+position = Vector2(-89, -295)
+rotation = -0.23453
+
+[node name="Starfish2" parent="Starfishes" instance=ExtResource("9_w7jo1")]
+position = Vector2(-161, -197)
+rotation = -0.7078
+
+[node name="Starfish3" parent="Starfishes" instance=ExtResource("9_w7jo1")]
+position = Vector2(-81, -223)
+rotation = 0.277678
 
 [node name="Ray" parent="." instance=ExtResource("7_exgjr")]
 position = Vector2(0, -480)
@@ -447,21 +480,6 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_buv58")
 theme_override_font_sizes/font_size = 56
 text = "Unpause"
-
-[node name="Urchin" parent="." instance=ExtResource("19_81q15")]
-position = Vector2(-289, -278)
-
-[node name="Urchin2" parent="." instance=ExtResource("19_81q15")]
-position = Vector2(247, -25)
-
-[node name="Urchin3" parent="." instance=ExtResource("19_81q15")]
-position = Vector2(-235, 193)
-
-[node name="Urchin4" parent="." instance=ExtResource("19_81q15")]
-position = Vector2(149, -287)
-
-[node name="Urchin5" parent="." instance=ExtResource("19_81q15")]
-position = Vector2(203, 260)
 
 [node name="Timers" type="Node" parent="."]
 unique_name_in_owner = true

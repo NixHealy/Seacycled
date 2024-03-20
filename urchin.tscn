@@ -40,6 +40,7 @@ size = Vector2(173, 146)
 
 [node name="Urchin" type="StaticBody2D" groups=["urchin"]]
 process_priority = -1
+texture_filter = 1
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_j7ua7")
@@ -134,6 +135,7 @@ texture = ExtResource("4_lxkg6")
 
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-2, -67)
 scale = Vector2(0.0990854, 0.0990854)
 texture = ExtResource("6_3hi57")

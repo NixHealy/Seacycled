@@ -48,7 +48,7 @@ func _process(delta):
 		
 	if main.grace == true and main.tutorial == false:
 		modulate.a = 1
-		if player.chumks >= 2 and main.all_collected == true:
+		if main.all_collected == true:
 			#%Help.visible = true
 			#%HelpLabel.text = "..."
 			%Popup.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b07b250vvlv54"]
+[gd_scene load_steps=19 format=3 uid="uid://b07b250vvlv54"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_luprc"]
 [ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="2_3cbqf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://vpnvmli7kfgk" path="res://img/attacking.png" id="2_vhndm"]
 [ext_resource type="Texture2D" uid="uid://cb6bfht8u8v6k" path="res://img/new_urchin.png" id="3_36utc"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="3_ivnip"]
+[ext_resource type="Texture2D" uid="uid://t6vfj73vqwug" path="res://img/crab.png" id="4_h5eh7"]
 [ext_resource type="AudioStream" uid="uid://cnmg27hif0780" path="res://sound/player_move.wav" id="5_52a2h"]
 [ext_resource type="AudioStream" uid="uid://cw4rqjbhpyc8" path="res://sound/player_attack.wav" id="6_5w1nr"]
 [ext_resource type="Texture2D" uid="uid://dacfiu38imeh8" path="res://img/star.png" id="9_1odab"]
@@ -67,6 +68,12 @@ visible = false
 position = Vector2(67, -60)
 scale = Vector2(0.261289, 0.261289)
 texture = ExtResource("9_1odab")
+
+[node name="Crab" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(89, -14)
+scale = Vector2(0.204533, 0.204533)
+texture = ExtResource("4_h5eh7")
 
 [node name="Urchin" type="Sprite2D" parent="."]
 visible = false
@@ -162,7 +169,7 @@ one_shot = true
 
 [node name="CooldownTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.05
+wait_time = 0.1
 one_shot = true
 
 [node name="ClicklessTimer" type="Timer" parent="."]

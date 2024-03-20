@@ -42,6 +42,7 @@ size = Vector2(131, 29.5)
 size = Vector2(160, 49.5)
 
 [node name="Ray" type="CharacterBody2D"]
+texture_filter = 1
 scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 0
@@ -142,6 +143,7 @@ texture = ExtResource("4_mj3jh")
 
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-1.36301, 36.5)
 scale = Vector2(0.0629278, 0.0629278)
 texture = ExtResource("6_wvnt4")
