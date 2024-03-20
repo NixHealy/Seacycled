@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var main = get_node("/root/Main")
 @onready var player = get_node("/root/Main/Player")
 
-var activated = true
+var activated = false
 
 func _physics_process(delta):
 	%Speech.flip_v = true
