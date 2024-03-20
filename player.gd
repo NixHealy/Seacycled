@@ -16,7 +16,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if Input.is_action_just_pressed("attack") and %AttackTimer.is_stopped() and %CooldownTimer.time_left == 0: #might wanna change this so its a quick attack
+	if Input.is_action_just_pressed("attack") and %AttackTimer.is_stopped() and %CooldownTimer.is_stopped(): #might wanna change this so its a quick attack
 		#%Fish.set_texture(att_tex)						  #instead of lasting as long as you hold it
 		%Hit.visible = true
 		%AttackTimer.start()
@@ -83,7 +83,7 @@ func _physics_process(delta):
 	for body in %CollectionArea.get_overlapping_bodies():
 		if body.is_in_group("enemy") or body.is_in_group("pollution"):
 			if not body.is_in_group("spike"):
-				if %ClicklessTimer.is_stopped() == true and attacking == false and body.health > 0:
+				if %ClicklessTimer.is_stopped() == true and %CooldownTimer.is_stopped() and attacking == false and body.health > 0:
 					%ClicklessTimer.start()
 
 	var polluted = false
@@ -103,7 +103,7 @@ func _on_attack_timer_timeout():
 	attacking = false
 	#%Fish.set_texture(norm_tex)
 	%Hit.visible = false
-	%CooldownTimer.start() # Replace with function body.
+	%CooldownTimer.start()
 
 #func _on_collection_area_body_entered(body):
 	#if body.is_in_group("enemy") or body.is_in_group("pollution"):
@@ -113,7 +113,7 @@ func _on_attack_timer_timeout():
 	#%ClicklessTimer.stop()
 
 func _on_clickless_timer_timeout():
-	if %CooldownTimer.time_left == 0:
+	if %CooldownTimer.is_stopped():
 		%Hit.visible = true
 		%AttackTimer.start()
 		attacking = true

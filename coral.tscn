@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bw1af6olg1gwj"]
 
 [ext_resource type="Script" path="res://coral.gd" id="1_0simb"]
-[ext_resource type="Texture2D" uid="uid://c62d40prqc18g" path="res://img/coral.png" id="1_eke8b"]
 [ext_resource type="Shader" path="res://coral.gdshader" id="2_qa8xe"]
+[ext_resource type="Texture2D" uid="uid://b586ohuayph3t" path="res://img/newcoral.png" id="3_hxoqs"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="4_ygijg"]
 [ext_resource type="AudioStream" uid="uid://bwn7sohwtesxm" path="res://sound/coral_damage.wav" id="5_fxhn3"]
 [ext_resource type="Texture2D" uid="uid://bmunw4x6e3t1a" path="res://img/heal_popup.png" id="6_bcs3v"]
@@ -24,7 +24,8 @@ script = ExtResource("1_0simb")
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_cetts")
 position = Vector2(1.5, -93)
-texture = ExtResource("1_eke8b")
+scale = Vector2(2.12, 2.12)
+texture = ExtResource("3_hxoqs")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -36,21 +37,19 @@ unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 255
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitArea"]
-visible = false
-scale = Vector2(0.9, 0.9)
-polygon = PackedVector2Array(-160, -57, -379, 146, -450, 323, -26, 405, 306, 428, 329, 347, 253, 196, 231, 123, 243, 50, 238, -31, 203, -58, 241, -109, 256, -225, 266, -321, 200, -434, 52, -497, -102, -491, -160, -521, -287, -518, -335, -461, -291, -351, -242, -287, -242, -199)
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HitArea"]
+position = Vector2(-1.5, -24)
+polygon = PackedVector2Array(-389, -113, -301, 63, -218, 225, -318, 382, -37, 392, 322, 392, 329, 318, 274, 188, 250, 128, 258, 51, 224, 1, 172, 4, 141, -94, 186, -172, 151, -279, 98, -353, -37, -227, -64, -412, -133, -422, -242, -374, -313, -258)
 
 [node name="OutsideArea" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(1.5, 24)
 collision_layer = 128
 collision_mask = 34
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="OutsideArea"]
 position = Vector2(-1.5, -24)
-polygon = PackedVector2Array(-209, -65, -402, 132, -478, 335, -43, 428, 316, 448, 348, 349, 274, 188, 250, 128, 258, 51, 257, -28, 220, -54, 253, -103, 271, -222, 280, -321, 214, -445, 55, -510, -100, -504, -166, -539, -296, -534, -350, -471, -312, -349, -267, -287, -273, -193)
+polygon = PackedVector2Array(-434, -154, -345, 89, -279, 204, -394, 374, -37, 392, 384, 399, 382, 316, 355, 180, 318, 127, 321, 50, 295, 10, 272, -62, 202, -120, 218, -175, 193, -290, 106, -420, 19, -396, -43, -458, -124, -490, -266, -437, -351, -311)
 
 [node name="CoralHealRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -92,6 +91,7 @@ texture = ExtResource("6_bcs3v")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 10
 texture_filter = 1
 anchors_preset = 8

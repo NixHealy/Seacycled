@@ -7,7 +7,6 @@ extends CharacterBody2D
 var activated = false
 
 func _physics_process(delta):
-	%Speech.flip_v = true
 	
 	if activated:
 		for node in %Outline.get_children():

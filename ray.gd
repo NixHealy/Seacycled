@@ -8,9 +8,7 @@ var norm_tex = load("res://img/newray.png")
 
 var activated = false
 
-func _physics_process(delta):
-	%Speech.flip_v = true
-	
+func _physics_process(delta):	
 	if activated:
 		for node in %Outline.get_children():
 			node.material.set_shader_parameter("alpha", 1.0)
@@ -27,7 +25,7 @@ func _physics_process(delta):
 			%Speech.visible = true
 			for body in %Area2D.get_overlapping_bodies():
 				if body.is_in_group("player"):
-					%HelpLabel.text = "I'll paralyse those mutants!\n[Cost: 2 Chumks]"
+					#%HelpLabel.text = "I'll paralyse those mutants!\n[Cost: 2 Chumks]"
 					%Popup.visible = true
 					%Speech.visible = false
 	else:

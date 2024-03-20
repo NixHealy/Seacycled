@@ -136,15 +136,13 @@ shape = SubResource("RectangleShape2D_k41ry")
 
 [node name="Popup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
-position = Vector2(-2, 93.5)
+position = Vector2(-10.5, -77.5)
 scale = Vector2(0.636992, 0.636992)
 texture = ExtResource("4_mj3jh")
 
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
-position = Vector2(-1.36301, 36.5)
+position = Vector2(-5.5, -41.5)
 scale = Vector2(0.0629278, 0.0629278)
 texture = ExtResource("6_wvnt4")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bibubij01hdec"]
+[gd_scene load_steps=13 format=3 uid="uid://bibubij01hdec"]
 
 [ext_resource type="Script" path="res://urchin.gd" id="1_j7ua7"]
 [ext_resource type="Texture2D" uid="uid://cb6bfht8u8v6k" path="res://img/new_urchin.png" id="2_vql5g"]
@@ -37,6 +37,9 @@ shader_parameter/alpha = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at4k4"]
 size = Vector2(173, 146)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bnu6a"]
+radius = 138.558
 
 [node name="Urchin" type="StaticBody2D" groups=["urchin"]]
 process_priority = -1
@@ -95,9 +98,8 @@ unique_name_in_owner = true
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_at4k4")
+shape = SubResource("CircleShape2D_bnu6a")
 
 [node name="Help" type="ColorRect" parent="."]
 unique_name_in_owner = true

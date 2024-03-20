@@ -119,11 +119,12 @@ layer = -100
 follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(0, -265)
-scale = Vector2(1.14081, 1.14081)
+position = Vector2(-8, -185)
+scale = Vector2(2.87742, 2.87742)
 texture = ExtResource("2_gak5t")
 
 [node name="Desaturate" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_sscud")
 anchors_preset = 15
 anchor_right = 1.0
@@ -135,7 +136,7 @@ grow_vertical = 2
 
 [node name="Coral" parent="." instance=ExtResource("2_2irvf")]
 unique_name_in_owner = true
-position = Vector2(2, 134)
+position = Vector2(2, 60)
 collision_mask = 0
 
 [node name="Walls" type="StaticBody2D" parent="."]
@@ -231,41 +232,41 @@ scale = Vector2(-3, 3)
 [node name="Starfishes" type="Node" parent="."]
 
 [node name="Starfish" parent="Starfishes" instance=ExtResource("8_go77r")]
-position = Vector2(-89, -295)
+position = Vector2(-0.999992, -150)
 rotation = -0.23453
 
 [node name="Starfish2" parent="Starfishes" instance=ExtResource("8_go77r")]
-position = Vector2(-161, -197)
+position = Vector2(-73, -52)
 rotation = -0.7078
 
 [node name="Starfish3" parent="Starfishes" instance=ExtResource("8_go77r")]
-position = Vector2(-81, -223)
+position = Vector2(7, -78)
 rotation = 0.277678
 
 [node name="Urchins" type="Node" parent="."]
 
 [node name="Urchin5" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(154, 135)
+position = Vector2(85, 327)
 rotation = 0.391504
 
 [node name="Urchin4" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(176, 200)
+position = Vector2(107, 392)
 rotation = 1.12983
 
 [node name="Urchin2" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(233, 152)
+position = Vector2(164, 344)
 rotation = 0.90967
 
 [node name="Urchin3" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(241, 222)
+position = Vector2(172, 414)
 rotation = 1.81934
 
 [node name="Wrasse" parent="." instance=ExtResource("10_8fnf1")]
-position = Vector2(608, -450)
+position = Vector2(181, -95)
 scale = Vector2(4, 4)
 
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
-position = Vector2(-687, -476)
+position = Vector2(-99, 181)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
