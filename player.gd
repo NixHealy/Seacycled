@@ -83,7 +83,7 @@ func _physics_process(delta):
 	for body in %CollectionArea.get_overlapping_bodies():
 		if body.is_in_group("enemy") or body.is_in_group("pollution"):
 			if not body.is_in_group("spike"):
-				if %ClicklessTimer.is_stopped() == true and %CooldownTimer.is_stopped() and attacking == false and body.health > 0:
+				if %ClicklessTimer.is_stopped() and %CooldownTimer.is_stopped() and %AttackTimer.is_stopped() and attacking == false and body.health > 0:
 					%ClicklessTimer.start()
 
 	var polluted = false

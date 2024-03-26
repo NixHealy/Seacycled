@@ -9,6 +9,9 @@ var is_open = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	%Popup.global_scale = Vector2(1, 1)
+	%Speech.global_scale = Vector2(0.2, 0.2)
+	
 	%Sprite2D.set_texture(close_tex)
 	for node in %Outline.get_children():
 		node.set_texture(close_tex)

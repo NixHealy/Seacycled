@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=40 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://cumfkivn34ais" path="res://img/wave_bar.png" id="10_hwnto"]
 [ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="12_wf2ut"]
 [ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
+[ext_resource type="FontFile" uid="uid://buh2qtgm8jfm7" path="res://font/OpenDyslexic-Bold.otf" id="17_maqr0"]
+[ext_resource type="SpriteFrames" uid="uid://ds5e4er1roso" path="res://anim/countdown.GIF" id="18_xcsmk"]
 [ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_lhkum"]
 [ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="20_a4soo"]
 [ext_resource type="Texture2D" uid="uid://bjbkmndxtwfyn" path="res://img/menus/Pause resume-05.png" id="20_oqbjd"]
@@ -356,7 +358,7 @@ offset_bottom = 81.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("9_j2t6x")
+theme_override_fonts/font = ExtResource("17_maqr0")
 theme_override_font_sizes/font_size = 46
 text = "Wave Over! "
 horizontal_alignment = 1
@@ -381,6 +383,7 @@ grow_vertical = 2
 
 [node name="StartLabel" type="Label" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -394,6 +397,15 @@ theme_override_font_sizes/font_size = 381
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CountdownSprite" type="AnimatedSprite2D" parent="UI"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(576.223, 324)
+scale = Vector2(0.767773, 0.767773)
+sprite_frames = ExtResource("18_xcsmk")
+animation = &"gif"
+autoplay = "gif"
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -570,6 +582,7 @@ autoplay = true
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
+[connection signal="animation_looped" from="UI/CountdownSprite" to="." method="_on_countdown_sprite_animation_looped"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/HowTo" to="." method="_on_how_to_pressed"]

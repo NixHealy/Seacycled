@@ -8,6 +8,9 @@ var show_popup = false
 func _ready():
 	%Popup.global_rotation_degrees = 0
 	%Speech.global_rotation = 0
+	%Popup.global_scale = Vector2(1, 1)
+	%Speech.global_scale = Vector2(0.2, 0.2)
+	%Speech.flip_h = true
 	for node in %Outline.get_children():
 		node.material.set_shader_parameter("alpha", 0.0)
 

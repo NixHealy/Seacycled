@@ -6,8 +6,11 @@ extends CharacterBody2D
 
 var activated = false
 
+func _ready():
+	%Popup.global_scale = Vector2(1, 1)
+	%Speech.global_scale = Vector2(0.2, 0.2)
+
 func _physics_process(delta):
-	
 	if activated:
 		for node in %Outline.get_children():
 			node.material.set_shader_parameter("alpha", 1.0)

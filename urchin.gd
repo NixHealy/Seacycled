@@ -8,6 +8,8 @@ var show_popup = false
 func _ready():
 	%Popup.global_rotation = 0
 	%Speech.global_rotation = 0
+	%Popup.global_scale = Vector2(1, 1)
+	%Speech.global_scale = Vector2(0.2, 0.2)
 	
 func _process(delta):
 	#only one urchin should display popup

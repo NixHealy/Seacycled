@@ -16,7 +16,6 @@ func _ready():
 	var volume = config.get_value("Options", "volume")
 	if volume < 100:
 		%BackgroundMusic.volume_db = -volume
-	
 
 func _process(delta):
 	%StartLabel.text = str(ceil(%StartTimer.time_left - 1))
@@ -211,3 +210,6 @@ func _on_main_menu_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+func _on_countdown_sprite_animation_looped():
+	%CountdownSprite.visible = false

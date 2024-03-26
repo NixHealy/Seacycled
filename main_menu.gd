@@ -3,6 +3,16 @@ extends Node
 var vx = randi_range(-100, 100)
 var vy = randi_range(-100, 100)
 
+func _ready():
+	# Create new ConfigFile object.
+	var config = ConfigFile.new()
+
+	# Store some values.
+	config.set_value("Options", "volume", "100")
+
+	# Save it to a file (overwrite if already exists).
+	config.save("user://options.ini")
+
 func _process(delta):
 	if %Fish.position.x < 700:
 		vx = vx + 2.0
@@ -40,3 +50,6 @@ func _on_options_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+func _on_background_music_finished():
+	%BackgroundMusic.play()

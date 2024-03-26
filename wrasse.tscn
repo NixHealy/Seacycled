@@ -36,7 +36,7 @@ shader_parameter/blue = null
 shader_parameter/alpha = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vcko"]
-size = Vector2(131, 29.5)
+size = Vector2(53.3333, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k41ry"]
 size = Vector2(160, 49.5)
@@ -93,8 +93,6 @@ texture = ExtResource("2_xrj75")
 offset = Vector2(0, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_8vcko")
 
 [node name="StunTimer" type="Timer" parent="."]
@@ -142,7 +140,7 @@ texture = ExtResource("5_sf4lu")
 
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-1.36301, -50)
+position = Vector2(10, -30)
 scale = Vector2(0.0629278, 0.0629278)
 texture = ExtResource("6_07lnm")
 

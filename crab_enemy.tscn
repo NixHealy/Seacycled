@@ -54,7 +54,6 @@ offset = Vector2(0, -20)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(3.8147e-05, -3.44217e-05)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2y0ab")
 
 [node name="StunTimer" type="Timer" parent="."]

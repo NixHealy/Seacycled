@@ -144,7 +144,7 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 visible = false
 z_index = 20
-position = Vector2(-56, -62)
+position = Vector2(-56, -100)
 scale = Vector2(0.490001, 0.490001)
 texture = ExtResource("4_rh8pm")
 

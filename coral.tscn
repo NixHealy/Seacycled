@@ -39,7 +39,7 @@ collision_mask = 255
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HitArea"]
 position = Vector2(-1.5, -24)
-polygon = PackedVector2Array(-389, -113, -301, 63, -218, 225, -318, 382, -37, 392, 322, 392, 329, 318, 274, 188, 250, 128, 258, 51, 224, 1, 172, 4, 141, -94, 186, -172, 151, -279, 98, -353, -37, -227, -64, -412, -133, -422, -242, -374, -313, -258)
+polygon = PackedVector2Array(-389, -113, -348.5, 46, -243.5, 228, -332.5, 412, -28.5, 421, 323.5, 426, 329, 318, 274, 188, 250, 128, 258, 51, 224, 1, 204.5, -31, 184.5, -100, 186, -172, 151, -279, 98, -353, -6.5, -354, -64, -412, -133, -422, -242, -374, -313, -258)
 
 [node name="OutsideArea" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -49,7 +49,7 @@ collision_mask = 34
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="OutsideArea"]
 position = Vector2(-1.5, -24)
-polygon = PackedVector2Array(-434, -154, -345, 89, -279, 204, -394, 374, -37, 392, 384, 399, 382, 316, 355, 180, 318, 127, 321, 50, 295, 10, 272, -62, 202, -120, 218, -175, 193, -290, 106, -420, 19, -396, -43, -458, -124, -490, -266, -437, -351, -311)
+polygon = PackedVector2Array(-434, -154, -366, 90, -279, 204, -409, 406, -39, 408, 387, 416, 382, 316, 355, 180, 318, 127, 321, 50, 295, 10, 272, -62, 218, -175, 193, -290, 106, -420, 21, -422, -43, -458, -124, -490, -266, -437, -351, -311)
 
 [node name="CoralHealRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -91,7 +91,6 @@ texture = ExtResource("6_bcs3v")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
-visible = false
 z_index = 10
 texture_filter = 1
 anchors_preset = 8

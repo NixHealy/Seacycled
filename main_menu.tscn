@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dj2o51erpofrv"]
+[gd_scene load_steps=14 format=3 uid="uid://dj2o51erpofrv"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_frbnv"]
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_27q0f"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dh8wc8tleb6dt" path="res://img/menus/MM Options.png" id="5_vs4eg"]
 [ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="7_j14jv"]
 [ext_resource type="PackedScene" uid="uid://h262r6rapa1q" path="res://options_menu.tscn" id="8_dpv20"]
+[ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="9_ypv71"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yote7"]
 
@@ -104,7 +105,14 @@ shape = SubResource("RectangleShape2D_20j1a")
 unique_name_in_owner = true
 visible = false
 
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_ypv71")
+volume_db = 0.5
+autoplay = true
+
 [connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/HowTo" to="." method="_on_how_to_pressed"]
 [connection signal="pressed" from="CanvasLayer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://blym5qw0dcca"]
+
+[ext_resource type="Script" path="res://dragon.gd" id="1_1wfk0"]
+[ext_resource type="Texture2D" uid="uid://dfd54uvi5xqui" path="res://img/dragon.png" id="1_6wr6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ol0n"]
+size = Vector2(127, 101)
+
+[node name="Dragon" type="CharacterBody2D"]
+script = ExtResource("1_1wfk0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_6wr6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_5ol0n")
