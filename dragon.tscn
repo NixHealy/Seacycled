@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://blym5qw0dcca"]
+[gd_scene load_steps=6 format=3 uid="uid://blym5qw0dcca"]
 
 [ext_resource type="Script" path="res://dragon.gd" id="1_1wfk0"]
 [ext_resource type="Texture2D" uid="uid://dfd54uvi5xqui" path="res://img/dragon.png" id="1_6wr6h"]
+[ext_resource type="Texture2D" uid="uid://c7nwq8v6ays8f" path="res://img/dragon_popup.png" id="3_2x25t"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="4_f2rmc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ol0n"]
 size = Vector2(127, 101)
@@ -17,3 +19,13 @@ texture = ExtResource("1_6wr6h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_5ol0n")
+
+[node name="Popup" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -175)
+texture = ExtResource("3_2x25t")
+
+[node name="Speech" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("4_f2rmc")
