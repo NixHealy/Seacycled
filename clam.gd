@@ -26,6 +26,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if is_open == true and %CloseTimer.is_stopped() and main.grace == false:
+		%CloseTimer.start()
+	
 	if is_open == false && main.grace == true && main.all_collected == true && main.tutorial == false:
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player"):
@@ -36,17 +39,17 @@ func _process(delta):
 							open()
 	
 	# The clam should snap closed if there are more than five enemies inside
-	if is_open:
-		var numEnemies = 0
-		for body in %Area2D.get_overlapping_bodies():
-			if body.is_in_group("enemy"):
-				numEnemies += 1
-		if numEnemies > 5:
-			for body in %Area2D.get_overlapping_bodies():
-				if body.is_in_group("enemy"):
-					body.queue_free()
-			close()
-			numEnemies = 0
+	#if is_open:
+		#var numEnemies = 0
+		#for body in %Area2D.get_overlapping_bodies():
+			#if body.is_in_group("enemy"):
+				#numEnemies += 1
+		#if numEnemies > 5:
+			#for body in %Area2D.get_overlapping_bodies():
+				#if body.is_in_group("enemy"):
+					#body.queue_free()
+			#close()
+			#numEnemies = 0
 
 		
 	if main.grace == true and main.tutorial == false:
@@ -91,3 +94,7 @@ func close():
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)
 	global_position.y += 120
+
+
+func _on_close_timer_timeout():
+	close()

@@ -77,3 +77,5 @@ func _on_enemy_timer_timeout():
 	if enemy_ctr < 5:
 		spawn_mob()
 		enemy_ctr += 1
+	else:
+		get_tree().change_scene_to_file("res://main_menu.tscn")

@@ -92,6 +92,7 @@ follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(0, -174)
+scale = Vector2(2.77987, 2.77987)
 texture = ExtResource("2_8eseu")
 
 [node name="Desaturate" type="ColorRect" parent="CanvasLayer"]

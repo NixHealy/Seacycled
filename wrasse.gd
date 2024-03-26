@@ -40,8 +40,8 @@ func _physics_process(delta):
 	if activated == false && main.grace == true && main.all_collected == true:
 		for body in %Area2D.get_overlapping_bodies():
 			if body.is_in_group("player") and Input.is_action_just_pressed("attack"):
-				if body.chumks >= 10:
-					body.chumks -= 10
+				if body.chumks >= 5:
+					body.chumks -= 5
 					activate()
 	
 	if !activated:

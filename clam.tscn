@@ -154,3 +154,9 @@ visible = false
 position = Vector2(1, -53)
 scale = Vector2(0.098789, 0.098789)
 texture = ExtResource("6_p57fa")
+
+[node name="CloseTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 20.0
+
+[connection signal="timeout" from="CloseTimer" to="." method="_on_close_timer_timeout"]
