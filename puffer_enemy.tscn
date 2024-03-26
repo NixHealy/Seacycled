@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://w512xl8arjfi"]
 
 [ext_resource type="Script" path="res://puffer_enemy.gd" id="1_kbbn8"]
-[ext_resource type="Texture2D" uid="uid://db3eajsebwvtq" path="res://img/puffer_enemy.png" id="1_keyuy"]
+[ext_resource type="Texture2D" path="res://img/pufferfish_small.png" id="2_dt6ah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rr8n"]
-size = Vector2(88, 67)
+size = Vector2(88, 65)
 
 [node name="Puffer" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -13,10 +13,11 @@ script = ExtResource("1_kbbn8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = ExtResource("1_keyuy")
+scale = Vector2(0.140726, 0.140726)
+texture = ExtResource("2_dt6ah")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_8rr8n")
 
 [node name="ExplodeTimer" type="Timer" parent="."]
