@@ -97,4 +97,7 @@ func close():
 
 
 func _on_close_timer_timeout():
+	for body in %Area2D.get_overlapping_bodies():
+		if body.is_in_group("enemy"):
+			body.queue_free()
 	close()

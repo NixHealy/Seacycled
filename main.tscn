@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://di11fm2227b87" path="res://wrasse.tscn" id="10_8fnf1"]
 [ext_resource type="Shader" path="res://colorblind.gdshader" id="10_dfed1"]
 [ext_resource type="Texture2D" uid="uid://cumfkivn34ais" path="res://img/wave_bar.png" id="10_hwnto"]
-[ext_resource type="PackedScene" path="res://dragon.tscn" id="12_dotxc"]
+[ext_resource type="PackedScene" uid="uid://blym5qw0dcca" path="res://dragon.tscn" id="12_dotxc"]
 [ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="12_wf2ut"]
 [ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
 [ext_resource type="FontFile" uid="uid://buh2qtgm8jfm7" path="res://font/OpenDyslexic-Bold.otf" id="17_maqr0"]
