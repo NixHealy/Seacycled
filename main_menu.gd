@@ -40,10 +40,12 @@ func _process(delta):
 	%Fish.move_and_slide()
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://main.tscn")
+	%Loading.visible = true
+	%StartTimer.start()
 	
 func _on_how_to_pressed():
-	get_tree().change_scene_to_file("res://tutorial.tscn")
+	%Loading.visible = true
+	%HowToTimer.start()
 
 func _on_options_pressed():
 	%OptionsMenu.visible = true
@@ -53,3 +55,9 @@ func _on_quit_pressed():
 
 func _on_background_music_finished():
 	%BackgroundMusic.play()
+
+func _on_start_timer_timeout():
+	get_tree().change_scene_to_file("res://main.tscn")
+
+func _on_how_to_timer_timeout():
+	get_tree().change_scene_to_file("res://tutorial.tscn")

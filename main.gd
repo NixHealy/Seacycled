@@ -50,7 +50,7 @@ func _process(delta):
 					
 		# remember to add timer since people since skipping over this
 		if all_collected == true and grace == true:
-			%HelpText.text = "Now heal the coral\nor spend those chumks on allies!"
+			%HelpText.text = "Now recruit allies or heal the coral!"
 			if %HelpDelay.is_stopped():
 				%HelpDelay.start()
 		else:

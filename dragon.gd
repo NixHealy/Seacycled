@@ -48,7 +48,7 @@ func _physics_process(delta):
 
 	var direction = coral.global_position - global_position
 	velocity = direction.normalized() * 30000 * delta
-	if velocity.length() > 10:
+	if direction.length() > 20:
 		move_and_slide()
 
 func activate():

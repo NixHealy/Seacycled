@@ -41,6 +41,8 @@ size = Vector2(127, 101)
 size = Vector2(233, 154)
 
 [node name="Dragon" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_1wfk0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
