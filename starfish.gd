@@ -51,5 +51,5 @@ func _process(delta):
 
 func _on_armour_body_entered(body):
 	if activated:
-		if body.is_in_group("enemy"):
+		if body.is_in_group("enemy") and !body.is_in_group("spike"):
 			body.resisted = true

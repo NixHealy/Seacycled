@@ -45,35 +45,18 @@ func _physics_process(delta):
 	
 	if !activated:
 		return
-	
-	var pollutions = get_tree().get_nodes_in_group("pollution")
-	
-	if (pollutions.size() > 0):
-		var closest = pollutions[pollutions.size() - 1]
-	
-		for pollution in pollutions:
-			if pollution.stunned == false:
-				if pollution.global_position.distance_to(coral.global_position) < closest.global_position.distance_to(coral.global_position):
-					closest = pollution
-				
-		var direction = closest.global_position - global_position
-		velocity = direction.normalized() * 30000 * delta
-		if coral.is_polluted == true:
-			move_and_slide()
-		
-			rotation = atan(velocity.y / velocity.x)
-			if velocity.x > 0:
-				$Sprite2D.flip_h = true
-				for node in %Outline.get_children():
-					node.flip_h = true
-			else:
-				$Sprite2D.flip_h = false
-				for node in %Outline.get_children():
-					node.flip_h = false
-		
-		if closest.global_position.distance_to(global_position) < 100:
-			if closest.has_method("take_damage"):
-				closest.take_damage() 
+
+	var direction = coral.global_position - global_position
+	velocity = direction.normalized() * 30000 * delta
+	if velocity.length() > 10:
+		move_and_slide()
 
 func activate():
 	activated = true
+
+func _on_heal_timer_timeout():
+	if main.grace == true and activated == true:
+		if coral.health < 95:
+			coral.health = coral.health + 5
+		else:
+			coral.health = 100

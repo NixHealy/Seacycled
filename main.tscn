@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=41 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://di11fm2227b87" path="res://wrasse.tscn" id="10_8fnf1"]
 [ext_resource type="Shader" path="res://colorblind.gdshader" id="10_dfed1"]
 [ext_resource type="Texture2D" uid="uid://cumfkivn34ais" path="res://img/wave_bar.png" id="10_hwnto"]
+[ext_resource type="PackedScene" uid="uid://blym5qw0dcca" path="res://dragon.tscn" id="12_dotxc"]
 [ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="12_wf2ut"]
 [ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
 [ext_resource type="FontFile" uid="uid://buh2qtgm8jfm7" path="res://font/OpenDyslexic-Bold.otf" id="17_maqr0"]
@@ -269,6 +270,9 @@ scale = Vector2(4, 4)
 
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
 position = Vector2(-99, 181)
+
+[node name="Dragon" parent="." instance=ExtResource("12_dotxc")]
+position = Vector2(-158, 363)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
