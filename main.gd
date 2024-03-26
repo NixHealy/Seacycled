@@ -115,18 +115,18 @@ func spawn_mob():
 			# Spawn Parrotfish enemy, low chance
 			new_mob = preload("res://parrotfish_enemy.tscn").instantiate()
 			
-	# WAVE 5+: All enemy types can spawn
+	# WAVE 5+: All enemy types can spawn (FINAL WAVE, MUCH HARDER!)
 	else:
-		if num >= 1 && num < 20:
+		if num >= 1 && num < 15:
 			# Spawn Barracuda enemy, medium chance
 			new_mob = preload("res://enemy.tscn").instantiate()
-		elif num >= 20 && num < 50:
+		elif num >= 15 && num < 35:
 			# Spawn Crab enemy, high chance
 			new_mob = preload("res://crab_enemy.tscn").instantiate()
-		elif num >= 50 && num < 90:
+		elif num >= 35 && num < 60:
 			# Spawn Trevally enemy, high chance
 			new_mob = preload("res://trevally_enemy.tscn").instantiate()
-		elif num >= 90 && num < 95:
+		elif num >= 60 && num < 80:
 			# Spawn Parrotfish enemy, low chance
 			new_mob = preload("res://parrotfish_enemy.tscn").instantiate()
 		else:
