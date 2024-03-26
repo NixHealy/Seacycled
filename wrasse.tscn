@@ -43,7 +43,7 @@ size = Vector2(160, 49.5)
 
 [node name="Wrasse" type="CharacterBody2D"]
 texture_filter = 1
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.2, 0.2)
 collision_layer = 0
 collision_mask = 0
 platform_on_leave = 2

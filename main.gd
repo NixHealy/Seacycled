@@ -151,6 +151,13 @@ func _on_wave_timer_timeout():
 	%ProgressBar.value += 1
 	
 	if %ProgressBar.value >= 100: #if the wave is done
+		if wave == 5:
+			%UI.visible = false
+			%GameOver.visible = true
+			$GameOver/Label.text = "YOU WIN!"
+			$GameOver/ColorRect.color = Color(0.2, 0.4, 1, 0.5)
+			get_tree().paused = true
+		
 		%WaveTimer.stop()
 		%EnemyTimer.stop()
 		%PollutionTimer.stop()
