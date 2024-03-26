@@ -3,15 +3,15 @@ extends Node
 var vx = randi_range(-100, 100)
 var vy = randi_range(-100, 100)
 
-func _ready():
-	# Create new ConfigFile object.
-	var config = ConfigFile.new()
-
-	# Store some values.
-	config.set_value("Options", "volume", "100")
-
-	# Save it to a file (overwrite if already exists).
-	config.save("user://options.ini")
+#func _ready():
+	## Create new ConfigFile object.
+	#var config = ConfigFile.new()
+#
+	## Store some values.
+	#config.set_value("Options", "volume", 100)
+#
+	## Save it to a file (overwrite if already exists).
+	#config.save("user://options.ini")
 
 func _process(delta):
 	if %Fish.position.x < 700:
