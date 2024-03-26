@@ -65,9 +65,10 @@ func _process(delta):
 	%HealthBar.value = health
 
 func _on_hit_area_body_entered(body):
-	if body.is_in_group("enemy") and !body.is_in_group("spike"): #maybe wanna make the enemy itself responsible for much damage it deals
-		if body.resisted == true:
-			health -= 1
+	if body.is_in_group("enemy"): #maybe wanna make the enemy itself responsible for much damage it deals
+		if !body.is_in_group("spike"):
+			if body.resisted == true:
+				health -= 1
 		else:
 			if body.is_in_group("crab"):
 				health -= 3
