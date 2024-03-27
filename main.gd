@@ -5,19 +5,20 @@ extends Node
 var all_collected = true
 var starting = true
 var tutorial = false
+var volume = 100.0
+var config = ConfigFile.new()
 
 func _ready():
 	%GameOver.visible = false
 	%GraceLabel.visible = false
 	%HelpText.visible = false
-	
-	var config = ConfigFile.new()
-	config.load("user://options.ini")
-	var volume = config.get_value("Options", "volume")
-	if volume < 100:
-		%BackgroundMusic.volume_db = -volume
+	%CountdownSprite.play()
 
 func _process(delta):
+	config.load("user://options.ini")
+	volume = config.get_value("Options", "volume")
+	%BackgroundMusic.volume_db = -5 + log(volume)
+	
 	%StartLabel.text = str(ceil(%StartTimer.time_left - 1))
 	if %StartTimer.time_left < 1:
 		%StartLabel.text = "GO!"
@@ -249,5 +250,5 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 # countdown for wave start
-func _on_countdown_sprite_animation_looped():
-	%CountdownSprite.visible = false
+#func _on_countdown_sprite_animation_looped():
+	#%CountdownSprite.visible = false

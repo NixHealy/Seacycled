@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://u7xbuwuumsj4"]
+[gd_scene load_steps=14 format=3 uid="uid://u7xbuwuumsj4"]
 
 [ext_resource type="Script" path="res://ray.gd" id="1_ql3u8"]
 [ext_resource type="Texture2D" uid="uid://t237nktufkcj" path="res://img/newray.png" id="2_bkenb"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_nj6ar"]
 [ext_resource type="Texture2D" uid="uid://dnkrq3li27yjg" path="res://img/ray_popup.png" id="4_mj3jh"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_wvnt4"]
+[ext_resource type="AudioStream" uid="uid://crqtpkq7t1xcw" path="res://sound/ray_attack.wav" id="7_ajj33"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0yp3e"]
 shader = ExtResource("3_cllic")
@@ -145,5 +146,9 @@ unique_name_in_owner = true
 position = Vector2(-132.372, -41.8933)
 scale = Vector2(0.0629278, 0.0629278)
 texture = ExtResource("6_wvnt4")
+
+[node name="ShockSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_ajj33")
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

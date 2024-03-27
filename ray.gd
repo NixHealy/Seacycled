@@ -82,6 +82,7 @@ func _physics_process(delta):
 				closest.get_stunned() 
 				%Sprite2D.set_texture(norm_tex)
 				%StunTimer.start()
+				%ShockSound.play()
 
 func _on_stun_timer_timeout():
 	%Sprite2D.set_texture(norm_tex)

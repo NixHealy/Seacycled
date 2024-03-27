@@ -75,6 +75,7 @@ func _physics_process(delta):
 		if closest.global_position.distance_to(global_position) < 100:
 			if closest.has_method("take_damage"):
 				closest.take_damage() 
+				%ScrubSound.play()
 
 func activate():
 	activated = true

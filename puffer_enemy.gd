@@ -13,6 +13,7 @@ func _physics_process(delta):
 	velocity = direction.normalized() * speed
 	
 	if direction.length() < 500:
+		%InflateSound.play()
 		%Sprite2D.set_texture(exp_tex)
 		if %ExplodeTimer.is_stopped() == true:
 			%ExplodeTimer.start()
@@ -56,4 +57,5 @@ func explode():
 	died.emit()
 
 func _on_explode_timer_timeout():
+	%PopSound.play()
 	explode()

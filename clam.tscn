@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ca8n5tvc27gn2"]
+[gd_scene load_steps=16 format=3 uid="uid://ca8n5tvc27gn2"]
 
 [ext_resource type="Texture2D" uid="uid://350yvsaq8qou" path="res://img/open.png" id="1_6t1s4"]
 [ext_resource type="Script" path="res://clam.gd" id="1_fp5fb"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_pgus4"]
 [ext_resource type="Texture2D" uid="uid://bitqv66axu32l" path="res://img/clam_popup.png" id="4_rh8pm"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_p57fa"]
+[ext_resource type="AudioStream" uid="uid://euomb8pqojxs" path="res://sound/clam_open.wav" id="7_ehw4y"]
+[ext_resource type="AudioStream" uid="uid://b4skl685n32h3" path="res://sound/clam_close.wav" id="8_al2rt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_861pc"]
 resource_local_to_scene = true
@@ -159,5 +161,13 @@ texture = ExtResource("6_p57fa")
 unique_name_in_owner = true
 wait_time = 20.0
 one_shot = true
+
+[node name="CloseSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_ehw4y")
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_al2rt")
 
 [connection signal="timeout" from="CloseTimer" to="." method="_on_close_timer_timeout"]

@@ -75,6 +75,7 @@ func _process(delta):
 		%Speech.visible = false
 
 func open():
+	%OpenSound.play()
 	is_open = true 
 	%Sprite2D.set_texture(open_tex)
 	for node in %Outline.get_children():
@@ -85,6 +86,7 @@ func open():
 	global_position.y -= 120
 
 func close():
+	%CloseSound.play()
 	is_open = false 
 	%Sprite2D.set_texture(close_tex)
 	for node in %Outline.get_children():

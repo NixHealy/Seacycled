@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://di11fm2227b87"]
+[gd_scene load_steps=14 format=3 uid="uid://di11fm2227b87"]
 
 [ext_resource type="Script" path="res://wrasse.gd" id="1_upti6"]
 [ext_resource type="Texture2D" uid="uid://cfhcg8l5hhfv5" path="res://img/wrasse.png" id="2_xrj75"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="4_vdttl"]
 [ext_resource type="Texture2D" uid="uid://cly2ylkg1knnc" path="res://img/wrasse_popup.png" id="5_sf4lu"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_07lnm"]
+[ext_resource type="AudioStream" uid="uid://cv77b4fnpe31y" path="res://sound/wrasse_scrub.wav" id="7_v37ka"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0yp3e"]
 shader = ExtResource("3_rrewk")
@@ -143,5 +144,9 @@ unique_name_in_owner = true
 position = Vector2(10, -30)
 scale = Vector2(0.0629278, 0.0629278)
 texture = ExtResource("6_07lnm")
+
+[node name="ScrubSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_v37ka")
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

@@ -7,6 +7,8 @@ var stage = 1
 var poll_ctr = 0
 var enemy_ctr = 0
 
+@onready var ray = get_node("/root/Main/Ray")
+
 func _ready():
 	%MouseSprite.play()
 
@@ -28,19 +30,37 @@ func _process(delta):
 	elif stage == 3:
 		if %EnemyTimer.is_stopped():
 			%EnemyTimer.start()
+			
+	elif stage == 4:
+		%Player.chumks = 10
+		%TutPopup.visible = true
+		%Ray.visible = true
+		%TutPopup.text = "Click the ally to recruit\nit to assist you!"
+		if %Ray.activated:
+			%Player.chumks = 0
+			%TutPopup.visible = false
+			stage = 5
+			var poll_ctr = 0
+			var enemy_ctr = 0
+	
+	elif stage == 5:
+		if %PollutionTimer.is_stopped():
+			%PollutionTimer.start()
+		if %EnemyTimer.is_stopped():
+			%EnemyTimer.start()
+			
+	elif stage == 6:
+		%TutPopup.text = "Well done!\nClick to return to the main menu."
+		%TutPopup.visible = true
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			get_tree().change_scene_to_file("res://main_menu.tscn")
 	
 
 func spawn_pollution():
-	if poll_ctr < 2:
-		var new_poll = preload("res://pollution.tscn").instantiate()
-		%PollowPath.progress_ratio = randf()
-		new_poll.global_position = %PollowPath.global_position
-		add_child(new_poll)
-		poll_ctr += 1
-	else:
-		%PollutionTimer.stop()
-		stage = 3
-		spawn_mob()
+	var new_poll = preload("res://pollution.tscn").instantiate()
+	%PollowPath.progress_ratio = randf()
+	new_poll.global_position = %PollowPath.global_position
+	add_child(new_poll)
 
 func spawn_mob():
 	var new_mob = preload("res://trevally_enemy.tscn").instantiate()
@@ -71,11 +91,33 @@ func _on_movement_timer_timeout():
 		%TutPopup.visible = true
 
 func _on_pollution_timer_timeout():
-	spawn_pollution()
+	if stage == 2:
+		if poll_ctr < 2:
+			spawn_pollution()
+			poll_ctr += 1
+		else:
+			%PollutionTimer.stop()
+			stage = 3
+			spawn_mob()
+	elif stage == 5:
+		if poll_ctr < 5:
+			spawn_pollution()
+			poll_ctr += 1
+		else:
+			%PollutionTimer.stop()
+		
 
 func _on_enemy_timer_timeout():
-	if enemy_ctr < 5:
-		spawn_mob()
-		enemy_ctr += 1
-	else:
-		get_tree().change_scene_to_file("res://main_menu.tscn")
+	if stage == 3:
+		if enemy_ctr < 5:
+			spawn_mob()
+			enemy_ctr += 1
+		else:
+			stage = 4
+	elif stage == 5:
+		if enemy_ctr < 10:
+			spawn_mob()
+			enemy_ctr += 1
+		else:
+			%EnemyTimer.stop()
+			stage = 6

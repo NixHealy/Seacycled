@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dv4abo40v6wop"]
+[gd_scene load_steps=13 format=3 uid="uid://dv4abo40v6wop"]
 
 [ext_resource type="Texture2D" uid="uid://dacfiu38imeh8" path="res://img/star.png" id="1_equos"]
 [ext_resource type="Script" path="res://starfish.gd" id="1_joj3q"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="3_j5k01"]
 [ext_resource type="Texture2D" uid="uid://ngwy0au8xd4r" path="res://img/star_popup.png" id="4_7uuj4"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="4_jd1si"]
+[ext_resource type="AudioStream" uid="uid://l1u5tbem2toy" path="res://sound/starfish_poke.wav" id="6_nua26"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqhlq"]
 shader = ExtResource("3_j5k01")
@@ -111,5 +112,9 @@ texture_filter = 1
 position = Vector2(0, -171)
 scale = Vector2(0.944771, 0.944771)
 texture = ExtResource("4_7uuj4")
+
+[node name="PokeSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_nua26")
 
 [connection signal="body_entered" from="Armour" to="." method="_on_armour_body_entered"]

@@ -3,17 +3,18 @@ extends Node
 var vx = randi_range(-100, 100)
 var vy = randi_range(-100, 100)
 
+var config = ConfigFile.new()
+var volume = 100.0
+
 func _ready():
-	# Create new ConfigFile object.
-	var config = ConfigFile.new()
-
-	# Store some values.
 	config.set_value("Options", "volume", 100)
-
-	# Save it to a file (overwrite if already exists).
 	config.save("user://options.ini")
 
 func _process(delta):
+	config.load("user://options.ini")
+	volume = config.get_value("Options", "volume")
+	%BackgroundMusic.volume_db = -5 + log(volume)
+	
 	if %Fish.position.x < 700:
 		vx = vx + 2.0
 	if %Fish.position.x > 800:
