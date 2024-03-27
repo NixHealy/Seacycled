@@ -11,10 +11,14 @@ var chumks = 0
 
 func _ready():
 	%Hit.visible = false
-	for node in %Outline.get_children():
+	for node in %AnimatedOutline.get_children():
 		node.modulate.v = 15
 
 func _physics_process(delta):
+	for node in %AnimatedOutline.get_children():
+		node.frame = %AnimatedFish.frame
+	
+	%AnimatedFish.speed_scale = 1
 	
 	if Input.is_action_just_pressed("attack") and %AttackTimer.is_stopped() and %CooldownTimer.is_stopped(): #might wanna change this so its a quick attack
 		#%Fish.set_texture(att_tex)						  #instead of lasting as long as you hold it
@@ -22,6 +26,9 @@ func _physics_process(delta):
 		%AttackTimer.start()
 		%AttackSound.play()
 		attacking = true
+		%AnimatedFish.animation = "attack"
+		for node in %AnimatedOutline.get_children():
+			node.animation = "attack"
 	
 	var direction
 	
@@ -30,8 +37,12 @@ func _physics_process(delta):
 	velocity = direction * speed * (log(direction.length()) / log(2)) #faster when mouse is futher away
 	if velocity.length() < 100:
 		%MoveSound.volume_db = -100.0
+		if %AnimatedFish.animation == "default":
+			%AnimatedFish.speed_scale = 1
 	else:
 		%MoveSound.volume_db = 0.2
+		if %AnimatedFish.animation == "default":
+			%AnimatedFish.speed_scale = 3
 	
 	# -- working on keyboard controls, work on this later --
 	#if Input.is_action_pressed("move_up"):
@@ -48,26 +59,26 @@ func _physics_process(delta):
 	move_and_slide()
 	
 
-	%Fish.rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
+	%AnimatedFish.rotation = atan(velocity.y / velocity.x) #removed because it wasnt playing nice with collision
 	#%Fish.rotation_degrees = snapped(rotation_degrees, 45)
-	%HitMarker.rotation = %Fish.rotation
+	%HitMarker.rotation = %AnimatedFish.rotation
 		
 	if velocity.x > 0:
-		%Fish.flip_h = true
+		%AnimatedFish.flip_h = true
 		%Hit.flip_h = true
-		for node in %Outline.get_children():
+		for node in %AnimatedOutline.get_children():
 			node.flip_h = true
 		%HitArea.position.x = 54 #should really be relative position
 	else:
-		%Fish.flip_h = false
+		%AnimatedFish.flip_h = false
 		%Hit.flip_h = false
-		for node in %Outline.get_children():
+		for node in %AnimatedOutline.get_children():
 			node.flip_h = false
 		%HitArea.position.x = -54
 			
 	var ctr = %HitArea.get_overlapping_bodies().size()
 	for body in %HitArea.get_overlapping_bodies(): #for everything nearby
-		if attacking == true:
+		if attacking == true and %AnimatedFish.frame > 2 and %AnimatedFish.animation == "attack":
 			if body.has_method("take_damage"): #just to check
 				body.take_damage() #ASSAULT
 				ctr -= 1
@@ -102,7 +113,7 @@ func _physics_process(delta):
 func _on_attack_timer_timeout():
 	attacking = false
 	#%Fish.set_texture(norm_tex)
-	%Hit.visible = false
+	#%Hit.visible = false
 	%CooldownTimer.start()
 
 #func _on_collection_area_body_entered(body):
@@ -114,12 +125,21 @@ func _on_attack_timer_timeout():
 
 func _on_clickless_timer_timeout():
 	if %CooldownTimer.is_stopped():
-		%Hit.visible = true
+		#%Hit.visible = true
 		%AttackTimer.start()
 		attacking = true
 		%AttackSound.play()
 		%ClicklessTimer.stop()
+		%AnimatedFish.animation = "attack"
+		for node in %AnimatedOutline.get_children():
+			node.animation = "attack"
 
 
 func _on_move_sound_finished():
 	%MoveSound.play()
+
+func _on_animated_fish_animation_looped():
+	if %AnimatedFish.animation == "attack":
+		%AnimatedFish.animation = "default"
+		for node in %AnimatedOutline.get_children():
+			node.animation = "default"
