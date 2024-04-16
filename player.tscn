@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b07b250vvlv54"]
+[gd_scene load_steps=40 format=3 uid="uid://b07b250vvlv54"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_luprc"]
 [ext_resource type="Texture2D" uid="uid://xbvrxxwh65er" path="res://img/clown.png" id="2_3cbqf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://outline.gdshader" id="3_ivnip"]
 [ext_resource type="Texture2D" uid="uid://d1r5cgvj3j6c2" path="res://img/clown_attack.png" id="4_0fwxn"]
 [ext_resource type="Texture2D" uid="uid://rwh2yrw4s6c4" path="res://img/clown_swim.png" id="4_12hiq"]
+[ext_resource type="Shader" path="res://color.gdshader" id="4_lohdn"]
 [ext_resource type="AudioStream" uid="uid://cnmg27hif0780" path="res://sound/player_move.wav" id="5_52a2h"]
 [ext_resource type="AudioStream" uid="uid://cw4rqjbhpyc8" path="res://sound/player_attack.wav" id="6_5w1nr"]
 
@@ -36,6 +37,11 @@ shader_parameter/red = 0.8
 shader_parameter/green = 0.8
 shader_parameter/blue = 1.0
 shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_213jd"]
+shader = ExtResource("4_lohdn")
+shader_parameter/new_color = Vector3(0, 0, 1)
+shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lyb8l"]
 atlas = ExtResource("4_0fwxn")
@@ -254,9 +260,11 @@ offset = Vector2(0, -20)
 [node name="AnimatedFish" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
+material = SubResource("ShaderMaterial_213jd")
 position = Vector2(4, -1)
 scale = Vector2(1.94276, 1.94276)
 sprite_frames = SubResource("SpriteFrames_xntue")
+animation = &"attack"
 autoplay = "default"
 
 [node name="AnimatedOutline" type="Node2D" parent="AnimatedFish"]
@@ -268,7 +276,6 @@ show_behind_parent = true
 show_behind_parent = true
 texture_filter = 1
 position = Vector2(2.05893, -2.98023e-07)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_xntue")
 autoplay = "default"
 
@@ -276,7 +283,6 @@ autoplay = "default"
 show_behind_parent = true
 texture_filter = 1
 position = Vector2(2.38419e-07, 2.05892)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_xntue")
 autoplay = "default"
 
@@ -284,7 +290,6 @@ autoplay = "default"
 show_behind_parent = true
 texture_filter = 1
 position = Vector2(-2.05893, 0)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_xntue")
 autoplay = "default"
 
@@ -292,7 +297,6 @@ autoplay = "default"
 show_behind_parent = true
 texture_filter = 1
 position = Vector2(0, -2.05893)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_xntue")
 autoplay = "default"
 

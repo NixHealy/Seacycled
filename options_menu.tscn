@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://h262r6rapa1q"]
+[gd_scene load_steps=13 format=3 uid="uid://h262r6rapa1q"]
 
 [ext_resource type="Texture2D" uid="uid://bw6j6amowm00d" path="res://img/menus/Options menu Base.png" id="1_qee13"]
 [ext_resource type="Texture2D" uid="uid://8uegd3w8jb1q" path="res://img/menus/Accept-06.png" id="2_g86xm"]
@@ -6,6 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://d1lyifbsbxhgj" path="res://img/menus/Cancel-06.png" id="3_075qb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uw3av"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds0g7"]
+content_margin_left = 100.0
+content_margin_right = 100.0
+bg_color = Color(0.0345804, 0.15588, 0.174732, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_db4k1"]
+content_margin_left = 100.0
+content_margin_right = 100.0
+bg_color = Color(0.0345804, 0.15588, 0.174732, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r7dhg"]
+bg_color = Color(0.0352941, 0.156863, 0.176471, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_bhkvv"]
 color = Color(1, 1, 1, 1)
@@ -87,8 +100,18 @@ offset_left = -426.0
 offset_top = -118.0
 offset_right = 423.0
 offset_bottom = 138.0
+theme_override_colors/font_unselected_color = Color(0.533333, 0.533333, 0.533333, 1)
+theme_override_constants/side_margin = 0
+theme_override_constants/icon_separation = 0
+theme_override_font_sizes/font_size = 31
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_ds0g7")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_db4k1")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_r7dhg")
+tab_alignment = 1
+current_tab = 1
 
 [node name="Sound" type="HBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound"]
@@ -126,7 +149,34 @@ step = 1.0
 value = 100.0
 rounded = true
 
+[node name="Accessibility" type="Control" parent="TabContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Accessibility"]
+layout_mode = 2
+offset_left = 29.0
+offset_top = 72.0
+offset_right = 351.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 30
+text = "High--Contrast Mode"
+
+[node name="ContrastButton" type="Button" parent="TabContainer/Accessibility"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+offset_left = 379.0
+offset_top = 69.0
+offset_right = 479.0
+offset_bottom = 130.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "OFF"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="value_changed" from="TabContainer/Sound/VBoxContainer2/MarginContainer/MusicBar" to="." method="_on_music_bar_value_changed"]
+[connection signal="toggled" from="TabContainer/Accessibility/ContrastButton" to="." method="_on_contrast_button_toggled"]

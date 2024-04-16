@@ -2,11 +2,19 @@ extends Enemy
 
 class_name Trevally
 
+var config = ConfigFile.new()
+
 func _ready():
 	health = 1
 	speed = 110.0
 
 func _physics_process(delta):
+	if FileAccess.file_exists("user://options.ini"):
+		config.load("user://options.ini")
+		var contrast = false
+		contrast = config.get_value("Options", "contrast")
+		%Sprite2D.material.set_shader_parameter("active", contrast)
+	
 	if health <= 0:
 		die()
 		

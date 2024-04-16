@@ -5,6 +5,8 @@ extends CharacterBody2D
 var norm_tex = load("res://img/fish.png")
 var att_tex = load("res://img/attack.png")
 
+var config = ConfigFile.new()
+
 var attacking = false
 var speed = 3
 var chumks = 0
@@ -15,6 +17,12 @@ func _ready():
 		node.modulate.v = 15
 
 func _physics_process(delta):
+	if FileAccess.file_exists("user://options.ini"):
+		config.load("user://options.ini")
+		var contrast = false
+		contrast = config.get_value("Options", "contrast")
+		%AnimatedFish.material.set_shader_parameter("active", contrast)
+	
 	for node in %AnimatedOutline.get_children():
 		node.frame = %AnimatedFish.frame
 	
@@ -78,7 +86,7 @@ func _physics_process(delta):
 			
 	var ctr = %HitArea.get_overlapping_bodies().size()
 	for body in %HitArea.get_overlapping_bodies(): #for everything nearby
-		if attacking == true and %AnimatedFish.frame > 2 and %AnimatedFish.animation == "attack":
+		if attacking == true and %AnimatedFish.frame > 2 and %AnimatedFish.frame < 11 and %AnimatedFish.animation == "attack":
 			if body.has_method("take_damage"): #just to check
 				body.take_damage() #ASSAULT
 				ctr -= 1

@@ -15,9 +15,14 @@ func _ready():
 	%CountdownSprite.play()
 
 func _process(delta):
-	config.load("user://options.ini")
-	volume = config.get_value("Options", "volume")
-	%BackgroundMusic.volume_db = -5 + log(volume)
+	if FileAccess.file_exists("user://options.ini"):
+		config.load("user://options.ini")
+		volume = config.get_value("Options", "volume")
+		%BackgroundMusic.volume_db = -5 + log(volume)
+	
+		var contrast = false
+		contrast = config.get_value("Options", "contrast")
+		%Black.visible = contrast
 	
 	%StartLabel.text = str(ceil(%StartTimer.time_left - 1))
 	if %StartTimer.time_left < 1:

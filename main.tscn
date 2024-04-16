@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
 [ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_gak5t"]
-[ext_resource type="Shader" path="res://greyscale.gdshader" id="3_6gi61"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
+[ext_resource type="Shader" path="res://color.gdshader" id="3_wiyhi"]
 [ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="5_vbu6w"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="6_u0m5a"]
 [ext_resource type="PackedScene" uid="uid://dv4abo40v6wop" path="res://starfish.tscn" id="8_go77r"]
@@ -30,8 +30,9 @@
 [ext_resource type="Texture2D" uid="uid://ciip0y5g2oetg" path="res://img/menus/Pause Quit game-05.png" id="24_ocj2h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sscud"]
-shader = ExtResource("3_6gi61")
-shader_parameter/saturation = 1.0
+shader = ExtResource("3_wiyhi")
+shader_parameter/new_color = null
+shader_parameter/active = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -414,7 +415,8 @@ position = Vector2(-8, -185)
 scale = Vector2(2.87742, 2.87742)
 texture = ExtResource("2_gak5t")
 
-[node name="Desaturate" type="ColorRect" parent="CanvasLayer"]
+[node name="Black" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_sscud")
 anchors_preset = 15

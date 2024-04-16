@@ -8,6 +8,7 @@ var volume = 100.0
 
 func _ready():
 	config.set_value("Options", "volume", 100)
+	config.set_value("Options", "contrast", false)
 	config.save("user://options.ini")
 
 func _process(delta):

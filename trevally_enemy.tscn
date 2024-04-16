@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbrewbj21ev03"]
+[gd_scene load_steps=6 format=3 uid="uid://bbrewbj21ev03"]
 
 [ext_resource type="Script" path="res://trevally_enemy.gd" id="1_vm5j8"]
 [ext_resource type="Texture2D" uid="uid://ch6gix4mji48k" path="res://img/trevally.png" id="2_hnfxc"]
+[ext_resource type="Shader" path="res://color.gdshader" id="2_tnjga"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0sc3"]
+shader = ExtResource("2_tnjga")
+shader_parameter/new_color = Vector3(1, 0, 0)
+shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5e65w"]
 size = Vector2(74, 56)
@@ -12,6 +18,8 @@ collision_mask = 68
 script = ExtResource("1_vm5j8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_t0sc3")
 scale = Vector2(0.146558, 0.146558)
 texture = ExtResource("2_hnfxc")
 

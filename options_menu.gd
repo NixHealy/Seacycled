@@ -10,10 +10,17 @@ func _on_cancel_pressed():
 	visible = false
 
 func _on_music_bar_value_changed(value):
-	# remember to actually modify the volume by reading this
 	config.set_value("Options", "volume", value)
 
-#func _on_visibility_changed():
-	#if (config.load("user://options.ini")):
-		#var volume = config.get_value("Options", "volume")
-		#%MusicBar.value = volume
+func _on_visibility_changed():
+	if FileAccess.file_exists("user://options.ini"):
+		config.load("user://options.ini")
+		%MusicBar.value = config.get_value("Options", "volume")
+		%ContrastButton.button_pressed = config.get_value("Options", "contrast")
+
+func _on_contrast_button_toggled(toggled_on):
+	if toggled_on:
+		%ContrastButton.text = "ON"
+	else:
+		%ContrastButton.text = "OFF"
+	config.set_value("Options", "contrast", toggled_on)
