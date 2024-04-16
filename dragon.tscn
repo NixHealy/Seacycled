@@ -114,7 +114,7 @@ texture = ExtResource("3_2x25t")
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-225, -47)
-scale = Vector2(-0.2, 0.2)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_f2rmc")
 
 [node name="HealTimer" type="Timer" parent="."]

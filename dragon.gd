@@ -9,7 +9,7 @@ var config = ConfigFile.new()
 
 func _ready():
 	%Popup.global_scale = Vector2(1, 1)
-	%Speech.global_scale = Vector2(-0.2, 0.2)
+	%Speech.global_scale = Vector2(-0.2, -0.2)
 	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
