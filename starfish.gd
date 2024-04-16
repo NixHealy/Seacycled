@@ -5,6 +5,8 @@ var show_popup = false
 
 @onready var main = get_node("/root/Main")
 
+var config = ConfigFile.new()
+
 func _ready():
 	%Popup.global_rotation_degrees = 0
 	%Speech.global_rotation = 0
@@ -15,6 +17,12 @@ func _ready():
 		node.material.set_shader_parameter("alpha", 0.0)
 
 func _process(delta):
+	if FileAccess.file_exists("user://options.ini"):
+		config.load("user://options.ini")
+		var contrast = false
+		contrast = config.get_value("Options", "contrast")
+		%Sprite2D.material.set_shader_parameter("active", contrast)
+	
 	#only one starfish should display popup
 	var starfishes = get_tree().get_nodes_in_group("starfish")
 	var selected = starfishes[starfishes.size() - 1]

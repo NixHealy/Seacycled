@@ -3,6 +3,9 @@ shader_type canvas_item;
 uniform float desaturate_strength = 0.5;
 uniform float pollution_strength = 0.5;
 
+uniform vec3 new_color;
+uniform bool active;
+
 void fragment(){
 	vec4 orig_color = texture(TEXTURE, UV);
 	float grey = (orig_color.r + orig_color.g + orig_color.b) / 3.0;
@@ -13,5 +16,10 @@ void fragment(){
 		COLOR.rgb = COLOR.rgb * (1.0 - pollution_strength);
 		orig_color = COLOR;
 		COLOR = mix(grey_color, orig_color, desaturate_strength);
+		
+		if (active) {
+			COLOR.rgb = new_color;
+			COLOR.a = 1.f;
+		}
 	}
 }

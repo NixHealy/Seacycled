@@ -2,8 +2,6 @@ extends Enemy
 
 class_name Trevally
 
-var config = ConfigFile.new()
-
 func _ready():
 	health = 1
 	speed = 110.0

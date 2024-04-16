@@ -1,12 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://di11fm2227b87"]
+[gd_scene load_steps=16 format=3 uid="uid://di11fm2227b87"]
 
 [ext_resource type="Script" path="res://wrasse.gd" id="1_upti6"]
+[ext_resource type="Shader" path="res://color.gdshader" id="2_j8rwt"]
 [ext_resource type="Texture2D" uid="uid://cfhcg8l5hhfv5" path="res://img/wrasse.png" id="2_xrj75"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="3_rrewk"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="4_vdttl"]
 [ext_resource type="Texture2D" uid="uid://cly2ylkg1knnc" path="res://img/wrasse_popup.png" id="5_sf4lu"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_07lnm"]
 [ext_resource type="AudioStream" uid="uid://cv77b4fnpe31y" path="res://sound/wrasse_scrub.wav" id="7_v37ka"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ml6ws"]
+shader = ExtResource("2_j8rwt")
+shader_parameter/new_color = Vector3(0, 0, 0.9)
+shader_parameter/active = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0yp3e"]
 shader = ExtResource("3_rrewk")
@@ -53,6 +59,7 @@ script = ExtResource("1_upti6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ml6ws")
 scale = Vector2(0.13396, 0.13396)
 texture = ExtResource("2_xrj75")
 

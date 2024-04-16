@@ -13,6 +13,8 @@
 shader = ExtResource("2_qa8xe")
 shader_parameter/desaturate_strength = 1.0
 shader_parameter/pollution_strength = 0.0
+shader_parameter/new_color = Vector3(1, 1, 1)
+shader_parameter/active = false
 
 [node name="StaticBody2D" type="StaticBody2D"]
 texture_filter = 2

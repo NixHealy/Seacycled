@@ -1,12 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://u7xbuwuumsj4"]
+[gd_scene load_steps=16 format=3 uid="uid://u7xbuwuumsj4"]
 
 [ext_resource type="Script" path="res://ray.gd" id="1_ql3u8"]
 [ext_resource type="Texture2D" uid="uid://t237nktufkcj" path="res://img/newray.png" id="2_bkenb"]
+[ext_resource type="Shader" path="res://color.gdshader" id="2_m8cmi"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="3_cllic"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_nj6ar"]
 [ext_resource type="Texture2D" uid="uid://dnkrq3li27yjg" path="res://img/ray_popup.png" id="4_mj3jh"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_wvnt4"]
 [ext_resource type="AudioStream" uid="uid://crqtpkq7t1xcw" path="res://sound/ray_attack.wav" id="7_ajj33"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8b6p4"]
+shader = ExtResource("2_m8cmi")
+shader_parameter/new_color = Vector3(0, 0, 0.9)
+shader_parameter/active = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0yp3e"]
 shader = ExtResource("3_cllic")
@@ -53,6 +59,7 @@ script = ExtResource("1_ql3u8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_8b6p4")
 scale = Vector2(0.13396, 0.13396)
 texture = ExtResource("2_bkenb")
 

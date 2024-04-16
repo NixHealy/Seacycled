@@ -6,6 +6,7 @@ extends StaticBody2D
 var open_tex = load("res://img/open.png")
 var close_tex = load("res://img/closed.png")
 var is_open = false
+var config = ConfigFile.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if FileAccess.file_exists("user://options.ini"):
+		config.load("user://options.ini")
+		var contrast = false
+		contrast = config.get_value("Options", "contrast")
+		%Sprite2D.material.set_shader_parameter("active", contrast)
+	
 	if is_open == true and %CloseTimer.is_stopped() and main.grace == false:
 		%CloseTimer.start()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=83 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_lhkum"]
 [ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="20_a4soo"]
 [ext_resource type="Texture2D" uid="uid://cvx64h85v71t" path="res://img/countdown_spritesheet.png" id="20_eneeo"]
+[ext_resource type="Shader" path="res://blur.gdshader" id="20_lllrd"]
 [ext_resource type="Texture2D" uid="uid://bjbkmndxtwfyn" path="res://img/menus/Pause resume-05.png" id="20_oqbjd"]
 [ext_resource type="AudioStream" uid="uid://dj1cmvfr50jvv" path="res://sound/countdown.wav" id="21_5nrcv"]
 [ext_resource type="Texture2D" uid="uid://x146rbfy6ehy" path="res://img/menus/Pause How to play-05.png" id="21_d4sdt"]
@@ -28,6 +29,11 @@
 [ext_resource type="Texture2D" uid="uid://blwc78f4mbch2" path="res://img/menus/Pause options-05.png" id="22_gdwgj"]
 [ext_resource type="Texture2D" uid="uid://b2j3nn7n6i2nm" path="res://img/menus/Pause Main menu-05.png" id="23_3qb0o"]
 [ext_resource type="Texture2D" uid="uid://ciip0y5g2oetg" path="res://img/menus/Pause Quit game-05.png" id="24_ocj2h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u38i7"]
+shader = ExtResource("3_wiyhi")
+shader_parameter/new_color = Vector3(1, 0, 0)
+shader_parameter/active = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sscud"]
 shader = ExtResource("3_wiyhi")
@@ -71,38 +77,9 @@ shader_parameter/outer_radius = 1.0
 shader = ExtResource("10_dfed1")
 shader_parameter/type = 1
 
-[sub_resource type="Shader" id="Shader_buixp"]
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-uniform int pixel_size = 4;
-
-void vertex() {
-	float nw = (1.0*float(pixel_size));
-	if (NORMAL.x == 1.0 || NORMAL.y == 1.0 || NORMAL.z == 1.0 || NORMAL.x == -1.0 || NORMAL.y == -1.0 || NORMAL.z == -1.0){
-		VERTEX *= 1.0+0.01*nw;
-	}
-	if ((NORMAL.x != 1.0 && NORMAL.y != 0.0 && NORMAL.z != 0.0) && (NORMAL.y != 1.0 && NORMAL.x != 0.0 && NORMAL.z != 0.0) && (NORMAL.z != 1.0 && NORMAL.x != 0.0 && NORMAL.y != 0.0) && (NORMAL.x != -1.0 && NORMAL.y != 0.0 && NORMAL.z != 0.0) && (NORMAL.y != -1.0 && NORMAL.x != 0.0 && NORMAL.z != 0.0) && (NORMAL.z != -1.0 && NORMAL.x != 0.0 && NORMAL.y != 0.0)){
-		VERTEX += NORMAL*0.01*nw;
-	}
-}
-
-void fragment() {
-	float x = float(int(FRAGCOORD.x) % pixel_size);
-	float y = float(int(FRAGCOORD.y) % pixel_size);
-	x = FRAGCOORD.x + floor(float(pixel_size) / 2.0) - x;
-	y = FRAGCOORD.y + floor(float(pixel_size) / 2.0) - y;
-	vec4 oldtext = textureLod(SCREEN_TEXTURE,SCREEN_UV*1.0, 0.0);
-	vec4 pixelatedtext = textureLod(SCREEN_TEXTURE, vec2(x, y) / (VIEWPORT_SIZE), 0.0);
-	if (pixelatedtext.a==0.0 && oldtext.a==0.0){
-		discard;
-	}
-	ALBEDO = pixelatedtext.rgb;
-}"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_el8ju"]
-shader = SubResource("Shader_buixp")
+shader = ExtResource("20_lllrd")
+shader_parameter/lod = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejsg3"]
 atlas = ExtResource("20_eneeo")
@@ -411,6 +388,8 @@ layer = -100
 follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_u38i7")
 position = Vector2(-8, -185)
 scale = Vector2(2.87742, 2.87742)
 texture = ExtResource("2_gak5t")
@@ -664,7 +643,6 @@ text = "Now recruit allies or heal the coral!"
 horizontal_alignment = 1
 
 [node name="Colorblind" type="ColorRect" parent="UI"]
-visible = false
 material = SubResource("ShaderMaterial_mxy8c")
 anchors_preset = 15
 anchor_right = 1.0

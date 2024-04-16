@@ -5,6 +5,8 @@ var show_popup = false
 @onready var main = get_node("/root/Main")
 @onready var player = get_node("/root/Main/Player")
 
+var config = ConfigFile.new()
+
 func _ready():
 	%Popup.global_rotation = 0
 	%Speech.global_rotation = 0
@@ -12,6 +14,11 @@ func _ready():
 	%Speech.global_scale = Vector2(0.2, 0.2)
 	
 func _process(delta):
+	if FileAccess.file_exists("user://options.ini"):
+		config.load("user://options.ini")
+		var contrast = false
+		contrast = config.get_value("Options", "contrast")
+		%Sprite2D.material.set_shader_parameter("active", contrast)
 	#only one urchin should display popup
 	var urchins = get_tree().get_nodes_in_group("urchin")
 	var selected = urchins[urchins.size() - 1]

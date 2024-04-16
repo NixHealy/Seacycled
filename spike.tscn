@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmvv4hwfbyswc"]
+[gd_scene load_steps=6 format=3 uid="uid://bmvv4hwfbyswc"]
 
 [ext_resource type="Script" path="res://spike.gd" id="1_6ks58"]
+[ext_resource type="Shader" path="res://color.gdshader" id="2_1v125"]
 [ext_resource type="Texture2D" uid="uid://d1rgshcovslox" path="res://img/spike.png" id="2_a3g0q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvm12"]
+shader = ExtResource("2_1v125")
+shader_parameter/new_color = Vector3(1, 0, 0)
+shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qmam"]
 size = Vector2(28, 24)
@@ -13,6 +19,7 @@ script = ExtResource("1_6ks58")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_dvm12")
 rotation = 1.5708
 texture = ExtResource("2_a3g0q")
 

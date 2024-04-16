@@ -1,10 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://blym5qw0dcca"]
+[gd_scene load_steps=14 format=3 uid="uid://blym5qw0dcca"]
 
 [ext_resource type="Script" path="res://dragon.gd" id="1_1wfk0"]
 [ext_resource type="Texture2D" uid="uid://dfd54uvi5xqui" path="res://img/dragon.png" id="1_6wr6h"]
+[ext_resource type="Shader" path="res://color.gdshader" id="2_7spqe"]
 [ext_resource type="Texture2D" uid="uid://c7nwq8v6ays8f" path="res://img/dragon_popup.png" id="3_2x25t"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="3_53wug"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="4_f2rmc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdw4k"]
+shader = ExtResource("2_7spqe")
+shader_parameter/new_color = Vector3(0, 0, 0.9)
+shader_parameter/active = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bnd47"]
 shader = ExtResource("3_53wug")
@@ -46,7 +52,9 @@ collision_mask = 0
 script = ExtResource("1_1wfk0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
+material = SubResource("ShaderMaterial_bdw4k")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_6wr6h")
 

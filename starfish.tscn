@@ -1,11 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://dv4abo40v6wop"]
+[gd_scene load_steps=15 format=3 uid="uid://dv4abo40v6wop"]
 
 [ext_resource type="Texture2D" uid="uid://dacfiu38imeh8" path="res://img/star.png" id="1_equos"]
 [ext_resource type="Script" path="res://starfish.gd" id="1_joj3q"]
+[ext_resource type="Shader" path="res://color.gdshader" id="2_hgayf"]
 [ext_resource type="Shader" path="res://outline.gdshader" id="3_j5k01"]
 [ext_resource type="Texture2D" uid="uid://ngwy0au8xd4r" path="res://img/star_popup.png" id="4_7uuj4"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="4_jd1si"]
 [ext_resource type="AudioStream" uid="uid://l1u5tbem2toy" path="res://sound/starfish_poke.wav" id="6_nua26"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qyocf"]
+shader = ExtResource("2_hgayf")
+shader_parameter/new_color = Vector3(0, 0, 0.9)
+shader_parameter/active = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqhlq"]
 shader = ExtResource("3_j5k01")
@@ -46,6 +52,8 @@ texture_filter = 1
 script = ExtResource("1_joj3q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_qyocf")
 scale = Vector2(0.26, 0.26)
 texture = ExtResource("1_equos")
 

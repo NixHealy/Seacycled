@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyoi6sdleyvog"]
+[gd_scene load_steps=8 format=3 uid="uid://cyoi6sdleyvog"]
 
 [ext_resource type="Script" path="res://pollution.gd" id="1_tgl7u"]
 [ext_resource type="Texture2D" uid="uid://df31r6fo1qipb" path="res://img/thing.png" id="2_2kh1o"]
 [ext_resource type="Texture2D" uid="uid://daivlnnri5m1a" path="res://img/poll_aura.png" id="2_d3kov"]
+[ext_resource type="Shader" path="res://color.gdshader" id="3_tciqu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1yo0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p6jpk"]
+shader = ExtResource("3_tciqu")
+shader_parameter/new_color = Vector3(0.8, 0, 0)
+shader_parameter/active = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vqrl"]
 size = Vector2(64, 54)
@@ -22,6 +28,8 @@ material = SubResource("ShaderMaterial_p1yo0")
 texture = ExtResource("2_d3kov")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_p6jpk")
 scale = Vector2(0.719999, 0.719999)
 texture = ExtResource("2_2kh1o")
 
