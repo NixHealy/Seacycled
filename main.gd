@@ -13,8 +13,7 @@ func _ready():
 	%GraceLabel.visible = false
 	%HelpText.visible = false
 	%CountdownSprite.play()
-
-func _process(delta):
+	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		volume = config.get_value("Options", "volume")
@@ -23,6 +22,8 @@ func _process(delta):
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Black.visible = contrast
+
+func _process(delta):
 	
 	%StartLabel.text = str(ceil(%StartTimer.time_left - 1))
 	if %StartTimer.time_left < 1:

@@ -643,6 +643,7 @@ text = "Now recruit allies or heal the coral!"
 horizontal_alignment = 1
 
 [node name="Colorblind" type="ColorRect" parent="UI"]
+visible = false
 material = SubResource("ShaderMaterial_mxy8c")
 anchors_preset = 15
 anchor_right = 1.0

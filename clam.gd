@@ -24,14 +24,15 @@ func _ready():
 		#%HelpLabel.scale.x = -1
 		#%HelpLabel.position.x += %Help.size.x
 		%Popup.flip_h = true
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
 	
 	if is_open == true and %CloseTimer.is_stopped() and main.grace == false:
 		%CloseTimer.start()

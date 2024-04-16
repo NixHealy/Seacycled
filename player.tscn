@@ -264,7 +264,6 @@ material = SubResource("ShaderMaterial_213jd")
 position = Vector2(4, -1)
 scale = Vector2(1.94276, 1.94276)
 sprite_frames = SubResource("SpriteFrames_xntue")
-animation = &"attack"
 autoplay = "default"
 
 [node name="AnimatedOutline" type="Node2D" parent="AnimatedFish"]

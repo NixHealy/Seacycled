@@ -7,14 +7,15 @@ var config = ConfigFile.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	%Particles.visible = false
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
 	
 	if main.grace == true:
 		%Particles.visible = true

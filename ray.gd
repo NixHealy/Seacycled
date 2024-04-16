@@ -14,13 +14,14 @@ func _ready():
 	%Popup.global_scale = Vector2(1, 1)
 	%Speech.global_scale = Vector2(0.2, 0.2)
 	%Speech.flip_h = true
-
-func _physics_process(delta):
+	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
+
+func _physics_process(delta):
 	
 	if activated:
 		for node in %Outline.get_children():

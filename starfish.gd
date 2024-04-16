@@ -15,13 +15,14 @@ func _ready():
 	%Speech.flip_h = true
 	for node in %Outline.get_children():
 		node.material.set_shader_parameter("alpha", 0.0)
-
-func _process(delta):
+	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
+
+func _process(delta):
 	
 	#only one starfish should display popup
 	var starfishes = get_tree().get_nodes_in_group("starfish")

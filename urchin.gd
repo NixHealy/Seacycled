@@ -13,12 +13,13 @@ func _ready():
 	%Popup.global_scale = Vector2(1, 1)
 	%Speech.global_scale = Vector2(0.2, 0.2)
 	
-func _process(delta):
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
+	
+func _process(delta):
 	#only one urchin should display popup
 	var urchins = get_tree().get_nodes_in_group("urchin")
 	var selected = urchins[urchins.size() - 1]

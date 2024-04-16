@@ -16,12 +16,13 @@ func _ready():
 	for node in %AnimatedOutline.get_children():
 		node.modulate.v = 15
 
-func _physics_process(delta):
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%AnimatedFish.material.set_shader_parameter("active", contrast)
+
+func _physics_process(delta):
 	
 	for node in %AnimatedOutline.get_children():
 		node.frame = %AnimatedFish.frame
