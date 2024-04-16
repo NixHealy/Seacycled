@@ -11,6 +11,9 @@ var attacking = false
 var speed = 3
 var chumks = 0
 
+var sfx = 0.1
+var norm_volume = 0.1
+
 func _ready():
 	%Hit.visible = false
 	for node in %AnimatedOutline.get_children():
@@ -21,6 +24,10 @@ func _ready():
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%AnimatedFish.material.set_shader_parameter("active", contrast)
+		
+		sfx = config.get_value("Options", "sfx")
+		%AttackSound.volume_db = log(sfx) * 20
+		norm_volume = log(sfx) * 20
 
 func _physics_process(delta):
 	
@@ -49,7 +56,7 @@ func _physics_process(delta):
 		if %AnimatedFish.animation == "default":
 			%AnimatedFish.speed_scale = 1
 	else:
-		%MoveSound.volume_db = 0.2
+		%MoveSound.volume_db = norm_volume
 		if %AnimatedFish.animation == "default":
 			%AnimatedFish.speed_scale = 3
 	

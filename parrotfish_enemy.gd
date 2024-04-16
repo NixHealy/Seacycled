@@ -13,9 +13,11 @@ func _ready():
 		%Sprite2D.material.set_shader_parameter("active", contrast)
 
 func _physics_process(delta):
-		
 	if health <= 0:
 		die()
+		
+	for node in %AnimatedOutline.get_children():
+		node.frame = %AnimatedSprite2D.frame
 	
 	var direction = coral.global_position - global_position  #goes to the coral
 	if direction.length_squared() > 500000:
@@ -29,12 +31,12 @@ func _physics_process(delta):
 	#rotation_degrees = snapped(rotation_degrees, 45) 
 	
 	if velocity.x > 0:
-		$Sprite2D.flip_h = true
-		for node in %Outline.get_children():
+		%AnimatedSprite2D.flip_h = true
+		for node in %AnimatedOutline.get_children():
 			node.flip_h = true
 	else:
-		$Sprite2D.flip_h = false
-		for node in %Outline.get_children():
+		%AnimatedSprite2D.flip_h = false
+		for node in %AnimatedOutline.get_children():
 			node.flip_h = false
 		
 func take_damage():

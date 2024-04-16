@@ -357,13 +357,11 @@ wait_time = 0.05
 unique_name_in_owner = true
 stream = ExtResource("5_52a2h")
 autoplay = true
-attenuation = 2.0
 panning_strength = 3.0
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_5w1nr")
-volume_db = 1.0
 panning_strength = 3.0
 
 [connection signal="animation_changed" from="AnimatedFish" to="." method="_on_animated_fish_animation_changed"]

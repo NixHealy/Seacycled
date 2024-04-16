@@ -1,6 +1,7 @@
 extends Enemy
 
 var exp_tex = load("res://img/puffer_enemy_explode.png")
+var sfx
 
 func _ready():
 	speed = 50.0
@@ -11,6 +12,10 @@ func _physics_process(delta):
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
+		
+		sfx = config.get_value("Options", "sfx")
+		%PopSound.volume_db = log(sfx) * 20
+		%InflateSound.volumbe_db = log(sfx) * 20
 	
 	if health <= 0:
 		die()

@@ -3,7 +3,6 @@ extends CharacterBody2D
 class_name Enemy
 
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
-@onready var _animated_sprite = $AnimatedSprite2D
 var health = 2
 var speed = 100.0
 var stunned = false
@@ -25,7 +24,8 @@ func _physics_process(delta):
 	if health <= 0:
 		die()
 	
-	_animated_sprite.play("default")
+	for node in %AnimatedOutline.get_children():
+		node.frame = %AnimatedSprite2D.frame
 	
 	var direction = coral.global_position - global_position  #goes to the coral
 	if direction.length_squared() > 500000 and direction.x > 100:
@@ -41,13 +41,13 @@ func _physics_process(delta):
 	#rotation_degrees = snapped(rotation_degrees, 45) 
 		
 	if velocity.x > 0:
-		_animated_sprite.flip_h = false
-		#for node in %AnimatedOutline.get_children():
-			#node.flip_h = false
+		%AnimatedSprite2D.flip_h = true
+		for node in %AnimatedOutline.get_children():
+			node.flip_h = true
 	else:
-		_animated_sprite.flip_h = true
-		#for node in %AnimatedOutline.get_children():
-			#node.flip_h = true
+		%AnimatedSprite2D.flip_h = false
+		for node in %AnimatedOutline.get_children():
+			node.flip_h = false
 	
 func take_damage():
 	health -= 1
@@ -67,7 +67,7 @@ func get_stunned():
 	stunned = true
 	modulate = Color(modulate.r, modulate.g, modulate.b - 0.25)
 	%StunTimer.start()
-	#_animated_sprite.stop()
+	#%AnimatedSprite2D.pause()
 
 func get_poisoned():
 	modulate = Color(modulate.r - 0.25, modulate.g, modulate.b - 0.25)
@@ -77,7 +77,7 @@ func get_poisoned():
 func _on_stun_timer_timeout():
 	stunned = false
 	modulate = Color(1, 1, 1)
-	_animated_sprite.play("default")
+	#%AnimatedSprite2D.play()
 
 func _on_poison_timer_timeout():
 	stunned = false

@@ -4,26 +4,27 @@ var vx = randi_range(-100, 100)
 var vy = randi_range(-100, 100)
 
 var config = ConfigFile.new()
-var volume = 100.0
 
 func _ready():
-	config.set_value("Options", "volume", 100)
+	#change this
+	config.set_value("Options", "volume", 1)
+	config.set_value("Options", "sfx", 1)
 	config.set_value("Options", "contrast", false)
 	config.save("user://options.ini")
 
 func _process(delta):
 	config.load("user://options.ini")
-	volume = config.get_value("Options", "volume")
-	%BackgroundMusic.volume_db = -5 + log(volume)
+	var volume = config.get_value("Options", "volume")
+	%BackgroundMusic.volume_db = log(volume) * 20
 	
 	if %Fish.position.x < 700:
-		vx = vx + 3.0
+		vx = vx + 4.0
 	if %Fish.position.x > 800:
-		vx = vx - 3.0
+		vx = vx - 4.0
 	if %Fish.position.y > 400:
-		vy = vy - 3.0
+		vy = vy - 4.0
 	if %Fish.position.y < 400:
-		vy = vy + 3.0
+		vy = vy + 4.0
 	%Fish.velocity = Vector2(vx, vy)
 	%FishSprite.rotation = atan(vy / vx)
 	

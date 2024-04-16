@@ -30,6 +30,10 @@ func _ready():
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
+		
+		var sfx = config.get_value("Options", "sfx")
+		%CloseSound.volume_db = log(sfx) * 20
+		%OpenSound.volume_db = log(sfx) * 20
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

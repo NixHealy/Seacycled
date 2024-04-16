@@ -18,6 +18,9 @@ func _ready():
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
 
+		var sfx = config.get_value("Options", "sfx")
+		%ScrubSound.volume_db = log(sfx) * 20
+
 func _physics_process(delta):
 	
 	if activated:

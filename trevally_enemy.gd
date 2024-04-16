@@ -20,7 +20,7 @@ func _physics_process(delta):
 		die()
 		
 	for node in %AnimatedOutline.get_children():
-		node.frame = %AnimatedSprite2D.frame	
+		node.frame = %AnimatedSprite2D.frame
 		
 	var direction = coral.global_position - global_position  #goes to the coral
 	if direction.x > 100:

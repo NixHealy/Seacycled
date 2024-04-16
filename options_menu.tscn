@@ -114,15 +114,12 @@ theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_lfakq")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_db4k1")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_r7dhg")
 tab_alignment = 1
-current_tab = 1
 
 [node name="Sound" type="HBoxContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound"]
 layout_mode = 2
-size_flags_horizontal = 0
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound/VBoxContainer"]
@@ -134,9 +131,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 31
 text = "Music"
 
+[node name="MarginContainer2" type="MarginContainer" parent="TabContainer/Sound/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="SFX" type="Label" parent="TabContainer/Sound/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "SFX
+"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Sound"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 55
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound/VBoxContainer2"]
@@ -151,11 +159,30 @@ theme_override_styles/scroll = SubResource("StyleBoxLine_bhkvv")
 theme_override_styles/grabber = SubResource("StyleBoxFlat_fro64")
 theme_override_styles/grabber_highlight = SubResource("StyleBoxFlat_mbkpe")
 theme_override_styles/grabber_pressed = SubResource("StyleBoxFlat_ejibe")
-step = 1.0
-value = 100.0
-rounded = true
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="TabContainer/Sound/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="SFXBar" type="HScrollBar" parent="TabContainer/Sound/VBoxContainer2/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/scroll = SubResource("StyleBoxLine_bhkvv")
+theme_override_styles/grabber = SubResource("StyleBoxFlat_fro64")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxFlat_mbkpe")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxFlat_ejibe")
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 1.0
 
 [node name="Accessibility" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TabContainer/Accessibility"]
@@ -185,4 +212,5 @@ text = "OFF"
 [connection signal="pressed" from="Accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="value_changed" from="TabContainer/Sound/VBoxContainer2/MarginContainer/MusicBar" to="." method="_on_music_bar_value_changed"]
+[connection signal="value_changed" from="TabContainer/Sound/VBoxContainer2/MarginContainer2/SFXBar" to="." method="_on_sfx_bar_value_changed"]
 [connection signal="toggled" from="TabContainer/Accessibility/ContrastButton" to="." method="_on_contrast_button_toggled"]

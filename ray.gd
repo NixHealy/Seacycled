@@ -9,6 +9,7 @@ var norm_tex = load("res://img/newray.png")
 var activated = false
 
 var config = ConfigFile.new()
+var sfx = 1.0
 
 func _ready():
 	%Popup.global_scale = Vector2(1, 1)
@@ -20,6 +21,9 @@ func _ready():
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
+		
+		sfx = config.get_value("Options", "sfx")
+		%ShockSound.volume_db = log(sfx) * 20
 
 func _physics_process(delta):
 	

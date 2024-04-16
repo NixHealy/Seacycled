@@ -850,9 +850,9 @@ one_shot = true
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("20_a4soo")
-volume_db = 0.5
 
 [node name="CountdownMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("21_5nrcv")
 autoplay = true
 

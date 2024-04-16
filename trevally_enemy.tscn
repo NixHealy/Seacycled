@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbrewbj21ev03"]
+[gd_scene load_steps=17 format=3 uid="uid://bbrewbj21ev03"]
 
 [ext_resource type="Script" path="res://trevally_enemy.gd" id="1_vm5j8"]
 [ext_resource type="Texture2D" uid="uid://ch6gix4mji48k" path="res://img/trevally.png" id="2_hnfxc"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://chltqky0aog1j" path="res://img/trevally_sheet.png" id="4_gtx6k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t0sc3"]
+shader = ExtResource("2_tnjga")
+shader_parameter/new_color = Vector3(1, 0, 0)
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7kap"]
 shader = ExtResource("2_tnjga")
 shader_parameter/new_color = Vector3(1, 0, 0)
 shader_parameter/active = false
@@ -124,6 +129,7 @@ offset = Vector2(0, -20)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_p7kap")
 position = Vector2(5.96046e-08, -7)
 scale = Vector2(0.0544414, 0.0544414)
 sprite_frames = SubResource("SpriteFrames_53qor")

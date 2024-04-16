@@ -21,6 +21,9 @@ func _ready():
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Sprite2D.material.set_shader_parameter("active", contrast)
+		
+		var sfx = config.get_value("Options", "sfx")
+		%PokeSound.volume_db = log(sfx) * 20
 
 func _process(delta):
 	

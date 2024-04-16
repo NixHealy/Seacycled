@@ -20,6 +20,12 @@ func _ready():
 		%Sprite2D.material.set_shader_parameter("active", contrast)
 
 func _process(delta):
+	if FileAccess.file_exists("user://options.ini"):
+		config.load("user://options.ini")
+		var sfx
+		sfx = config.get_value("Options", "sfx")
+		%DamageSound.volume_db = log(sfx) * 20
+	
 	#health = 100
 	var desat = health / 100.0
 	if desat < 0:

@@ -17,11 +17,14 @@ func _ready():
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		volume = config.get_value("Options", "volume")
-		%BackgroundMusic.volume_db = -5 + log(volume)
+		%BackgroundMusic.volume_db = log(volume) * 20
 	
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
 		%Black.visible = contrast
+		
+		var sfx = config.get_value("Options", "sfx")
+		%CountdownMusic.volume_db = log(sfx) * 20
 
 func _process(delta):
 	
@@ -236,6 +239,11 @@ func _on_resume_pressed():
 	get_tree().paused = false
 	%PauseMenu.visible = false
 	%OptionsMenu.visible = false
+	
+	if FileAccess.file_exists("user://options.ini"):
+		config.load("user://options.ini")
+		volume = config.get_value("Options", "volume")
+		%BackgroundMusic.volume_db = log(volume) * 20
 
 # how to
 func _on_how_to_pressed():
