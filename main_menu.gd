@@ -17,13 +17,13 @@ func _process(delta):
 	%BackgroundMusic.volume_db = -5 + log(volume)
 	
 	if %Fish.position.x < 700:
-		vx = vx + 2.0
+		vx = vx + 3.0
 	if %Fish.position.x > 800:
-		vx = vx - 2.0
+		vx = vx - 3.0
 	if %Fish.position.y > 400:
-		vy = vy - 2.0
+		vy = vy - 3.0
 	if %Fish.position.y < 400:
-		vy = vy + 2.0
+		vy = vy + 3.0
 	%Fish.velocity = Vector2(vx, vy)
 	%FishSprite.rotation = atan(vy / vx)
 	

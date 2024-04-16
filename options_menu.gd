@@ -13,10 +13,11 @@ func _on_music_bar_value_changed(value):
 	config.set_value("Options", "volume", value)
 
 func _on_visibility_changed():
-	if FileAccess.file_exists("user://options.ini"):
-		config.load("user://options.ini")
-		%MusicBar.value = config.get_value("Options", "volume")
-		%ContrastButton.button_pressed = config.get_value("Options", "contrast")
+	if visible:
+		if FileAccess.file_exists("user://options.ini"):
+			config.load("user://options.ini")
+			%MusicBar.value = config.get_value("Options", "volume")
+			%ContrastButton.button_pressed = config.get_value("Options", "contrast")
 
 func _on_contrast_button_toggled(toggled_on):
 	if toggled_on:
