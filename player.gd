@@ -34,7 +34,7 @@ func _physics_process(delta):
 	for node in %AnimatedOutline.get_children():
 		node.frame = %AnimatedFish.frame
 	
-	%AnimatedFish.speed_scale = 1
+	%AnimatedFish.speed_scale = 2.25
 	
 	if Input.is_action_just_pressed("attack") and %AttackTimer.is_stopped() and %CooldownTimer.is_stopped(): #might wanna change this so its a quick attack
 		#%Fish.set_texture(att_tex)						  #instead of lasting as long as you hold it
