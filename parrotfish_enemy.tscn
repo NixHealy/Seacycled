@@ -210,6 +210,7 @@ material = SubResource("ShaderMaterial_8mvod")
 position = Vector2(8.88178e-16, -14)
 scale = Vector2(0.138453, 0.138453)
 sprite_frames = SubResource("SpriteFrames_g8g6c")
+autoplay = "default"
 
 [node name="AnimatedOutline" type="Node2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
