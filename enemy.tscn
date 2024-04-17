@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://t3ss07smvh8w"]
+[gd_scene load_steps=21 format=3 uid="uid://t3ss07smvh8w"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_uaet0"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_2sa1c"]
 [ext_resource type="Texture2D" uid="uid://bt2gqgk0vkk0r" path="res://img/barry.png" id="2_78ryh"]
 [ext_resource type="Texture2D" uid="uid://bmkw84ppllq0n" path="res://img/barracuda_sheet.png" id="4_5v8io"]
+[ext_resource type="Texture2D" uid="uid://gxqadrtyal1a" path="res://img/elec_particle.png" id="5_2y1u1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kw8ro"]
 shader = ExtResource("2_2sa1c")
@@ -80,7 +81,33 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvvm"]
-size = Vector2(88.2828, 37)
+size = Vector2(90.5348, 35.1329)
+
+[sub_resource type="Curve" id="Curve_bdunm"]
+min_value = 0.01
+_data = [Vector2(0, 1), 0.0, -0.99, 0, 1, Vector2(1, 0.01), -0.99, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1yv1o"]
+curve = SubResource("Curve_bdunm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o11qp"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -4.165, 0)
+emission_shape_scale = Vector3(18.4, 9.825, 1)
+emission_shape = 2
+emission_sphere_radius = 2.0
+angle_max = 360.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+radial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+scale_min = 0.5
+scale_max = 1.5
+scale_over_velocity_max = 100.0
+scale_over_velocity_curve = SubResource("CurveTexture_1yv1o")
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
@@ -176,7 +203,7 @@ scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_ublbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8.59112e-07, -0.5)
+position = Vector2(-0.675635, -5.85549)
 shape = SubResource("RectangleShape2D_hjvvm")
 
 [node name="StunTimer" type="Timer" parent="."]
@@ -186,6 +213,17 @@ wait_time = 3.0
 [node name="PoisonTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.5
+
+[node name="ShockEffect" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+emitting = false
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_o11qp")
+texture = ExtResource("5_2y1u1")
+one_shot = true
+explosiveness = 1.0
+interp_to_end = 1.0
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

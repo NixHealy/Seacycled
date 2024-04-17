@@ -3,17 +3,17 @@
 [ext_resource type="Script" path="res://pollution.gd" id="1_tgl7u"]
 [ext_resource type="Texture2D" uid="uid://daivlnnri5m1a" path="res://img/poll_aura.png" id="2_d3kov"]
 [ext_resource type="Shader" path="res://color.gdshader" id="3_tciqu"]
-[ext_resource type="Texture2D" uid="uid://dt3oxxiw2s2yh" path="res://img/trash_bag.PNG" id="4_u1rpw"]
+[ext_resource type="Texture2D" uid="uid://dt3oxxiw2s2yh" path="res://img/trash_bag.PNG" id="4_3eu68"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1yo0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6jpk"]
 shader = ExtResource("3_tciqu")
 shader_parameter/new_color = Vector3(0.8, 0, 0)
-shader_parameter/active = true
+shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vqrl"]
-size = Vector2(64, 54)
+size = Vector2(90, 94)
 
 [node name="Pollution" type="CharacterBody2D" groups=["pollution"]]
 z_index = 1
@@ -29,9 +29,12 @@ texture = ExtResource("2_d3kov")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+texture_filter = 1
 material = SubResource("ShaderMaterial_p6jpk")
-scale = Vector2(0.719999, 0.719999)
-texture = ExtResource("4_u1rpw")
+scale = Vector2(1.44, 1.44)
+texture = ExtResource("4_3eu68")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_1vqrl")

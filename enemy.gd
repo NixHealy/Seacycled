@@ -67,6 +67,7 @@ func get_stunned():
 	stunned = true
 	modulate = Color(modulate.r, modulate.g, modulate.b - 0.25)
 	%StunTimer.start()
+	%ShockEffect.emitting = true
 	#%AnimatedSprite2D.pause()
 
 func get_poisoned():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cedj70swg3ycq"]
+[gd_scene load_steps=10 format=3 uid="uid://cedj70swg3ycq"]
 
 [ext_resource type="Shader" path="res://color.gdshader" id="2_h7uyl"]
 [ext_resource type="Script" path="res://crab_enemy.gd" id="2_n5crf"]
 [ext_resource type="Texture2D" uid="uid://t6vfj73vqwug" path="res://img/crab.png" id="3_v70cg"]
+[ext_resource type="Texture2D" uid="uid://gxqadrtyal1a" path="res://img/elec_particle.png" id="4_gb1o7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x23c4"]
 shader = ExtResource("2_h7uyl")
@@ -11,6 +12,32 @@ shader_parameter/active = null
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y0ab"]
 size = Vector2(480, 450)
+
+[sub_resource type="Curve" id="Curve_k36i4"]
+min_value = 0.01
+_data = [Vector2(0, 1), 0.0, -0.99, 0, 1, Vector2(1, 0.01), -0.99, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tkf1q"]
+curve = SubResource("Curve_k36i4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p1ytb"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -4.165, 0)
+emission_shape_scale = Vector3(18.4, 9.825, 1)
+emission_shape = 2
+emission_sphere_radius = 2.0
+angle_max = 360.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+radial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+scale_min = 0.5
+scale_max = 1.5
+scale_over_velocity_max = 100.0
+scale_over_velocity_curve = SubResource("CurveTexture_tkf1q")
 
 [node name="CrabEnemy" type="CharacterBody2D" groups=["crab", "enemy"]]
 z_index = 1
@@ -71,6 +98,17 @@ wait_time = 3.0
 [node name="PoisonTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.5
+
+[node name="ShockEffect" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+emitting = false
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_p1ytb")
+texture = ExtResource("4_gb1o7")
+one_shot = true
+explosiveness = 1.0
+interp_to_end = 1.0
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]
