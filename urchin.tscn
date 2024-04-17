@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bibubij01hdec"]
+[gd_scene load_steps=17 format=3 uid="uid://bibubij01hdec"]
 
 [ext_resource type="Script" path="res://urchin.gd" id="1_j7ua7"]
 [ext_resource type="Texture2D" uid="uid://cb6bfht8u8v6k" path="res://img/new_urchin.png" id="2_vql5g"]
@@ -7,11 +7,12 @@
 [ext_resource type="Shader" path="res://outline.gdshader" id="3_u5110"]
 [ext_resource type="Texture2D" uid="uid://cb0enykepxt6q" path="res://img/urchin_popup.png" id="4_lxkg6"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_3hi57"]
+[ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="7_rmwqs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulxcq"]
 shader = ExtResource("2_vtdbt")
 shader_parameter/new_color = Vector3(0, 0, 0.9)
-shader_parameter/active = true
+shader_parameter/active = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_odt25"]
 shader = ExtResource("3_u5110")
@@ -46,6 +47,10 @@ size = Vector2(173, 146)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bnu6a"]
 radius = 138.558
+
+[sub_resource type="LabelSettings" id="LabelSettings_83hbw"]
+line_spacing = 0.0
+font_size = 20
 
 [node name="Urchin" type="StaticBody2D" groups=["urchin"]]
 process_priority = -1
@@ -135,13 +140,44 @@ text = "I'll protect the coral!
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Popup" type="Sprite2D" parent="."]
-unique_name_in_owner = true
+[node name="OldPopup" type="Sprite2D" parent="."]
 visible = false
 z_index = 20
 position = Vector2(4, -111)
 scale = Vector2(1.003, 1.003)
 texture = ExtResource("4_lxkg6")
+
+[node name="Popup" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(4, -111)
+scale = Vector2(1.003, 1.003)
+
+[node name="Box" type="NinePatchRect" parent="Popup"]
+texture_filter = 1
+offset_left = -203.39
+offset_top = -133.599
+offset_right = 188.61
+offset_bottom = 123.401
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("7_rmwqs")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="Popup/Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Not only will we defend the
+coral, but we can also spike
+the fish that try to attack
+with our spines!
+(Costs 10 chumks)"
+label_settings = SubResource("LabelSettings_83hbw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true

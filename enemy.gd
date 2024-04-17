@@ -17,7 +17,7 @@ func _ready():
 		config.load("user://options.ini")
 		var contrast = false
 		contrast = config.get_value("Options", "contrast")
-		%Sprite2D.material.set_shader_parameter("active", contrast)
+		%AnimatedSprite2D.material.set_shader_parameter("active", contrast)
 
 func _physics_process(delta):
 		
