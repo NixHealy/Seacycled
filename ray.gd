@@ -12,7 +12,7 @@ var config = ConfigFile.new()
 var sfx = 1.0
 
 func _ready():
-	%Popup.global_scale = Vector2(1, 1)
+	%Popup.scale = Vector2(1, 1)
 	%Speech.global_scale = Vector2(0.2, 0.2)
 	%Speech.flip_h = true
 	

@@ -23,7 +23,9 @@ func _ready():
 	if global_position.x < 0:
 		#%HelpLabel.scale.x = -1
 		#%HelpLabel.position.x += %Help.size.x
-		%Popup.flip_h = true
+		%Popup.global_scale.x = -1
+		%PopupLabel.scale.x = -1
+		%PopupLabel.position.x = %PopupLabel.size.x
 	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")

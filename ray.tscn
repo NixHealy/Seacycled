@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://u7xbuwuumsj4"]
+[gd_scene load_steps=18 format=3 uid="uid://u7xbuwuumsj4"]
 
 [ext_resource type="Script" path="res://ray.gd" id="1_ql3u8"]
 [ext_resource type="Texture2D" uid="uid://t237nktufkcj" path="res://img/newray.png" id="2_bkenb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dnkrq3li27yjg" path="res://img/ray_popup.png" id="4_mj3jh"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_wvnt4"]
 [ext_resource type="AudioStream" uid="uid://crqtpkq7t1xcw" path="res://sound/ray_attack.wav" id="7_ajj33"]
+[ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="7_vtev5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8b6p4"]
 shader = ExtResource("2_m8cmi")
@@ -47,6 +48,10 @@ size = Vector2(131, 29.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k41ry"]
 size = Vector2(160, 49.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ay2t"]
+line_spacing = 0.0
+font_size = 18
 
 [node name="Ray" type="CharacterBody2D"]
 texture_filter = 1
@@ -142,11 +147,37 @@ visible = false
 position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_k41ry")
 
-[node name="Popup" type="Sprite2D" parent="."]
-unique_name_in_owner = true
+[node name="OldPopup" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-137.372, -77.8933)
 scale = Vector2(0.636992, 0.636992)
 texture = ExtResource("4_mj3jh")
+
+[node name="Popup" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = -258.0
+offset_top = -130.0
+offset_right = -8.0
+offset_bottom = -30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("7_vtev5")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="Popup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I'll stun the enemies!
+(Costs 10 chumks)
+"
+label_settings = SubResource("LabelSettings_3ay2t")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true

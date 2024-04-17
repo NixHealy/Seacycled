@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ca8n5tvc27gn2"]
+[gd_scene load_steps=20 format=3 uid="uid://ca8n5tvc27gn2"]
 
 [ext_resource type="Texture2D" uid="uid://350yvsaq8qou" path="res://img/open.png" id="1_6t1s4"]
 [ext_resource type="Script" path="res://clam.gd" id="1_fp5fb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bitqv66axu32l" path="res://img/clam_popup.png" id="4_rh8pm"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_p57fa"]
 [ext_resource type="AudioStream" uid="uid://euomb8pqojxs" path="res://sound/clam_open.wav" id="7_ehw4y"]
+[ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="7_sn0i0"]
 [ext_resource type="AudioStream" uid="uid://b4skl685n32h3" path="res://sound/clam_close.wav" id="8_al2rt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6fiua"]
@@ -55,6 +56,10 @@ size = Vector2(114, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yle27"]
 size = Vector2(132, 112.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c4sb6"]
+line_spacing = 0.0
+font_size = 20
 
 [node name="Clam" type="StaticBody2D"]
 texture_filter = 1
@@ -149,7 +154,39 @@ horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Popup" type="Sprite2D" parent="."]
+[node name="Popup" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(46, -60)
+scale = Vector2(0.490001, 0.490001)
+
+[node name="Box" type="NinePatchRect" parent="Popup"]
+texture_filter = 1
+offset_left = -380.0
+offset_top = -180.0
+offset_right = -31.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("7_sn0i0")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="PopupLabel" type="Label" parent="Popup/Box"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Open so those mutated
+fish can't get past?
+Sure.
+(Costs 10 chumks)"
+label_settings = SubResource("LabelSettings_c4sb6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OldPopup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
 z_index = 20

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv4abo40v6wop"]
+[gd_scene load_steps=17 format=3 uid="uid://dv4abo40v6wop"]
 
 [ext_resource type="Texture2D" uid="uid://dacfiu38imeh8" path="res://img/star.png" id="1_equos"]
 [ext_resource type="Script" path="res://starfish.gd" id="1_joj3q"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ngwy0au8xd4r" path="res://img/star_popup.png" id="4_7uuj4"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="4_jd1si"]
 [ext_resource type="AudioStream" uid="uid://l1u5tbem2toy" path="res://sound/starfish_poke.wav" id="6_nua26"]
+[ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="6_rxh6m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qyocf"]
 shader = ExtResource("2_hgayf")
@@ -46,6 +47,10 @@ size = Vector2(60, 58)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkc48"]
 radius = 202.121
+
+[sub_resource type="LabelSettings" id="LabelSettings_ggpr5"]
+line_spacing = 0.0
+font_size = 18
 
 [node name="Starfish" type="Area2D" groups=["starfish"]]
 texture_filter = 1
@@ -113,8 +118,38 @@ position = Vector2(-2, -91)
 scale = Vector2(0.098789, 0.098789)
 texture = ExtResource("4_jd1si")
 
-[node name="Popup" type="Sprite2D" parent="."]
+[node name="Popup" type="Node2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-2, -91)
+
+[node name="Box" type="NinePatchRect" parent="Popup"]
+texture_filter = 1
+offset_left = -140.0
+offset_top = -169.0
+offset_right = 154.0
+offset_bottom = 13.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_rxh6m")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="Popup/Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "We will defend the
+coral from getting
+damaged!
+(Costs 5 chumks)"
+label_settings = SubResource("LabelSettings_ggpr5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OldPopup" type="Sprite2D" parent="."]
+visible = false
 z_index = 20
 texture_filter = 1
 position = Vector2(0, -171)

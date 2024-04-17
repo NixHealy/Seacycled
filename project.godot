@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Seacycled"
-run/main_scene="res://main_menu.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.webp"
+config/windows_native_icon="res://icon.ico"
 
 [display]
 
