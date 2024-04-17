@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cyoi6sdleyvog"]
 
 [ext_resource type="Script" path="res://pollution.gd" id="1_tgl7u"]
-[ext_resource type="Texture2D" uid="uid://df31r6fo1qipb" path="res://img/thing.png" id="2_2kh1o"]
 [ext_resource type="Texture2D" uid="uid://daivlnnri5m1a" path="res://img/poll_aura.png" id="2_d3kov"]
 [ext_resource type="Shader" path="res://color.gdshader" id="3_tciqu"]
+[ext_resource type="Texture2D" uid="uid://dt3oxxiw2s2yh" path="res://img/trash_bag.PNG" id="4_u1rpw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1yo0"]
 
@@ -31,7 +31,7 @@ texture = ExtResource("2_d3kov")
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_p6jpk")
 scale = Vector2(0.719999, 0.719999)
-texture = ExtResource("2_2kh1o")
+texture = ExtResource("4_u1rpw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1vqrl")
