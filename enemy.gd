@@ -28,11 +28,11 @@ func _physics_process(delta):
 		node.frame = %AnimatedSprite2D.frame
 	
 	var direction = coral.global_position - global_position  #goes to the coral
-	if direction.length_squared() > 500000 and direction.x > 100:
+	if direction.length() > 1000 and (direction.x > 100 or direction.x < -100):
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
 	else:
-		velocity = direction.normalized() * (speed * 3)
+		velocity = direction.normalized() * (speed * 2)
 	
 	if stunned == false:
 		move_and_slide()

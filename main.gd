@@ -1,6 +1,6 @@
 extends Node
 
-@export var wave = 1
+@export var wave = 3
 @export var grace = false
 var all_collected = true
 var starting = true

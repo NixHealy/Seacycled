@@ -68,6 +68,14 @@ func _physics_process(delta):
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	
 	if (enemies.size() > 0):
+		var is_all_stunned = true
+		for enemy in enemies:
+			if !enemy.is_in_group("spike"):
+				if enemy.stunned == false:
+					is_all_stunned = false
+		if is_all_stunned == true:
+			return
+		
 		var closest = enemies[enemies.size() - 1]
 	
 		for enemy in enemies:
