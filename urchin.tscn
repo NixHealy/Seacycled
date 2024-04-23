@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bibubij01hdec"]
+[gd_scene load_steps=13 format=3 uid="uid://bibubij01hdec"]
 
 [ext_resource type="Script" path="res://urchin.gd" id="1_j7ua7"]
-[ext_resource type="Texture2D" uid="uid://cb6bfht8u8v6k" path="res://img/new_urchin.png" id="2_vql5g"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_vtdbt"]
+[ext_resource type="Texture2D" uid="uid://bejinfhd7yv3s" path="res://img/scaled/urchin.png" id="3_17byb"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_g3fjm"]
-[ext_resource type="Shader" path="res://outline.gdshader" id="3_u5110"]
+[ext_resource type="Material" uid="uid://cxmkikkvtr6qk" path="res://ally_material.tres" id="4_4cun1"]
 [ext_resource type="Texture2D" uid="uid://cb0enykepxt6q" path="res://img/urchin_popup.png" id="4_lxkg6"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_3hi57"]
 [ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="7_rmwqs"]
@@ -13,34 +13,6 @@
 shader = ExtResource("2_vtdbt")
 shader_parameter/new_color = Vector3(0, 0, 0.9)
 shader_parameter/active = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_odt25"]
-shader = ExtResource("3_u5110")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ms7s5"]
-shader = ExtResource("3_u5110")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = 0.0
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vrupj"]
-shader = ExtResource("3_u5110")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0w2q"]
-shader = ExtResource("3_u5110")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at4k4"]
 size = Vector2(173, 146)
@@ -62,45 +34,35 @@ script = ExtResource("1_j7ua7")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_ulxcq")
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_vql5g")
+texture = ExtResource("3_17byb")
 
 [node name="Outline" type="Node2D" parent="Sprite2D"]
 unique_name_in_owner = true
 show_behind_parent = true
-scale = Vector2(6.82324, 6.82324)
 
 [node name="Right" type="Sprite2D" parent="Sprite2D/Outline"]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_odt25")
-position = Vector2(-2.02824, 0)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("2_vql5g")
-offset = Vector2(20, 0)
+material = ExtResource("4_4cun1")
+position = Vector2(2, 0)
+texture = ExtResource("3_17byb")
 
-[node name="Down" type="Sprite2D" parent="Sprite2D/Outline"]
+[node name="Right2" type="Sprite2D" parent="Sprite2D/Outline"]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_ms7s5")
-position = Vector2(-1.19209e-07, -1.80734)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("2_vql5g")
-offset = Vector2(0, 20)
+material = ExtResource("4_4cun1")
+position = Vector2(0, 2)
+texture = ExtResource("3_17byb")
 
-[node name="Left" type="Sprite2D" parent="Sprite2D/Outline"]
+[node name="Right3" type="Sprite2D" parent="Sprite2D/Outline"]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_vrupj")
-position = Vector2(1.76715, 0)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("2_vql5g")
-offset = Vector2(-20, 0)
+material = ExtResource("4_4cun1")
+position = Vector2(-2, 0)
+texture = ExtResource("3_17byb")
 
-[node name="Up" type="Sprite2D" parent="Sprite2D/Outline"]
+[node name="Right4" type="Sprite2D" parent="Sprite2D/Outline"]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_r0w2q")
-position = Vector2(0, 1.76715)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("2_vql5g")
-offset = Vector2(0, -20)
+material = ExtResource("4_4cun1")
+position = Vector2(0, -2)
+texture = ExtResource("3_17byb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -108,6 +70,7 @@ shape = SubResource("RectangleShape2D_at4k4")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -149,6 +112,7 @@ texture = ExtResource("4_lxkg6")
 
 [node name="Popup" type="Node2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(4, -111)
 scale = Vector2(1.003, 1.003)
 

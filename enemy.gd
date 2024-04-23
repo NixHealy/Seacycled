@@ -4,7 +4,7 @@ class_name Enemy
 
 @onready var coral = get_node("/root/Main/Coral") #fetches the coral node
 var health = 2
-var speed = 100.0
+var speed = 50.0
 var stunned = false
 var resisted = false
 
@@ -28,7 +28,7 @@ func _physics_process(delta):
 		node.frame = %AnimatedSprite2D.frame
 	
 	var direction = coral.global_position - global_position  #goes to the coral
-	if direction.length() > 1000 and (direction.x > 100 or direction.x < -100):
+	if direction.length() > 300 and (direction.x > 100 or direction.x < -100):
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
 	else:
@@ -68,7 +68,10 @@ func get_stunned():
 	modulate = Color(modulate.r, modulate.g, modulate.b - 0.25)
 	%StunTimer.start()
 	%ShockEffect.emitting = true
-	#%AnimatedSprite2D.pause()
+	
+	var anim = get_node_or_null("%AnimatedSprite2D")
+	if anim != null:
+		%AnimatedSprite2D.pause()
 
 func get_poisoned():
 	modulate = Color(modulate.r - 0.25, modulate.g, modulate.b - 0.25)
@@ -78,7 +81,10 @@ func get_poisoned():
 func _on_stun_timer_timeout():
 	stunned = false
 	modulate = Color(1, 1, 1)
-	#%AnimatedSprite2D.play()
+	
+	var anim = get_node_or_null("%AnimatedSprite2D")
+	if anim != null:
+		%AnimatedSprite2D.pause()
 
 func _on_poison_timer_timeout():
 	stunned = false

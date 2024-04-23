@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://chumk.gd" id="1_wygln"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_ttxkk"]
 [ext_resource type="Texture2D" uid="uid://bod3p7h50tt7t" path="res://img/chumk.png" id="3_pus8c"]
-[ext_resource type="Texture2D" uid="uid://btt516oxma3m2" path="res://img/particle_trans.png" id="3_wbine"]
+[ext_resource type="Texture2D" uid="uid://cetkd6i188lgo" path="res://img/bubble.PNG" id="4_uarwt"]
 
 [sub_resource type="Shader" id="Shader_werny"]
 code = "shader_type canvas_item;
@@ -45,9 +45,10 @@ shader_parameter/new_color = Vector3(1, 1, 0)
 shader_parameter/active = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6h3oi"]
-radius = 120.448
+radius = 68.0195
 
 [node name="Chumk" type="Area2D" groups=["collectable"]]
+texture_filter = 1
 material = SubResource("ShaderMaterial_1ydj7")
 scale = Vector2(3.97, 3.97)
 collision_layer = 31
@@ -57,7 +58,7 @@ script = ExtResource("1_wygln")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_wefau")
-scale = Vector2(0.407091, 0.407091)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_pus8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -67,8 +68,12 @@ shape = SubResource("CircleShape2D_6h3oi")
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
-texture = ExtResource("3_wbine")
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+amount = 4
+lifetime = 0.5
+texture = ExtResource("4_uarwt")
 emission_shape = 1
 emission_sphere_radius = 48.3
-gravity = Vector2(0, -200)
+gravity = Vector2(0, -100)
 scale_amount_max = 3.0

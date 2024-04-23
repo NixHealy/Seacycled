@@ -1,47 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://blym5qw0dcca"]
+[gd_scene load_steps=10 format=3 uid="uid://blym5qw0dcca"]
 
 [ext_resource type="Script" path="res://dragon.gd" id="1_1wfk0"]
-[ext_resource type="Texture2D" uid="uid://dfd54uvi5xqui" path="res://img/dragon.png" id="1_6wr6h"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_7spqe"]
 [ext_resource type="Texture2D" uid="uid://c7nwq8v6ays8f" path="res://img/dragon_popup.png" id="3_2x25t"]
-[ext_resource type="Shader" path="res://outline.gdshader" id="3_53wug"]
+[ext_resource type="Texture2D" uid="uid://buuqixhaf241x" path="res://img/scaled/dragon.png" id="3_kumoq"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="4_f2rmc"]
+[ext_resource type="Material" uid="uid://cxmkikkvtr6qk" path="res://ally_material.tres" id="6_qqmjk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdw4k"]
 shader = ExtResource("2_7spqe")
 shader_parameter/new_color = Vector3(0, 0, 0.9)
 shader_parameter/active = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnd47"]
-shader = ExtResource("3_53wug")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikae0"]
-shader = ExtResource("3_53wug")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = 0.0
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_832jk"]
-shader = ExtResource("3_53wug")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_daeu1"]
-shader = ExtResource("3_53wug")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 1.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ol0n"]
-size = Vector2(127, 101)
+size = Vector2(58, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bexm2"]
 size = Vector2(233, 154)
@@ -55,52 +27,43 @@ script = ExtResource("1_1wfk0")
 unique_name_in_owner = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_bdw4k")
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_6wr6h")
+texture = ExtResource("3_kumoq")
 
 [node name="Outline" type="Node2D" parent="Sprite2D"]
 unique_name_in_owner = true
 show_behind_parent = true
-scale = Vector2(6.82324, 6.82324)
 
-[node name="Right" type="Sprite2D" parent="Sprite2D/Outline"]
+[node name="1" type="Sprite2D" parent="Sprite2D/Outline"]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_bnd47")
-position = Vector2(0.70687, 1.19209e-07)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("1_6wr6h")
-offset = Vector2(20, 0)
+material = ExtResource("6_qqmjk")
+position = Vector2(2, 0)
+texture = ExtResource("3_kumoq")
 
-[node name="Down" type="Sprite2D" parent="Sprite2D/Outline"]
+[node name="2" type="Sprite2D" parent="Sprite2D/Outline"]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_ikae0")
-position = Vector2(-1.19209e-07, -0.7133)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("1_6wr6h")
-offset = Vector2(0, 20)
+material = ExtResource("6_qqmjk")
+position = Vector2(0, 2)
+texture = ExtResource("3_kumoq")
 
-[node name="Left" type="Sprite2D" parent="Sprite2D/Outline"]
+[node name="3" type="Sprite2D" parent="Sprite2D/Outline"]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_832jk")
-position = Vector2(0.673105, 0)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("1_6wr6h")
-offset = Vector2(-20, 0)
+material = ExtResource("6_qqmjk")
+position = Vector2(-2, 0)
+texture = ExtResource("3_kumoq")
 
-[node name="Up" type="Sprite2D" parent="Sprite2D/Outline"]
+[node name="4" type="Sprite2D" parent="Sprite2D/Outline"]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_daeu1")
-position = Vector2(0, 0.673105)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("1_6wr6h")
-offset = Vector2(0, -20)
+material = ExtResource("6_qqmjk")
+position = Vector2(0, -2)
+texture = ExtResource("3_kumoq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
+visible = false
 shape = SubResource("RectangleShape2D_5ol0n")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 0)
@@ -108,11 +71,14 @@ shape = SubResource("RectangleShape2D_bexm2")
 
 [node name="Popup" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-234, -131)
 texture = ExtResource("3_2x25t")
 
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
+material = ExtResource("6_qqmjk")
 position = Vector2(-225, -47)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_f2rmc")

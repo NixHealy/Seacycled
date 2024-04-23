@@ -35,7 +35,7 @@ func _ready():
 		%Sprite2D.set_texture(tex5)
 		
 	var tex_size = %Sprite2D.texture.get_size()
-	%CollisionShape2D.shape.set_size(tex_size)
+	%CollisionShape2D.shape.set_size(Vector2(tex_size.x + 20, tex_size.y + 20))
 	
 	norm_rotate = randf_range(0, 359)
 	global_rotation_degrees = norm_rotate
@@ -59,7 +59,7 @@ func _physics_process(delta):
 	
 	# Some extra math to add variety to the pollution spawn and direction
 	direction.x -= direction.x / 2
-	velocity = direction * 200.0
+	velocity = direction * 70.0
 	
 	if (moving):
 		move_and_slide()

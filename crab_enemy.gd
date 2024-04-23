@@ -3,9 +3,9 @@ extends Enemy
 #@onready var coral = get_node("/root/Main/Coral") #fetches the coral node
 
 func _ready():
-	global_position.y = 420
+	global_position.y = 650
 	health = 1
-	speed = 80
+	speed = 40
 
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")

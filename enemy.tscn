@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://enemy.gd" id="1_uaet0"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_2sa1c"]
 [ext_resource type="Texture2D" uid="uid://bt2gqgk0vkk0r" path="res://img/barry.png" id="2_78ryh"]
-[ext_resource type="Texture2D" uid="uid://bmkw84ppllq0n" path="res://img/barracuda_sheet.png" id="4_5v8io"]
+[ext_resource type="Texture2D" uid="uid://bu3hvtwrv0hju" path="res://img/scaled/barracuda_sheet.PNG" id="4_hkoj8"]
 [ext_resource type="Texture2D" uid="uid://gxqadrtyal1a" path="res://img/elec_particle.png" id="5_2y1u1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kw8ro"]
@@ -16,64 +16,64 @@ shader = ExtResource("2_2sa1c")
 shader_parameter/new_color = Vector3(1, 0, 0)
 shader_parameter/active = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w48sj"]
-atlas = ExtResource("4_5v8io")
-region = Rect2(0, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2fmn"]
+atlas = ExtResource("4_hkoj8")
+region = Rect2(0, 0, 149, 149)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tq33l"]
-atlas = ExtResource("4_5v8io")
-region = Rect2(1920, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bawek"]
+atlas = ExtResource("4_hkoj8")
+region = Rect2(149, 0, 149, 149)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbku7"]
-atlas = ExtResource("4_5v8io")
-region = Rect2(3840, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvdk5"]
+atlas = ExtResource("4_hkoj8")
+region = Rect2(298, 0, 149, 149)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y2itd"]
-atlas = ExtResource("4_5v8io")
-region = Rect2(5760, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6orlc"]
+atlas = ExtResource("4_hkoj8")
+region = Rect2(447, 0, 149, 149)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hjdhk"]
-atlas = ExtResource("4_5v8io")
-region = Rect2(7680, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_okt6d"]
+atlas = ExtResource("4_hkoj8")
+region = Rect2(596, 0, 149, 149)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvgas"]
-atlas = ExtResource("4_5v8io")
-region = Rect2(0, 1920, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt7ay"]
+atlas = ExtResource("4_hkoj8")
+region = Rect2(0, 149, 149, 149)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hr12t"]
-atlas = ExtResource("4_5v8io")
-region = Rect2(1920, 1920, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_630bn"]
+atlas = ExtResource("4_hkoj8")
+region = Rect2(149, 149, 149, 149)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jtdy"]
-atlas = ExtResource("4_5v8io")
-region = Rect2(3840, 1920, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo7q0"]
+atlas = ExtResource("4_hkoj8")
+region = Rect2(298, 149, 149, 149)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ublbr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w48sj")
+"texture": SubResource("AtlasTexture_b2fmn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tq33l")
+"texture": SubResource("AtlasTexture_bawek")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gbku7")
+"texture": SubResource("AtlasTexture_yvdk5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y2itd")
+"texture": SubResource("AtlasTexture_6orlc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hjdhk")
+"texture": SubResource("AtlasTexture_okt6d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cvgas")
+"texture": SubResource("AtlasTexture_qt7ay")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hr12t")
+"texture": SubResource("AtlasTexture_630bn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1jtdy")
+"texture": SubResource("AtlasTexture_mo7q0")
 }],
 "loop": true,
 "name": &"default",
@@ -81,7 +81,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjvvm"]
-size = Vector2(90.5348, 35.1329)
+size = Vector2(128, 50)
 
 [sub_resource type="Curve" id="Curve_bdunm"]
 min_value = 0.01
@@ -111,7 +111,6 @@ scale_over_velocity_curve = SubResource("CurveTexture_1yv1o")
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
-scale = Vector2(2.22014, 2.22014)
 collision_layer = 2
 collision_mask = 68
 platform_floor_layers = 4294967040
@@ -160,9 +159,8 @@ offset = Vector2(0, -20)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+texture_filter = 1
 material = SubResource("ShaderMaterial_5y3pl")
-position = Vector2(5.96046e-08, -7)
-scale = Vector2(0.0544414, 0.0544414)
 sprite_frames = SubResource("SpriteFrames_ublbr")
 autoplay = "default"
 
@@ -171,39 +169,34 @@ unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-scale = Vector2(6.82324, 6.82324)
 
 [node name="Right" type="AnimatedSprite2D" parent="AnimatedSprite2D/AnimatedOutline"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-position = Vector2(3, 0)
-scale = Vector2(0.15, 0.15)
+position = Vector2(2, 0)
 sprite_frames = SubResource("SpriteFrames_ublbr")
 autoplay = "default"
 
 [node name="Down" type="AnimatedSprite2D" parent="AnimatedSprite2D/AnimatedOutline"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-position = Vector2(0, 3)
-scale = Vector2(0.15, 0.15)
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_ublbr")
 
 [node name="Left" type="AnimatedSprite2D" parent="AnimatedSprite2D/AnimatedOutline"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-position = Vector2(-3, 0)
-scale = Vector2(0.15, 0.15)
+position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_ublbr")
 
 [node name="Up" type="AnimatedSprite2D" parent="AnimatedSprite2D/AnimatedOutline"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-position = Vector2(0, -3)
-scale = Vector2(0.15, 0.15)
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_ublbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.675635, -5.85549)
+position = Vector2(-9.53674e-07, 2)
 shape = SubResource("RectangleShape2D_hjvvm")
 
 [node name="StunTimer" type="Timer" parent="."]

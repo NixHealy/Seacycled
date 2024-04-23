@@ -13,7 +13,7 @@ shader_parameter/new_color = Vector3(0.8, 0, 0)
 shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vqrl"]
-size = Vector2(90, 94)
+size = Vector2(144, 153)
 
 [node name="Pollution" type="CharacterBody2D" groups=["pollution"]]
 z_index = 1
@@ -25,16 +25,16 @@ script = ExtResource("1_tgl7u")
 [node name="Circle" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.4)
 material = SubResource("ShaderMaterial_p1yo0")
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_d3kov")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_p6jpk")
-scale = Vector2(1.44, 1.44)
 texture = ExtResource("4_3eu68")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-1, 1)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_1vqrl")

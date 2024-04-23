@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://u7xbuwuumsj4"]
+[gd_scene load_steps=14 format=3 uid="uid://u7xbuwuumsj4"]
 
 [ext_resource type="Script" path="res://ray.gd" id="1_ql3u8"]
-[ext_resource type="Texture2D" uid="uid://t237nktufkcj" path="res://img/newray.png" id="2_bkenb"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_m8cmi"]
-[ext_resource type="Shader" path="res://outline.gdshader" id="3_cllic"]
+[ext_resource type="Texture2D" uid="uid://dgema56iclmpe" path="res://img/scaled/ray.png" id="3_iurc2"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_nj6ar"]
+[ext_resource type="Material" uid="uid://cxmkikkvtr6qk" path="res://ally_material.tres" id="4_7kpnp"]
 [ext_resource type="Texture2D" uid="uid://dnkrq3li27yjg" path="res://img/ray_popup.png" id="4_mj3jh"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_wvnt4"]
 [ext_resource type="AudioStream" uid="uid://crqtpkq7t1xcw" path="res://sound/ray_attack.wav" id="7_ajj33"]
@@ -13,35 +13,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8b6p4"]
 shader = ExtResource("2_m8cmi")
 shader_parameter/new_color = Vector3(0, 0, 0.9)
-shader_parameter/active = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yp3e"]
-shader = ExtResource("3_cllic")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fq4mr"]
-shader = ExtResource("3_cllic")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = 0.0
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w3tt5"]
-shader = ExtResource("3_cllic")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo67c"]
-shader = ExtResource("3_cllic")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 1.0
+shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vcko"]
 size = Vector2(131, 29.5)
@@ -55,7 +27,6 @@ font_size = 18
 
 [node name="Ray" type="CharacterBody2D"]
 texture_filter = 1
-scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 0
 platform_on_leave = 2
@@ -65,45 +36,35 @@ script = ExtResource("1_ql3u8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_8b6p4")
-scale = Vector2(0.13396, 0.13396)
-texture = ExtResource("2_bkenb")
+texture = ExtResource("3_iurc2")
 
 [node name="Outline" type="Node2D" parent="Sprite2D"]
 unique_name_in_owner = true
 show_behind_parent = true
-scale = Vector2(6.82324, 6.82324)
-
-[node name="Right" type="Sprite2D" parent="Sprite2D/Outline"]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_0yp3e")
-position = Vector2(0.70687, 1.19209e-07)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("2_bkenb")
-offset = Vector2(20, 0)
-
-[node name="Down" type="Sprite2D" parent="Sprite2D/Outline"]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_fq4mr")
-position = Vector2(-1.19209e-07, -0.7133)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("2_bkenb")
-offset = Vector2(0, 20)
-
-[node name="Left" type="Sprite2D" parent="Sprite2D/Outline"]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_w3tt5")
-position = Vector2(0.673105, 0)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("2_bkenb")
-offset = Vector2(-20, 0)
 
 [node name="Up" type="Sprite2D" parent="Sprite2D/Outline"]
 show_behind_parent = true
-material = SubResource("ShaderMaterial_yo67c")
-position = Vector2(0, 0.673105)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("2_bkenb")
-offset = Vector2(0, -20)
+material = ExtResource("4_7kpnp")
+position = Vector2(2, 0)
+texture = ExtResource("3_iurc2")
+
+[node name="Up2" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = ExtResource("4_7kpnp")
+position = Vector2(0, 2)
+texture = ExtResource("3_iurc2")
+
+[node name="Up3" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = ExtResource("4_7kpnp")
+position = Vector2(-2, 0)
+texture = ExtResource("3_iurc2")
+
+[node name="Up4" type="Sprite2D" parent="Sprite2D/Outline"]
+show_behind_parent = true
+material = ExtResource("4_7kpnp")
+position = Vector2(0, -2)
+texture = ExtResource("3_iurc2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -155,6 +116,7 @@ texture = ExtResource("4_mj3jh")
 
 [node name="Popup" type="NinePatchRect" parent="."]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 offset_left = -258.0
 offset_top = -130.0
@@ -181,6 +143,7 @@ vertical_alignment = 1
 
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-132.372, -41.8933)
 scale = Vector2(0.0629278, 0.0629278)
 texture = ExtResource("6_wvnt4")

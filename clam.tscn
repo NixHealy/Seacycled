@@ -1,12 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://ca8n5tvc27gn2"]
+[gd_scene load_steps=21 format=3 uid="uid://ca8n5tvc27gn2"]
 
-[ext_resource type="Texture2D" uid="uid://350yvsaq8qou" path="res://img/open.png" id="1_6t1s4"]
 [ext_resource type="Script" path="res://clam.gd" id="1_fp5fb"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_o32a2"]
-[ext_resource type="Shader" path="res://outline.gdshader" id="3_26dmg"]
+[ext_resource type="Texture2D" uid="uid://be52i1qlh2isw" path="res://img/scaled/clam_open.png" id="3_ngoxn"]
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_pgus4"]
+[ext_resource type="Material" uid="uid://cxmkikkvtr6qk" path="res://ally_material.tres" id="4_k1jpg"]
 [ext_resource type="Texture2D" uid="uid://bitqv66axu32l" path="res://img/clam_popup.png" id="4_rh8pm"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_p57fa"]
+[ext_resource type="Texture2D" uid="uid://c74eshex34j4t" path="res://img/clam_open_sheet.PNG" id="6_xgvlc"]
 [ext_resource type="AudioStream" uid="uid://euomb8pqojxs" path="res://sound/clam_open.wav" id="7_ehw4y"]
 [ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="7_sn0i0"]
 [ext_resource type="AudioStream" uid="uid://b4skl685n32h3" path="res://sound/clam_close.wav" id="8_al2rt"]
@@ -16,43 +17,44 @@ shader = ExtResource("2_o32a2")
 shader_parameter/new_color = Vector3(0, 0, 0.9)
 shader_parameter/active = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_861pc"]
-resource_local_to_scene = true
-shader = ExtResource("3_26dmg")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 0.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfcc6"]
+atlas = ExtResource("6_xgvlc")
+region = Rect2(0, 0, 124, 126)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_svmmi"]
-resource_local_to_scene = true
-shader = ExtResource("3_26dmg")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = 0.0
-shader_parameter/alpha = 0.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktr3m"]
+atlas = ExtResource("6_xgvlc")
+region = Rect2(124, 0, 124, 126)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1dga6"]
-resource_local_to_scene = true
-shader = ExtResource("3_26dmg")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 0.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnf8q"]
+atlas = ExtResource("6_xgvlc")
+region = Rect2(248, 0, 124, 126)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ib7a"]
-resource_local_to_scene = true
-shader = ExtResource("3_26dmg")
-shader_parameter/red = 0.0
-shader_parameter/green = 1.0
-shader_parameter/blue = null
-shader_parameter/alpha = 0.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw2wx"]
+atlas = ExtResource("6_xgvlc")
+region = Rect2(372, 0, 124, 126)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3j7g5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfcc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktr3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnf8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw2wx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iour"]
-size = Vector2(26, 91)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0mr5"]
-size = Vector2(114, 22)
+size = Vector2(26, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yle27"]
 size = Vector2(132, 112.5)
@@ -70,56 +72,52 @@ script = ExtResource("1_fp5fb")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_6fiua")
-texture = ExtResource("1_6t1s4")
+texture = ExtResource("3_ngoxn")
 
 [node name="Outline" type="Node2D" parent="Sprite2D"]
 unique_name_in_owner = true
 show_behind_parent = true
-scale = Vector2(6.82324, 6.82324)
 
-[node name="Right" type="Sprite2D" parent="Sprite2D/Outline"]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_861pc")
-position = Vector2(-2.76103, 0)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("1_6t1s4")
-offset = Vector2(20, 0)
+[node name="1" type="Sprite2D" parent="Sprite2D/Outline"]
+modulate = Color(0, 100, 0, 1)
+material = ExtResource("4_k1jpg")
+position = Vector2(2, 0)
+texture = ExtResource("3_ngoxn")
 
-[node name="Down" type="Sprite2D" parent="Sprite2D/Outline"]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_svmmi")
-position = Vector2(-1.19209e-07, -2.54013)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("1_6t1s4")
-offset = Vector2(0, 20)
+[node name="2" type="Sprite2D" parent="Sprite2D/Outline"]
+modulate = Color(0, 100, 0, 1)
+material = ExtResource("4_k1jpg")
+position = Vector2(0, 2)
+texture = ExtResource("3_ngoxn")
 
-[node name="Left" type="Sprite2D" parent="Sprite2D/Outline"]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_1dga6")
-position = Vector2(2.49994, 0)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("1_6t1s4")
-offset = Vector2(-20, 0)
+[node name="3" type="Sprite2D" parent="Sprite2D/Outline"]
+modulate = Color(0, 100, 0, 1)
+material = ExtResource("4_k1jpg")
+position = Vector2(-2, 0)
+texture = ExtResource("3_ngoxn")
 
-[node name="Up" type="Sprite2D" parent="Sprite2D/Outline"]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_2ib7a")
-position = Vector2(0, 2.49994)
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("1_6t1s4")
-offset = Vector2(0, -20)
+[node name="4" type="Sprite2D" parent="Sprite2D/Outline"]
+modulate = Color(0, 100, 0, 1)
+material = ExtResource("4_k1jpg")
+position = Vector2(0, -2)
+texture = ExtResource("3_ngoxn")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+sprite_frames = SubResource("SpriteFrames_3j7g5")
+frame = 3
+frame_progress = 1.0
+speed_scale = 2.0
 
 [node name="TopCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-visible = false
-position = Vector2(-49, -9.5)
+position = Vector2(-49, -2)
 shape = SubResource("RectangleShape2D_7iour")
 
-[node name="BottomCollision" type="CollisionShape2D" parent="."]
+[node name="BottomCollision" type="CollisionPolygon2D" parent="."]
 unique_name_in_owner = true
-visible = false
-position = Vector2(0, 41)
-shape = SubResource("RectangleShape2D_f0mr5")
+polygon = PackedVector2Array(57, 58, -36, 59, -36, 43)
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -156,7 +154,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Popup" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(46, -60)
+visible = false
+position = Vector2(46, -17)
 scale = Vector2(0.490001, 0.490001)
 
 [node name="Box" type="NinePatchRect" parent="Popup"]
@@ -197,7 +196,7 @@ texture = ExtResource("4_rh8pm")
 [node name="Speech" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
-position = Vector2(1, -53)
+position = Vector2(7, -9)
 scale = Vector2(0.098789, 0.098789)
 texture = ExtResource("6_p57fa")
 
@@ -214,4 +213,5 @@ stream = ExtResource("7_ehw4y")
 unique_name_in_owner = true
 stream = ExtResource("8_al2rt")
 
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
 [connection signal="timeout" from="CloseTimer" to="." method="_on_close_timer_timeout"]

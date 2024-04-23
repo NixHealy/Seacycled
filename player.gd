@@ -15,7 +15,7 @@ var sfx = 0.1
 var norm_volume = 0.1
 
 func _ready():
-	%Hit.visible = false
+	#%Hit.visible = false
 	for node in %AnimatedOutline.get_children():
 		node.modulate.v = 15
 
@@ -38,7 +38,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("attack") and %AttackTimer.is_stopped() and %CooldownTimer.is_stopped(): #might wanna change this so its a quick attack
 		#%Fish.set_texture(att_tex)						  #instead of lasting as long as you hold it
-		%Hit.visible = true
+		#%Hit.visible = true
 		%AttackTimer.start()
 		%AttackSound.play()
 		attacking = true
@@ -81,16 +81,16 @@ func _physics_process(delta):
 		
 	if velocity.x > 0:
 		%AnimatedFish.flip_h = true
-		%Hit.flip_h = true
+		#%Hit.flip_h = true
 		for node in %AnimatedOutline.get_children():
 			node.flip_h = true
-		%HitArea.position.x = 54 #should really be relative position
+		%HitArea.position.x = 24 #should really be relative position
 	else:
 		%AnimatedFish.flip_h = false
-		%Hit.flip_h = false
+		#%Hit.flip_h = false
 		for node in %AnimatedOutline.get_children():
 			node.flip_h = false
-		%HitArea.position.x = -54
+		%HitArea.position.x = -24
 			
 	var ctr = %HitArea.get_overlapping_bodies().size()
 	for body in %HitArea.get_overlapping_bodies(): #for everything nearby

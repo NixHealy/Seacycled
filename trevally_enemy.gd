@@ -4,7 +4,7 @@ class_name Trevally
 
 func _ready():
 	health = 1
-	speed = 110.0
+	speed = 60.0
 	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")

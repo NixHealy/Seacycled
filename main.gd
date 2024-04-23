@@ -10,7 +10,8 @@ var config = ConfigFile.new()
 
 func _ready():
 	%GameOver.visible = false
-	%GraceLabel.visible = false
+	#%GraceLabel.visible = false
+	%Button.visible = false
 	%HelpText.visible = false
 	%CountdownSprite.play()
 	
@@ -61,20 +62,13 @@ func _process(delta):
 		# remember to add timer since people since skipping over this
 		if all_collected == true and grace == true:
 			%HelpText.text = "Now recruit allies or heal the coral!"
+			%Button.visible = true
 			if %HelpDelay.is_stopped():
 				%HelpDelay.start()
 		else:
 			%HelpText.text = "Wave Over!\nCollect all the chumks!"
-			%GraceLabel.visible = false
-		
-		if grace == true and all_collected == true and Input.is_key_pressed(KEY_ENTER):
-			grace = false
-			%WaveTimer.wait_time += 0.1
-			%WaveTimer.start()
-			%EnemyTimer.start()
-			%PollutionTimer.start()
-			%GraceLabel.visible = false
-			%HelpText.visible = false
+			#%GraceLabel.visible = false
+			%Button.visible = false
 
 # If wave 1, only trevally enemies should spawn
 # If wave 2, trevally and crab enemies should spawn
@@ -209,9 +203,10 @@ func _on_wave_timer_timeout(): # wave timer
 		
 		# GraceTimer.start() #start a timer for the grace period
 		grace = true
-		%GraceLabel.visible = true
-		%HelpText.visible = true
-			
+		#%GraceLabel.visible = true
+		%Button.visible = true
+		#%HelpText.visible = true
+		%HelpText.visible = false
 
 # PAUSE MENU: reset button
 func _on_reset_button_pressed():
@@ -232,7 +227,8 @@ func _on_background_music_finished():
 
 func _on_help_delay_timeout():
 	if grace == true:
-		%GraceLabel.visible = true
+		#%GraceLabel.visible = true
+		%Button.visible = true
 
 # PAUSE MENU: resume
 func _on_resume_pressed():
@@ -266,3 +262,20 @@ func _on_quit_pressed():
 # countdown for wave start
 #func _on_countdown_sprite_animation_looped():
 	#%CountdownSprite.visible = false
+
+
+func _on_button_pressed():
+	if grace == true and all_collected == true:
+		grace = false
+		%WaveTimer.wait_time += 0.1
+		%WaveTimer.start()
+		%EnemyTimer.start()
+		%PollutionTimer.start()
+		#%GraceLabel.visible = false
+		%Button.visible = false
+		%HelpText.visible = false
+
+
+func _on_pause_button_pressed():
+	%PauseMenu.visible = true
+	get_tree().paused = true

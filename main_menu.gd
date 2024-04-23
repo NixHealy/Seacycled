@@ -26,7 +26,7 @@ func _process(delta):
 	if %Fish.position.y < 400:
 		vy = vy + 4.0
 	%Fish.velocity = Vector2(vx, vy)
-	%FishSprite.rotation = atan(vy / vx)
+	%AnimatedFish.rotation = atan(vy / vx)
 	
 	var speed = sqrt(vx * vx + vy * vy)
 	if speed > 500:
@@ -37,9 +37,13 @@ func _process(delta):
 		vy = (vy/speed) * 100
 	
 	if %Fish.velocity.x > 0:
-		%FishSprite.flip_h = true
+		%AnimatedFish.flip_h = true
+		for node in %AnimatedOutline.get_children():
+			node.flip_h = true
 	else:
-		%FishSprite.flip_h = false
+		%AnimatedFish.flip_h = false
+		for node in %AnimatedOutline.get_children():
+			node.flip_h = false
 	%Fish.move_and_slide()
 
 func _on_play_pressed():

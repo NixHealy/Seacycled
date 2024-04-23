@@ -1,10 +1,10 @@
-[gd_scene load_steps=83 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=90 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
-[ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_gak5t"]
 [ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
+[ext_resource type="Texture2D" uid="uid://dq686o86m3j5o" path="res://img/new new bg.png" id="3_57woi"]
 [ext_resource type="Shader" path="res://color.gdshader" id="3_wiyhi"]
 [ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="5_vbu6w"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="6_u0m5a"]
@@ -26,8 +26,10 @@
 [ext_resource type="AudioStream" uid="uid://dj1cmvfr50jvv" path="res://sound/countdown.wav" id="21_5nrcv"]
 [ext_resource type="Texture2D" uid="uid://x146rbfy6ehy" path="res://img/menus/Pause How to play-05.png" id="21_d4sdt"]
 [ext_resource type="PackedScene" uid="uid://h262r6rapa1q" path="res://options_menu.tscn" id="22_3jogt"]
+[ext_resource type="Texture2D" uid="uid://vwc0gvslv8ig" path="res://img/continue_icon.png" id="22_7wk06"]
 [ext_resource type="Texture2D" uid="uid://blwc78f4mbch2" path="res://img/menus/Pause options-05.png" id="22_gdwgj"]
 [ext_resource type="Texture2D" uid="uid://b2j3nn7n6i2nm" path="res://img/menus/Pause Main menu-05.png" id="23_3qb0o"]
+[ext_resource type="Texture2D" uid="uid://bejq737kglsc8" path="res://img/pause_icon.png" id="23_4roak"]
 [ext_resource type="Texture2D" uid="uid://ciip0y5g2oetg" path="res://img/menus/Pause Quit game-05.png" id="24_ocj2h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u38i7"]
@@ -48,13 +50,13 @@ size = Vector2(391, 1406.09)
 
 [sub_resource type="Curve2D" id="Curve2D_ad2ju"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1030, 413, 0, 0, 0, 0, 1021, -248)
+"points": PackedVector2Array(0, 0, 0, 0, 1030, 413, 0, 0, 0, 0, 1024.92, 65.2955)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_f74fl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -919, 454, 0, 0, 0, 0, -918, -201)
+"points": PackedVector2Array(0, 0, 0, 0, -906.279, 629.045, 0, 0, 0, 0, -909.246, 264.376)
 }
 point_count = 2
 
@@ -63,7 +65,7 @@ size = Vector2(1149, 212)
 
 [sub_resource type="Curve2D" id="Curve2D_ayu2t"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2674.5, -804.5, 0, 0, 0, 0, -739.5, -804.5)
+"points": PackedVector2Array(0, 0, 0, 0, -1562.5, -30.5, 0, 0, 0, 0, -644.5, -29.5)
 }
 point_count = 2
 
@@ -369,19 +371,26 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjyf5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcpwb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtvee"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viab0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrnlg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg3vn"]
 
 [node name="Main" type="Node"]
 process_mode = 1
 script = ExtResource("1_72br2")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1154, -789)
-anchor_mode = 0
-zoom = Vector2(0.5, 0.5)
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -100
@@ -389,10 +398,11 @@ follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 unique_name_in_owner = true
+texture_filter = 1
 material = SubResource("ShaderMaterial_u38i7")
-position = Vector2(-8, -185)
-scale = Vector2(2.87742, 2.87742)
-texture = ExtResource("2_gak5t")
+position = Vector2(578.889, 326)
+scale = Vector2(1.7338, 1.73544)
+texture = ExtResource("3_57woi")
 
 [node name="Black" type="ColorRect" parent="CanvasLayer"]
 unique_name_in_owner = true
@@ -408,21 +418,22 @@ grow_vertical = 2
 
 [node name="Coral" parent="." instance=ExtResource("2_2irvf")]
 unique_name_in_owner = true
-position = Vector2(2, 60)
+position = Vector2(570, 471)
+scale = Vector2(0.472578, 0.472578)
 collision_mask = 0
 
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 10
-position = Vector2(-147, -8)
+position = Vector2(-142, -29)
 scale = Vector2(0.674198, 1.62339)
 collision_layer = 8
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Walls"]
-offset_left = -1500.0
-offset_top = -524.0
-offset_right = -1460.0
-offset_bottom = -450.0
+offset_left = 203.145
+offset_top = -545.156
+offset_right = 243.145
+offset_bottom = -471.156
 scale = Vector2(-9.82501, 13.0786)
 color = Color(0, 0, 0, 1)
 
@@ -434,7 +445,7 @@ offset_bottom = 423.917
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-position = Vector2(-1702.5, -262.751)
+position = Vector2(0.64502, -283.907)
 shape = SubResource("RectangleShape2D_b18te")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
@@ -442,25 +453,25 @@ position = Vector2(2128.68, -282.127)
 shape = SubResource("RectangleShape2D_swt3a")
 
 [node name="Path2D" type="Path2D" parent="Walls"]
-position = Vector2(1119.18, -206.184)
+position = Vector2(1112.43, -15.3999)
 curve = SubResource("Curve2D_ad2ju")
 
 [node name="Path1" type="PathFollow2D" parent="Walls/Path2D"]
 unique_name_in_owner = true
 position = Vector2(1030, 413)
-rotation = -1.58441
+rotation = -1.5854
 
 [node name="Path2D2" type="Path2D" parent="Walls"]
-position = Vector2(-785, -200.101)
+position = Vector2(918.145, -221.257)
 curve = SubResource("Curve2D_f74fl")
 
 [node name="Path2" type="PathFollow2D" parent="Walls/Path2D2"]
 unique_name_in_owner = true
-position = Vector2(-919, 454)
-rotation = -1.56927
+position = Vector2(-906.279, 629.045)
+rotation = -1.57893
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(-2, 658)
+position = Vector2(10, 864)
 scale = Vector2(20.12, 2)
 collision_layer = 13
 script = ExtResource("3_8ftou")
@@ -484,64 +495,66 @@ curve = SubResource("Curve2D_ayu2t")
 
 [node name="PollowPath" type="PathFollow2D" parent="PollPath"]
 unique_name_in_owner = true
-position = Vector2(-2674.5, -804.5)
+position = Vector2(-1562.5, -30.5)
+rotation = 0.00108932
 
 [node name="Player" parent="." instance=ExtResource("1_od2h0")]
 unique_name_in_owner = true
+position = Vector2(564, 329)
 collision_mask = 9
 
 [node name="Clam1" parent="." instance=ExtResource("5_vbu6w")]
 unique_name_in_owner = true
-position = Vector2(781, 362)
+position = Vector2(899, 585)
 rotation = -3.14159
-scale = Vector2(-3, -3)
+scale = Vector2(-1, -1)
 
 [node name="Clam2" parent="." instance=ExtResource("5_vbu6w")]
 unique_name_in_owner = true
-position = Vector2(-737, 369)
-scale = Vector2(-3, 3)
+position = Vector2(266, 587)
+scale = Vector2(-1, 1)
 
 [node name="Starfishes" type="Node" parent="."]
 
 [node name="Starfish" parent="Starfishes" instance=ExtResource("8_go77r")]
-position = Vector2(-0.999992, -150)
+position = Vector2(572, 386)
 rotation = -0.23453
 
 [node name="Starfish2" parent="Starfishes" instance=ExtResource("8_go77r")]
-position = Vector2(-73, -52)
+position = Vector2(534, 420)
 rotation = -0.7078
 
 [node name="Starfish3" parent="Starfishes" instance=ExtResource("8_go77r")]
-position = Vector2(7, -78)
+position = Vector2(570, 414)
 rotation = 0.277678
 
 [node name="Urchins" type="Node" parent="."]
 
 [node name="Urchin5" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(85, 327)
+position = Vector2(584, 577)
 rotation = 0.391504
 
 [node name="Urchin4" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(107, 392)
+position = Vector2(580, 619)
 rotation = 1.12983
 
 [node name="Urchin2" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(164, 344)
+position = Vector2(626, 581)
 rotation = 0.90967
 
 [node name="Urchin3" parent="Urchins" instance=ExtResource("19_lhkum")]
-position = Vector2(172, 414)
+position = Vector2(627, 625)
 rotation = 1.81934
 
 [node name="Wrasse" parent="." instance=ExtResource("10_8fnf1")]
-position = Vector2(181, -95)
-scale = Vector2(4, 4)
+position = Vector2(616, 360)
+scale = Vector2(1, 1)
 
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
-position = Vector2(-99, 181)
+position = Vector2(538, 508)
 
 [node name="Dragon" parent="." instance=ExtResource("12_dotxc")]
-position = Vector2(-158, 363)
+position = Vector2(493, 612)
 
 [node name="UI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -558,14 +571,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="TextureProgressBar" parent="UI"]
 unique_name_in_owner = true
+texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -150.0
+offset_top = 37.0
 offset_right = 150.0
-offset_bottom = 40.0
+offset_bottom = 77.0
 grow_horizontal = 2
-scale = Vector2(0.999621, 1.09452)
 texture_over = ExtResource("9_t3lry")
 texture_progress = ExtResource("10_hwnto")
 
@@ -591,9 +605,10 @@ vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="UI"]
 texture_filter = 1
-position = Vector2(61, 61)
-scale = Vector2(1.79342, 1.79342)
+position = Vector2(225, 67)
+scale = Vector2(1.43199, 1.43199)
 texture = ExtResource("15_16mie")
+metadata/_edit_group_ = true
 
 [node name="ChumkLabel" type="Label" parent="UI/Sprite2D"]
 unique_name_in_owner = true
@@ -630,6 +645,7 @@ vertical_alignment = 1
 
 [node name="HelpText" type="Label" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 53.0
@@ -683,6 +699,54 @@ texture_filter = 1
 position = Vector2(571, 335)
 scale = Vector2(0.575083, 0.575083)
 sprite_frames = SubResource("SpriteFrames_u0ggn")
+
+[node name="Button" type="Button" parent="UI"]
+unique_name_in_owner = true
+offset_left = 934.0
+offset_top = 4.0
+offset_right = 1119.0
+offset_bottom = 171.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.144063, 0.144063, 0.144063, 1)
+theme_override_colors/font_hover_color = Color(0.407843, 0.407843, 0.407843, 1)
+theme_override_colors/font_outline_color = Color(0, 0.627451, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.144063, 0.144063, 0.144063, 1)
+theme_override_colors/icon_hover_color = Color(0.423529, 0.423529, 0.423529, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjyf5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xcpwb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mtvee")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_viab0")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hrnlg")
+text = "Continue"
+icon = ExtResource("22_7wk06")
+icon_alignment = 1
+expand_icon = true
+
+[node name="PauseButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_right = 195.0
+offset_bottom = 167.0
+scale = Vector2(0.767861, 0.767861)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.144063, 0.144063, 0.144063, 1)
+theme_override_colors/font_hover_color = Color(0.407843, 0.407843, 0.407843, 1)
+theme_override_colors/font_outline_color = Color(0.631373, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.144063, 0.144063, 0.144063, 1)
+theme_override_colors/icon_hover_color = Color(0.423529, 0.423529, 0.423529, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_fjyf5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xcpwb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mtvee")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_viab0")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hrnlg")
+text = "Pause"
+icon = ExtResource("23_4roak")
+icon_alignment = 1
+expand_icon = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -860,6 +924,8 @@ autoplay = true
 
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="animation_looped" from="UI/CountdownSprite" to="." method="_on_countdown_sprite_animation_looped"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/HowTo" to="." method="_on_how_to_pressed"]

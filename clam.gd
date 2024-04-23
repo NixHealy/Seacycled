@@ -3,8 +3,8 @@ extends StaticBody2D
 @onready var main = get_node("/root/Main")
 @onready var player = get_node("/root/Main/Player")
 
-var open_tex = load("res://img/open.png")
-var close_tex = load("res://img/closed.png")
+var open_tex = load("res://img/scaled/clam_open.PNG")
+var close_tex = load("res://img/scaled/clam_closed.png")
 var is_open = false
 var config = ConfigFile.new()
 
@@ -18,7 +18,7 @@ func _ready():
 		node.set_texture(close_tex)
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)
-	global_position.y += 130
+	#global_position.y += 130
 	
 	if global_position.x < 0:
 		#%HelpLabel.scale.x = -1
@@ -90,14 +90,21 @@ func _process(delta):
 
 func open():
 	%OpenSound.play()
+	%Sprite2D.visible = false
+	%Animation.visible = true
+	%Animation.play()
+
+func _on_animation_animation_finished():
+	%Animation.visible = false
+	%Sprite2D.visible = true
 	is_open = true 
 	%Sprite2D.set_texture(open_tex)
 	for node in %Outline.get_children():
 			node.set_texture(open_tex)
 			node.material.set_shader_parameter("alpha", 1.0)
 	%TopCollision.set_deferred("disabled", false)
-	%BottomCollision.set_deferred("disabled", false)
-	global_position.y -= 120
+	%BottomCollision.set_deferred("disabled", true) #bodge
+	#global_position.y -= 120
 
 func close():
 	%CloseSound.play()
@@ -109,7 +116,7 @@ func close():
 			node.material.set_shader_parameter("alpha", 0.0)
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)
-	global_position.y += 120
+	#global_position.y += 120
 
 
 func _on_close_timer_timeout():
@@ -117,3 +124,6 @@ func _on_close_timer_timeout():
 		if body.is_in_group("enemy"):
 			body.queue_free()
 	close()
+
+
+

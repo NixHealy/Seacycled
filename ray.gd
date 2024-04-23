@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var main = get_node("/root/Main")
 @onready var player = get_node("/root/Main/Player")
 
-var norm_tex = load("res://img/newray.png")
+var norm_tex = load("res://img/scaled/ray.png")
 
 var activated = false
 

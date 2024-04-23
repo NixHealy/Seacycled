@@ -15,7 +15,7 @@ func _physics_process(delta):
 		
 		sfx = config.get_value("Options", "sfx")
 		%PopSound.volume_db = log(sfx) * 20
-		%InflateSound.volumbe_db = log(sfx) * 20
+		%InflateSound.volume_db = log(sfx) * 20
 	
 	if health <= 0:
 		die()
@@ -23,13 +23,14 @@ func _physics_process(delta):
 	var direction = coral.global_position - global_position  #goes to the coral
 	velocity = direction.normalized() * speed
 	
-	if direction.length() < 500:
+	if direction.length() < 600:
 		%InflateSound.play()
 		%Sprite2D.set_texture(exp_tex)
 		if %ExplodeTimer.is_stopped() == true:
+			scale = Vector2(0.669, 0.669)
 			%ExplodeTimer.start()
 	
-	if stunned == false and direction.length() > 500:
+	if stunned == false and direction.length() > 600:
 		move_and_slide()
 
 	if %ExplodeTimer.is_stopped() == false:
@@ -39,9 +40,9 @@ func _physics_process(delta):
 	#rotation_degrees = snapped(rotation_degrees, 45) 
 	
 	if velocity.x > 0:
-		$Sprite2D.flip_h = false
-	else:
 		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
 
 func take_damage():
 	health -= 1

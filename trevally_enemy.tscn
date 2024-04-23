@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bbrewbj21ev03"]
+[gd_scene load_steps=22 format=3 uid="uid://bbrewbj21ev03"]
 
 [ext_resource type="Script" path="res://trevally_enemy.gd" id="1_vm5j8"]
 [ext_resource type="Texture2D" uid="uid://ch6gix4mji48k" path="res://img/trevally.png" id="2_hnfxc"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_tnjga"]
-[ext_resource type="Texture2D" uid="uid://chltqky0aog1j" path="res://img/trevally_sheet.png" id="4_gtx6k"]
+[ext_resource type="Texture2D" uid="uid://c3uublp2g1vlm" path="res://img/scaled/trevally.png" id="3_1aeyq"]
 [ext_resource type="Texture2D" uid="uid://gxqadrtyal1a" path="res://img/elec_particle.png" id="5_5wy73"]
+[ext_resource type="Texture2D" uid="uid://d1etuqtsfd3g1" path="res://img/scaled/trevally_sheet.png" id="5_ubdq1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t0sc3"]
 shader = ExtResource("2_tnjga")
@@ -16,64 +17,64 @@ shader = ExtResource("2_tnjga")
 shader_parameter/new_color = Vector3(1, 0, 0)
 shader_parameter/active = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fq38p"]
-atlas = ExtResource("4_gtx6k")
-region = Rect2(0, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8pj6"]
+atlas = ExtResource("5_ubdq1")
+region = Rect2(0, 0, 75, 75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_707cj"]
-atlas = ExtResource("4_gtx6k")
-region = Rect2(1920, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jstih"]
+atlas = ExtResource("5_ubdq1")
+region = Rect2(75, 0, 75, 75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nj1p6"]
-atlas = ExtResource("4_gtx6k")
-region = Rect2(3840, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv5m3"]
+atlas = ExtResource("5_ubdq1")
+region = Rect2(150, 0, 75, 75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1owsr"]
-atlas = ExtResource("4_gtx6k")
-region = Rect2(5760, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_33otr"]
+atlas = ExtResource("5_ubdq1")
+region = Rect2(225, 0, 75, 75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjptw"]
-atlas = ExtResource("4_gtx6k")
-region = Rect2(7680, 0, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pft3"]
+atlas = ExtResource("5_ubdq1")
+region = Rect2(300, 0, 75, 75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_obvfk"]
-atlas = ExtResource("4_gtx6k")
-region = Rect2(0, 1920, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4017"]
+atlas = ExtResource("5_ubdq1")
+region = Rect2(0, 75, 75, 75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nxwaw"]
-atlas = ExtResource("4_gtx6k")
-region = Rect2(1920, 1920, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf1xc"]
+atlas = ExtResource("5_ubdq1")
+region = Rect2(75, 75, 75, 75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eemw2"]
-atlas = ExtResource("4_gtx6k")
-region = Rect2(3840, 1920, 1920, 1920)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd2wy"]
+atlas = ExtResource("5_ubdq1")
+region = Rect2(150, 75, 75, 75)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_53qor"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fq38p")
+"texture": SubResource("AtlasTexture_v8pj6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_707cj")
+"texture": SubResource("AtlasTexture_jstih")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nj1p6")
+"texture": SubResource("AtlasTexture_vv5m3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1owsr")
+"texture": SubResource("AtlasTexture_33otr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rjptw")
+"texture": SubResource("AtlasTexture_0pft3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_obvfk")
+"texture": SubResource("AtlasTexture_j4017")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nxwaw")
+"texture": SubResource("AtlasTexture_yf1xc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eemw2")
+"texture": SubResource("AtlasTexture_dd2wy")
 }],
 "loop": true,
 "name": &"default",
@@ -81,7 +82,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5e65w"]
-size = Vector2(74, 56)
+size = Vector2(68.7582, 65.2321)
 
 [sub_resource type="Curve" id="Curve_5fuk0"]
 min_value = 0.01
@@ -98,8 +99,9 @@ emission_shape_scale = Vector3(18.4, 9.825, 1)
 emission_shape = 2
 emission_sphere_radius = 2.0
 angle_max = 360.0
-direction = Vector3(0, 0, 0)
 spread = 180.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
 radial_velocity_max = 20.0
 gravity = Vector3(0, 0, 0)
 radial_accel_min = 100.0
@@ -117,12 +119,13 @@ script = ExtResource("1_vm5j8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
+texture_filter = 1
 material = SubResource("ShaderMaterial_t0sc3")
-scale = Vector2(0.146558, 0.146558)
-texture = ExtResource("2_hnfxc")
+texture = ExtResource("3_1aeyq")
 
 [node name="Outline" type="Node2D" parent="Sprite2D"]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 scale = Vector2(6.82324, 6.82324)
 
@@ -156,9 +159,8 @@ offset = Vector2(0, -20)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+texture_filter = 1
 material = SubResource("ShaderMaterial_p7kap")
-position = Vector2(5.96046e-08, -7)
-scale = Vector2(0.0544414, 0.0544414)
 sprite_frames = SubResource("SpriteFrames_53qor")
 autoplay = "default"
 
@@ -167,39 +169,34 @@ unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-scale = Vector2(6.82324, 6.82324)
 
 [node name="Right" type="AnimatedSprite2D" parent="AnimatedSprite2D/AnimatedOutline"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-position = Vector2(5.38406, 1.07611)
-scale = Vector2(0.145509, 0.145509)
+texture_filter = 1
+position = Vector2(2, 0)
 sprite_frames = SubResource("SpriteFrames_53qor")
 
 [node name="Down" type="AnimatedSprite2D" parent="AnimatedSprite2D/AnimatedOutline"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-position = Vector2(-7.62939e-06, 6.46017)
-scale = Vector2(0.145509, 0.145509)
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_53qor")
 
 [node name="Left" type="AnimatedSprite2D" parent="AnimatedSprite2D/AnimatedOutline"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-position = Vector2(-5.38407, 1.07611)
-scale = Vector2(0.145509, 0.145509)
+position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_53qor")
 
 [node name="Up" type="AnimatedSprite2D" parent="AnimatedSprite2D/AnimatedOutline"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
-position = Vector2(2.69202, -6.99998)
-scale = Vector2(0.145509, 0.145509)
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_53qor")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 scale = Vector2(1.13441, 1.13441)
 shape = SubResource("RectangleShape2D_5e65w")
 one_way_collision_margin = 0.0

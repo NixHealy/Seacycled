@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cxmkikkvtr6qk"]
+
+[ext_resource type="Shader" path="res://outline.gdshader" id="1_mosgc"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_mosgc")
+shader_parameter/red = null
+shader_parameter/green = 1.0
+shader_parameter/blue = null
+shader_parameter/alpha = 0.0
