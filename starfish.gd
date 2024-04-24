@@ -26,6 +26,8 @@ func _ready():
 		#%PokeSound.volume_db = log(sfx) * 20
 
 func _process(delta):
+	for node in %Outline.get_children():
+		node.frame = %Sprite2D.frame
 	
 	#only one starfish should display popup
 	var starfishes = get_tree().get_nodes_in_group("starfish")

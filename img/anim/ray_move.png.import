@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://evxy327bau71"
-path="res://.godot/imported/ray.png-1b08cbf44681fcb861dd12f5984d2e50.ctex"
+uid="uid://cf7im3lf17uq6"
+path="res://.godot/imported/ray_move.png-b3d8add65c2576520c36bc03ee0c9eb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/anim/ray.png"
-dest_files=["res://.godot/imported/ray.png-1b08cbf44681fcb861dd12f5984d2e50.ctex"]
+source_file="res://img/anim/ray_move.png"
+dest_files=["res://.godot/imported/ray_move.png-b3d8add65c2576520c36bc03ee0c9eb3.ctex"]
 
 [params]
 

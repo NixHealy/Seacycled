@@ -631,12 +631,12 @@ scale = Vector2(1, 1)
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(538, 508)
+position = Vector2(539, 589)
 
 [node name="Dragon" parent="." instance=ExtResource("12_dotxc")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(493, 612)
+position = Vector2(521, 523)
 
 [node name="UI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -685,14 +685,14 @@ text = "Wave 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="UI"]
+[node name="ChumkIcon" type="Sprite2D" parent="UI"]
 texture_filter = 1
 position = Vector2(225, 67)
 scale = Vector2(1.43199, 1.43199)
 texture = ExtResource("15_16mie")
 metadata/_edit_group_ = true
 
-[node name="ChumkLabel" type="Label" parent="UI/Sprite2D"]
+[node name="ChumkLabel" type="Label" parent="UI/ChumkIcon"]
 unique_name_in_owner = true
 offset_left = 36.8011
 offset_top = -37.9163

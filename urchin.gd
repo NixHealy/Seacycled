@@ -20,6 +20,9 @@ func _ready():
 		%Sprite2D.material.set_shader_parameter("active", contrast)
 	
 func _process(delta):
+	for node in %Outline.get_children():
+		node.frame = %Sprite2D.frame
+	
 	#only one urchin should display popup
 	var urchins = get_tree().get_nodes_in_group("urchin")
 	var selected = urchins[urchins.size() - 1]

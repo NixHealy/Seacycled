@@ -22,7 +22,7 @@ func _physics_process(delta):
 	for node in %Outline.get_children():
 		node.frame = %Sprite2D.frame
 		
-	if coral.health < 100:
+	if coral.health < 100 and main.grace:
 		if %Sprite2D.get_animation() != "heal":
 			%Sprite2D.set_animation("heal")
 			for node in %Outline.get_children():
@@ -42,7 +42,7 @@ func _physics_process(delta):
 	if !activated:
 		return
 
-	var direction = coral.global_position - global_position
+	var direction = Vector2(coral.global_position.x - 20, coral.global_position.y + 50) - global_position
 	velocity = direction.normalized() * 30000 * delta
 	if direction.length() > 20:
 		move_and_slide()

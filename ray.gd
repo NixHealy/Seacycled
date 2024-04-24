@@ -27,6 +27,11 @@ func _ready():
 
 func _physics_process(delta):
 	
+	for node in %Outline.get_children():
+		node.frame = %Sprite2D.frame 
+	
+	%Sprite2D.speed_scale = 1
+	
 	if activated:
 		for node in %Outline.get_children():
 			node.material.set_shader_parameter("alpha", 1.0)
@@ -60,6 +65,8 @@ func _physics_process(delta):
 		velocity = direction.normalized() * 20000 * delta
 		move_and_slide()
 		
+		%Sprite2D.speed_scale = 3
+		
 		rotation = atan(velocity.y / velocity.x)
 		if velocity.x > 0:
 			$Sprite2D.flip_h = true
@@ -73,12 +80,11 @@ func _physics_process(delta):
 		if closest.global_position.distance_to(global_position) < 100:
 			if closest.has_method("get_stunned") and %StunTimer.is_stopped() and !closest.is_in_group("spike"):
 				closest.get_stunned() 
-				%Sprite2D.set_texture(norm_tex)
 				%StunTimer.start()
 				%ShockSound.play()
 
 func _on_stun_timer_timeout():
-	%Sprite2D.set_texture(norm_tex)
+	pass
 
 func activate():
 	activated = true
