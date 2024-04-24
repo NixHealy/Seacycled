@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://di11fm2227b87"]
+[gd_scene load_steps=14 format=3 uid="uid://di11fm2227b87"]
 
 [ext_resource type="Script" path="res://wrasse.gd" id="1_upti6"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_j8rwt"]
@@ -7,7 +7,8 @@
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="4_vdttl"]
 [ext_resource type="Texture2D" uid="uid://cly2ylkg1knnc" path="res://img/wrasse_popup.png" id="5_sf4lu"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_07lnm"]
-[ext_resource type="AudioStream" uid="uid://cv77b4fnpe31y" path="res://sound/wrasse_scrub.wav" id="7_v37ka"]
+[ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="6_br6gy"]
+[ext_resource type="AudioStream" uid="uid://bd6vd28fungs0" path="res://sound/wrasse_new.wav" id="8_m1ayq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_so3ku"]
 shader = ExtResource("2_j8rwt")
@@ -20,7 +21,11 @@ size = Vector2(53.3333, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k41ry"]
 size = Vector2(160, 49.5)
 
-[node name="Wrasse" type="CharacterBody2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_p6yak"]
+line_spacing = 0.0
+font_size = 20
+
+[node name="Wrasse" type="CharacterBody2D" groups=["ally"]]
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
 collision_layer = 0
@@ -103,8 +108,40 @@ visible = false
 position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_k41ry")
 
-[node name="Popup" type="Sprite2D" parent="."]
+[node name="Popup" type="Node2D" parent="."]
 unique_name_in_owner = true
+visible = false
+position = Vector2(-2.84217e-14, -35)
+scale = Vector2(0.371626, 0.371626)
+metadata/_edit_group_ = true
+
+[node name="Box" type="NinePatchRect" parent="Popup"]
+texture_filter = 1
+offset_left = -140.0
+offset_top = -169.0
+offset_right = 154.0
+offset_bottom = 13.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_br6gy")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="Popup/Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+text = "I can help you clean
+up all this pollution!
+(Costs 5 chumks)"
+label_settings = SubResource("LabelSettings_p6yak")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OldPopup" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-2, -63.3333)
 scale = Vector2(0.371626, 0.371626)
@@ -117,8 +154,8 @@ position = Vector2(10, -30)
 scale = Vector2(0.0629278, 0.0629278)
 texture = ExtResource("6_07lnm")
 
-[node name="ScrubSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ScrubSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
 unique_name_in_owner = true
-stream = ExtResource("7_v37ka")
+stream = ExtResource("8_m1ayq")
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

@@ -9,7 +9,7 @@ func _ready():
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
-		contrast = config.get_value("Options", "contrast")
+		contrast = config.get_value("Options", "contrast", false)
 		%AnimatedSprite2D.material.set_shader_parameter("active", contrast)
 		
 	for node in %AnimatedOutline.get_children():
@@ -23,7 +23,7 @@ func _physics_process(delta):
 		node.frame = %AnimatedSprite2D.frame
 		
 	var direction = coral.global_position - global_position  #goes to the coral
-	if direction.x > 100:
+	if direction.length() > 400:
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
 	else:

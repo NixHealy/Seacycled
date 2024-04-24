@@ -17,14 +17,14 @@ func _ready():
 	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
-		volume = config.get_value("Options", "volume")
+		volume = config.get_value("Options", "volume", 1.0)
 		%BackgroundMusic.volume_db = log(volume) * 20
 	
 		var contrast = false
-		contrast = config.get_value("Options", "contrast")
+		contrast = config.get_value("Options", "contrast", false)
 		%Black.visible = contrast
 		
-		var sfx = config.get_value("Options", "sfx")
+		var sfx = config.get_value("Options", "sfx", 1.0)
 		%CountdownMusic.volume_db = log(sfx) * 20
 
 func _process(delta):
@@ -63,6 +63,7 @@ func _process(delta):
 		if all_collected == true and grace == true:
 			%HelpText.text = "Now recruit allies or heal the coral!"
 			%Button.visible = true
+			%AllyButtons.visible = true
 			if %HelpDelay.is_stopped():
 				%HelpDelay.start()
 		else:
@@ -152,9 +153,9 @@ func spawn_mob():
 	# Danger icon for approaching enemies
 	var danger = preload("res://danger_icon.tscn").instantiate()
 	if numPath == 1:
-		danger.global_position = Vector2(1000, new_mob.global_position.y)
+		danger.global_position = Vector2(100, new_mob.global_position.y)
 	if numPath == 2:
-		danger.global_position = Vector2(-1000, new_mob.global_position.y)
+		danger.global_position = Vector2(1000, new_mob.global_position.y)
 	add_child(danger) # adds the danger icon to the scene
 	
 # Spawn sinking pollution from the top of the screen
@@ -204,7 +205,7 @@ func _on_wave_timer_timeout(): # wave timer
 		# GraceTimer.start() #start a timer for the grace period
 		grace = true
 		#%GraceLabel.visible = true
-		%Button.visible = true
+		%Button.visible = false
 		#%HelpText.visible = true
 		%HelpText.visible = false
 
@@ -238,8 +239,15 @@ func _on_resume_pressed():
 	
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
-		volume = config.get_value("Options", "volume")
+		volume = config.get_value("Options", "volume", 1.0)
 		%BackgroundMusic.volume_db = log(volume) * 20
+		
+		var sfx = config.get_value("Options", "sfx", 1.0)
+		for node in get_sfx_children($"."):
+			if node.is_in_group("sfx"):
+				node.volume_db = log(sfx) * 20
+				
+		%Player.norm_volume = log(sfx) * 20
 
 # how to
 func _on_how_to_pressed():
@@ -263,6 +271,15 @@ func _on_quit_pressed():
 #func _on_countdown_sprite_animation_looped():
 	#%CountdownSprite.visible = false
 
+func get_sfx_children(node) -> Array:
+	var nodes : Array = []
+	for N in node.get_children():
+		if N.is_in_group("ally") or N.is_in_group("enemy") or N.is_in_group("player") or N.is_in_group("coral"):
+			if N.get_child_count() > 0:
+				nodes.append_array(get_sfx_children(N))
+		elif N.is_in_group("sfx"):
+			nodes.append(N)
+	return nodes
 
 func _on_button_pressed():
 	if grace == true and all_collected == true:
@@ -274,6 +291,7 @@ func _on_button_pressed():
 		#%GraceLabel.visible = false
 		%Button.visible = false
 		%HelpText.visible = false
+		%AllyButtons.visible = false
 
 
 func _on_pause_button_pressed():

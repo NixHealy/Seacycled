@@ -9,7 +9,7 @@ var config = ConfigFile.new()
 
 var attacking = false
 var speed = 3
-var chumks = 0
+var chumks = 99
 
 var sfx = 0.1
 var norm_volume = 0.1
@@ -22,10 +22,10 @@ func _ready():
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
-		contrast = config.get_value("Options", "contrast")
+		contrast = config.get_value("Options", "contrast", false)
 		%AnimatedFish.material.set_shader_parameter("active", contrast)
 		
-		sfx = config.get_value("Options", "sfx")
+		sfx = config.get_value("Options", "sfx", 1.0)
 		%AttackSound.volume_db = log(sfx) * 20
 		norm_volume = log(sfx) * 20
 

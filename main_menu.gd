@@ -6,15 +6,15 @@ var vy = randi_range(-100, 100)
 var config = ConfigFile.new()
 
 func _ready():
-	#change this
-	config.set_value("Options", "volume", 1)
-	config.set_value("Options", "sfx", 1)
-	config.set_value("Options", "contrast", false)
-	config.save("user://options.ini")
+	if !FileAccess.file_exists("user://options.ini"):
+		config.set_value("Options", "volume", 1)
+		config.set_value("Options", "sfx", 1)
+		config.set_value("Options", "contrast", false)
+		config.save("user://options.ini")
 
 func _process(delta):
 	config.load("user://options.ini")
-	var volume = config.get_value("Options", "volume")
+	var volume = config.get_value("Options", "volume", 1.0)
 	%BackgroundMusic.volume_db = log(volume) * 20
 	
 	if %Fish.position.x < 700:

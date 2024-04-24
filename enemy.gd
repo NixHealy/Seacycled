@@ -16,7 +16,7 @@ func _ready():
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
-		contrast = config.get_value("Options", "contrast")
+		contrast = config.get_value("Options", "contrast", false)
 		%AnimatedSprite2D.material.set_shader_parameter("active", contrast)
 
 func _physics_process(delta):
@@ -28,11 +28,11 @@ func _physics_process(delta):
 		node.frame = %AnimatedSprite2D.frame
 	
 	var direction = coral.global_position - global_position  #goes to the coral
-	if direction.length() > 300 and (direction.x > 100 or direction.x < -100):
+	if direction.length() > 500 and (direction.x > 100 or direction.x < -100):
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
 	else:
-		velocity = direction.normalized() * (speed * 2)
+		velocity = direction.normalized() * (speed * 3)
 	
 	if stunned == false:
 		move_and_slide()

@@ -19,11 +19,11 @@ func _ready():
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
-		contrast = config.get_value("Options", "contrast")
+		contrast = config.get_value("Options", "contrast", false)
 		%Sprite2D.material.set_shader_parameter("active", contrast)
 		
-		var sfx = config.get_value("Options", "sfx")
-		%PokeSound.volume_db = log(sfx) * 20
+		var sfx = config.get_value("Options", "sfx", 1.0)
+		#%PokeSound.volume_db = log(sfx) * 20
 
 func _process(delta):
 	
@@ -36,33 +36,37 @@ func _process(delta):
 	
 	selected.show_popup = true
 	
-	if activated == false && main.grace == true && main.all_collected == true && main.tutorial == false:
-		for body in %Armour.get_overlapping_bodies():
-			if body.is_in_group("player"):
-				
-				if show_popup == true:
-					%Popup.visible = true
-				%Speech.visible = false
-				
-				# Input required so user doesn't accidentally spend chumks
-				if Input.is_action_just_pressed("attack"):
-					if body.chumks >= 5:
-						body.chumks -= 5
-						for starfish in starfishes:
-							starfish.activated = true
-						for node in %Outline.get_children():
-							node.material.set_shader_parameter("alpha", 1.0)
-							
-			else:
-				%Popup.visible = false
-				if show_popup == true:
-					%Speech.visible = true
-	else:
-		%Popup.visible = false
-		%Speech.visible = false
+	if activated:
+		for node in get_node("%Outline").get_children():
+			node.material.set_shader_parameter("alpha", 1.0)
+	
+	#if activated == false && main.grace == true && main.all_collected == true && main.tutorial == false:
+		#for body in %Armour.get_overlapping_bodies():
+			#if body.is_in_group("player"):
+				#
+				#if show_popup == true:
+					#%Popup.visible = true
+				#%Speech.visible = false
+				#
+				## Input required so user doesn't accidentally spend chumks
+				#if Input.is_action_just_pressed("attack"):
+					#if body.chumks >= 5:
+						#body.chumks -= 5
+						#for starfish in starfishes:
+							#starfish.activated = true
+							#for node in starfish.get_node("%Outline").get_children():
+								#node.material.set_shader_parameter("alpha", 1.0)
+							#
+			#else:
+				#%Popup.visible = false
+				#if show_popup == true:
+					#%Speech.visible = true
+	#else:
+		#%Popup.visible = false
+		#%Speech.visible = false
 
 func _on_armour_body_entered(body):
 	if activated:
 		if body.is_in_group("enemy") and !body.is_in_group("spike"):
 			body.resisted = true
-			%PokeSound.play()
+			#%PokeSound.play()

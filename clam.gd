@@ -20,7 +20,7 @@ func _ready():
 	%BottomCollision.set_deferred("disabled", true)
 	#global_position.y += 130
 	
-	if global_position.x < 0:
+	if global_position.x < 500:
 		#%HelpLabel.scale.x = -1
 		#%HelpLabel.position.x += %Help.size.x
 		%Popup.global_scale.x = -1
@@ -30,10 +30,10 @@ func _ready():
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
-		contrast = config.get_value("Options", "contrast")
+		contrast = config.get_value("Options", "contrast", false)
 		%Sprite2D.material.set_shader_parameter("active", contrast)
 		
-		var sfx = config.get_value("Options", "sfx")
+		var sfx = config.get_value("Options", "sfx", 1.0)
 		%CloseSound.volume_db = log(sfx) * 20
 		%OpenSound.volume_db = log(sfx) * 20
 
@@ -43,14 +43,14 @@ func _process(delta):
 	if is_open == true and %CloseTimer.is_stopped() and main.grace == false:
 		%CloseTimer.start()
 	
-	if is_open == false && main.grace == true && main.all_collected == true && main.tutorial == false:
-		for body in %Area2D.get_overlapping_bodies():
-			if body.is_in_group("player"):
-				# Input required so user doesn't accidentally spend chumks
-					if Input.is_action_just_pressed("attack"):
-						if body.chumks >= 10:
-							body.chumks -= 10
-							open()
+	#if is_open == false && main.grace == true && main.all_collected == true && main.tutorial == false:
+		#for body in %Area2D.get_overlapping_bodies():
+			#if body.is_in_group("player"):
+				## Input required so user doesn't accidentally spend chumks
+					#if Input.is_action_just_pressed("attack"):
+						#if body.chumks >= 10:
+							#body.chumks -= 10
+							#open()
 	
 	# The clam should snap closed if there are more than five enemies inside
 	#if is_open:
@@ -66,27 +66,27 @@ func _process(delta):
 			#numEnemies = 0
 
 		
-	if main.grace == true and main.tutorial == false:
-		modulate.a = 1
-		if main.all_collected == true:
-			#%Help.visible = true
-			#%HelpLabel.text = "..."
-			%Popup.visible = false
-			%Speech.visible = true
-			for body in %Area2D.get_overlapping_bodies():
-				if body.is_in_group("player"):
-					#%HelpLabel.text = "I'll stop those enemies in their path!\n[Cost: 2 Chumks]"
-					%Popup.visible = true
-					%Speech.visible = false
-	else:
-		%Help.visible = false
-		%Popup.visible = false
-		%Speech.visible = false
-		
-	if is_open:
-		%Help.visible = false
-		%Popup.visible = false
-		%Speech.visible = false
+	#if main.grace == true and main.tutorial == false:
+		#modulate.a = 1
+		#if main.all_collected == true:
+			##%Help.visible = true
+			##%HelpLabel.text = "..."
+			#%Popup.visible = false
+			#%Speech.visible = true
+			#for body in %Area2D.get_overlapping_bodies():
+				#if body.is_in_group("player"):
+					##%HelpLabel.text = "I'll stop those enemies in their path!\n[Cost: 2 Chumks]"
+					#%Popup.visible = true
+					#%Speech.visible = false
+	#else:
+		#%Help.visible = false
+		#%Popup.visible = false
+		#%Speech.visible = false
+		#
+	#if is_open:
+		#%Help.visible = false
+		#%Popup.visible = false
+		#%Speech.visible = false
 
 func open():
 	%OpenSound.play()

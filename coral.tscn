@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bw1af6olg1gwj"]
+[gd_scene load_steps=16 format=3 uid="uid://bw1af6olg1gwj"]
 
 [ext_resource type="Script" path="res://coral.gd" id="1_0simb"]
 [ext_resource type="Shader" path="res://coral.gdshader" id="2_qa8xe"]
@@ -6,8 +6,13 @@
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="4_ygijg"]
 [ext_resource type="AudioStream" uid="uid://bwn7sohwtesxm" path="res://sound/coral_damage.wav" id="5_fxhn3"]
 [ext_resource type="Texture2D" uid="uid://bmunw4x6e3t1a" path="res://img/heal_popup.png" id="6_bcs3v"]
+[ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="6_ubjg7"]
 [ext_resource type="Texture2D" uid="uid://ck0vumet7xwfo" path="res://img/health_bubble.png" id="7_q7s6s"]
 [ext_resource type="Texture2D" uid="uid://dgs3x01e0wd80" path="res://img/health_progress.png" id="8_fqjyb"]
+[ext_resource type="AudioStream" uid="uid://l1u5tbem2toy" path="res://sound/starfish_poke.wav" id="9_5u7qa"]
+[ext_resource type="AudioStream" uid="uid://bp6p8y6aa3pre" path="res://sound/crab.wav" id="11_7hu5j"]
+[ext_resource type="AudioStream" uid="uid://cuuo0d65cw3v3" path="res://sound/barracuda.wav" id="12_2snxl"]
+[ext_resource type="AudioStream" uid="uid://dxvm8dp8xhj4p" path="res://sound/parrot.wav" id="13_i0pfb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cetts"]
 shader = ExtResource("2_qa8xe")
@@ -16,7 +21,11 @@ shader_parameter/pollution_strength = 0.0
 shader_parameter/new_color = Vector3(1, 1, 1)
 shader_parameter/active = false
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_ftyda"]
+line_spacing = 0.0
+font_size = 25
+
+[node name="StaticBody2D" type="StaticBody2D" groups=["coral"]]
 process_priority = 1000
 texture_filter = 2
 collision_layer = 4
@@ -38,17 +47,15 @@ polygon = PackedVector2Array(-160, -57, -379, 146, -450, 323, -26, 405, 306, 428
 
 [node name="HitArea" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
 collision_layer = 0
 collision_mask = 255
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HitArea"]
 position = Vector2(-1.5, -24)
-polygon = PackedVector2Array(-389, -113, -348.5, 46, -283.5, 232, -332.5, 412, -28.5, 421, 323.5, 426, 329, 318, 274, 188, 250, 128, 258, 51, 224, 1, 204.5, -31, 184.5, -100, 186, -172, 151, -279, 98, -353, -6.5, -354, -64, -412, -133, -422, -242, -374, -313, -258)
+polygon = PackedVector2Array(-389, -113, -330.5, 237, -332.5, 412, -28.5, 421, 323.5, 426, 329, 318, 258, 51, 186, -172, 151, -279, 98, -353, -6.5, -354, -64, -412, -133, -422, -242, -374, -313, -258)
 
 [node name="OutsideArea" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(1.5, 24)
 collision_layer = 128
 collision_mask = 34
@@ -82,13 +89,38 @@ to heal me!
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+[node name="Popup" type="Node2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("5_fxhn3")
-volume_db = 1.0
+position = Vector2(-9, -62)
+metadata/_edit_group_ = true
 
-[node name="Popup" type="Sprite2D" parent="."]
-unique_name_in_owner = true
+[node name="Box" type="NinePatchRect" parent="Popup"]
+texture_filter = 1
+offset_left = -140.0
+offset_top = -169.0
+offset_right = 154.0
+offset_bottom = 13.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_ubjg7")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="Popup/Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+text = "Click to heal 
+the coral!
+(Costs 5 chumks)"
+label_settings = SubResource("LabelSettings_ftyda")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OldPopup" type="Sprite2D" parent="."]
 visible = false
 z_index = 20
 texture_filter = 1
@@ -115,5 +147,26 @@ value = 100.0
 texture_over = ExtResource("7_q7s6s")
 texture_progress = ExtResource("8_fqjyb")
 texture_progress_offset = Vector2(-2.12, 0)
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
+unique_name_in_owner = true
+stream = ExtResource("5_fxhn3")
+volume_db = 1.0
+
+[node name="PokeSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
+unique_name_in_owner = true
+stream = ExtResource("9_5u7qa")
+
+[node name="CrabSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
+unique_name_in_owner = true
+stream = ExtResource("11_7hu5j")
+
+[node name="BarrySound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
+unique_name_in_owner = true
+stream = ExtResource("12_2snxl")
+
+[node name="ParrotSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
+unique_name_in_owner = true
+stream = ExtResource("13_i0pfb")
 
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]

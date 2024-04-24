@@ -25,7 +25,7 @@ size = Vector2(160, 49.5)
 line_spacing = 0.0
 font_size = 18
 
-[node name="Ray" type="CharacterBody2D"]
+[node name="Ray" type="CharacterBody2D" groups=["ally"]]
 texture_filter = 1
 collision_layer = 0
 collision_mask = 0
@@ -148,7 +148,7 @@ position = Vector2(-132.372, -41.8933)
 scale = Vector2(0.0629278, 0.0629278)
 texture = ExtResource("6_wvnt4")
 
-[node name="ShockSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ShockSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
 unique_name_in_owner = true
 stream = ExtResource("7_ajj33")
 

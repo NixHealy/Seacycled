@@ -68,11 +68,11 @@ wait_time = 3.0
 unique_name_in_owner = true
 wait_time = 0.5
 
-[node name="PopSound" type="AudioStreamPlayer2D" parent="."]
+[node name="PopSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
 unique_name_in_owner = true
 stream = ExtResource("3_is6c1")
 
-[node name="InflateSound" type="AudioStreamPlayer2D" parent="."]
+[node name="InflateSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
 unique_name_in_owner = true
 stream = ExtResource("4_45ekp")
 

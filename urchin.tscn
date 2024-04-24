@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bibubij01hdec"]
+[gd_scene load_steps=14 format=3 uid="uid://bibubij01hdec"]
 
 [ext_resource type="Script" path="res://urchin.gd" id="1_j7ua7"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_vtdbt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cb0enykepxt6q" path="res://img/urchin_popup.png" id="4_lxkg6"]
 [ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_3hi57"]
 [ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="7_rmwqs"]
+[ext_resource type="AudioStream" uid="uid://fhsxefuoxpg3" path="res://sound/urchin.wav" id="9_thmni"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulxcq"]
 shader = ExtResource("2_vtdbt")
@@ -24,7 +25,7 @@ radius = 138.558
 line_spacing = 0.0
 font_size = 20
 
-[node name="Urchin" type="StaticBody2D" groups=["urchin"]]
+[node name="Urchin" type="StaticBody2D" groups=["ally", "urchin"]]
 process_priority = -1
 texture_filter = 1
 collision_layer = 0
@@ -149,5 +150,8 @@ visible = false
 position = Vector2(-2, -67)
 scale = Vector2(0.0990854, 0.0990854)
 texture = ExtResource("6_3hi57")
+
+[node name="PoisonSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
+stream = ExtResource("9_thmni")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

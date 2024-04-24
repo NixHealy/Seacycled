@@ -1,9 +1,9 @@
-[gd_scene load_steps=90 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=121 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="2_2irvf"]
-[ext_resource type="Script" path="res://Ground.gd" id="3_8ftou"]
+[ext_resource type="Shader" path="res://coral.gdshader" id="2_22ndx"]
 [ext_resource type="Texture2D" uid="uid://dq686o86m3j5o" path="res://img/new new bg.png" id="3_57woi"]
 [ext_resource type="Shader" path="res://color.gdshader" id="3_wiyhi"]
 [ext_resource type="PackedScene" uid="uid://ca8n5tvc27gn2" path="res://clam.tscn" id="5_vbu6w"]
@@ -30,11 +30,28 @@
 [ext_resource type="Texture2D" uid="uid://blwc78f4mbch2" path="res://img/menus/Pause options-05.png" id="22_gdwgj"]
 [ext_resource type="Texture2D" uid="uid://b2j3nn7n6i2nm" path="res://img/menus/Pause Main menu-05.png" id="23_3qb0o"]
 [ext_resource type="Texture2D" uid="uid://bejq737kglsc8" path="res://img/pause_icon.png" id="23_4roak"]
+[ext_resource type="Texture2D" uid="uid://dgb3qjamsc7o4" path="res://img/urchin_icon.png" id="24_bmbqd"]
 [ext_resource type="Texture2D" uid="uid://ciip0y5g2oetg" path="res://img/menus/Pause Quit game-05.png" id="24_ocj2h"]
+[ext_resource type="Script" path="res://urchin_icon.gd" id="25_6mtmn"]
+[ext_resource type="Texture2D" uid="uid://ce8lc34v3pa01" path="res://img/star_icon.png" id="25_8aes2"]
+[ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="25_k4f73"]
+[ext_resource type="Texture2D" uid="uid://bfwe464s3x2q1" path="res://img/ray_icon.png" id="26_fthre"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="26_xmlsh"]
+[ext_resource type="Texture2D" uid="uid://6jjwboymf8i7" path="res://img/dragon_icon.png" id="27_7mt60"]
+[ext_resource type="Texture2D" uid="uid://dy44bqe3xw0b6" path="res://img/clam_icon.png" id="28_14yyd"]
+[ext_resource type="Script" path="res://star_button.gd" id="29_6f8m7"]
+[ext_resource type="Script" path="res://ray_button.gd" id="31_ct4xo"]
+[ext_resource type="Texture2D" uid="uid://bdgevay7vjjaj" path="res://img/wrasse_icon.png" id="32_3la1t"]
+[ext_resource type="Script" path="res://wrasse_button.gd" id="33_kptut"]
+[ext_resource type="Script" path="res://dragon_button.gd" id="35_trbc6"]
+[ext_resource type="Script" path="res://clam_button.gd" id="37_g6w1g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u38i7"]
-shader = ExtResource("3_wiyhi")
-shader_parameter/new_color = Vector3(1, 0, 0)
+resource_local_to_scene = true
+shader = ExtResource("2_22ndx")
+shader_parameter/desaturate_strength = 1.0
+shader_parameter/pollution_strength = 0.4
+shader_parameter/new_color = Vector3(1, 1, 1)
 shader_parameter/active = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sscud"]
@@ -386,6 +403,57 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrnlg"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31iyh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6vb7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51lhu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4bwe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_axww4"]
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0gfa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33nd5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aonmo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ut5j2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lm4m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyt3h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0h8d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txxjr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qv48a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrhh3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krffg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maqge"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg3vn"]
 
 [node name="Main" type="Node"]
@@ -459,7 +527,7 @@ curve = SubResource("Curve2D_ad2ju")
 [node name="Path1" type="PathFollow2D" parent="Walls/Path2D"]
 unique_name_in_owner = true
 position = Vector2(1030, 413)
-rotation = -1.5854
+rotation = -1.58541
 
 [node name="Path2D2" type="Path2D" parent="Walls"]
 position = Vector2(918.145, -221.257)
@@ -474,7 +542,6 @@ rotation = -1.57893
 position = Vector2(10, 864)
 scale = Vector2(20.12, 2)
 collision_layer = 13
-script = ExtResource("3_8ftou")
 
 [node name="ColorRect" type="ColorRect" parent="Ground"]
 offset_left = 1128.0
@@ -503,22 +570,14 @@ unique_name_in_owner = true
 position = Vector2(564, 329)
 collision_mask = 9
 
-[node name="Clam1" parent="." instance=ExtResource("5_vbu6w")]
+[node name="Starfishes" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(899, 585)
-rotation = -3.14159
-scale = Vector2(-1, -1)
-
-[node name="Clam2" parent="." instance=ExtResource("5_vbu6w")]
-unique_name_in_owner = true
-position = Vector2(266, 587)
-scale = Vector2(-1, 1)
-
-[node name="Starfishes" type="Node" parent="."]
+visible = false
 
 [node name="Starfish" parent="Starfishes" instance=ExtResource("8_go77r")]
 position = Vector2(572, 386)
 rotation = -0.23453
+scale = Vector2(1, 1)
 
 [node name="Starfish2" parent="Starfishes" instance=ExtResource("8_go77r")]
 position = Vector2(534, 420)
@@ -528,7 +587,9 @@ rotation = -0.7078
 position = Vector2(570, 414)
 rotation = 0.277678
 
-[node name="Urchins" type="Node" parent="."]
+[node name="Urchins" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
 
 [node name="Urchin5" parent="Urchins" instance=ExtResource("19_lhkum")]
 position = Vector2(584, 577)
@@ -546,14 +607,36 @@ rotation = 0.90967
 position = Vector2(627, 625)
 rotation = 1.81934
 
+[node name="Clams" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Clam1" parent="Clams" instance=ExtResource("5_vbu6w")]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(899, 597)
+
+[node name="Clam2" parent="Clams" instance=ExtResource("5_vbu6w")]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(266, 599)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
 [node name="Wrasse" parent="." instance=ExtResource("10_8fnf1")]
+unique_name_in_owner = true
+visible = false
 position = Vector2(616, 360)
 scale = Vector2(1, 1)
 
 [node name="Ray" parent="." instance=ExtResource("12_wf2ut")]
+unique_name_in_owner = true
+visible = false
 position = Vector2(538, 508)
 
 [node name="Dragon" parent="." instance=ExtResource("12_dotxc")]
+unique_name_in_owner = true
+visible = false
 position = Vector2(493, 612)
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -748,6 +831,384 @@ icon = ExtResource("23_4roak")
 icon_alignment = 1
 expand_icon = true
 
+[node name="AllyButtons" type="Node2D" parent="UI"]
+unique_name_in_owner = true
+visible = false
+
+[node name="UrchinButton" type="Button" parent="UI/AllyButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 29.0
+offset_top = 217.0
+offset_right = 91.0
+offset_bottom = 278.0
+scale = Vector2(1.90381, 1.90381)
+theme_override_colors/icon_pressed_color = Color(0.239216, 0.239216, 0.239216, 1)
+theme_override_colors/icon_hover_color = Color(0.552941, 0.552941, 0.552941, 1)
+theme_override_colors/icon_disabled_color = Color(0.152941, 0.152941, 0.152941, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_31iyh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e6vb7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_51lhu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_i4bwe")
+icon = ExtResource("24_bmbqd")
+icon_alignment = 1
+script = ExtResource("25_6mtmn")
+
+[node name="UrchinPopup" type="Node2D" parent="UI/AllyButtons/UrchinButton"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(77.7389, -48.3242)
+scale = Vector2(1.003, 1.003)
+
+[node name="Box" type="NinePatchRect" parent="UI/AllyButtons/UrchinButton/UrchinPopup"]
+texture_filter = 1
+offset_left = -6.808
+offset_top = 4.71322
+offset_right = 336.192
+offset_bottom = 228.713
+scale = Vector2(0.34844, 0.34844)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("25_k4f73")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="UI/AllyButtons/UrchinButton/UrchinPopup/Box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 5
+text = "Not only will we defend the
+coral, but we can also spike
+the fish that try to attack
+with our spines!
+(Costs 10 chumks)"
+label_settings = SubResource("LabelSettings_axww4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UrchinSpeech" type="Sprite2D" parent="UI/AllyButtons/UrchinButton"]
+unique_name_in_owner = true
+position = Vector2(90.8704, -4.20211)
+scale = Vector2(0.0990854, 0.0990854)
+texture = ExtResource("26_xmlsh")
+
+[node name="StarButton" type="Button" parent="UI/AllyButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 83.0
+offset_top = 343.0
+offset_right = 145.0
+offset_bottom = 404.0
+scale = Vector2(1.90381, 1.90381)
+theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
+theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
+theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_31iyh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w0gfa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_33nd5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_aonmo")
+icon = ExtResource("25_8aes2")
+icon_alignment = 1
+script = ExtResource("29_6f8m7")
+
+[node name="StarPopup" type="Node2D" parent="UI/AllyButtons/StarButton"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(69.3347, -6.30316)
+scale = Vector2(0.526839, 0.526839)
+
+[node name="Box" type="NinePatchRect" parent="UI/AllyButtons/StarButton/StarPopup"]
+texture_filter = 1
+offset_left = -6.808
+offset_top = 4.71322
+offset_right = 336.192
+offset_bottom = 228.713
+scale = Vector2(0.34844, 0.34844)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("25_k4f73")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="UI/AllyButtons/StarButton/StarPopup/Box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 5
+text = "We will defend the
+coral from getting
+damaged!
+(Costs 5 chumks)"
+label_settings = SubResource("LabelSettings_axww4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarSpeech" type="Sprite2D" parent="UI/AllyButtons/StarButton"]
+unique_name_in_owner = true
+position = Vector2(83.5168, 14.7074)
+scale = Vector2(0.0520459, 0.0520459)
+texture = ExtResource("26_xmlsh")
+
+[node name="RayButton" type="Button" parent="UI/AllyButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 16.0
+offset_top = 474.0
+offset_right = 90.0
+offset_bottom = 547.0
+scale = Vector2(1.90381, 1.90381)
+theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
+theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
+theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_31iyh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ut5j2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7lm4m")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qyt3h")
+icon = ExtResource("26_fthre")
+icon_alignment = 1
+script = ExtResource("31_ct4xo")
+
+[node name="RayPopup" type="Node2D" parent="UI/AllyButtons/RayButton"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(80.3652, -6.30316)
+scale = Vector2(0.526839, 0.526839)
+
+[node name="Box" type="NinePatchRect" parent="UI/AllyButtons/RayButton/RayPopup"]
+texture_filter = 1
+offset_left = -6.808
+offset_top = 4.71322
+offset_right = 336.192
+offset_bottom = 228.713
+scale = Vector2(0.34844, 0.34844)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("25_k4f73")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="UI/AllyButtons/RayButton/RayPopup/Box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 5
+text = "I'll stun the enemies!
+(Costs 10 chumks)
+"
+label_settings = SubResource("LabelSettings_axww4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RaySpeech" type="Sprite2D" parent="UI/AllyButtons/RayButton"]
+unique_name_in_owner = true
+position = Vector2(94.5473, 20.4852)
+scale = Vector2(0.0520459, 0.0520459)
+texture = ExtResource("26_xmlsh")
+
+[node name="WrasseButton" type="Button" parent="UI/AllyButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 1023.0
+offset_top = 192.0
+offset_right = 1085.0
+offset_bottom = 253.0
+scale = Vector2(1.90381, 1.90381)
+theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
+theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
+theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_31iyh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_f0h8d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_txxjr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qv48a")
+icon = ExtResource("32_3la1t")
+icon_alignment = 1
+script = ExtResource("33_kptut")
+
+[node name="WrassePopup" type="Node2D" parent="UI/AllyButtons/WrasseButton"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(-67.2336, -21.0105)
+scale = Vector2(0.526839, 0.526839)
+
+[node name="Box" type="NinePatchRect" parent="UI/AllyButtons/WrasseButton/WrassePopup"]
+texture_filter = 1
+offset_left = -6.808
+offset_top = 4.71322
+offset_right = 336.192
+offset_bottom = 228.713
+scale = Vector2(0.34844, 0.34844)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("25_k4f73")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="UI/AllyButtons/WrasseButton/WrassePopup/Box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 5
+text = "I can help you clean
+up all this pollution!
+(Costs 5 chumks)"
+label_settings = SubResource("LabelSettings_axww4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WrasseSpeech" type="Sprite2D" parent="UI/AllyButtons/WrasseButton"]
+unique_name_in_owner = true
+position = Vector2(-23.6368, 9.45472)
+scale = Vector2(0.0520459, 0.0520459)
+texture = ExtResource("26_xmlsh")
+flip_h = true
+
+[node name="DragonButton" type="Button" parent="UI/AllyButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 954.0
+offset_top = 301.0
+offset_right = 1016.0
+offset_bottom = 362.0
+scale = Vector2(1.90381, 1.90381)
+theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
+theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
+theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_31iyh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_f0h8d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_txxjr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qv48a")
+icon = ExtResource("27_7mt60")
+icon_alignment = 1
+script = ExtResource("35_trbc6")
+
+[node name="DragonPopup" type="Node2D" parent="UI/AllyButtons/DragonButton"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(-59.88, -14.1821)
+scale = Vector2(0.526839, 0.526839)
+
+[node name="Box" type="NinePatchRect" parent="UI/AllyButtons/DragonButton/DragonPopup"]
+texture_filter = 1
+offset_left = -6.808
+offset_top = 4.71322
+offset_right = 336.192
+offset_bottom = 228.713
+scale = Vector2(0.34844, 0.34844)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("25_k4f73")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="UI/AllyButtons/DragonButton/DragonPopup/Box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 5
+text = "I can't fight very well,
+but I can help you heal
+the coral when it's safe
+(Costs 10 chumks)"
+label_settings = SubResource("LabelSettings_axww4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DragonSpeech" type="Sprite2D" parent="UI/AllyButtons/DragonButton"]
+unique_name_in_owner = true
+position = Vector2(-16.2832, 16.2831)
+scale = Vector2(0.0520459, 0.0520459)
+texture = ExtResource("26_xmlsh")
+flip_h = true
+
+[node name="ClamButton" type="Button" parent="UI/AllyButtons"]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = 926.0
+offset_top = 432.0
+offset_right = 1036.0
+offset_bottom = 540.0
+scale = Vector2(1.90381, 1.90381)
+theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
+theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
+theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_31iyh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wrhh3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_krffg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_maqge")
+icon = ExtResource("28_14yyd")
+icon_alignment = 1
+script = ExtResource("37_g6w1g")
+
+[node name="ClamPopup" type="Node2D" parent="UI/AllyButtons/ClamButton"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(-55.6778, -21.0105)
+scale = Vector2(0.526839, 0.526839)
+
+[node name="Box" type="NinePatchRect" parent="UI/AllyButtons/ClamButton/ClamPopup"]
+texture_filter = 1
+offset_left = -6.808
+offset_top = 4.71322
+offset_right = 336.192
+offset_bottom = 228.713
+scale = Vector2(0.34844, 0.34844)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("25_k4f73")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="UI/AllyButtons/ClamButton/ClamPopup/Box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 5
+text = "I can't fight very well,
+but I can help you heal
+the coral when it's safe
+(Costs 10 chumks)"
+label_settings = SubResource("LabelSettings_axww4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClamSpeech" type="Sprite2D" parent="UI/AllyButtons/ClamButton"]
+unique_name_in_owner = true
+position = Vector2(-15.7579, 11.5557)
+scale = Vector2(0.0520459, 0.0520459)
+texture = ExtResource("26_xmlsh")
+flip_h = true
+
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 2
@@ -839,6 +1300,7 @@ offset_bottom = 412.0
 scale = Vector2(0.8, 0.8)
 theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kg3vn")
+disabled = true
 keep_pressed_outside = true
 icon = ExtResource("21_d4sdt")
 flat = true
@@ -926,6 +1388,24 @@ autoplay = true
 [connection signal="animation_looped" from="UI/CountdownSprite" to="." method="_on_countdown_sprite_animation_looped"]
 [connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="mouse_entered" from="UI/AllyButtons/UrchinButton" to="UI/AllyButtons/UrchinButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/AllyButtons/UrchinButton" to="UI/AllyButtons/UrchinButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/AllyButtons/UrchinButton" to="UI/AllyButtons/UrchinButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="UI/AllyButtons/StarButton" to="UI/AllyButtons/StarButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/AllyButtons/StarButton" to="UI/AllyButtons/StarButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/AllyButtons/StarButton" to="UI/AllyButtons/StarButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="UI/AllyButtons/RayButton" to="UI/AllyButtons/RayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/AllyButtons/RayButton" to="UI/AllyButtons/RayButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/AllyButtons/RayButton" to="UI/AllyButtons/RayButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="UI/AllyButtons/WrasseButton" to="UI/AllyButtons/WrasseButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/AllyButtons/WrasseButton" to="UI/AllyButtons/WrasseButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/AllyButtons/WrasseButton" to="UI/AllyButtons/WrasseButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="UI/AllyButtons/DragonButton" to="UI/AllyButtons/DragonButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/AllyButtons/DragonButton" to="UI/AllyButtons/DragonButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/AllyButtons/DragonButton" to="UI/AllyButtons/DragonButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="UI/AllyButtons/ClamButton" to="UI/AllyButtons/ClamButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/AllyButtons/ClamButton" to="UI/AllyButtons/ClamButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/AllyButtons/ClamButton" to="UI/AllyButtons/ClamButton" method="_on_pressed"]
 [connection signal="pressed" from="GameOver/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/HowTo" to="." method="_on_how_to_pressed"]

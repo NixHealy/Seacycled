@@ -11,7 +11,7 @@ func _ready():
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		var contrast = false
-		contrast = config.get_value("Options", "contrast")
+		contrast = config.get_value("Options", "contrast", false)
 		%Sprite2D.material.set_shader_parameter("active", contrast)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

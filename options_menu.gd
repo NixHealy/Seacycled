@@ -16,9 +16,9 @@ func _on_visibility_changed():
 	if visible:
 		if FileAccess.file_exists("user://options.ini"):
 			config.load("user://options.ini")
-			%MusicBar.value = config.get_value("Options", "volume")
-			%SFXBar.value = config.get_value("Options", "sfx")
-			%ContrastButton.button_pressed = config.get_value("Options", "contrast")
+			%MusicBar.value = config.get_value("Options", "volume", 1.0)
+			%SFXBar.value = config.get_value("Options", "sfx", 1.0)
+			%ContrastButton.button_pressed = config.get_value("Options", "contrast", false)
 
 func _on_contrast_button_toggled(toggled_on):
 	if toggled_on:
