@@ -135,7 +135,6 @@ func _on_clickless_timer_timeout():
 		for node in %AnimatedOutline.get_children():
 			node.animation = "attack"
 
-
 func _on_move_sound_finished():
 	%MoveSound.play()
 

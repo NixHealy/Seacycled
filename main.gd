@@ -1,20 +1,26 @@
 extends Node
 
+# Exports
 @export var wave = 1
 @export var grace = false
+
+# Variables
 var all_collected = true
 var starting = true
 var tutorial = false
+
+# Volume and Config
 var volume = 100.0
 var config = ConfigFile.new()
 
 func _ready():
+	# Hide elements initially
 	%GameOver.visible = false
-	#%GraceLabel.visible = false
 	%Button.visible = false
 	%HelpText.visible = false
 	%CountdownSprite.play()
 	
+	# Load options if available
 	if FileAccess.file_exists("user://options.ini"):
 		config.load("user://options.ini")
 		volume = config.get_value("Options", "volume", 1.0)
@@ -41,14 +47,13 @@ func _process(delta):
 		get_tree().paused = true
 	
 	if starting == false:
-		%EnemyTimer.wait_time = 1 - 0.1 * wave #definitely wanna adjust the timing on this
+		%EnemyTimer.wait_time = 1 - 0.1 * wave
 		
 		if %ProgressBar.value >= 100:
 			%ProgressBar.value = 0
 			wave += 1
 			%WaveLabel.text = "Wave " + str(wave)
 			
-		#%GraceLabel.text = str(roundi(%GraceTimer.time_left))
 		%ChumkLabel.text = str(%Player.chumks)
 		
 		all_collected = true
@@ -59,7 +64,6 @@ func _process(delta):
 					all_collected = false
 					break
 					
-		# remember to add timer since people since skipping over this
 		if all_collected == true and grace == true:
 			%HelpText.text = "Now recruit allies or heal the coral!"
 			%Button.visible = true
@@ -68,14 +72,12 @@ func _process(delta):
 				%HelpDelay.start()
 		else:
 			%HelpText.text = "Wave Over!\nCollect all the chumks!"
-			#%GraceLabel.visible = false
 			%Button.visible = false
 
 # If wave 1, only trevally enemies should spawn
 # If wave 2, trevally and crab enemies should spawn
 # If wave 3, trevally, crab and barracuda enemies should spawn
 # wave 4+, all enemy types should spawn
-
 func spawn_mob():
 	var num = randi_range(1, 100)
 	var new_mob = null
@@ -138,8 +140,6 @@ func spawn_mob():
 			# Spawn Pufferfish enemy, low chance
 			new_mob = preload("res://puffer_enemy.tscn").instantiate()
 	
-	#new_mob = preload("res://puffer_enemy.tscn").instantiate()
-	
 	var numPath = randi_range(1, 2) #picks a random path to put it on
 	if numPath == 1: # spawn enemy from the right-side
 		%Path1.progress_ratio = randf() #chooses a point in the path
@@ -200,13 +200,9 @@ func _on_wave_timer_timeout(): # wave timer
 		for chumk in chumks:
 			if chumk.position.x < 0 or chumk.position.x > 1100:
 				chumk.queue_free() # remove chunks from outside the visible window
-		#%Coral.health = 100
 		
-		# GraceTimer.start() #start a timer for the grace period
 		grace = true
-		#%GraceLabel.visible = true
 		%Button.visible = false
-		#%HelpText.visible = true
 		%HelpText.visible = false
 
 # PAUSE MENU: reset button
@@ -267,10 +263,6 @@ func _on_main_menu_pressed():
 func _on_quit_pressed():
 	get_tree().quit()
 
-# countdown for wave start
-#func _on_countdown_sprite_animation_looped():
-	#%CountdownSprite.visible = false
-
 func get_sfx_children(node) -> Array:
 	var nodes : Array = []
 	for N in node.get_children():
@@ -288,7 +280,6 @@ func _on_button_pressed():
 		%WaveTimer.start()
 		%EnemyTimer.start()
 		%PollutionTimer.start()
-		#%GraceLabel.visible = false
 		%Button.visible = false
 		%HelpText.visible = false
 		%AllyButtons.visible = false
