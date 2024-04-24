@@ -1,5 +1,3 @@
-# should really be its own scene
-
 extends StaticBody2D
 
 func _process(delta):
