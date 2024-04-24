@@ -22,6 +22,8 @@ func _ready():
 		%ScrubSound.volume_db = log(sfx) * 20
 
 func _physics_process(delta):
+	for node in %Outline.get_children():
+		node.frame = %Sprite2D.frame
 	
 	if activated:
 		for node in %Outline.get_children():
@@ -30,31 +32,7 @@ func _physics_process(delta):
 		for node in %Outline.get_children():
 			node.material.set_shader_parameter("alpha", 0.0)
 	
-	#if main.grace == true and main.tutorial == false and main.all_collected == true:
-			##%Help.visible = true
-			##%HelpLabel.text = "..."
-			#%Popup.visible = false
-			#%Speech.visible = true
-			#for body in %Area2D.get_overlapping_bodies():
-				#if body.is_in_group("player"):
-					##%HelpLabel.text = "I'll paralyse those mutants!\n[Cost: 2 Chumks]"
-					#%Popup.visible = true
-					#%Speech.visible = false
-	#else:
-		##%Help.visible = false
-		#%Popup.visible = false
-		#%Speech.visible = false
-	#if activated:
-		##%Help.visible = false
-		#%Popup.visible = false
-		#%Speech.visible = false
-		#
-	#if activated == false && main.grace == true && main.all_collected == true:
-		#for body in %Area2D.get_overlapping_bodies():
-			#if body.is_in_group("player") and Input.is_action_just_pressed("attack"):
-				#if body.chumks >= 5:
-					#body.chumks -= 5
-					#activate()
+	%Sprite2D.speed_scale = 0.25
 	
 	if !activated:
 		return
@@ -70,11 +48,13 @@ func _physics_process(delta):
 					closest = pollution
 				
 		var direction = closest.global_position - global_position
-		velocity = direction.normalized() * 30000 * delta
+		velocity = direction.normalized() * 10000 * delta
 		if coral.is_polluted == true:
 			move_and_slide()
-		
+			%Sprite2D.speed_scale = 3
+						
 			rotation = atan(velocity.y / velocity.x)
+			
 			if velocity.x > 0:
 				$Sprite2D.flip_h = true
 				for node in %Outline.get_children():

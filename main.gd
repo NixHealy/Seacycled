@@ -198,7 +198,7 @@ func _on_wave_timer_timeout(): # wave timer
 			pollution.queue_free()
 		var chumks = get_tree().get_nodes_in_group("collectable")
 		for chumk in chumks:
-			if chumk.position.x < -1125 or chumk.position.x > 1125:
+			if chumk.position.x < 0 or chumk.position.x > 1100:
 				chumk.queue_free() # remove chunks from outside the visible window
 		#%Coral.health = 100
 		

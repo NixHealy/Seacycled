@@ -577,7 +577,6 @@ visible = false
 [node name="Starfish" parent="Starfishes" instance=ExtResource("8_go77r")]
 position = Vector2(572, 386)
 rotation = -0.23453
-scale = Vector2(1, 1)
 
 [node name="Starfish2" parent="Starfishes" instance=ExtResource("8_go77r")]
 position = Vector2(534, 420)
@@ -833,7 +832,6 @@ expand_icon = true
 
 [node name="AllyButtons" type="Node2D" parent="UI"]
 unique_name_in_owner = true
-visible = false
 
 [node name="UrchinButton" type="Button" parent="UI/AllyButtons"]
 unique_name_in_owner = true

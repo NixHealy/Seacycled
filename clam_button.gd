@@ -1,9 +1,10 @@
 extends Button
 
 func _process(delta):
-	for clam in %Clams.get_children():
-		if clam.is_open == false:
-			%ClamButton.disabled = false
+	if !get_node("/root/Main").grace:
+		for clam in %Clams.get_children():
+			if clam.is_open == false:
+				%ClamButton.disabled = false
 
 func _on_pressed():
 	if %Player.chumks >= 20:

@@ -34,34 +34,6 @@ func _physics_process(delta):
 		for node in %Outline.get_children():
 			node.material.set_shader_parameter("alpha", 0.0)
 	
-	#if main.grace == true and main.tutorial == false and main.all_collected == true:
-		#modulate.a = 1
-		#if main.all_collected == true:
-			##%Help.visible = true
-			##%HelpLabel.text = "..."
-			#%Popup.visible = false
-			#%Speech.visible = true
-			#for body in %Area2D.get_overlapping_bodies():
-				#if body.is_in_group("player"):
-					##%HelpLabel.text = "I'll paralyse those mutants!\n[Cost: 2 Chumks]"
-					#%Popup.visible = true
-					#%Speech.visible = false
-	#else:
-		##%Help.visible = false
-		#%Popup.visible = false
-		#%Speech.visible = false
-	#if activated:
-		##%Help.visible = false
-		#%Popup.visible = false
-		#%Speech.visible = false
-		#
-	#if activated == false && main.grace == true && main.all_collected == true:
-		#for body in %Area2D.get_overlapping_bodies():
-			#if body.is_in_group("player") and Input.is_action_just_pressed("attack"):
-				#if body.chumks >= 10:
-					#body.chumks -= 10
-					#activate()
-	
 	if !activated:
 		return
 	

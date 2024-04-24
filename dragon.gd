@@ -19,38 +19,25 @@ func _ready():
 		%Sprite2D.material.set_shader_parameter("active", contrast)
 
 func _physics_process(delta):
+	for node in %Outline.get_children():
+		node.frame = %Sprite2D.frame
 		
+	if coral.health < 100:
+		if %Sprite2D.get_animation() != "heal":
+			%Sprite2D.set_animation("heal")
+			for node in %Outline.get_children():
+				node.set_animation("heal")
+	else:
+		%Sprite2D.set_animation("default")
+		for node in %Outline.get_children():
+			node.set_animation("default")
+	
 	if activated:
 		for node in %Outline.get_children():
 			node.material.set_shader_parameter("alpha", 1.0)
 	else:
 		for node in %Outline.get_children():
 			node.material.set_shader_parameter("alpha", 0.0)
-	
-	#if main.grace == true and main.tutorial == false and main.all_collected == true:
-			##%Help.visible = true
-			##%HelpLabel.text = "..."
-			#%Popup.visible = false
-			#%Speech.visible = true
-			#for body in %Area2D.get_overlapping_bodies():
-				#if body.is_in_group("player"):
-					#%Popup.visible = true
-					#%Speech.visible = false
-	#else:
-		##%Help.visible = false
-		#%Popup.visible = false
-		#%Speech.visible = false
-	#if activated:
-		##%Help.visible = false
-		#%Popup.visible = false
-		#%Speech.visible = false
-		#
-	#if activated == false && main.grace == true && main.all_collected == true:
-		#for body in %Area2D.get_overlapping_bodies():
-			#if body.is_in_group("player") and Input.is_action_just_pressed("attack"):
-				#if body.chumks >= 10:
-					#body.chumks -= 10
-					#activate()
 	
 	if !activated:
 		return
