@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://blym5qw0dcca"]
+[gd_scene load_steps=51 format=3 uid="uid://blym5qw0dcca"]
 
 [ext_resource type="Script" path="res://dragon.gd" id="1_1wfk0"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_7spqe"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dwdq3e5tgmbtq" path="res://img/anim/dragon_heal.png" id="4_itr5i"]
 [ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="5_pqpur"]
 [ext_resource type="Material" uid="uid://cxmkikkvtr6qk" path="res://ally_material.tres" id="6_qqmjk"]
+[ext_resource type="AudioStream" uid="uid://paochv2cjq1b" path="res://sound/dragon_heal.wav" id="9_20w7m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdw4k"]
 shader = ExtResource("2_7spqe")
@@ -709,5 +710,9 @@ texture = ExtResource("4_f2rmc")
 [node name="HealTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 autostart = true
+
+[node name="HealSound" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
+unique_name_in_owner = true
+stream = ExtResource("9_20w7m")
 
 [connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]

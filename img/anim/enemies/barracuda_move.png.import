@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6kbjxidq2q7d"
-path="res://.godot/imported/trash_can.png-459576ce7c542d2523aace4e543a8d76.ctex"
+uid="uid://jb8sevjlum24"
+path="res://.godot/imported/barracuda_move.png-77c648e7e512110bc1556597e739b598.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/trash_can.png"
-dest_files=["res://.godot/imported/trash_can.png-459576ce7c542d2523aace4e543a8d76.ctex"]
+source_file="res://img/anim/enemies/barracuda_move.png"
+dest_files=["res://.godot/imported/barracuda_move.png-77c648e7e512110bc1556597e739b598.ctex"]
 
 [params]
 

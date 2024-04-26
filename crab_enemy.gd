@@ -14,10 +14,12 @@ func _ready():
 		%Sprite2D.material.set_shader_parameter("active", contrast)
 
 func _physics_process(delta):
-		
 	if health <= 0:
 		die()
-
+	
+	for node in %Outline.get_children():
+		node.frame = %Sprite2D.frame
+	
 	# Move the crab only along the x-axis
 	var direction = global_position.direction_to(coral.global_position)
 	velocity.x = direction.x * speed

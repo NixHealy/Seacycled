@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://bvhidbr65dorf"]
+[gd_scene load_steps=122 format=3 uid="uid://bvhidbr65dorf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_72br2"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="1_od2h0"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cumfkivn34ais" path="res://img/wave_bar.png" id="10_hwnto"]
 [ext_resource type="PackedScene" uid="uid://blym5qw0dcca" path="res://dragon.tscn" id="12_dotxc"]
 [ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="12_wf2ut"]
-[ext_resource type="Texture2D" uid="uid://denrl58yoyrr8" path="res://img/chumk_icon.png" id="15_16mie"]
+[ext_resource type="Texture2D" uid="uid://bod3p7h50tt7t" path="res://img/chumk.png" id="17_bt60l"]
 [ext_resource type="FontFile" uid="uid://buh2qtgm8jfm7" path="res://font/OpenDyslexic-Bold.otf" id="17_maqr0"]
 [ext_resource type="PackedScene" uid="uid://bibubij01hdec" path="res://urchin.tscn" id="19_lhkum"]
 [ext_resource type="AudioStream" uid="uid://durx5shr24fov" path="res://sound/bgm.wav" id="20_a4soo"]
@@ -416,6 +416,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_axww4"]
+line_spacing = 1.0
 font_size = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0gfa"]
@@ -435,6 +436,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyt3h"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vsdqu"]
+font_size = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0h8d"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -687,19 +691,19 @@ vertical_alignment = 1
 
 [node name="ChumkIcon" type="Sprite2D" parent="UI"]
 texture_filter = 1
-position = Vector2(225, 67)
-scale = Vector2(1.43199, 1.43199)
-texture = ExtResource("15_16mie")
+position = Vector2(220, 81)
+scale = Vector2(0.408678, 0.408678)
+texture = ExtResource("17_bt60l")
 metadata/_edit_group_ = true
 
 [node name="ChumkLabel" type="Label" parent="UI/ChumkIcon"]
 unique_name_in_owner = true
-offset_left = 36.8011
-offset_top = -37.9163
-offset_right = 65.8011
-offset_bottom = 42.0837
+offset_left = 146.815
+offset_top = -66.0666
+offset_right = 198.815
+offset_bottom = 73.9334
 theme_override_fonts/font = ExtResource("9_j2t6x")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 80
 text = "0"
 vertical_alignment = 1
 
@@ -832,6 +836,7 @@ expand_icon = true
 
 [node name="AllyButtons" type="Node2D" parent="UI"]
 unique_name_in_owner = true
+visible = false
 
 [node name="UrchinButton" type="Button" parent="UI/AllyButtons"]
 unique_name_in_owner = true
@@ -858,15 +863,14 @@ unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(77.7389, -48.3242)
-scale = Vector2(1.003, 1.003)
+scale = Vector2(0.5, 0.5)
 
 [node name="Box" type="NinePatchRect" parent="UI/AllyButtons/UrchinButton/UrchinPopup"]
 texture_filter = 1
-offset_left = -6.808
-offset_top = 4.71322
-offset_right = 336.192
-offset_bottom = 228.713
-scale = Vector2(0.34844, 0.34844)
+offset_left = -7.0
+offset_top = -13.0
+offset_right = 387.0
+offset_bottom = 262.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("25_k4f73")
@@ -892,8 +896,8 @@ vertical_alignment = 1
 
 [node name="UrchinSpeech" type="Sprite2D" parent="UI/AllyButtons/UrchinButton"]
 unique_name_in_owner = true
-position = Vector2(90.8704, -4.20211)
-scale = Vector2(0.0990854, 0.0990854)
+position = Vector2(85.0925, 1.57579)
+scale = Vector2(0.052, 0.052)
 texture = ExtResource("26_xmlsh")
 
 [node name="StarButton" type="Button" parent="UI/AllyButtons"]
@@ -921,19 +925,19 @@ unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(69.3347, -6.30316)
-scale = Vector2(0.526839, 0.526839)
+scale = Vector2(0.5, 0.5)
 
 [node name="Box" type="NinePatchRect" parent="UI/AllyButtons/StarButton/StarPopup"]
 texture_filter = 1
-offset_left = -6.808
-offset_top = 4.71322
-offset_right = 336.192
-offset_bottom = 228.713
-scale = Vector2(0.34844, 0.34844)
+offset_left = -24.0
+offset_top = -30.0
+offset_right = 362.0
+offset_bottom = 187.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("25_k4f73")
 region_rect = Rect2(5, 3, 206, 104)
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="UI/AllyButtons/StarButton/StarPopup/Box"]
 texture_filter = 1
@@ -963,9 +967,9 @@ unique_name_in_owner = true
 texture_filter = 1
 offset_left = 16.0
 offset_top = 474.0
-offset_right = 90.0
-offset_bottom = 547.0
-scale = Vector2(1.90381, 1.90381)
+offset_right = 111.0
+offset_bottom = 557.0
+scale = Vector2(1.904, 1.904)
 theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
 theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
 theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
@@ -976,22 +980,21 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_qyt3h")
 icon = ExtResource("26_fthre")
 icon_alignment = 1
+expand_icon = true
 script = ExtResource("31_ct4xo")
 
 [node name="RayPopup" type="Node2D" parent="UI/AllyButtons/RayButton"]
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
-position = Vector2(80.3652, -6.30316)
-scale = Vector2(0.526839, 0.526839)
+position = Vector2(99.7899, -5.7773)
 
 [node name="Box" type="NinePatchRect" parent="UI/AllyButtons/RayButton/RayPopup"]
 texture_filter = 1
-offset_left = -6.808
-offset_top = 4.71322
-offset_right = 336.192
-offset_bottom = 228.713
-scale = Vector2(0.34844, 0.34844)
+offset_left = -7.0
+offset_top = 5.0
+offset_right = 215.0
+offset_bottom = 96.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("25_k4f73")
@@ -1005,28 +1008,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 5
 text = "I'll stun the enemies!
 (Costs 10 chumks)
 "
-label_settings = SubResource("LabelSettings_axww4")
+label_settings = SubResource("LabelSettings_vsdqu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RaySpeech" type="Sprite2D" parent="UI/AllyButtons/RayButton"]
 unique_name_in_owner = true
-position = Vector2(94.5473, 20.4852)
+position = Vector2(115.546, 37.2899)
 scale = Vector2(0.0520459, 0.0520459)
 texture = ExtResource("26_xmlsh")
 
 [node name="WrasseButton" type="Button" parent="UI/AllyButtons"]
 unique_name_in_owner = true
 texture_filter = 1
-offset_left = 1023.0
+offset_left = 992.0
 offset_top = 192.0
 offset_right = 1085.0
-offset_bottom = 253.0
-scale = Vector2(1.90381, 1.90381)
+offset_bottom = 279.0
 theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
 theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
 theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
@@ -1037,26 +1038,26 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_qv48a")
 icon = ExtResource("32_3la1t")
 icon_alignment = 1
+expand_icon = true
 script = ExtResource("33_kptut")
 
 [node name="WrassePopup" type="Node2D" parent="UI/AllyButtons/WrasseButton"]
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
-position = Vector2(-67.2336, -21.0105)
-scale = Vector2(0.526839, 0.526839)
+position = Vector2(-92, -26)
 
 [node name="Box" type="NinePatchRect" parent="UI/AllyButtons/WrasseButton/WrassePopup"]
 texture_filter = 1
-offset_left = -6.808
-offset_top = 4.71322
-offset_right = 336.192
-offset_bottom = 228.713
-scale = Vector2(0.34844, 0.34844)
+offset_left = -181.216
+offset_top = -34.6673
+offset_right = 94.7844
+offset_bottom = 125.333
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("25_k4f73")
 region_rect = Rect2(5, 3, 206, 104)
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="UI/AllyButtons/WrasseButton/WrassePopup/Box"]
 texture_filter = 1
@@ -1076,19 +1077,18 @@ vertical_alignment = 1
 
 [node name="WrasseSpeech" type="Sprite2D" parent="UI/AllyButtons/WrasseButton"]
 unique_name_in_owner = true
-position = Vector2(-23.6368, 9.45472)
-scale = Vector2(0.0520459, 0.0520459)
+position = Vector2(-34, 14)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("26_xmlsh")
 flip_h = true
 
 [node name="DragonButton" type="Button" parent="UI/AllyButtons"]
 unique_name_in_owner = true
 texture_filter = 1
-offset_left = 954.0
-offset_top = 301.0
-offset_right = 1016.0
-offset_bottom = 362.0
-scale = Vector2(1.90381, 1.90381)
+offset_left = 937.0
+offset_top = 302.0
+offset_right = 1076.0
+offset_bottom = 406.0
 theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
 theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
 theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
@@ -1099,6 +1099,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_qv48a")
 icon = ExtResource("27_7mt60")
 icon_alignment = 1
+expand_icon = true
 script = ExtResource("35_trbc6")
 
 [node name="DragonPopup" type="Node2D" parent="UI/AllyButtons/DragonButton"]
@@ -1106,19 +1107,18 @@ unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(-59.88, -14.1821)
-scale = Vector2(0.526839, 0.526839)
 
 [node name="Box" type="NinePatchRect" parent="UI/AllyButtons/DragonButton/DragonPopup"]
 texture_filter = 1
-offset_left = -6.808
-offset_top = 4.71322
-offset_right = 336.192
-offset_bottom = 228.713
-scale = Vector2(0.34844, 0.34844)
+offset_left = -268.12
+offset_top = -61.8179
+offset_right = 74.88
+offset_bottom = 162.182
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("25_k4f73")
 region_rect = Rect2(5, 3, 206, 104)
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="UI/AllyButtons/DragonButton/DragonPopup/Box"]
 texture_filter = 1
@@ -1139,8 +1139,8 @@ vertical_alignment = 1
 
 [node name="DragonSpeech" type="Sprite2D" parent="UI/AllyButtons/DragonButton"]
 unique_name_in_owner = true
-position = Vector2(-16.2832, 16.2831)
-scale = Vector2(0.0520459, 0.0520459)
+position = Vector2(-30.0688, 28.6358)
+scale = Vector2(0.101457, 0.101457)
 texture = ExtResource("26_xmlsh")
 flip_h = true
 
@@ -1149,9 +1149,8 @@ unique_name_in_owner = true
 texture_filter = 1
 offset_left = 926.0
 offset_top = 432.0
-offset_right = 1036.0
-offset_bottom = 540.0
-scale = Vector2(1.90381, 1.90381)
+offset_right = 1109.0
+offset_bottom = 612.0
 theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
 theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
 theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
@@ -1162,6 +1161,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_51lhu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_maqge")
 icon = ExtResource("28_14yyd")
 icon_alignment = 1
+expand_icon = true
 script = ExtResource("37_g6w1g")
 
 [node name="ClamPopup" type="Node2D" parent="UI/AllyButtons/ClamButton"]
@@ -1169,19 +1169,18 @@ unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(-55.6778, -21.0105)
-scale = Vector2(0.526839, 0.526839)
 
 [node name="Box" type="NinePatchRect" parent="UI/AllyButtons/ClamButton/ClamPopup"]
 texture_filter = 1
-offset_left = -6.808
-offset_top = 4.71322
-offset_right = 336.192
-offset_bottom = 228.713
-scale = Vector2(0.34844, 0.34844)
+offset_left = -288.322
+offset_top = -0.989508
+offset_right = 54.6778
+offset_bottom = 223.01
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("25_k4f73")
 region_rect = Rect2(5, 3, 206, 104)
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="UI/AllyButtons/ClamButton/ClamPopup/Box"]
 texture_filter = 1
@@ -1192,18 +1191,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 5
-text = "I can't fight very well,
-but I can help you heal
-the coral when it's safe
-(Costs 10 chumks)"
+text = "Open so those mutated
+fish can't get past?
+Sure.
+(Costs 20 chumks)"
 label_settings = SubResource("LabelSettings_axww4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ClamSpeech" type="Sprite2D" parent="UI/AllyButtons/ClamButton"]
 unique_name_in_owner = true
-position = Vector2(-15.7579, 11.5557)
-scale = Vector2(0.0520459, 0.0520459)
+position = Vector2(-51, 53)
+scale = Vector2(0.151111, 0.151111)
 texture = ExtResource("26_xmlsh")
 flip_h = true
 

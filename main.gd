@@ -140,6 +140,7 @@ func spawn_mob():
 			# Spawn Pufferfish enemy, low chance
 			new_mob = preload("res://puffer_enemy.tscn").instantiate()
 	
+	#new_mob = preload("res://puffer_enemy.tscn").instantiate()
 	var numPath = randi_range(1, 2) #picks a random path to put it on
 	if numPath == 1: # spawn enemy from the right-side
 		%Path1.progress_ratio = randf() #chooses a point in the path

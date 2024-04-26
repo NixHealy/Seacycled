@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6kbjxidq2q7d"
-path="res://.godot/imported/trash_can.png-459576ce7c542d2523aace4e543a8d76.ctex"
+uid="uid://rkmjkc1cmlcb"
+path="res://.godot/imported/new_spike.png-cb27c7c099ddcaa5632d58fb0ecc113d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/trash_can.png"
-dest_files=["res://.godot/imported/trash_can.png-459576ce7c542d2523aace4e543a8d76.ctex"]
+source_file="res://img/new_spike.png"
+dest_files=["res://.godot/imported/new_spike.png-cb27c7c099ddcaa5632d58fb0ecc113d.ctex"]
 
 [params]
 

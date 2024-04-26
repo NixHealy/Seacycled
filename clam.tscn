@@ -171,6 +171,7 @@ region_rect = Rect2(5, 3, 206, 104)
 
 [node name="PopupLabel" type="Label" parent="Popup/Box"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

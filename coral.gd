@@ -86,7 +86,7 @@ func _process(delta):
 func _on_hit_area_body_entered(body):
 	if body.is_in_group("enemy"): #maybe wanna make the enemy itself responsible for much damage it deals
 		if body.is_in_group("spike"):
-			health -= 3
+			health -= 1
 		else:
 			if body.resisted == true:
 				health -= 1

@@ -54,5 +54,6 @@ func _on_heal_timer_timeout():
 	if main.grace == true and activated == true:
 		if coral.health < 95:
 			coral.health = coral.health + 5
+			%HealSound.play()
 		else:
 			coral.health = 100

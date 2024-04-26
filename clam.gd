@@ -3,7 +3,7 @@ extends StaticBody2D
 @onready var main = get_node("/root/Main")
 @onready var player = get_node("/root/Main/Player")
 
-var open_tex = load("res://img/scaled/clam_open.PNG")
+var open_tex = load("res://img/scaled/clam_open.png")
 var close_tex = load("res://img/scaled/clam_closed.png")
 var is_open = false
 var config = ConfigFile.new()
@@ -116,6 +116,7 @@ func close():
 			node.material.set_shader_parameter("alpha", 0.0)
 	%TopCollision.set_deferred("disabled", true)
 	%BottomCollision.set_deferred("disabled", true)
+	visible = false
 	#global_position.y += 120
 
 

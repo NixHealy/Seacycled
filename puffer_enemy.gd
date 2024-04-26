@@ -23,18 +23,19 @@ func _physics_process(delta):
 	var direction = coral.global_position - global_position  #goes to the coral
 	velocity = direction.normalized() * speed
 	
-	if direction.length() < 600:
+	if direction.length() < 500:
 		%InflateSound.play()
-		%Sprite2D.set_texture(exp_tex)
-		if %ExplodeTimer.is_stopped() == true:
-			scale = Vector2(0.669, 0.669)
-			%ExplodeTimer.start()
+		#%Sprite2D.set_texture(exp_tex)
+		#if %ExplodeTimer.is_stopped() == true:
+			#scale = Vector2(0.669, 0.669)
+			#%ExplodeTimer.start()
+		%Sprite2D.set_animation("inflate")
 	
-	if stunned == false and direction.length() > 600:
+	if stunned == false and direction.length() > 500:
 		move_and_slide()
 
-	if %ExplodeTimer.is_stopped() == false:
-		scale = scale * 1.01
+	#if %ExplodeTimer.is_stopped() == false:
+		#scale = scale * 1.01
 
 	#%Sprite2D.rotation = atan(velocity.y / velocity.x) #temporarily removed because it was not playing nice with collision
 	#rotation_degrees = snapped(rotation_degrees, 45) 
@@ -71,3 +72,8 @@ func explode():
 func _on_explode_timer_timeout():
 	%PopSound.play()
 	explode()
+
+func _on_sprite_2d_animation_finished():
+	if %Sprite2D.animation == "inflate":
+		%PopSound.play()
+		explode()

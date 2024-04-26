@@ -13,7 +13,7 @@ var config = ConfigFile.new()
 # Flags and settings
 var attacking = false
 var speed = 3
-var chumks = 99
+var chumks = 0
 
 # Volume settings
 var sfx = 0.1
