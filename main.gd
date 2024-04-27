@@ -153,9 +153,9 @@ func spawn_mob():
 	
 	# Danger icon for approaching enemies
 	var danger = preload("res://danger_icon.tscn").instantiate()
-	if numPath == 1:
-		danger.global_position = Vector2(100, new_mob.global_position.y)
 	if numPath == 2:
+		danger.global_position = Vector2(100, new_mob.global_position.y)
+	if numPath == 1:
 		danger.global_position = Vector2(1000, new_mob.global_position.y)
 	add_child(danger) # adds the danger icon to the scene
 	

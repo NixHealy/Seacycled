@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dp1hbus7ylwf0"
-path="res://.godot/imported/clam_open.png-a49174fdcf550f73a612c620cb5763f0.ctex"
+path="res://.godot/imported/clam_open.PNG-59174e8afb07c681907e49150b7f5d53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/clam_open.png"
-dest_files=["res://.godot/imported/clam_open.png-a49174fdcf550f73a612c620cb5763f0.ctex"]
+source_file="res://img/clam_open.PNG"
+dest_files=["res://.godot/imported/clam_open.PNG-59174e8afb07c681907e49150b7f5d53.ctex"]
 
 [params]
 

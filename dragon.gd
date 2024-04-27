@@ -22,7 +22,7 @@ func _physics_process(delta):
 	for node in %Outline.get_children():
 		node.frame = %Sprite2D.frame
 		
-	if coral.health < 100 and main.grace:
+	if coral.health < 50 and main.grace:
 		if %Sprite2D.get_animation() != "heal":
 			%Sprite2D.set_animation("heal")
 			for node in %Outline.get_children():
@@ -52,8 +52,8 @@ func activate():
 
 func _on_heal_timer_timeout():
 	if main.grace == true and activated == true:
-		if coral.health < 95:
+		if coral.health < 45:
 			coral.health = coral.health + 5
 			%HealSound.play()
-		else:
-			coral.health = 100
+		elif coral.health < 50:
+			coral.health = 50

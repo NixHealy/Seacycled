@@ -401,7 +401,7 @@ animations = [{
 size = Vector2(173, 146)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bnu6a"]
-radius = 138.558
+radius = 73.5612
 
 [sub_resource type="LabelSettings" id="LabelSettings_83hbw"]
 line_spacing = 0.0
@@ -458,7 +458,6 @@ shape = SubResource("RectangleShape2D_at4k4")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

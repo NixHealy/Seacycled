@@ -36,6 +36,7 @@ func _ready():
 		norm_volume = log(sfx) * 20
 
 func _physics_process(delta):
+	chumks = 99
 	
 	for node in %AnimatedOutline.get_children():
 		node.frame = %AnimatedFish.frame

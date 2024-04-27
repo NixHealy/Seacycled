@@ -89,6 +89,7 @@ func _process(delta):
 		#%Speech.visible = false
 
 func open():
+	visible = true
 	%OpenSound.play()
 	%Sprite2D.visible = false
 	%Animation.visible = true

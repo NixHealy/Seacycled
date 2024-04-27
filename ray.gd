@@ -62,7 +62,7 @@ func _physics_process(delta):
 						closest = enemy
 				
 		var direction = closest.global_position - global_position
-		velocity = direction.normalized() * 20000 * delta
+		velocity = direction.normalized() * 10000 * delta
 		move_and_slide()
 		
 		%Sprite2D.speed_scale = 3

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgeewkcaek88m"
-path="res://.godot/imported/trash_bottle.png-d16f3262f2062103925bee0a9a95e71d.ctex"
+path="res://.godot/imported/trash_bottle.PNG-e705ea339193e5fd872e7314c1bbfa77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/trash_bottle.png"
-dest_files=["res://.godot/imported/trash_bottle.png-d16f3262f2062103925bee0a9a95e71d.ctex"]
+source_file="res://img/trash_bottle.PNG"
+dest_files=["res://.godot/imported/trash_bottle.PNG-e705ea339193e5fd872e7314c1bbfa77.ctex"]
 
 [params]
 

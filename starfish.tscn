@@ -209,7 +209,7 @@ animations = [{
 size = Vector2(60, 58)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkc48"]
-radius = 194.01
+radius = 121.202
 
 [sub_resource type="LabelSettings" id="LabelSettings_ggpr5"]
 line_spacing = 0.0
@@ -259,7 +259,6 @@ shape = SubResource("RectangleShape2D_861xy")
 
 [node name="Armour" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
 collision_layer = 0
 collision_mask = 255
 

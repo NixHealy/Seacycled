@@ -845,7 +845,7 @@ offset_left = 29.0
 offset_top = 217.0
 offset_right = 91.0
 offset_bottom = 278.0
-scale = Vector2(1.90381, 1.90381)
+scale = Vector2(0.190915, 0.190915)
 theme_override_colors/icon_pressed_color = Color(0.239216, 0.239216, 0.239216, 1)
 theme_override_colors/icon_hover_color = Color(0.552941, 0.552941, 0.552941, 1)
 theme_override_colors/icon_disabled_color = Color(0.152941, 0.152941, 0.152941, 1)
@@ -862,8 +862,8 @@ script = ExtResource("25_6mtmn")
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
-position = Vector2(77.7389, -48.3242)
-scale = Vector2(0.5, 0.5)
+position = Vector2(560.458, -366.655)
+scale = Vector2(3.6401, 3.6401)
 
 [node name="Box" type="NinePatchRect" parent="UI/AllyButtons/UrchinButton/UrchinPopup"]
 texture_filter = 1
@@ -896,8 +896,8 @@ vertical_alignment = 1
 
 [node name="UrchinSpeech" type="Sprite2D" parent="UI/AllyButtons/UrchinButton"]
 unique_name_in_owner = true
-position = Vector2(85.0925, 1.57579)
-scale = Vector2(0.052, 0.052)
+position = Vector2(644.265, -10.4759)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("26_xmlsh")
 
 [node name="StarButton" type="Button" parent="UI/AllyButtons"]
@@ -905,9 +905,9 @@ unique_name_in_owner = true
 texture_filter = 1
 offset_left = 83.0
 offset_top = 343.0
-offset_right = 145.0
-offset_bottom = 404.0
-scale = Vector2(1.90381, 1.90381)
+offset_right = 568.0
+offset_bottom = 829.0
+scale = Vector2(0.199997, 0.199997)
 theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
 theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
 theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
@@ -924,8 +924,8 @@ script = ExtResource("29_6f8m7")
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
-position = Vector2(69.3347, -6.30316)
-scale = Vector2(0.5, 0.5)
+position = Vector2(590.008, -175.002)
+scale = Vector2(3.50028, 3.50028)
 
 [node name="Box" type="NinePatchRect" parent="UI/AllyButtons/StarButton/StarPopup"]
 texture_filter = 1
@@ -958,8 +958,8 @@ vertical_alignment = 1
 
 [node name="StarSpeech" type="Sprite2D" parent="UI/AllyButtons/StarButton"]
 unique_name_in_owner = true
-position = Vector2(83.5168, 14.7074)
-scale = Vector2(0.0520459, 0.0520459)
+position = Vector2(660.009, -20.0002)
+scale = Vector2(0.486051, 0.486051)
 texture = ExtResource("26_xmlsh")
 
 [node name="RayButton" type="Button" parent="UI/AllyButtons"]

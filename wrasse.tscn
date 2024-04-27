@@ -326,7 +326,6 @@ sprite_frames = SubResource("SpriteFrames_jjle8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_i5dcw")
 frame = 1
 frame_progress = 0.109364
