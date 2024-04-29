@@ -7,8 +7,8 @@ func _process(delta):
 				%ClamButton.disabled = false
 
 func _on_pressed():
-	if %Player.chumks >= 20:
-		%Player.chumks -= 20
+	if %Player.chumks >= 10:
+		%Player.chumks -= 10
 		%Clams.visible = true
 		for clam in %Clams.get_children():
 			clam.open()

@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://color.gdshader" id="2_7spqe"]
 [ext_resource type="Texture2D" uid="uid://c7nwq8v6ays8f" path="res://img/dragon_popup.png" id="3_2x25t"]
 [ext_resource type="Texture2D" uid="uid://dnma6xqel5oo1" path="res://img/anim/dragon_idle.png" id="3_q6a1b"]
-[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="4_f2rmc"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.png" id="4_f2rmc"]
 [ext_resource type="Texture2D" uid="uid://dwdq3e5tgmbtq" path="res://img/anim/dragon_heal.png" id="4_itr5i"]
 [ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="5_pqpur"]
 [ext_resource type="Material" uid="uid://cxmkikkvtr6qk" path="res://ally_material.tres" id="6_qqmjk"]

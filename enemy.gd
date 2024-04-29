@@ -39,7 +39,7 @@ func _physics_process(delta):
 	var direction = coral.global_position - global_position
 	
 	# Adjust velocity based on direction
-	if direction.length() > 500 and (direction.x > 100 or direction.x < -100):
+	if direction.length() > 250 and (direction.x > 50 or direction.x < -50):
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
 	else:

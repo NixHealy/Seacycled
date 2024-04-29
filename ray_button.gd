@@ -1,8 +1,8 @@
 extends Button
 
 func _on_pressed():
-	if %Player.chumks >= 10:
-		%Player.chumks -= 10
+	if %Player.chumks >= 20:
+		%Player.chumks -= 20
 		%Ray.visible = true
 		%Ray.activated = true
 		%RayButton.disabled = true

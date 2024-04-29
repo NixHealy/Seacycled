@@ -1,8 +1,8 @@
 extends Button
 
 func _on_pressed():
-	if %Player.chumks >= 5:
-		%Player.chumks -= 5
+	if %Player.chumks >= 10:
+		%Player.chumks -= 10
 		%Wrasse.visible = true
 		%Wrasse.activated = true
 		%WrasseButton.disabled = true

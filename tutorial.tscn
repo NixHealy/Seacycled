@@ -1,13 +1,17 @@
-[gd_scene load_steps=44 format=3 uid="uid://c4wm2wk47nyby"]
+[gd_scene load_steps=54 format=3 uid="uid://c4wm2wk47nyby"]
 
 [ext_resource type="Script" path="res://tutorial.gd" id="1_2u5p5"]
-[ext_resource type="Texture2D" uid="uid://bx376s646jio3" path="res://img/bg.png" id="2_8eseu"]
+[ext_resource type="Texture2D" uid="uid://dq686o86m3j5o" path="res://img/new new bg.png" id="2_y7kwy"]
 [ext_resource type="PackedScene" uid="uid://bw1af6olg1gwj" path="res://coral.tscn" id="3_2iguw"]
 [ext_resource type="Script" path="res://Ground.gd" id="4_axnwl"]
 [ext_resource type="PackedScene" uid="uid://b07b250vvlv54" path="res://player.tscn" id="5_yxp6x"]
 [ext_resource type="PackedScene" uid="uid://u7xbuwuumsj4" path="res://ray.tscn" id="7_exgjr"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="8_c8yt7"]
+[ext_resource type="Texture2D" uid="uid://bfwe464s3x2q1" path="res://img/ray_icon.png" id="8_d7pv1"]
+[ext_resource type="Script" path="res://ray_button.gd" id="9_5h73i"]
 [ext_resource type="Texture2D" uid="uid://c2li4p4jnaah5" path="res://img/mouse_sheet.png" id="9_mvcuq"]
+[ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="11_ihtg7"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.png" id="12_b4pp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
@@ -15,15 +19,15 @@ size = Vector2(403, 1423.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swt3a"]
 size = Vector2(391, 1406.09)
 
-[sub_resource type="Curve2D" id="Curve2D_ad2ju"]
+[sub_resource type="Curve2D" id="Curve2D_f74fl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1030, 413, 0, 0, 0, 0, 1021, -248)
+"points": PackedVector2Array(0, 0, 0, 0, -784.653, 344.455, 0, 0, 0, 0, -789.103, -10.9736)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_f74fl"]
+[sub_resource type="Curve2D" id="Curve2D_ad2ju"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -919, 454, 0, 0, 0, 0, -918, -201)
+"points": PackedVector2Array(0, 0, 0, 0, 856.497, 373.119, 0, 0, 0, 0, 856.497, 7.21813)
 }
 point_count = 2
 
@@ -32,7 +36,7 @@ size = Vector2(1149, 212)
 
 [sub_resource type="Curve2D" id="Curve2D_ayu2t"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2674.5, -804.5, 0, 0, 0, 0, -739.5, -804.5)
+"points": PackedVector2Array(0, 0, 0, 0, -2289, -857, 0, 0, 0, 0, -1324, -843)
 }
 point_count = 2
 
@@ -235,82 +239,94 @@ shader_parameter/alpha = 0.0
 shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsiag"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75fh2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfkd5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fvkk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgty0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dudyg"]
+font_size = 14
+
 [node name="Main" type="Node"]
 process_mode = 1
 script = ExtResource("1_2u5p5")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1154, -789)
-anchor_mode = 0
-zoom = Vector2(0.5, 0.5)
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -100
 follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(-8, -185)
-scale = Vector2(2.87742, 2.87742)
-texture = ExtResource("2_8eseu")
+texture_filter = 1
+position = Vector2(583, 307)
+scale = Vector2(1.84, 1.84)
+texture = ExtResource("2_y7kwy")
 
 [node name="Coral" parent="." instance=ExtResource("3_2iguw")]
 unique_name_in_owner = true
-position = Vector2(2, 60)
+position = Vector2(592, 475)
+scale = Vector2(0.440414, 0.440414)
 collision_mask = 0
 
 [node name="Walls" type="StaticBody2D" parent="."]
 z_index = 10
-position = Vector2(-147, -8)
+position = Vector2(674, 331)
 scale = Vector2(0.674198, 1.62339)
 collision_layer = 8
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Walls"]
-offset_left = -1500.0
-offset_top = -524.0
-offset_right = -1460.0
-offset_bottom = -450.0
+offset_left = -1011.63
+offset_top = -496.492
+offset_right = -971.632
+offset_bottom = -422.492
 scale = Vector2(-9.82501, 13.0786)
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="Walls"]
-offset_left = 1931.18
-offset_top = -550.083
-offset_right = 2327.18
-offset_bottom = 423.917
+offset_left = 713.44
+offset_top = -538.996
+offset_right = 1109.44
+offset_bottom = 435.004
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-position = Vector2(-1702.5, -262.751)
+position = Vector2(-1214.13, -235.243)
 shape = SubResource("RectangleShape2D_b18te")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-position = Vector2(2128.68, -282.127)
+position = Vector2(910.94, -271.04)
 shape = SubResource("RectangleShape2D_swt3a")
 
-[node name="Path2D" type="Path2D" parent="Walls"]
-position = Vector2(1119.18, -206.184)
-curve = SubResource("Curve2D_ad2ju")
-
-[node name="Path1" type="PathFollow2D" parent="Walls/Path2D"]
-unique_name_in_owner = true
-position = Vector2(1030, 413)
-rotation = -1.58441
-
 [node name="Path2D2" type="Path2D" parent="Walls"]
-position = Vector2(-785, -200.101)
+position = Vector2(-296.632, -172.593)
 curve = SubResource("Curve2D_f74fl")
 
 [node name="Path2" type="PathFollow2D" parent="Walls/Path2D2"]
 unique_name_in_owner = true
-position = Vector2(-919, 454)
-rotation = -1.56927
+position = Vector2(-784.653, 344.455)
+rotation = -1.58332
+
+[node name="Path2D" type="Path2D" parent="Walls"]
+position = Vector2(-98.5597, -195.097)
+curve = SubResource("Curve2D_ad2ju")
+
+[node name="Path1" type="PathFollow2D" parent="Walls/Path2D"]
+unique_name_in_owner = true
+position = Vector2(856.497, 373.119)
+rotation = -1.5708
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(-2, 658)
+position = Vector2(37, 865)
 scale = Vector2(20.12, 2)
 collision_layer = 13
 script = ExtResource("4_axnwl")
@@ -329,21 +345,23 @@ scale = Vector2(1.96, 1)
 shape = SubResource("RectangleShape2D_d8c3j")
 
 [node name="PollPath" type="Path2D" parent="."]
-position = Vector2(1697.5, -23.5)
+position = Vector2(2363, 775)
 curve = SubResource("Curve2D_ayu2t")
 
 [node name="PollowPath" type="PathFollow2D" parent="PollPath"]
 unique_name_in_owner = true
-position = Vector2(-2674.5, -804.5)
+position = Vector2(-2289, -857)
+rotation = 0.0145068
 
 [node name="Player" parent="." instance=ExtResource("5_yxp6x")]
 unique_name_in_owner = true
+position = Vector2(550, 266)
 collision_mask = 9
 
 [node name="Ray" parent="." instance=ExtResource("7_exgjr")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-10, -481)
+position = Vector2(566, 173)
 
 [node name="Timers" type="Node" parent="."]
 unique_name_in_owner = true
@@ -384,17 +402,19 @@ wait_time = 3.0
 
 [node name="MouseSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -350)
+position = Vector2(560, 251)
+scale = Vector2(0.51421, 0.51421)
 sprite_frames = SubResource("SpriteFrames_38y8h")
 
 [node name="TutPopup" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_left = -559.0
-offset_top = 207.0
-offset_right = 490.0
-offset_bottom = 420.0
-theme_override_font_sizes/font_size = 60
+offset_left = 276.0
+offset_top = 506.0
+offset_right = 1024.0
+offset_bottom = 682.0
+scale = Vector2(0.817338, 0.817338)
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_2u6t0")
 text = "Your goal is to protect the coral!
 (Click to continue)"
@@ -413,6 +433,66 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="RayButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+offset_left = 25.0
+offset_top = 480.0
+offset_right = 120.0
+offset_bottom = 563.0
+scale = Vector2(1.3935, 1.3935)
+theme_override_colors/icon_pressed_color = Color(0.237539, 0.237539, 0.237539, 1)
+theme_override_colors/icon_hover_color = Color(0.552956, 0.552956, 0.552955, 1)
+theme_override_colors/icon_disabled_color = Color(0.151276, 0.151276, 0.151276, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_xsiag")
+theme_override_styles/hover = SubResource("StyleBoxFlat_75fh2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gfkd5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7fvkk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tgty0")
+icon = ExtResource("8_d7pv1")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("9_5h73i")
+
+[node name="RayPopup" type="Node2D" parent="UI/RayButton"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(99.7899, -5.7773)
+
+[node name="Box" type="NinePatchRect" parent="UI/RayButton/RayPopup"]
+texture_filter = 1
+offset_left = -7.0
+offset_top = 5.0
+offset_right = 215.0
+offset_bottom = 96.0
+scale = Vector2(0.736607, 0.736607)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("11_ihtg7")
+region_rect = Rect2(5, 3, 206, 104)
+
+[node name="Label" type="Label" parent="UI/RayButton/RayPopup/Box"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I'll stun the enemies!
+"
+label_settings = SubResource("LabelSettings_dudyg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RaySpeech" type="Sprite2D" parent="UI/RayButton"]
+unique_name_in_owner = true
+position = Vector2(115.546, 37.2899)
+scale = Vector2(0.0520459, 0.0520459)
+texture = ExtResource("12_b4pp6")
+
 [connection signal="died" from="Coral" to="." method="_on_coral_died"]
 [connection signal="timeout" from="Timers/StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Timers/WaveTimer" to="." method="_on_wave_timer_timeout"]
@@ -420,3 +500,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="timeout" from="Timers/PollutionTimer" to="." method="_on_pollution_timer_timeout"]
 [connection signal="timeout" from="Timers/HelpDelay" to="." method="_on_help_delay_timeout"]
 [connection signal="timeout" from="Timers/MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="mouse_entered" from="UI/RayButton" to="UI/RayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/RayButton" to="UI/RayButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI/RayButton" to="UI/RayButton" method="_on_pressed"]

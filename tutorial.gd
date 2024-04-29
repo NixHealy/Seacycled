@@ -32,10 +32,11 @@ func _process(delta):
 			%EnemyTimer.start()
 			
 	elif stage == 4:
-		%Player.chumks = 10
+		%Player.chumks = 20
 		%TutPopup.visible = true
 		%Ray.visible = true
-		%TutPopup.text = "Click the ally to recruit\nit to assist you!"
+		%RayButton.visible = true
+		%TutPopup.text = "Click the button to recruit\nthe ally to assist you!"
 		if %Ray.activated:
 			%Player.chumks = 0
 			%TutPopup.visible = false
@@ -77,9 +78,9 @@ func spawn_mob():
 	
 	var danger = preload("res://danger_icon.tscn").instantiate()
 	if numPath == 1:
-		danger.global_position = Vector2(900, new_mob.global_position.y)
+		danger.global_position = Vector2(1100, new_mob.global_position.y)
 	if numPath == 2:
-		danger.global_position = Vector2(-900, new_mob.global_position.y)
+		danger.global_position = Vector2(50, new_mob.global_position.y)
 	add_child(danger)
 
 func _on_mouse_animation_finished():

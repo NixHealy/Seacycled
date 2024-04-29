@@ -19,6 +19,7 @@ func _ready():
 	%Button.visible = false
 	%HelpText.visible = false
 	%CountdownSprite.play()
+	%CountdownMusic.play()
 	
 	# Load options if available
 	if FileAccess.file_exists("user://options.ini"):
@@ -154,9 +155,9 @@ func spawn_mob():
 	# Danger icon for approaching enemies
 	var danger = preload("res://danger_icon.tscn").instantiate()
 	if numPath == 2:
-		danger.global_position = Vector2(100, new_mob.global_position.y)
+		danger.global_position = Vector2(50, new_mob.global_position.y)
 	if numPath == 1:
-		danger.global_position = Vector2(1000, new_mob.global_position.y)
+		danger.global_position = Vector2(1100, new_mob.global_position.y)
 	add_child(danger) # adds the danger icon to the scene
 	
 # Spawn sinking pollution from the top of the screen

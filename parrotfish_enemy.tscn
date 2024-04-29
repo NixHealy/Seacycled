@@ -259,8 +259,6 @@ show_behind_parent = true
 position = Vector2(0, 3)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_g8g6c")
-frame = 12
-frame_progress = 0.559981
 
 [node name="Left" type="AnimatedSprite2D" parent="AnimatedSprite2D/AnimatedOutline"]
 modulate = Color(0, 0, 0, 1)

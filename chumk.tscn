@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://chumk.gd" id="1_wygln"]
 [ext_resource type="Shader" path="res://color.gdshader" id="2_ttxkk"]
 [ext_resource type="Texture2D" uid="uid://bod3p7h50tt7t" path="res://img/chumk.png" id="3_pus8c"]
-[ext_resource type="Texture2D" uid="uid://cetkd6i188lgo" path="res://img/bubble.PNG" id="4_uarwt"]
+[ext_resource type="Texture2D" uid="uid://cetkd6i188lgo" path="res://img/bubble.png" id="4_uarwt"]
 
 [sub_resource type="Shader" id="Shader_werny"]
 code = "shader_type canvas_item;

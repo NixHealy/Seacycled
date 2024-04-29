@@ -220,7 +220,6 @@ offset_bottom = 460.0
 scale = Vector2(0.799961, 0.799961)
 theme_override_colors/icon_pressed_color = Color(0.576471, 0.694118, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b7w3w")
-disabled = true
 keep_pressed_outside = true
 icon = ExtResource("4_l7lu6")
 flat = true

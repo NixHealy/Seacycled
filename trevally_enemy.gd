@@ -23,7 +23,7 @@ func _physics_process(delta):
 		node.frame = %AnimatedSprite2D.frame
 		
 	var direction = coral.global_position - global_position  #goes to the coral
-	if direction.length() > 400:
+	if direction.length() > 1000:
 		direction = Vector2(direction.x, 0)
 		velocity = direction.normalized() * speed
 	else:
