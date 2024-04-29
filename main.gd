@@ -35,7 +35,6 @@ func _ready():
 		%CountdownMusic.volume_db = log(sfx) * 20
 
 func _process(delta):
-	
 	%StartLabel.text = str(ceil(%StartTimer.time_left - 1))
 	if %StartTimer.time_left < 1:
 		%StartLabel.text = "GO!"

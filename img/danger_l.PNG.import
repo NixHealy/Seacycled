@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp0effrfxy1wi"
-path="res://.godot/imported/danger_l.PNG-c8ebefd9d32f533f70d2bff7eeef9da5.ctex"
+uid="uid://cnq5iih78jp3v"
+path="res://.godot/imported/danger_l.png-ce14ece49848037ffde3738d3121c680.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/danger_l.PNG"
-dest_files=["res://.godot/imported/danger_l.PNG-c8ebefd9d32f533f70d2bff7eeef9da5.ctex"]
+source_file="res://img/danger_l.png"
+dest_files=["res://.godot/imported/danger_l.png-ce14ece49848037ffde3738d3121c680.ctex"]
 
 [params]
 

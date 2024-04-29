@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://ccspj8bt13hlf" path="res://font/OpenDyslexic-Regular.otf" id="3_nj6ar"]
 [ext_resource type="Material" uid="uid://cxmkikkvtr6qk" path="res://ally_material.tres" id="4_7kpnp"]
 [ext_resource type="Texture2D" uid="uid://dnkrq3li27yjg" path="res://img/ray_popup.png" id="4_mj3jh"]
-[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.png" id="6_wvnt4"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="6_wvnt4"]
 [ext_resource type="AudioStream" uid="uid://crqtpkq7t1xcw" path="res://sound/ray_attack.wav" id="7_ajj33"]
 [ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="7_vtev5"]
 

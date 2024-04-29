@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://pollution.gd" id="1_tgl7u"]
 [ext_resource type="Texture2D" uid="uid://daivlnnri5m1a" path="res://img/poll_aura.png" id="2_d3kov"]
 [ext_resource type="Shader" path="res://color.gdshader" id="3_tciqu"]
-[ext_resource type="Texture2D" uid="uid://dt3oxxiw2s2yh" path="res://img/trash_bag.PNG" id="4_3eu68"]
+[ext_resource type="Texture2D" uid="uid://b1p72msmmhgwm" path="res://img/trash_bag.PNG" id="4_3eu68"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1yo0"]
 

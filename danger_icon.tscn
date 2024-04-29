@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ont7uuo42gvg"]
 
-[ext_resource type="Texture2D" uid="uid://cp0effrfxy1wi" path="res://img/danger_l.PNG" id="1_nk4e3"]
+[ext_resource type="Texture2D" uid="uid://cnq5iih78jp3v" path="res://img/danger_l.PNG" id="1_nk4e3"]
 [ext_resource type="Script" path="res://danger_icon.gd" id="2_g7dtj"]
 
 [node name="DangerIcon" type="Sprite2D"]
