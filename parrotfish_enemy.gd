@@ -22,7 +22,7 @@ func _physics_process(delta):
 	var direction = coral.global_position - global_position  #goes to the coral
 	if direction.length() > 10000:
 		direction = Vector2(direction.x, 0)
-		velocity = direction.normalized() * speed
+	velocity = direction.normalized() * speed
 	
 	if stunned == false:
 		move_and_slide()

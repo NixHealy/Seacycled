@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://ce8lc34v3pa01" path="res://img/star_icon.png" id="25_8aes2"]
 [ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="25_k4f73"]
 [ext_resource type="Texture2D" uid="uid://bfwe464s3x2q1" path="res://img/ray_icon.png" id="26_fthre"]
-[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="26_xmlsh"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.png" id="26_xmlsh"]
 [ext_resource type="Texture2D" uid="uid://6jjwboymf8i7" path="res://img/dragon_icon.png" id="27_7mt60"]
 [ext_resource type="Texture2D" uid="uid://dy44bqe3xw0b6" path="res://img/clam_icon.png" id="28_14yyd"]
 [ext_resource type="Script" path="res://star_button.gd" id="29_6f8m7"]

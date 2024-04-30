@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://ray_button.gd" id="9_5h73i"]
 [ext_resource type="Texture2D" uid="uid://c2li4p4jnaah5" path="res://img/mouse_sheet.png" id="9_mvcuq"]
 [ext_resource type="Texture2D" uid="uid://ce2korcuqg1wc" path="res://img/ally_popup.png" id="11_ihtg7"]
-[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.PNG" id="12_b4pp6"]
+[ext_resource type="Texture2D" uid="uid://c2lq7l0y6uwry" path="res://img/speech_popup.png" id="12_b4pp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18te"]
 size = Vector2(403, 1423.5)
